@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,20 +12,16 @@
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>    
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
-
 <body class="bg-gray-900 text-white">
 
-<!--MAIN MENU-->
 <details id="main" class="fixed top-0 left-0 w-full h-[50px] mb-1 group accordion hidden">
     <summary class="cursor-pointer bg-gray-800 px-4 py-3 hover:bg-blue-700 font-semibold" onclick="showOnly('main')">Main</summary>
     <div class="mt-1 space-y-1">
 
-        <!--MASTER-->
         <details id="master" class="accordion">
             <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700">Master</summary>
             <div class="ml-4 mt-1 space-y-1">
 
-                <!--CREATE LEDGER-PRODUCT-->
                 <details id="create" class="accordion">
                     <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700">Create</summary>
                     <div class="ml-4 mt-1 space-y-1">
@@ -35,7 +30,6 @@
                     </div>
                 </details>      
 
-                <!--ALTER LEDGER-PRODUCT-->
                 <details id="alter" class="accordion">
                     <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700">Alter</summary>
                     <div class="ml-4 mt-1 space-y-1">
@@ -43,16 +37,13 @@
                         <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700" onclick="insertProdLed('Opening Stock')">Product</summary>
                     </div>
                 </details>
-
             </div>
         </details>
 
-        <!--VOUCHERS-->
         <details id="vouchers" class="accordion">
             <summary class="cursor-pointer bg-purple-900 px-4 py-3 hover:bg-purple-700">Vouchers</summary>
             <div class="ml-4 mt-1 space-y-1">
 
-                <!--NEW TRANSACTION-->
                 <details id="new" class="accordion">
                     <summary class="cursor-pointer bg-purple-900 px-4 py-3 hover:bg-purple-700">New</summary>
                     <div class="ml-4 mt-1 space-y-1">
@@ -60,7 +51,6 @@
                     </div>
                 </details>
 
-                <!--UPDATE TRANSACTION-->
                 <details id="update" class="accordion">
                     <summary class="cursor-pointer bg-purple-900 px-4 py-3 hover:bg-purple-700">Update</summary>
                     <div class="ml-4 mt-1 space-y-1">
@@ -70,12 +60,10 @@
             </div>
         </details>
 
-        <!--REPORTS-->
         <details id="report" class="accordion">
             <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700">Reports</summary>
             <div class="ml-4 mt-1 space-y-1">
 
-                <!--FINANCIAL REPORTS-->
                 <details id="financials" class="accordion">
                     <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700">Financial Reports</summary>
                     <div class="ml-4 mt-1 space-y-1">
@@ -86,7 +74,6 @@
                     </div>
                 </details>
 
-                <!--OTHER REPORTS-->
                 <details id="other-reports" class="accordion">
                     <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700">Other Reports</summary>
                     <div class="ml-4 mt-1 space-y-1">
@@ -98,27 +85,20 @@
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewProdLed('product')">Products & Groups</summary>
                     </div>
                 </details>
-
             </div>
         </details>
 
-        <!--LOGOUT-->
-        <details id="logout" class="accordion">
-            <summary class="cursor-pointer bg-red-900 px-4 py-3 hover:bg-red-700" onclick="window.logout()">Logout</summary>
-        </details>
-    
+        <details id="logout" class="accordion"><summary class="cursor-pointer bg-red-900 px-4 py-3 hover:bg-red-700" onclick="window.logout()">Logout</summary></details>
     </div>
 </details>
 
-<!--LOGIN-->
-<div class="hidden w-full max-w-md p-2 pt-10 rounded-b-2xl bg-gray-800" id="loginContainer">
+<div id="loginContainer" class="hidden w-full max-w-md p-2 pt-10 rounded-b-2xl bg-gray-800">
     <input class="input-box" id="loginEmail" placeholder="Email ....." type="email"><br><br>
     <input class="input-box" id="loginPassword" placeholder="Password ....." type="password"><br><br>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
-<!--LEDGER-->
-<div class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800" id="ledger">
+<div id="ledger" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
     <label class="label">Select Ledger Group ↓↓</label><input class="input-box" id="ledgergroup" type="text" autocomplete="off"/>
     <label class="label">Ledger Name ↓↓</label><input class="input-box" id="ledgername" type="text" autocomplete="off"/>
     <label class="label">Opening Balance ↓↓</label><input class="input-box" id="opbal" type="number" autocomplete="off"/>
@@ -126,8 +106,7 @@
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('ledger')">👉Save Ledger👈</button>
 </div>
 
-<!--PRODUCT-->
-<div class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800" id="product">
+<div id="product" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
     <label class="label">Select Product Group ↓↓</label><input class="input-box" id="productgroup" type="text" autocomplete="off"/>
     <label class="label">Product Name ↓↓</label><input class="input-box" id="productname" type="text" autocomplete="off"/>
     <label class="label">Opening Stock ↓↓</label><input class="input-box" id="opstk" type="number"/>
@@ -135,8 +114,7 @@
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('product')">👉Save Product👈</button>
 </div>
 
-<!--TRANSACTION-->
-<div class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800" id="transaction">
+<div id="transaction" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
     <label class="label">Transaction Type ↓↓</label><input class="input-box" id="ttype" type="text" autocomplete="off"/>
     <label class="label">Date ↓↓</label><input class="input-box" id="date" type="date"/>
     <label class="label">From ↓↓</label><input class="input-box" id="txtfrom" type="text" autocomplete="off">
@@ -149,10 +127,8 @@
     </div>
 </div>
 
-<!--TABULATOR TABLE/PROFIT-LOSS-->
 <div class="pt-[50px]">
-    <!--TABLE-->
-    <div class="hidden w-full mx-auto ml-1 mr-1" id="tableCont">
+    <div id="tableCont" class="hidden w-full mx-auto ml-1 mr-1">
         <div class="flex items-center gap-1 mb-1 flex-nowrap">
             <button class="bg-green-800 px-2 py-2 rounded-lg" id="excelBtn">𝄜XL</button>
             <button class="bg-red-800 px-2 py-2 rounded-lg" id="pdfBtn">PDF</button>
@@ -162,8 +138,7 @@
         <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
     </div>
 
-    <!--PROFIT-LOSS-->
-    <div class="hidden w-full max-w-md ml-1 mr-1 bg-gray-900" id="profitLoss">
+    <div id="profitLoss" class="hidden w-full max-w-md ml-1 mr-1 bg-gray-900">
         <div class="flex items-center gap-1 flex-nowrap">
             <button class="px-2 h-10 bg-green-700 hover:bg-green-600 rounded-lg w-[100px]" onclick="profit_loss()">👉View👈</button>
             <input class="px-2 h-10 bg-gray-800 border border-blue-600 rounded-lg w-[250px]" id="clostk" type="number" placeholder="Closing Stock"/>
@@ -171,24 +146,18 @@
     </div>
 </div>
 
-<!--ERROR BOX-->
-<div class="hidden fixed top-[50px] w-full max-w-md bg-gray-800 shadow-lg rounded-lg text-left z-50" id="errorBox">
+<div id="errorBox" class="hidden fixed top-[50px] w-full max-w-md bg-gray-800 shadow-lg rounded-lg text-left z-50">
     <h2 class="bg-red-800 text-white font-semibold px-4 py-4 mb-3 rounded-t-lg">⚠️ Information</h2>
     <p id="errorMessage" class="text-left px-4 bg-gray-800"></p>
-    <button onclick="closeErrorDialog()" class="w-full text-white font-semibold py-3 mt-3 bg-orange-600 hover:bg-orange-800 rounded-b-lg">Close</button>
+    <button onclick="closeDialog()" class="w-full text-white font-semibold py-3 mt-3 bg-orange-600 hover:bg-orange-800 rounded-b-lg">Close</button>
 </div>
 
 <script type="module">
-    // FIREBASE MODULES
     import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-
     import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
     import {getFirestore, collection, getDocs, getDoc, setDoc, deleteDoc, doc, updateDoc, query, where, addDoc, writeBatch, deleteField} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-    // FIREBASE CONFIGURATION/KEYS
     const firebaseConfig = {
         apiKey: "AIzaSyDQWZC6iA5zYKvTXsFl9TYLkZCTl5BzfwA",
         authDomain: "accounts-19d08.firebaseapp.com",
@@ -197,20 +166,15 @@
         messagingSenderId: "247308606105",
         appId: "1:247308606105:web:9bfc179368524244bf3608",
     };
-
-    // FIREBASE INITIALIZATION
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
     const tranCol = collection(db, "umesh");
     window.currentDocId = null;
     window.originalEditingValue = null;
-
-    // LOGIN FUNCTION
     window.login = async function () {
         const email = document.getElementById("loginEmail").value;
         const password = document.getElementById("loginPassword").value;
-
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
@@ -222,13 +186,8 @@
                 document.getElementById("loginContainer").classList.add("hidden");
                 document.getElementById("main").classList.remove("hidden");
             }
-
-        } catch (error) {
-            showDialog("Login failed\nEnter registered email/password\nor\nContact Gopalji. 😡", "error");
-        }
+        } catch (error) { showDialog("Login failed\nEnter registered email/password\nor\nContact Gopalji. 😡", "error"); }
     };
-
-    // ON AUTH STATE CHANGE
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             document.getElementById("main").classList.remove("hidden");
@@ -237,12 +196,8 @@
             attachDropdown(document.getElementById("ledgergroup"), window.maingroup_list);
             attachDropdown(document.getElementById("productgroup"), window.sp_list);
             attachDropdown(document.getElementById("ttype"), window.ttype_list);
-        } else {
-            showOnly("loginContainer");
-        }
-    });
-    
-    // INSERT PRE DEFINED GROUPS ON PAGE LOAD
+        } else { showOnly("loginContainer"); }
+    });  
     const createGroupDefinition = (groupName) => ({
         data: {grp: groupName, ttype: "Group"},
         queryConditions: [where("grp", "==", groupName), where("ttype", "==", "Group")],
@@ -253,22 +208,15 @@
         for (const docDef of uniqueDocumentDefinitions) {
             const q = query(tranCol, ...docDef.queryConditions);
             const snapshot = await getDocs(q);
-
-            if (snapshot.empty) {
-                await addDoc(tranCol, docDef.data);
-            }
+            if (snapshot.empty) { await addDoc(tranCol, docDef.data); }
         }
     };
-
-    // SET INPUT/LABEL STYLES
     document.addEventListener('DOMContentLoaded', () => {
         const labelClass = "mt-3 pl-[10px] text-gray-400 block mb-1";
         document.querySelectorAll('label').forEach(label => {label.classList.add(...labelClass.split(' '));});
-        
         const inputClass = "w-full px-2 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-yellow-500";
         document.querySelectorAll('.input-box').forEach(input => {
             input.classList.add(...inputClass.split(' '));
-
             if ((input.tagName === "INPUT" && input.type === "text") || input.tagName === "TEXTAREA") {
                 input.addEventListener('input', function () {
                     const start = this.selectionStart;
@@ -279,37 +227,6 @@
             }
         });
     });
-
-    // SHOW ONLY SELECTED FORMS
-    window.showOnly = function (...idToShow) {
-        if (document.getElementById('main').open) {
-            document.getElementById('main').open = false;
-        }
-
-        document.querySelectorAll("details").forEach(detail => {
-            detail.removeAttribute("open");
-        });
-
-        const allIds = ['loginContainer', 'group', 'ledger', 'product', 'transaction', 'tableCont', 'profitLoss'];
-        allIds.forEach(id => {
-            const el = document.getElementById(id);
-
-            if (el) {
-                el.classList.add("hidden");
-                el.style.setProperty('display', 'none', 'important');
-            }
-        });
-
-        idToShow.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.classList.remove("hidden");
-                el.style.setProperty('display', 'block', 'important');
-            }
-        });
-    };
-
-    // CLOSE OPENED SUB MENUS
     document.querySelectorAll('details.accordion').forEach(details => {
         details.addEventListener('toggle', () => {
             if (details.open) {
@@ -321,16 +238,25 @@
             }
         });
     });
-
-    // ERROR-SUCCESS DIALOG
-    async function showDialog(message, type = "error") {
+    document.getElementById("calc").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            try {
+                const raw = this.value.trim();
+                if (/^[\d+\-*/().\s]+$/.test(raw)) {
+                    const result = Function('"use strict";return (' + raw + ')')();
+                    this.value = result;
+                } else { showDialog("Invalid expression. Only numbers and + - * / allowed. 🤕", "error"); }
+            } catch (error) {showDialog("Invalid calculation. 🎲", "error");}
+        }
+    });
+    
+    function showDialog(message, type = "error") {
         document.getElementById('errorMessage').innerHTML = message.replace(/\n/g, '<br>'); 
         const titleEl = document.querySelector('#errorBox h2');
         const closeBtn = document.querySelector('#errorBox button');
 
         titleEl.classList.remove('bg-red-800', 'bg-green-800');
         closeBtn.classList.remove('bg-orange-600', 'hover:bg-orange-800', 'bg-green-600', 'hover:bg-green-800');
-
         if (type === "success") {
             titleEl.classList.add('bg-green-800');
             titleEl.textContent = "✅ Success";
@@ -343,20 +269,12 @@
         document.getElementById('errorBox').classList.remove('hidden');
     };
 
-    // CLOSE ERROR-SUCCESS DIALOG
-    window.closeErrorDialog = async function () {
-        document.getElementById('errorBox').classList.add('hidden');
-    };
-
-    // RESET WINDOW.DOCID CLEAR INPUTS, ENABLE TTYPE, LOADDROPDOWN
-    async function clear(resetId = true) {
-        if (resetId) window.currentDocId = null;
+    function clear () {
         document.querySelectorAll("input").forEach(el => el.value = "");
         document.getElementById("ttype").disabled = false;
         loadDropdownData();  
     };
     
-    // CREATE LISTS
     async function loadDropdownData() {
         const snapshot = await getDocs(tranCol);
         const nameSet = new Set();
@@ -378,7 +296,6 @@
             if (["Creditors", "Debitors", "Cash", "Bank", "Angadiya",].includes(grp) && name.length > 0) {crdbcsbkangSet.add(name);}
             if (["Creditors", "Debitors", "Cash", "Bank", "Angadiya", "Expense"].includes(grp) && name.length > 0) {crdbcsbkangexpSet.add(name);}
         });
-
         window.maingroup_list = [ "Angadiya", "Bank", "Cash", "Creditors", "Debitors", "Expense"];
         window.sp_list = ["Sproducts", "Pproducts"];
         window.allnames_list = [...nameSet].sort((a, b) => a.localeCompare(b));
@@ -390,7 +307,6 @@
         window.crdbcsbkangexp_list = [...crdbcsbkangexpSet].sort((a, b) => a.localeCompare(b));
     };
     
-    // ATTACH LISTS TO INPUTS
     function attachDropdown(inputElement, dataList) {
         let wrapper = inputElement.parentElement;
         if (!wrapper.classList.contains("relative")) {
@@ -399,7 +315,6 @@
             inputElement.parentNode.insertBefore(wrapper, inputElement);
             wrapper.appendChild(inputElement);
         }
-
         const dropdown = document.createElement("ul");
         dropdown.className = "absolute z-50 w-full max-h-100 overflow-y-auto bg-gray-800 border border-green-600 rounded-md hidden";
         wrapper.appendChild(dropdown);
@@ -409,18 +324,8 @@
             const matches = dataList.filter(item => item.toLowerCase().includes(search));
             populateDropdown(matches);
         }
-
         function populateDropdown(list) {
             dropdown.innerHTML = "";
-
-            if (list.length === 0) {
-                const li = document.createElement("li");
-                li.textContent = "No match found";
-                li.className = "px-2 py-2 text-gray-400";
-                dropdown.appendChild(li);
-                return;
-            }
-
             list.forEach(item => {
                 const li = document.createElement("li");
                 li.textContent = item;
@@ -428,24 +333,19 @@
                 li.onclick = () => {
                     inputElement.value = item;
                     dropdown.classList.add("hidden");
-                    if (inputElement.id === "ttype") {
-                        changeLists();
-                    }
+                    if (inputElement.id === "ttype") { changeLists(); }
                 };
                 dropdown.appendChild(li);
             });
         }
-
         inputElement.addEventListener("input", () => {
             dropdown.classList.remove("hidden");
             filterList();
         });
-
         inputElement.addEventListener("click", () => {
             dropdown.classList.remove("hidden");
             filterList();
         });
-
         document.addEventListener("click", (e) => {
             if (!wrapper.contains(e.target)) {
                 dropdown.classList.add("hidden");
@@ -453,10 +353,8 @@
         });
     };
 
-    // EDITABLE TABLE
     function createEditableTable(rows, columns, showDelete = true, showUpdate = true, editable = false) {
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
-
         const searchId = document.getElementById('searchBox');
         const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
 
@@ -467,7 +365,6 @@
                 formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
                 width: 40,
                 hozAlign: "center",
-
                 cellClick: async (e, cell) => {
                     e.stopPropagation();
                     const rowData = cell.getRow().getData();
@@ -475,7 +372,6 @@
                         showDialog("Cannot delete Opening Balance or Opening Stock entries.\nData is saved in other vouchers.\nDelete vouchers related to this Ledger First\nContact Gopalji for any issues.  🕵 ❌", "error");
                         return;
                     }
-
                     const confirmed = confirm("Delete? Are You Sure?");
                     if (confirmed && rowData.id) {
                         await deleteDoc(doc(db, "umesh", rowData.id));
@@ -484,7 +380,6 @@
                 },
             });
         }
-
         if (showUpdate) {
             fullColumns.push({
                 title: "",
@@ -492,7 +387,6 @@
                 formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
                 width: 40,
                 hozAlign: "center",
-
                 cellClick: (e, cell) => {
                     e.stopPropagation();
                     const rowData = cell.getRow().getData();
@@ -501,7 +395,6 @@
                 }
             });
         }
-
         window.table = new Tabulator(document.getElementById('table'), {
             data: rows,
             layout: "fitDataTable",
@@ -510,23 +403,12 @@
             maxHeight: "600px",
             columns: fullColumns,
         });
-
-        document.getElementById('excelBtn')?.addEventListener("click", () => {
-            window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"});
-        });
-
-        document.getElementById('pdfBtn')?.addEventListener("click", () => {
-            window.table.download("pdf", "data.pdf", {orientation: "portrait"});
-        });
-
-        document.getElementById('printBtn')?.addEventListener("click", () => {
-            window.table.print(false, true);
-        });
-
+        document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
+        document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
+        document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
         bindSearch();
     };
 
-    // SEARCH FUNCTIONALITY FOR EDITABLE TABLE
     function bindSearch() {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
@@ -539,14 +421,12 @@
         });
     };
 
-    // WHEN UPDATE BUTTON IS CLICKED THEN THIS IS SHOWN AND DATA IS INSERTED INTO INPUTS
     function showTransactionContainer(rowData) {
         const type = (rowData.ttype || "").trim();
         document.getElementById("tableCont").classList.add("hidden");
         document.getElementById("ttype").value = type;
         document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
         changeLists();
-        console.log(window.currentDocId);
         switch (type) {
             case "Sales":
             case "Purchase":
@@ -578,8 +458,7 @@
         document.getElementById("ttype").disabled = true; 
     };
     
-    // CHANGE LISTS BASED ON TTYPE SELECTION
-    window.changeLists = async function () {
+    function changeLists () {
         const ttype = document.getElementById("ttype").value;
         const txtfrom = document.getElementById("txtfrom");
         const txtto = document.getElementById("txtto");
@@ -596,7 +475,33 @@
         }
     };
 
-    // INSERT TRANSACTION
+    window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
+
+    window.showOnly = function (...idToShow) {
+        clear();
+        if (document.getElementById('main').open) {
+            document.getElementById('main').open = false;
+        }
+        document.querySelectorAll("details").forEach(detail => {
+            detail.removeAttribute("open");
+        });
+        const allIds = ['loginContainer', 'group', 'ledger', 'product', 'transaction', 'tableCont', 'profitLoss'];
+        allIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add("hidden");
+                el.style.setProperty('display', 'none', 'important');
+            }
+        });
+        idToShow.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove("hidden");
+                el.style.setProperty('display', 'block', 'important');
+            }
+        });
+    };
+
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
         const snapshot = await getDocs(tranCol);
         const rows = [];
@@ -605,7 +510,6 @@
             const data = docSnap.data();
             const ttype = (data.ttype || "").trim();
             const date = (data.date || "").trim();
-
             if (ttype === "Group" || !date) return;
                 rows.push({
                     id: docSnap.id,
@@ -617,7 +521,6 @@
                     amt: data.amt || "",
                 });
         });
-
         const columns = [
             {title: "Date", field: "date"}, 
             {title: "Type", field: "ttype"}, 
@@ -631,7 +534,6 @@
         showOnly("tableCont");
     };
 
-    // SAVE TRANSACTION
     window.saveTransaction = async function () {
         const ttype = document.getElementById("ttype").value.trim();
         const date = document.getElementById("date").value.trim();
@@ -639,12 +541,11 @@
         const tparty = document.getElementById("txtto").value.trim();
         const amt = parseFloat(document.getElementById("amt").value.trim()) || 0;
         const nar = document.getElementById("nar").value.trim();
-        console.log(window.currentDocId);
+        
         if (!ttype || !date || !fparty || !tparty || isNaN(amt) || amt <= 0) {
             showDialog("Please fill all required fields properly\nAmount must be a number > 0", "error"); 
             return ;
         }
-
         const tranData = {ttype, date, fparty, tparty, amt, nar};
         if (window.currentDocId) {
             const docRef = doc(db, "umesh", window.currentDocId);
@@ -654,10 +555,10 @@
             await addDoc(collection(db, "umesh"), tranData);
             showDialog("Transaction saved successfully. 🛒 💾", "success");
         }
-        clear(true);
+        clear();
+        window.currentDocId = null;
     };
 
-    // INSERT PRODUCT/LEDGER
     window.insertProdLed = async function (filterType) {
         const snapshot = await getDocs(tranCol);
         const rows = [];
@@ -665,7 +566,6 @@
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
             const ttype = (data.ttype || "").trim();
-
             if (ttype === filterType) {
                 rows.push({
                     id: docSnap.id,
@@ -677,22 +577,18 @@
                 });
             };
         });
-
         const columns = [
             {title: "Amount", field: "amt", hozAlign: "right"},
             {title: "Narration", field: "nar"},
             {title: "Name", field: "name"},
             {title: "Group", field: "grp"},
         ];
-
         createEditableTable(rows, columns, false, true, false);
         showOnly("tableCont");
     };
 
-    // SAVE PRODUCT/LEDGER
     window.saveProdLed = async function (type) {
         let group, newName, amtValue, nar;
-
         if (type === "product") {
             group = document.getElementById("productgroup").value.trim();
             newName = document.getElementById("productname").value.trim();
@@ -704,7 +600,6 @@
             amtValue = document.getElementById("opbal").value.trim();
             nar = document.getElementById("lnar").value.trim();
         }
-
         const docId = window.currentDocId;
         let amt;
         if (amtValue !== "" && !isNaN(amtValue)) {
@@ -717,18 +612,15 @@
         if (!docId) {
             const q = query(tranCol, where("grp", "==", group), where("name", "==", newName));
             const snapshot = await getDocs(q);
-
             if (!snapshot.empty) {
                 showDialog(`A ${type === "product" ? "product" : "ledger"} with this name already exists in the selected group. 👯‍♀️ 🧾`, "error");
                 return;
             }
         }
-
         let ttype;
         if (group === "Sproducts" || group === "Pproducts") {
             ttype = "Opening Stock";
         } else { ttype = "Opening Balance"; }
-
         if (docId) {
             const updateObj = { grp: group, name: newName, ttype: ttype, };
 
@@ -738,12 +630,10 @@
 
             const existingDoc = await getDoc(doc(db, "umesh", docId));
             const oldName = existingDoc.data().name || "";
-
             await updateDoc(doc(db, "umesh", docId), updateObj);
 
             const querySnapshot = await getDocs(tranCol);
             const batch = writeBatch(db);
-
             querySnapshot.forEach((docSnap) => {
                 const data = docSnap.data();
                 const updates = {};
@@ -757,20 +647,16 @@
                     updates.tparty = newName;
                     shouldUpdate = true;
                 }
-
                 if (shouldUpdate) {
                     const docRef = doc(db, "umesh", docSnap.id);
                     batch.update(docRef, updates);
                 }
             });
-
             await batch.commit();
             showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. 🧾`, "success");
-
         } else {
             const newDocData = { grp: group, name: newName, ttype: ttype, };
             if (nar) { newDocData.nar = nar; }
-
             if (amt !== undefined) {
                 newDocData.amt = amt;
                 if (group === "Creditors" || group === "Sproducts" || group === "Pproducts") {
@@ -779,15 +665,38 @@
                     newDocData.tparty = newName;
                 }
             }
-
             await addDoc(tranCol, newDocData);
             showDialog(`New ${type === "product" ? "product" : "ledger"} saved successfully. 🧾`, "success");
         }
-
-        clear(true);
+        clear();
+        window.currentDocId = null;
     };
 
-    // VIEW RECEIVABLES/PAYABLES/SALES/PURCHASES
+    window.viewProdLed = async function (type) {
+        const snapshot = await getDocs(tranCol);
+        const rows = [];
+
+        snapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            const grp = (data.grp || "").trim();
+            const name = (data.name || "").trim();
+
+            if (!grp || !name) return;
+            if (type === "ledger" && grp !== "Sproducts" && grp !== "Pproducts") {
+                rows.push({ id: docSnap.id, grp: grp, name: name });
+            } 
+            else if (type === "product" && (grp === "Sproducts" || grp === "Pproducts")) {
+                rows.push({ id: docSnap.id, grp: grp, name: name });
+            }
+        });
+        const columns = [
+            { title: "Group", field: "grp" }, 
+            { title: "Name", field: "name" }
+        ];
+        createEditableTable(rows, columns, false, false, false);
+        showOnly("tableCont");
+    };
+
     window.viewSummary = async function (mode = "receivables") {
         const snapshot = await getDocs(tranCol);
         const ledgerGroups = {};
@@ -801,7 +710,6 @@
             if (name && grp) {
                 ledgerGroups[name] = grp;
             }
-
             if (["receivables", "payables"].includes(mode)) {
                 if (data.fparty) {
                     const party = data.fparty.trim();
@@ -820,7 +728,6 @@
                 });
             }
         });
-
         let rows = [];
         let total = 0;
         let firstColTitle = "Party";
@@ -835,7 +742,6 @@
                     const isValid =
                         (isReceivable && amount < 0) ||
                         (!isReceivable && amount > 0);
-
                     if (isValid) {
                         const absAmt = Math.abs(amount);
                         rows.push({ party, amount: absAmt.toFixed(0) });
@@ -847,7 +753,6 @@
             const isSales = mode === "sales";
             const targetGroup = isSales ? "Sproducts" : "Pproducts";
             firstColTitle = "Products";
-
             Object.entries(balances).forEach(([party, amount]) => {
                 const grp = ledgerGroups[party];
                 if (amount && grp === targetGroup) {
@@ -856,7 +761,6 @@
                 }
             });
         }
-
         rows.sort((a, b) => Number(b.amount) - Number(a.amount));
         rows.unshift({ 
             party: ["sales", "purchases"].includes(mode) 
@@ -864,46 +768,14 @@
                 : "Total", 
             amount: total.toFixed(0) 
         });
-
         const columns = [
             { title: firstColTitle, field: "party" },
             { title: "Amount", field: "amount", hozAlign: "right" }
         ];
-
         createEditableTable(rows, columns, false, false, false);
         showOnly("tableCont");
     };
 
-    // VIEW PRODUCTS/LEDGERS
-    window.viewProdLed = async function (type) {
-        const snapshot = await getDocs(tranCol);
-        const rows = [];
-
-        snapshot.forEach((docSnap) => {
-            const data = docSnap.data();
-            const grp = (data.grp || "").trim();
-            const name = (data.name || "").trim();
-
-            if (!grp || !name) return;
-
-            if (type === "ledger" && grp !== "Sproducts" && grp !== "Pproducts") {
-                rows.push({ id: docSnap.id, grp: grp, name: name });
-            } 
-            else if (type === "product" && (grp === "Sproducts" || grp === "Pproducts")) {
-                rows.push({ id: docSnap.id, grp: grp, name: name });
-            }
-        });
-
-        const columns = [
-            { title: "Group", field: "grp" }, 
-            { title: "Name", field: "name" }
-        ];
-
-        createEditableTable(rows, columns, false, false, false);
-        showOnly("tableCont");
-    };
-
-    // VIEW PROFIT/LOSS
     window.profit_loss = async function () {
         const closingStock = parseFloat(document.getElementById("clostk").value.trim()) || 0;
         const snapshot = await getDocs(tranCol);
@@ -928,67 +800,45 @@
                 totalSales += amount;
             }
         });
-
         const debitTotal = OpeningStock + totalPurchase + totalExpense;
         const creditTotal = totalSales + closingStock;
         const profit = creditTotal - debitTotal;
         const rows = [
-          { Description: "Opening Stock", Amount: OpeningStock.toFixed(0) },
-          { Description: "Purchase", Amount: totalPurchase.toFixed(0) },
-          { Description: "Expense", Amount: totalExpense.toFixed(0) },
-          { Description: "Total (Op+Pur+Exp)", Amount: debitTotal.toFixed(0) },
-          { Description: "Sales", Amount: totalSales.toFixed(0) },
-          { Description: "Closing Stock", Amount: closingStock.toFixed(0) },
-          { Description: "Total (Sales+Clo)", Amount: creditTotal.toFixed(0) },
-          { Description: "Profit / Loss", Amount: profit.toFixed(0) },
+            { Description: "Opening Stock", Amount: OpeningStock.toFixed(0) },
+            { Description: "Purchase", Amount: totalPurchase.toFixed(0) },
+            { Description: "Expense", Amount: totalExpense.toFixed(0) },
+            { Description: "Total (Op+Pur+Exp)", Amount: debitTotal.toFixed(0) },
+            { Description: "Sales", Amount: totalSales.toFixed(0) },
+            { Description: "Closing Stock", Amount: closingStock.toFixed(0) },
+            { Description: "Total (Sales+Clo)", Amount: creditTotal.toFixed(0) },
+            { Description: "Profit / Loss", Amount: profit.toFixed(0) },
         ];
-        
         const columns = [
             { title: "Description", field: "Description", },
             { title: "Amount", field: "Amount", hozAlign: "right" }
         ];
-
         createEditableTable(rows, columns, false, false, false);
         showOnly("tableCont", "profitLoss");
-      }
+    };
     
-    // CALCULATOR
-    document.getElementById("calc").addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-            try {
-                const raw = this.value.trim();
-                if (/^[\d+\-*/().\s]+$/.test(raw)) {
-                    const result = Function('"use strict";return (' + raw + ')')();
-                    this.value = result;
-                } else {
-                    showDialog("Invalid expression. Only numbers and + - * / allowed. 🤕", "error");
-                }
-            } catch (error) {showDialog("Invalid calculation. 🎲", "error");}
-        }
-    });
-    
-    // LOGOUT
     window.logout = async function () {
         if (!confirm("Are you sure you want to logout?")) 
         return;
-
         try {
-            clear(true);
+            clear();
+            window.currentDocId = null;
+            await signOut(auth);
             showOnly("loginContainer");
             document.getElementById("main").classList.add("hidden");
-            await signOut(auth);
             showDialog("Logged out successfully. 👋", "success");
-        } catch (error) {
-            showDialog("Network issue: Failed to logout. Please try again.", "error");
-        }
+        } catch (error) { showDialog("Network issue: Failed to logout. Please try again.", "error"); }
     };
-    
-    // CONFIRM CLOSE
+    /*
     window.addEventListener("beforeunload", function (e) {
         e.preventDefault();
         e.returnValue = "Do u want to close";
     });
-
+    */
 </script>    
 </body>
 </html>
