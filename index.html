@@ -15,7 +15,7 @@
 <body class="bg-gray-900 text-white">
 
 <details id="main" class="fixed top-0 left-0 w-full h-[50px] mb-1 group accordion hidden">
-    <summary class="cursor-pointer bg-gray-800 px-4 py-3 hover:bg-blue-700 font-semibold" onclick="showOnly('main')">Main</summary>
+    <summary class="cursor-pointer bg-gray-800 px-4 py-3 hover:bg-blue-700 font-semibold" onclick="show('main')">Main</summary>
     <div class="mt-1 space-y-1">
 
         <details id="master" class="accordion">
@@ -25,8 +25,8 @@
                 <details id="create" class="accordion">
                     <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700">Create</summary>
                     <div class="ml-4 mt-1 space-y-1">
-                        <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700" onclick="showOnly('ledger')">Ledger</summary>
-                        <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700" onclick="showOnly('product')">Product</summary>
+                        <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700" onclick="show('ledger')">Ledger</summary>
+                        <summary class="cursor-pointer bg-green-900 px-4 py-3 hover:bg-green-700" onclick="show('product')">Product</summary>
                     </div>
                 </details>      
 
@@ -47,7 +47,7 @@
                 <details id="new" class="accordion">
                     <summary class="cursor-pointer bg-purple-900 px-4 py-3 hover:bg-purple-700">New</summary>
                     <div class="ml-4 mt-1 space-y-1">
-                        <summary class="cursor-pointer bg-purple-900 px-4 py-3 hover:bg-purple-700" onclick="showOnly('transaction')">Transaction</summary>
+                        <summary class="cursor-pointer bg-purple-900 px-4 py-3 hover:bg-purple-700" onclick="show('transaction')">Transaction</summary>
                     </div>
                 </details>
 
@@ -69,7 +69,7 @@
                     <div class="ml-4 mt-1 space-y-1">
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('receivables')">Receivables</summary>
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('payables')">Payables</summary>
-                        <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="showOnly('profitLoss')">Profit & Loss</summary>
+                        <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="show('profitLoss')">Profit & Loss</summary>
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700">Balance Sheet</summary>
                     </div>
                 </details>
@@ -80,7 +80,7 @@
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="insertTran(false, false, false)">DayBook</summary>
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('sales')">Sales Register</summary>
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('purchase')">Purchase Register</summary>
-                        <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewKhatavahi()">Khatavahi</summary>
+                        <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700">Khatavahi</summary>
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewProdLed('ledger')">Ledgers & Groups</summary>
                         <summary class="cursor-pointer bg-indigo-900 px-4 py-3 hover:bg-indigo-700" onclick="viewProdLed('product')">Products & Groups</summary>
                     </div>
@@ -102,6 +102,7 @@
     <label class="label">Select Ledger Group ↓↓</label><input class="input-box" id="ledgergroup" type="text" autocomplete="off"/>
     <label class="label">Ledger Name ↓↓</label><input class="input-box" id="ledgername" type="text" autocomplete="off"/>
     <label class="label">Opening Balance ↓↓</label><input class="input-box" id="opbal" type="number" autocomplete="off"/>
+    <label class="label">Credit/Debit ↓↓</label><input class="input-box" id="balTypeLed" type="text" autocomplete="off"/>
     <label class="label">Narration ↓↓</label><input class="input-box" id="lnar" type="text" autocomplete="off"/>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('ledger')">👉Save Ledger👈</button>
 </div>
@@ -153,7 +154,8 @@
 </div>
 
 <script type="module">
-    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {initializeApp} 
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     import {getFirestore, collection, getDocs, getDoc, setDoc, deleteDoc, doc, updateDoc, query, where, addDoc, writeBatch, deleteField} 
@@ -196,7 +198,8 @@
             attachDropdown(document.getElementById("ledgergroup"), window.maingroup_list);
             attachDropdown(document.getElementById("productgroup"), window.sp_list);
             attachDropdown(document.getElementById("ttype"), window.ttype_list);
-        } else { showOnly("loginContainer"); }
+            attachDropdown(document.getElementById("balTypeLed"), window.baltype_list);
+        } else { show("loginContainer"); }
     });  
     const createGroupDefinition = (groupName) => ({
         data: {grp: groupName, ttype: "Group"},
@@ -231,9 +234,7 @@
         details.addEventListener('toggle', () => {
             if (details.open) {
                 document.querySelectorAll('details.accordion').forEach(other => {
-                    if (other !== details && details.contains(other) === false && other.contains(details) === false) {
-                        other.open = false;
-                    }
+                    if (other !== details && details.contains(other) === false && other.contains(details) === false) { other.open = false; }
                 });
             }
         });
@@ -257,6 +258,7 @@
 
         titleEl.classList.remove('bg-red-800', 'bg-green-800');
         closeBtn.classList.remove('bg-orange-600', 'hover:bg-orange-800', 'bg-green-600', 'hover:bg-green-800');
+
         if (type === "success") {
             titleEl.classList.add('bg-green-800');
             titleEl.textContent = "✅ Success";
@@ -266,6 +268,7 @@
             titleEl.textContent = "⚠️ Error";
             closeBtn.classList.add('bg-orange-600', 'hover:bg-orange-800');
         }
+
         document.getElementById('errorBox').classList.remove('hidden');
     };
 
@@ -296,6 +299,7 @@
             if (["Creditors", "Debitors", "Cash", "Bank", "Angadiya",].includes(grp) && name.length > 0) {crdbcsbkangSet.add(name);}
             if (["Creditors", "Debitors", "Cash", "Bank", "Angadiya", "Expense"].includes(grp) && name.length > 0) {crdbcsbkangexpSet.add(name);}
         });
+
         window.maingroup_list = [ "Angadiya", "Bank", "Cash", "Creditors", "Debitors", "Expense"];
         window.sp_list = ["Sproducts", "Pproducts"];
         window.allnames_list = [...nameSet].sort((a, b) => a.localeCompare(b));
@@ -305,6 +309,7 @@
         window.crdb_list = [...crdbSet].sort((a, b) => a.localeCompare(b));
         window.crdbcsbkang_list = [...crdbcsbkangSet].sort((a, b) => a.localeCompare(b));
         window.crdbcsbkangexp_list = [...crdbcsbkangexpSet].sort((a, b) => a.localeCompare(b));
+        window.baltype_list = ["Credit", "Debit"];
     };
     
     function attachDropdown(inputElement, dataList) {
@@ -315,6 +320,7 @@
             inputElement.parentNode.insertBefore(wrapper, inputElement);
             wrapper.appendChild(inputElement);
         }
+
         const dropdown = document.createElement("ul");
         dropdown.className = "absolute z-50 w-full max-h-100 overflow-y-auto bg-gray-800 border border-green-600 rounded-md hidden";
         wrapper.appendChild(dropdown);
@@ -324,6 +330,7 @@
             const matches = dataList.filter(item => item.toLowerCase().includes(search));
             populateDropdown(matches);
         }
+
         function populateDropdown(list) {
             dropdown.innerHTML = "";
             list.forEach(item => {
@@ -338,17 +345,28 @@
                 dropdown.appendChild(li);
             });
         }
+
         inputElement.addEventListener("input", () => {
             dropdown.classList.remove("hidden");
             filterList();
         });
+
         inputElement.addEventListener("click", () => {
             dropdown.classList.remove("hidden");
             filterList();
         });
+
         document.addEventListener("click", (e) => {
             if (!wrapper.contains(e.target)) {
                 dropdown.classList.add("hidden");
+            }
+        });
+
+        inputElement.addEventListener("blur", () => {
+            const value = inputElement.value.trim();
+            if (value !== "" && !dataList.some(item => item.toLowerCase() === value.toLowerCase())) {
+                showDialog("Please select a valid option from the list\nOr\nAdd a new one in Master Data.", "error");
+                inputElement.focus();
             }
         });
     };
@@ -363,15 +381,11 @@
                 title: "",
                 field: "__delete",
                 formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
-                width: 40,
+                width: 50,
                 hozAlign: "center",
                 cellClick: async (e, cell) => {
                     e.stopPropagation();
                     const rowData = cell.getRow().getData();
-                    if (rowData.ttype === "Opening Balance" || rowData.ttype === "Opening Stock") {
-                        showDialog("Cannot delete Opening Balance or Opening Stock entries.\nData is saved in other vouchers.\nDelete vouchers related to this Ledger First\nContact Gopalji for any issues.  🕵 ❌", "error");
-                        return;
-                    }
                     const confirmed = confirm("Delete? Are You Sure?");
                     if (confirmed && rowData.id) {
                         await deleteDoc(doc(db, "umesh", rowData.id));
@@ -380,12 +394,13 @@
                 },
             });
         }
+
         if (showUpdate) {
             fullColumns.push({
                 title: "",
                 field: "__update",
                 formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
-                width: 40,
+                width: 50,
                 hozAlign: "center",
                 cellClick: (e, cell) => {
                     e.stopPropagation();
@@ -395,6 +410,7 @@
                 }
             });
         }
+
         window.table = new Tabulator(document.getElementById('table'), {
             data: rows,
             layout: "fitDataTable",
@@ -403,6 +419,7 @@
             maxHeight: "600px",
             columns: fullColumns,
         });
+
         document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
         document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
@@ -414,8 +431,7 @@
         searchbox.addEventListener("input", function () {
             const value = this.value.toLowerCase().trim();
             table.setFilter(function (data) {
-                if (value === "") {
-                    return true;}
+                if (value === "") { return true; }
                 return Object.values(data).some(val => String(val).toLowerCase().includes(value));
             });
         });
@@ -427,12 +443,13 @@
         document.getElementById("ttype").value = type;
         document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
         changeLists();
+
         switch (type) {
             case "Sales":
             case "Purchase":
             case "Receipt":
             case "Payment":
-                showOnly('transaction');
+                show('transaction');
                 document.getElementById("ttype").value = rowData.ttype || "";
                 document.getElementById("date").value = rowData.date || "";
                 document.getElementById("txtfrom").value = rowData.fparty || "";
@@ -441,20 +458,22 @@
                 document.getElementById("nar").value = rowData.nar || "";
                 break;
             case "Opening Balance":
-                showOnly('ledger')
+                show('ledger')
                 document.getElementById("ledgergroup").value = rowData.grp || "";
                 document.getElementById("ledgername").value = rowData.name || "";  
                 document.getElementById("opbal").value = rowData.amt || "";
+                document.getElementById("balTypeLed").value = rowData.baltype || "";
                 document.getElementById("lnar").value = rowData.nar || "";
                 break;
             case "Opening Stock":
-                showOnly('product')
+                show('product')
                 document.getElementById("productgroup").value = rowData.grp || "";
                 document.getElementById("productname").value = rowData.name || "";  
                 document.getElementById("opstk").value = rowData.amt || "";
                 document.getElementById("pnar").value = rowData.nar || "";
                 break;
         }
+
         document.getElementById("ttype").disabled = true; 
     };
     
@@ -475,16 +494,17 @@
         }
     };
 
-    window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
-
-    window.showOnly = function (...idToShow) {
+    window.show = function (...idToShow) {
         clear();
+
         if (document.getElementById('main').open) {
             document.getElementById('main').open = false;
         }
+
         document.querySelectorAll("details").forEach(detail => {
             detail.removeAttribute("open");
         });
+
         const allIds = ['loginContainer', 'group', 'ledger', 'product', 'transaction', 'tableCont', 'profitLoss'];
         allIds.forEach(id => {
             const el = document.getElementById(id);
@@ -493,6 +513,7 @@
                 el.style.setProperty('display', 'none', 'important');
             }
         });
+
         idToShow.forEach(id => {
             const el = document.getElementById(id);
             if (el) {
@@ -510,6 +531,7 @@
             const data = docSnap.data();
             const ttype = (data.ttype || "").trim();
             const date = (data.date || "").trim();
+
             if (ttype === "Group" || !date) return;
                 rows.push({
                     id: docSnap.id,
@@ -521,6 +543,7 @@
                     amt: data.amt || "",
                 });
         });
+
         const columns = [
             {title: "Date", field: "date"}, 
             {title: "Type", field: "ttype"}, 
@@ -530,8 +553,9 @@
             {title: "Amount", field: "amt", hozAlign: "right"}, 
             {title: "ID", field: "id", visible: false}
         ];
+
         createEditableTable(rows, columns, showDelete, showUpdate, editable);
-        showOnly("tableCont");
+        show("tableCont");
     };
 
     window.saveTransaction = async function () {
@@ -546,6 +570,7 @@
             showDialog("Please fill all required fields properly\nAmount must be a number > 0", "error"); 
             return ;
         }
+
         const tranData = {ttype, date, fparty, tparty, amt, nar};
         if (window.currentDocId) {
             const docRef = doc(db, "umesh", window.currentDocId);
@@ -555,6 +580,7 @@
             await addDoc(collection(db, "umesh"), tranData);
             showDialog("Transaction saved successfully. 🛒 💾", "success");
         }
+
         clear();
         window.currentDocId = null;
     };
@@ -566,6 +592,7 @@
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
             const ttype = (data.ttype || "").trim();
+
             if (ttype === filterType) {
                 rows.push({
                     id: docSnap.id,
@@ -574,41 +601,56 @@
                     nar: data.nar || "",
                     name: data.name || "",
                     grp: data.grp || "",
+                    baltype: data.baltype || "",
                 });
             };
         });
+
         const columns = [
             {title: "Amount", field: "amt", hozAlign: "right"},
             {title: "Narration", field: "nar"},
             {title: "Name", field: "name"},
             {title: "Group", field: "grp"},
         ];
+
         createEditableTable(rows, columns, false, true, false);
-        showOnly("tableCont");
+        show("tableCont");
     };
 
     window.saveProdLed = async function (type) {
-        let group, newName, amtValue, nar;
+        let group, newName, amtValue, nar, balType;
+
         if (type === "product") {
             group = document.getElementById("productgroup").value.trim();
             newName = document.getElementById("productname").value.trim();
             amtValue = document.getElementById("opstk").value.trim();
             nar = document.getElementById("pnar").value.trim();
+            balType = "Credit";
         } else if (type === "ledger") {
             group = document.getElementById("ledgergroup").value.trim();
             newName = document.getElementById("ledgername").value.trim();
             amtValue = document.getElementById("opbal").value.trim();
             nar = document.getElementById("lnar").value.trim();
+            balType = document.getElementById("balTypeLed").value.trim();
         }
+
         const docId = window.currentDocId;
         let amt;
-        if (amtValue !== "" && !isNaN(amtValue)) {
-            amt = parseFloat(amtValue);
-        }
+
+        if (amtValue !== "" && !isNaN(amtValue)) { amt = parseFloat(amtValue); }
+
         if (!group || !newName) {
             showDialog("Group and Name are required. 👨‍👨‍👦‍👦 🧾", "error");
             return;
         }
+
+        if (amtValue.trim() !== "") {
+            if (balType !== "Credit" && balType !== "Debit") {
+                showDialog("If amount is entered, Balance Type must be Credit or Debit. 💰", "error");
+                return;
+            }
+        }
+
         if (!docId) {
             const q = query(tranCol, where("grp", "==", group), where("name", "==", newName));
             const snapshot = await getDocs(q);
@@ -617,34 +659,80 @@
                 return;
             }
         }
-        let ttype;
-        if (group === "Sproducts" || group === "Pproducts") {
-            ttype = "Opening Stock";
-        } else { ttype = "Opening Balance"; }
-        if (docId) {
-            const updateObj = { grp: group, name: newName, ttype: ttype, };
 
-            if (amt !== undefined) { updateObj.amt = amt; }
-            if (nar) { updateObj.nar = nar; } 
-            else { updateObj.nar = deleteField(); }
+        let ttype = (group === "Sproducts" || group === "Pproducts") ? "Opening Stock" : "Opening Balance";
+        const assignPartyFields = (dataObj) => {
+            if (amt !== undefined) {
+                dataObj.amt = amt;
+                if (group === "Sproducts" || group === "Pproducts") {
+                    dataObj.fparty = newName;
+                } else {
+                    if (balType === "Credit") {
+                        dataObj.fparty = newName;
+                    } else if (balType === "Debit") {
+                        dataObj.tparty = newName;
+                    }
+                }
+            }
+        };
+
+        if (docId) {
+            const updateObj = { grp: group, name: newName, ttype: ttype };
+            if (amt !== undefined) updateObj.amt = amt;
+
+            if (nar) updateObj.nar = nar;
+
+            else updateObj.nar = deleteField();
+
+            if (group === "Sproducts" || group === "Pproducts") {
+                updateObj.fparty = newName;
+                updateObj.tparty = deleteField();
+            } else {
+                if (balType === "Credit") {
+                    updateObj.fparty = newName;
+                    updateObj.tparty = deleteField();
+                } else if (balType === "Debit") {
+                    updateObj.tparty = newName;
+                    updateObj.fparty = deleteField();
+                } else {
+                    updateObj.fparty = deleteField();
+                    updateObj.tparty = deleteField();
+                }
+            }
 
             const existingDoc = await getDoc(doc(db, "umesh", docId));
             const oldName = existingDoc.data().name || "";
-            await updateDoc(doc(db, "umesh", docId), updateObj);
 
+            if (balType === "Credit" || balType === "Debit") {
+                updateObj.baltype = balType;
+            } else {
+                updateObj.baltype = deleteField();
+            }
+
+            await updateDoc(doc(db, "umesh", docId), updateObj);
+            
             const querySnapshot = await getDocs(tranCol);
             const batch = writeBatch(db);
+
             querySnapshot.forEach((docSnap) => {
                 const data = docSnap.data();
                 const updates = {};
                 let shouldUpdate = false;
 
                 if (data.fparty === oldName) {
-                    updates.fparty = newName;
+                    if (balType === "Credit" || group === "Sproducts" || group === "Pproducts") {
+                        updates.fparty = newName;
+                    } else {
+                        updates.fparty = deleteField();
+                    }
                     shouldUpdate = true;
                 }
                 if (data.tparty === oldName) {
-                    updates.tparty = newName;
+                    if (balType === "Debit") {
+                        updates.tparty = newName;
+                    } else {
+                        updates.tparty = deleteField();
+                    }
                     shouldUpdate = true;
                 }
                 if (shouldUpdate) {
@@ -652,22 +740,24 @@
                     batch.update(docRef, updates);
                 }
             });
+
             await batch.commit();
             showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. 🧾`, "success");
-        } else {
-            const newDocData = { grp: group, name: newName, ttype: ttype, };
-            if (nar) { newDocData.nar = nar; }
-            if (amt !== undefined) {
-                newDocData.amt = amt;
-                if (group === "Creditors" || group === "Sproducts" || group === "Pproducts") {
-                    newDocData.fparty = newName;
-                } else if (group === "Debitors" || group === "Bank" || group === "Cash" || group === "Angadiya") {
-                    newDocData.tparty = newName;
-                }
+        } 
+
+        else {
+            const newDocData = { grp: group, name: newName, ttype: ttype };
+            if (nar) newDocData.nar = nar;
+            assignPartyFields(newDocData);
+
+            if (balType === "Credit" || balType === "Debit") {
+                newDocData.baltype = balType;
             }
+
             await addDoc(tranCol, newDocData);
             showDialog(`New ${type === "product" ? "product" : "ledger"} saved successfully. 🧾`, "success");
         }
+
         clear();
         window.currentDocId = null;
     };
@@ -682,6 +772,7 @@
             const name = (data.name || "").trim();
 
             if (!grp || !name) return;
+
             if (type === "ledger" && grp !== "Sproducts" && grp !== "Pproducts") {
                 rows.push({ id: docSnap.id, grp: grp, name: name });
             } 
@@ -689,12 +780,14 @@
                 rows.push({ id: docSnap.id, grp: grp, name: name });
             }
         });
+
         const columns = [
             { title: "Group", field: "grp" }, 
             { title: "Name", field: "name" }
         ];
+
         createEditableTable(rows, columns, false, false, false);
-        showOnly("tableCont");
+        show("tableCont");
     };
 
     window.viewSummary = async function (mode = "receivables") {
@@ -710,6 +803,7 @@
             if (name && grp) {
                 ledgerGroups[name] = grp;
             }
+
             if (["receivables", "payables"].includes(mode)) {
                 if (data.fparty) {
                     const party = data.fparty.trim();
@@ -719,6 +813,7 @@
                     const party = data.tparty.trim();
                     balances[party] = (balances[party] || 0) - parseFloat(data.amt || "0");
                 }
+
             } else if (["sales", "purchases"].includes(mode)) {
                 ["fparty", "tparty"].forEach(key => {
                     if (data[key]) {
@@ -728,6 +823,7 @@
                 });
             }
         });
+
         let rows = [];
         let total = 0;
         let firstColTitle = "Party";
@@ -753,6 +849,7 @@
             const isSales = mode === "sales";
             const targetGroup = isSales ? "Sproducts" : "Pproducts";
             firstColTitle = "Products";
+
             Object.entries(balances).forEach(([party, amount]) => {
                 const grp = ledgerGroups[party];
                 if (amount && grp === targetGroup) {
@@ -761,6 +858,7 @@
                 }
             });
         }
+
         rows.sort((a, b) => Number(b.amount) - Number(a.amount));
         rows.unshift({ 
             party: ["sales", "purchases"].includes(mode) 
@@ -768,17 +866,20 @@
                 : "Total", 
             amount: total.toFixed(0) 
         });
+
         const columns = [
             { title: firstColTitle, field: "party" },
             { title: "Amount", field: "amount", hozAlign: "right" }
         ];
+
         createEditableTable(rows, columns, false, false, false);
-        showOnly("tableCont");
+        show("tableCont");
     };
 
     window.profit_loss = async function () {
         const closingStock = parseFloat(document.getElementById("clostk").value.trim()) || 0;
         const snapshot = await getDocs(tranCol);
+
         let totalPurchase = 0;
         let totalExpense = 0;
         let totalSales = 0;
@@ -800,45 +901,55 @@
                 totalSales += amount;
             }
         });
+
         const debitTotal = OpeningStock + totalPurchase + totalExpense;
         const creditTotal = totalSales + closingStock;
         const profit = creditTotal - debitTotal;
+
         const rows = [
             { Description: "Opening Stock", Amount: OpeningStock.toFixed(0) },
             { Description: "Purchase", Amount: totalPurchase.toFixed(0) },
             { Description: "Expense", Amount: totalExpense.toFixed(0) },
             { Description: "Total (Op+Pur+Exp)", Amount: debitTotal.toFixed(0) },
+            { Description: "", Amount: "" },
             { Description: "Sales", Amount: totalSales.toFixed(0) },
             { Description: "Closing Stock", Amount: closingStock.toFixed(0) },
             { Description: "Total (Sales+Clo)", Amount: creditTotal.toFixed(0) },
+            { Description: "", Amount: "" },
             { Description: "Profit / Loss", Amount: profit.toFixed(0) },
         ];
+
         const columns = [
             { title: "Description", field: "Description", },
             { title: "Amount", field: "Amount", hozAlign: "right" }
         ];
+
         createEditableTable(rows, columns, false, false, false);
-        showOnly("tableCont", "profitLoss");
+        show("tableCont", "profitLoss");
     };
     
     window.logout = async function () {
         if (!confirm("Are you sure you want to logout?")) 
         return;
+
         try {
             clear();
             window.currentDocId = null;
+
             await signOut(auth);
-            showOnly("loginContainer");
-            document.getElementById("main").classList.add("hidden");
             showDialog("Logged out successfully. 👋", "success");
+
+            document.getElementById("main").classList.add("hidden");
+            show("loginContainer");
         } catch (error) { showDialog("Network issue: Failed to logout. Please try again.", "error"); }
     };
-    /*
+    
     window.addEventListener("beforeunload", function (e) {
         e.preventDefault();
         e.returnValue = "Do u want to close";
     });
-    */
-</script>    
+    
+    window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
+</script>
 </body>
 </html>
