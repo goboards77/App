@@ -13,81 +13,31 @@
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>    
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-white">
-
-<details id="main" class="fixed top-0 left-0 w-full h-[50px] mb-1 hidden">
-    <summary class="cursor-pointer bg-gray-800 px-4 py-3 hover:bg-blue-700 font-semibold" onclick="show('main')">Main</summary>
-    <div class="mt-1 space-y-1">
-        
-        <details id="dBoard">
-            <summary class="cursor-pointer bg-yellow-600 px-4 py-3 hover:bg-yellow-700" onclick="showDashboard()">Dashboard</summary>
-        </details>
-
-        <details id="master">
-            <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700">Master</summary>
-            <div class="ml-4 mt-1 space-y-1">
-                <details id="create">
-                    <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700">Create</summary>
-                    <div class="ml-4 mt-1 space-y-1">
-                        <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700" onclick="show('ledger')">Ledger</summary>
-                        <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700" onclick="show('product')">Product</summary>
-                    </div>
-                </details>
-                <details id="alter">
-                    <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700">Alter</summary>
-                    <div class="ml-4 mt-1 space-y-1">
-                        <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700" onclick="insertProdLed('Opening Balance')">Ledger</summary>
-                        <summary class="cursor-pointer bg-green-600 px-4 py-3 hover:bg-green-700" onclick="insertProdLed('Opening Stock')">Product</summary>
-                    </div>
-                </details>
-            </div>
-        </details>
-
-        <details id="vouchers"><summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700">Vouchers</summary><div class="ml-4 mt-1 space-y-1">
-            <details id="new"><summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700">New</summary><div class="ml-4 mt-1 space-y-1">
-                <summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700" onclick="show('transaction')">Transaction</summary>
-                <summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700">Extra</summary></div></details>
-            <details id="update">
-                <summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700">Update</summary>
-                <div class="ml-4 mt-1 space-y-1">
-                    <summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700" onclick="insertTran(true, true, false, false)">Transaction</summary>
-                    <summary class="cursor-pointer bg-purple-600 px-4 py-3 hover:bg-purple-700">Extra</summary>
-                </div>
-            </details>
-        </details>
-
-        <details id="report">
-            <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700">Reports</summary>
-            <div class="ml-4 mt-1 space-y-1">
-                <details id="financials">
-                    <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700">Financial Reports</summary>
-                    <div class="ml-4 mt-1 space-y-1">
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('receivables')">Receivables</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('payables')">Payables</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="show('profitLoss')">Profit & Loss</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700">Balance Sheet</summary>
-                    </div>
-                </details>
-                <details id="other-reports">
-                    <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700">Other Reports</summary>
-                    <div class="ml-4 mt-1 space-y-1">
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="insertTran(false, false, false, false)">DayBook</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="insertTran(false, false, false, true)">CashBook</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('sales')">Sales Register</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="viewSummary('purchase')">Purchase Register</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700">Khatavahi</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="viewProdLed('ledger')">Ledgers & Groups</summary>
-                        <summary class="cursor-pointer bg-indigo-600 px-4 py-3 hover:bg-indigo-700" onclick="viewProdLed('product')">Products & Groups</summary>
-                    </div>
-                </details>
-            </div>
-        </details>
-
-        <details id="logout">
-            <summary class="cursor-pointer bg-red-600 px-4 py-3 hover:bg-red-700" onclick="window.logout()">Logout</summary>
-        </details>
-    </div>
-</details>
+<body class="min-h-screen bg-gray-900 text-white font-serif">
+<header id="topbar" class="fixed top-0 left-0 w-full bg-gray-900 text-green-500 px-2 py-3 cursor-pointer">Click Me 🙋🏻‍♂️</header>
+<nav id="top-nav" class="fixed top-0 left-0 h-[580px] w-full bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
+    <ul>
+        <li><a class="block hover:bg-gray-600 px-2 py-3 text-green-500 cursor-pointer menu-link" id="close">🏰</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-yellow-600 px-2 py-3 bg-yellow-700 cursor-pointer menu-link" onclick="showDashboard()">Dashboard</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('ledger')">Ledger</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('product')">Product</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertProdLed('Opening Balance')">Update Ledger</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertProdLed('Opening Stock')">Update Product</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('payables')">Payables</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="showCont('profitLoss')">Profit & Loss</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link">Balance Sheet</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="insertTran(false, false, false, true)">CashBook</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('sales')">Sales Register</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('purchase')">Purchase Register</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link">Khatavahi</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewProdLed('ledger')">Ledgers & Groups</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewProdLed('product')">Products & Groups</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-orange-600 px-2 py-3 bg-orange-700 cursor-pointer menu-link" onclick="window.logout()">Logout</a></li>
+    </ul>
+</nav>
 
 <div id="loginContainer" class="hidden w-full max-w-md p-2 pt-10 rounded-b-2xl bg-gray-800">
     <input class="input-box" id="loginEmail" placeholder="Email ....." type="email"><br><br>
@@ -176,14 +126,13 @@
     window.currentDocId = null;
     onAuthStateChanged(auth, async (user) => {
         if (user) {
-            document.getElementById("main").classList.remove("hidden");
             await createAndDeduplicateDocuments();
             await loadDropdownData();
             attachDropdown(document.getElementById("ledgergroup"), window.ledgergroup_list);
             attachDropdown(document.getElementById("productgroup"), window.productgroup_list);
             attachDropdown(document.getElementById("ttype"), window.ttype_list);
             attachDropdown(document.getElementById("balTypeLed"), window.baltype_list); } 
-        else { show("loginContainer"); } 
+        else { showCont("loginContainer"); } 
     });  
     window.createAndDeduplicateDocuments = async function () {
         for (const groupName of groupNames) {
@@ -211,16 +160,12 @@
             } 
         }); 
     });                 
-    document.querySelectorAll('details').forEach(details => {
-        details.addEventListener('toggle', () => {
-            if (details.open) {
-                document.querySelectorAll('details').forEach(other => {
-                    if (other !== details && details.contains(other) === false && other.contains(details) === false) { 
-                        other.open = false; 
-                    } 
-                }); 
-            } 
-        }); 
+    document.getElementById('topbar').addEventListener('click', () => { document.getElementById('top-nav').classList.remove('-translate-y-full'); });
+    document.querySelectorAll('.menu-link').forEach(link => {
+        link.addEventListener('click', e => {
+            if (link.getAttribute('id') === 'close') { e.preventDefault(); }
+            document.getElementById('top-nav').classList.add('-translate-y-full');
+        });
     });
     document.getElementById("calc").addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
@@ -239,7 +184,7 @@
         } 
     });
     
-    function showDialog(message, type = "error") {
+    window.showDialog = function (message, type = "error") {
         document.getElementById('errorMessage').innerHTML = message.replace(/\n/g, '<br>'); 
         const titleEl = document.querySelector('#errorBox h2');
         const closeBtn = document.querySelector('#errorBox button');
@@ -258,13 +203,33 @@
             closeBtn.classList.add('bg-orange-600', 'hover:bg-orange-800'); 
         } 
     };
-    function clear () {
+    window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
+    window.clear = function () {
         document.querySelectorAll("input").forEach(el => el.value = "");
         document.getElementById("ttype").disabled = false;
         loadDropdownData(); 
     };
-    
-    async function loadDropdownData() {
+    window.showCont = function (...idToShow) {
+        clear();
+        const allIds = ['loginContainer', 'group', 'ledger', 'product', 'transaction', 'tableCont', 'profitLoss', 'dashboard'];
+        allIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add("hidden");
+                el.style.setProperty('display', 'none', 'important'); 
+            } 
+        });
+
+        idToShow.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove("hidden");
+                el.style.setProperty('display', 'block', 'important'); 
+            } 
+        }); 
+    };
+
+    window.loadDropdownData = async function () {
         const snapshot = await getDocs(tranCol);
         const nameSet = new Set();
         const sproductSet = new Set();
@@ -296,7 +261,7 @@
         window.ttype_list = ["Sales", "Purchase", "Receipt", "Payment"];
         window.ledgergroup_list = [ "Angadiya", "Bank", "Cash", "Creditors", "Debitors", "Expense"]; 
     };  
-    function attachDropdown(inputElement, dataList) {
+    window.attachDropdown = function (inputElement, dataList) {
         let wrapper = inputElement.parentElement;
         if (!wrapper.classList.contains("relative")) {
             wrapper = document.createElement("div");
@@ -347,8 +312,8 @@
             } 
         }); 
     };
-    
-    function createEditableTable(rows, columns, showDelete = true, showUpdate = true, editable = false) {
+
+    window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
         const searchId = document.getElementById('searchBox');
         const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
@@ -402,7 +367,7 @@
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
         bindSearch(); 
     };
-    function bindSearch() {
+    window.bindSearch = function () {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
             const value = this.value.toLowerCase().trim();
@@ -413,7 +378,7 @@
         }); 
     };
 
-    function showTransactionContainer(rowData) {
+    window.showTransactionContainer = function (rowData) {
         const type = (rowData.ttype || "").trim();
         document.getElementById("tableCont").classList.add("hidden");
         document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
@@ -423,7 +388,7 @@
             case "Purchase":
             case "Receipt":
             case "Payment":
-                show('transaction');
+                showCont('transaction');
                 document.getElementById("ttype").value = rowData.ttype || "";
                 document.getElementById("date").value = rowData.date || "";
                 document.getElementById("txtfrom").value = rowData.fparty || "";
@@ -432,7 +397,7 @@
                 document.getElementById("nar").value = rowData.nar || "";
                 break;
             case "Opening Balance":
-                show('ledger')
+                showCont('ledger')
                 document.getElementById("ledgergroup").value = rowData.grp || "";
                 document.getElementById("ledgername").value = rowData.name || "";  
                 document.getElementById("opbal").value = rowData.amt || "";
@@ -440,7 +405,7 @@
                 document.getElementById("lnar").value = rowData.nar || "";
                 break;
             case "Opening Stock":
-                show('product')
+                showCont('product')
                 document.getElementById("productgroup").value = rowData.grp || "";
                 document.getElementById("productname").value = rowData.name || "";  
                 document.getElementById("opstk").value = rowData.amt || "";
@@ -450,7 +415,6 @@
         document.getElementById("ttype").disabled = true;
         changeLists(); 
     };
-
     window.changeLists = function () {
         const ttype = document.getElementById("ttype").value;
         const txtfrom = document.getElementById("txtfrom");
@@ -467,31 +431,6 @@
             attachDropdown(txtto, window.crdbcsbkangexp_list); 
         }
      };
-
-    window.show = function (...idToShow) {
-        clear();
-        if (document.getElementById('main').open) {
-             document.getElementById('main').open = false; 
-        }
-        document.querySelectorAll("details").forEach(detail => { detail.removeAttribute("open"); });
-
-        const allIds = ['loginContainer', 'group', 'ledger', 'product', 'transaction', 'tableCont', 'profitLoss', 'dashboard'];
-        allIds.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.classList.add("hidden");
-                el.style.setProperty('display', 'none', 'important'); 
-            } 
-        });
-
-        idToShow.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.classList.remove("hidden");
-                el.style.setProperty('display', 'block', 'important'); 
-            } 
-        }); 
-    };
 
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false, filterCashGroup = false) {
         let cashNames = new Set();
@@ -540,7 +479,7 @@
         ];
 
         createEditableTable(rows, columns, showDelete, showUpdate, editable);
-        show("tableCont"); 
+        showCont("tableCont"); 
     };
     window.saveTransaction = async function () {
         const ttype = document.getElementById("ttype").value.trim();
@@ -592,13 +531,13 @@
         });
 
         const columns = [
-            {title: "Amount", field: "amt", hozAlign: "right"},
-            {title: "Narration", field: "nar"},
+            {title: "Group", field: "grp"},
             {title: "Name", field: "name"},
-            {title: "Group", field: "grp"}, 
+            {title: "Amount", field: "amt", hozAlign: "right"},
+            {title: "Narration", field: "nar"},             
         ];
         createEditableTable(rows, columns, false, true, false);
-        show("tableCont"); 
+        showCont("tableCont"); 
     };
     window.saveProdLed = async function (type) {
         let group, newName, amtValue, nar, balType, amt;
@@ -741,7 +680,7 @@
             { title: "Name", field: "name" } 
         ];
         createEditableTable(rows, columns, false, false, false);
-        show("tableCont"); 
+        showCont("tableCont"); 
     };
 
     window.viewSummary = async function (mode = "receivables") {
@@ -820,7 +759,7 @@
         ];
 
         createEditableTable(rows, columns, false, false, false);
-        show("tableCont"); 
+        showCont("tableCont"); 
     };
 
     window.profit_loss = async function () {
@@ -861,7 +800,7 @@
         ];
 
         createEditableTable(rows, columns, false, false, false);
-        show("tableCont", "profitLoss"); 
+        showCont("tableCont", "profitLoss"); 
     };
     
     window.login = async function () {
@@ -894,7 +833,7 @@
             await signOut(auth);
             showDialog("Logged out successfully. 👋", "success");
             document.getElementById("main").classList.add("hidden");
-            show("loginContainer"); 
+            showCont("loginContainer"); 
         } 
         catch (error) { 
             showDialog("Network issue: Failed to logout. Please try again.", "error"); 
@@ -902,7 +841,7 @@
     };
     
     window.showDashboard = async function () {
-        show("dashboard");
+        showCont("dashboard");
         const querySnapshot = await getDocs(tranCol);
         const monthlyData = {};
 
@@ -912,7 +851,6 @@
             if (isNaN(jsDate)) return;
 
             const month = jsDate.toLocaleString('default', { month: 'short' });
-
             if (!monthlyData[month]) {
                  monthlyData[month] = { 
                     sales: 0, purchase: 0, expense: 0 
@@ -920,14 +858,8 @@
             }
 
             const ttype = (data.ttype || "").trim().toLowerCase();
-
-            if (ttype === "sales") { 
-                monthlyData[month].sales += data.amt || 0; 
-            } 
-
-            if (ttype === "purchase") { 
-                monthlyData[month].purchase += data.amt || 0; 
-            } 
+            if (ttype === "sales") { monthlyData[month].sales += data.amt || 0; } 
+            if (ttype === "purchase") { monthlyData[month].purchase += data.amt || 0; } 
         });
 
         const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -935,28 +867,31 @@
         const sales = labels.map(m => monthlyData[m].sales);
         const purchase = labels.map(m => monthlyData[m].purchase);
 
-        if (window.dashboardChart instanceof Chart) { 
-            window.dashboardChart.destroy(); 
-        }
+        if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
 
         window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
             type: 'bar',
             data: { labels,
                     datasets: [
                         { label: "Sales", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" },
-                        { label: "Purchase", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } ] }, 
-            options: { responsive: true, plugins: { datalabels: { anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), 
-            font: { weight: 'bold' }, color: '#fff' } }, 
-            scales: { y: { beginAtZero: true } } }, 
+                        { label: "Purchase", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } 
+                    ] 
+            }, 
+            options: { 
+                responsive: true, 
+                plugins: { 
+                    datalabels: { 
+                        anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), 
+                        font: { weight: 'bold' }, color: '#fff' 
+                    } 
+                }, 
+                scales: { y: { beginAtZero: true } } 
+            }, 
             plugins: [ChartDataLabels] 
         }); 
     };
         
-    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = "Do u want to close?"; });
-    window.closeDialog = async function () { 
-        document.getElementById('errorBox').classList.add('hidden'); 
-    };
-
+    //window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = "Do u want to close?"; });
 </script>
 </body>
 </html>
