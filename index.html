@@ -13,39 +13,40 @@
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>    
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-gray-900 text-white font-serif">
-<header id="topbar" class="fixed top-0 left-0 w-full bg-gray-900 text-green-500 px-2 py-3 cursor-pointer hidden">Click Me 🙋🏻‍♂️</header>
+<body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
+<header id="topbar" class="w-full bg-gray-900 text-green-500 px-1 py-3 cursor-pointer hidden">Start 🙋🏻‍♂️</header>
 <nav id="top-nav" class="fixed top-0 left-0 h-[580px] w-full bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-gray-600 px-2 py-3 text-green-500 cursor-pointer menu-link" id="close">🏰</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-yellow-600 px-2 py-3 bg-yellow-700 cursor-pointer menu-link" onclick="showDashboard()">Dashboard</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" id="close">Home</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-sky-600 px-2 py-3 bg-sky-700 cursor-pointer menu-link" onclick="showDashboard()">Dashboard</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('ledger')">Ledger</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('product')">Product</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertProdLed('Opening Balance')">Update Ledger</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertProdLed('Opening Stock')">Update Product</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('payables')">Payables</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="showCont('profitLoss')">Profit & Loss</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link">Balance Sheet</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-700 cursor-pointer menu-link" onclick="viewSummary('payables')">Payables</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-700 cursor-pointer menu-link" onclick="viewSummary('receivables')">Receivables</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-700 cursor-pointer menu-link" onclick="showCont('profitLoss')">Profit & Loss</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-amber-600 px-2 py-3 bg-amber-700 cursor-pointer menu-link">Balance Sheet</a></li><li class="border-t border-gray-500"></li>
+        <li><a class="block hover:bg-amber-600 px-2 py-3 bg-amber-700 cursor-pointer menu-link">Khatavahi</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="insertTran(false, false, false, true)">CashBook</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('sales')">Sales Register</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('purchase')">Purchase Register</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link">Khatavahi</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewProdLed('ledger')">Ledgers & Groups</a></li><li class="border-t border-gray-500"></li>
         <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewProdLed('product')">Products & Groups</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-orange-600 px-2 py-3 bg-orange-700 cursor-pointer menu-link" onclick="window.logout()">Logout</a></li>
+        <li><a class="block hover:bg-lime-600 px-2 py-3 bg-lime-700 cursor-pointer menu-link" onclick="window.logout()">Logout</a></li>
     </ul>
 </nav>
 
-<div id="loginContainer" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
+<div id="loginContainer" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-900">
     <input class="input-box mt-10" id="loginEmail" placeholder="Email ....." type="email"><br><br>
     <input class="input-box" id="loginPassword" placeholder="Password ....." type="password"><br><br>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
-<div id="ledger" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
+<div id="ledger" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
     <label class="label">Select Ledger Group ↓↓</label><input class="input-box" id="ledgergroup" type="text" autocomplete="off"/>
     <label class="label">Ledger Name ↓↓</label><input class="input-box" id="ledgername" type="text" autocomplete="off"/>
     <label class="label">Opening Balance ↓↓</label><input class="input-box" id="opbal" type="number" autocomplete="off"/>
@@ -54,7 +55,7 @@
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('ledger')">👉Save Ledger👈</button>
 </div>
 
-<div id="product" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
+<div id="product" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
     <label class="label">Select Product Group ↓↓</label><input class="input-box" id="productgroup" type="text" autocomplete="off"/>
     <label class="label">Product Name ↓↓</label><input class="input-box" id="productname" type="text" autocomplete="off"/>
     <label class="label">Opening Stock ↓↓</label><input class="input-box" id="opstk" type="number"/>
@@ -62,7 +63,7 @@
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('product')">👉Save Product👈</button>
 </div>
 
-<div id="transaction" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
+<div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
     <label class="label">Transaction Type ↓↓</label><input class="input-box" id="ttype" type="text" autocomplete="off"/>
     <label class="label">Date ↓↓</label><input class="input-box" id="date" type="date"/>
     <label class="label">From ↓↓</label><input class="input-box" id="txtfrom" type="text" autocomplete="off">
@@ -70,38 +71,37 @@
     <label class="label">Amount ↓↓</label><input class="input-box" id="amt" type="number"/>
     <label class="label">Narration ↓↓</label><input class="input-box" id="nar" type="text" autocomplete="off"/>
     <div class="flex items-center gap-1 flex-nowrap">
-        <button class="mt-5 mb-5 px-2 h-10 bg-green-700 hover:bg-green-600 rounded-lg w-[100px]" onclick="saveTransaction()">👉Save👈</button>
-        <input class="mt-5 mb-5 px-2 h-10 bg-gray-800 border border-blue-600 rounded-lg w-[250px]" id="calc" type="text" autocomplete="off" placeholder="🧮 Calculator"/>
+        <button class="mt-5 mb-5 w-[120px] h-10 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTransaction()">👉Save👈</button>
+        <input class="w-full mt-5 mb-5 px-2 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="calc" type="text" autocomplete="off" placeholder="🧮 Calculator"/>
     </div>
 </div>
 
-<div id="tableCont-profitLoss" class="pt-[50px]">
-    <div id="tableCont" class="hidden w-full mx-auto ml-1 mr-1">
+<div id="tableCont-profitLoss">
+    <div id="tableCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
         <div class="flex items-center gap-1 mb-1 flex-nowrap">
-            <button class="bg-green-800 px-2 py-2 rounded-lg" id="excelBtn">𝄜XL</button>
-            <button class="bg-red-800 px-2 py-2 rounded-lg" id="pdfBtn">PDF</button>
-            <button class="bg-blue-800 px-3 py-2 rounded-lg" id="printBtn">🖨️</button>
-            <input class="input-box h-10 px-3 w-full mr-1" id="searchBox" placeholder="Search..." type="text"/>
+            <button class="bg-green-800 px-2 h-10 rounded-lg" id="excelBtn">𝄜XL</button>
+            <button class="bg-red-800 px-2 h-10 rounded-lg" id="pdfBtn">PDF</button>
+            <button class="bg-blue-800 px-3 h-10 rounded-lg" id="printBtn">🖨️</button>
+            <input class="w-full px-2 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
         </div>
         <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
     </div>
-    <div id="profitLoss" class="hidden w-full max-w-md ml-1 mr-1 bg-gray-900">
+    <div id="profitLoss" class="hidden w-full rounded-b-2xl bg-gray-900">
         <div class="flex items-center gap-1 flex-nowrap">
-            <button class="px-2 h-10 bg-green-700 hover:bg-green-600 rounded-lg w-[100px]" onclick="profit_loss()">👉View👈</button>
-            <input class="px-2 h-10 bg-gray-800 border border-blue-600 rounded-lg w-[250px]" id="clostk" type="number" placeholder="Closing Stock"/>
+            <button class="mb-5 w-[120px] h-10 bg-green-700 hover:bg-green-600 rounded-lg" onclick="profit_loss()">👉View👈</button>
+            <input class="w-full mb-5 px-2 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="clostk" type="number" placeholder="Closing Stock"/>
         </div>
     </div>
 </div>
 
-<div id="errorBox" class="hidden fixed top-[50px] w-full max-w-md bg-gray-800 shadow-lg rounded-lg text-left z-50">
+<div id="errorBox" class="hidden fixed top-0 left-0 w-full max-w-md bg-gray-900 shadow-lg rounded-lg text-left z-50">
     <h2 class="bg-red-800 text-white font-semibold px-4 py-4 mb-3 rounded-t-lg">⚠️ Information</h2>
-    <p id="errorMessage" class="text-left px-4 mt-5 mb-5 bg-gray-800"></p>
+    <p id="errorMessage" class="text-left px-4 mt-5 mb-5 bg-gray-900"></p>
     <button onclick="closeDialog()" class="w-full text-white font-semibold py-3 mt-3 bg-orange-600 hover:bg-orange-800 rounded-b-lg">Close</button>
 </div>
 
-<div id="dashboard" class="hidden fixed top-[50px] w-full max-w-md ml-1">
-    <h2>Dashboard</h2>
-    <canvas id="dashboardChart"></canvas>
+<div id="dashboard" class="hidden w-full max-w-md ml-1">
+    <h2>Dashboard</h2><canvas id="dashboardChart"></canvas>
 </div>
 
 <script type="module">
@@ -150,7 +150,7 @@
         document.querySelectorAll('label').forEach(label => {
             label.classList.add(...labelClass.split(' '));
         });
-        const inputClass = "w-full px-2 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-yellow-500";
+        const inputClass = "w-full px-2 py-2 bg-gray-900 border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-yellow-500";
         document.querySelectorAll('.input-box').forEach(input => {
             input.classList.add(...inputClass.split(' '));
             if ((input.tagName === "INPUT" && input.type === "text") || input.tagName === "TEXTAREA") {
@@ -501,13 +501,13 @@
         if (window.currentDocId) {
             const docRef = doc(db, "umesh", window.currentDocId);
             await updateDoc(docRef, tranData);
-            showDialog("Transaction updated successfully. 🛒 ✏️", "success"); 
+            showDialog("Transaction updated successfully. 🛒 ✏️", "success");
+            await insertTran();
         } 
         else {
             await addDoc(collection(db, "umesh"), tranData);
             showDialog("Transaction saved successfully. 🛒 💾", "success"); 
         }
-
         clear(); 
         window.currentDocId = null; 
     };
@@ -540,7 +540,7 @@
             {title: "Narration", field: "nar"},             
         ];
         createEditableTable(rows, columns, false, true, false);
-        showCont("tableCont"); 
+        await showCont("tableCont");
     };
     window.saveProdLed = async function (type) {
         let group, newName, amtValue, nar, balType, amt;
@@ -647,7 +647,8 @@
             });
 
             await batch.commit();
-            showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. 🧾`, "success"); 
+            showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. 🧾`, "success");
+            insertProdLed(`${type === "product" ? "Opening Stock" : "Opening Balance"}`);
         } 
         else {
             const newDocData = { grp: group, name: newName, ttype: ttype };
@@ -657,7 +658,6 @@
             await addDoc(tranCol, newDocData);
             showDialog(`New ${type === "product" ? "product" : "ledger"} saved successfully. 🧾`, "success"); 
         }
-
         clear();
         window.currentDocId = null; 
     };
@@ -760,9 +760,8 @@
             { title: firstColTitle, field: "party" },
             { title: "Amount", field: "amount", hozAlign: "right" } 
         ];
-
-        createEditableTable(rows, columns, false, false, false);
-        showCont("tableCont"); 
+        await createEditableTable(rows, columns, false, false, false);
+        showCont("tableCont");
     };
 
     window.profit_loss = async function () {
