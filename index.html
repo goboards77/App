@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-900 text-white font-serif">
-<header id="topbar" class="fixed top-0 left-0 w-full bg-gray-900 text-green-500 px-2 py-3 cursor-pointer">Click Me 🙋🏻‍♂️</header>
+<header id="topbar" class="fixed top-0 left-0 w-full bg-gray-900 text-green-500 px-2 py-3 cursor-pointer hidden">Click Me 🙋🏻‍♂️</header>
 <nav id="top-nav" class="fixed top-0 left-0 h-[580px] w-full bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
         <li><a class="block hover:bg-gray-600 px-2 py-3 text-green-500 cursor-pointer menu-link" id="close">🏰</a></li><li class="border-t border-gray-500"></li>
@@ -39,8 +39,8 @@
     </ul>
 </nav>
 
-<div id="loginContainer" class="hidden w-full max-w-md p-2 pt-10 rounded-b-2xl bg-gray-800">
-    <input class="input-box" id="loginEmail" placeholder="Email ....." type="email"><br><br>
+<div id="loginContainer" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-800">
+    <input class="input-box mt-10" id="loginEmail" placeholder="Email ....." type="email"><br><br>
     <input class="input-box" id="loginPassword" placeholder="Password ....." type="password"><br><br>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
@@ -126,13 +126,16 @@
     window.currentDocId = null;
     onAuthStateChanged(auth, async (user) => {
         if (user) {
+            document.getElementById("topbar").classList.remove("hidden");
             await createAndDeduplicateDocuments();
             await loadDropdownData();
             attachDropdown(document.getElementById("ledgergroup"), window.ledgergroup_list);
             attachDropdown(document.getElementById("productgroup"), window.productgroup_list);
             attachDropdown(document.getElementById("ttype"), window.ttype_list);
             attachDropdown(document.getElementById("balTypeLed"), window.baltype_list); } 
-        else { showCont("loginContainer"); } 
+        else { 
+            document.getElementById("topbar").classList.add("hidden");
+            showCont("loginContainer"); } 
     });  
     window.createAndDeduplicateDocuments = async function () {
         for (const groupName of groupNames) {
@@ -815,8 +818,7 @@
 
             if (docSnap.exists() && docSnap.data().approved === true) {
                 showDialog("Login successful and approved! 🔓", "success");
-                document.getElementById("loginContainer").classList.add("hidden");
-                document.getElementById("main").classList.remove("hidden"); 
+                showCont("topbar");
             } 
         } 
         catch (error) { 
@@ -832,7 +834,8 @@
             window.currentDocId = null;
             await signOut(auth);
             showDialog("Logged out successfully. 👋", "success");
-            document.getElementById("main").classList.add("hidden");
+            document.getElementById("topbar").classList.add("hidden");
+            document.getElementById("topbar").style.setProperty('display', 'none', 'important'); 
             showCont("loginContainer"); 
         } 
         catch (error) { 
