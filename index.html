@@ -191,25 +191,32 @@
         } 
     });
     flatpickr(".date-input", { dateFormat: "d-m-Y", });
-    window.showDialog = function (message, type = "error") {
-        document.getElementById('errorMessage').innerHTML = message.replace(/\n/g, '<br>'); 
-        const titleEl = document.querySelector('#errorBox h2');
-        const closeBtn = document.querySelector('#errorBox button');
+    
+    window.showDialog = function (message, type = "error", onClose) {
+        const errorBox = document.getElementById('errorBox');
+        const errorMessage = document.getElementById('errorMessage');
+        const titleEl = errorBox.querySelector('h2');
+        const closeBtn = errorBox.querySelector('button');
+        errorMessage.innerHTML = message.replace(/\n/g, '<br>');
         titleEl.classList.remove('bg-red-800', 'bg-green-800');
         closeBtn.classList.remove('bg-orange-600', 'hover:bg-orange-800', 'bg-green-600', 'hover:bg-green-800');
-        document.getElementById('errorBox').classList.remove('hidden'); 
-
         if (type === "success") {
             titleEl.classList.add('bg-green-800');
             titleEl.textContent = "✅ Success";
-            closeBtn.classList.add('bg-green-600', 'hover:bg-green-800'); 
-        } 
-        else {
+            closeBtn.classList.add('bg-green-600', 'hover:bg-green-800');
+        } else {
             titleEl.classList.add('bg-red-800');
             titleEl.textContent = "⚠️ Error";
-            closeBtn.classList.add('bg-orange-600', 'hover:bg-orange-800'); 
-        } 
+            closeBtn.classList.add('bg-orange-600', 'hover:bg-orange-800');
+        }
+        errorBox.classList.remove('hidden');
+        closeBtn.onclick = null;
+        closeBtn.onclick = function () {
+            errorBox.classList.add('hidden');
+            if (typeof onClose === 'function') { onClose(); }
+        };
     };
+
     window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
     window.clear = function () {
         document.querySelectorAll("input").forEach(el => el.value = "");
@@ -406,7 +413,8 @@
             case "Payment":
                 showCont('transaction');
                 document.getElementById("ttype").value = rowData.ttype || "";
-                document.getElementById("date").value = rowData.date || "";
+                const dateInput = document.getElementById("date");
+                if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
                 document.getElementById("txtfrom").value = rowData.fparty || "";
                 document.getElementById("txtto").value = rowData.tparty || "";
                 document.getElementById("amt").value = rowData.amt || "";
@@ -511,8 +519,7 @@
         if (window.currentDocId) {
             const docRef = doc(db, "umesh", window.currentDocId);
             await updateDoc(docRef, tranData);
-            showDialog("Transaction updated successfully. 🛒 ✏️", "success");
-            await insertTran();
+            showDialog("Transaction updated successfully. 🛒 ✏️", "success", () => { insertTran(); });
         } 
         else {
             await addDoc(collection(db, "umesh"), tranData);
@@ -618,18 +625,10 @@
             if (amt !== undefined) updateObj.amt = amt;
             updateObj.nar = nar ? nar : deleteField();
 
-            if (isProductGroup(group)) { 
-                updateObj.fparty = newName; 
-            } 
-            else if (balType === "Credit") { 
-                updateObj.fparty = newName; updateObj.tparty = deleteField(); 
-            } 
-            else if (balType === "Debit") { 
-                updateObj.tparty = newName; updateObj.fparty = deleteField(); 
-            } 
-            else { 
-                updateObj.fparty = deleteField(); updateObj.tparty = deleteField(); 
-            }
+            if (isProductGroup(group)) { updateObj.fparty = newName; } 
+            else if (balType === "Credit") { updateObj.fparty = newName; updateObj.tparty = deleteField(); } 
+            else if (balType === "Debit") { updateObj.tparty = newName; updateObj.fparty = deleteField(); } 
+            else { updateObj.fparty = deleteField(); updateObj.tparty = deleteField(); }
 
             const existingDoc = await getDoc(doc(db, "umesh", docId));
             const oldName = existingDoc.data().name || "";
@@ -651,14 +650,11 @@
                     updates.tparty = (balType === "Debit") ? newName : deleteField(); 
                     shouldUpdate = true; 
                 }
-                if (shouldUpdate) { 
-                    batch.update(doc(db, "umesh", docSnap.id), updates); 
-                } 
+                if (shouldUpdate) { batch.update(doc(db, "umesh", docSnap.id), updates); }
             });
-
             await batch.commit();
-            showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. 🧾`, "success");
-            insertProdLed(`${type === "product" ? "Opening Stock" : "Opening Balance"}`);
+            showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. ✏️ 🧾`, "success", () => { 
+                insertProdLed(`${type === "product" ? "Opening Stock" : "Opening Balance"}`); });
         } 
         else {
             const newDocData = { grp: group, name: newName, ttype: ttype };
@@ -901,9 +897,12 @@
             }, 
             plugins: [ChartDataLabels] 
         }); 
-    };    
-    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = "Do u want to close?"; });
+    };
+        
+    window.addEventListener("beforeunload", function (e) { 
+        e.preventDefault(); 
+        e.returnValue = ""; 
+    });
 </script>
 </body>
 </html>
-
