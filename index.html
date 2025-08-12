@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Umesh's Dashboard</title>
+    <title>Gopal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
@@ -13,31 +13,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        table { border-collapse: collapse; width: 100%; max-width: 900px; }
+        th, td { border: 1px solid #ccc; text-align: right; }
+        th:first-child { text-align: left; }
+        td:first-child { text-align: left; }
+    </style>
 </head>
 <body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
-<header id="topbar" class="w-full bg-gray-900 text-green-500 px-5 py-3 cursor-pointer hidden text-[20px]">Start Here 🙋🏻‍♂️</header>
-<nav id="top-nav" class="fixed top-0 left-0 h-[580px] w-full bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
+<header id="topbar" class="w-full bg-gray-800 text-green-500 px-5 cursor-pointer hidden text-[20px]">Start Here 🙋🏻‍♂️</header>
+<nav id="top-nav" class="fixed top-0 left-0 h-[650px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" id="close">Home</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-sky-600 px-2 py-3 bg-sky-700 cursor-pointer menu-link" onclick="showDashboard()">Dashboard</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('ledger')">Ledger</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('product')">Product</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-green-600 px-2 py-3 bg-green-700 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertProdLed('Opening Balance')">Update Ledger</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertProdLed('Opening Stock')">Update Product</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-red-600 px-2 py-3 bg-red-700 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-700 cursor-pointer menu-link" onclick="viewSummary('payables')">Payables</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-700 cursor-pointer menu-link" onclick="viewSummary('receivables')">Receivables</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-700 cursor-pointer menu-link" onclick="showCont('profitLoss')">Profit & Loss</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-amber-600 px-2 py-3 bg-amber-700 cursor-pointer menu-link">Balance Sheet</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-amber-600 px-2 py-3 bg-amber-700 cursor-pointer menu-link">Khatavahi</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="insertTran(false, false, false, true)">CashBook</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('sales')">Sales Register</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewSummary('purchase')">Purchase Register</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewProdLed('ledger')">Ledgers & Groups</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-700 cursor-pointer menu-link" onclick="viewProdLed('product')">Products & Groups</a></li><li class="border-t border-gray-500"></li>
-        <li><a class="block hover:bg-lime-600 px-2 py-3 bg-lime-700 cursor-pointer menu-link" onclick="window.logout()">Logout</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" id="close">Home</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showDashboard()">Dashboard</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showCont('bhaduvat')">Bhaduvat</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showCont('qvparty')">Querterly Vparty</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showMtable('116')">Ele 116</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="showMtable('119')">Ele 119</a></li>
+        <li><a class="block hover:bg-red-600     px-2 py-2 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="saveHavala('mbamt')">Monthly Bhada Havala</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="viewSummary('receivables')">Receivables</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-2 cursor-pointer menu-link" onclick="viewLedger('ledger')">Ledgers & Groups</a></li>
+        <li><a class="block hover:bg-lime-600    px-2 py-2 bg-lime-700 cursor-pointer menu-link" onclick="window.logout()">Logout</a></li>
     </ul>
 </nav>
 
@@ -47,25 +49,27 @@
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
-<div id="ledger" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Select Ledger Group ↓↓</label><input class="input-box" id="ledgergroup" type="text" autocomplete="off"/>
-    <label class="label">Ledger Name ↓↓</label><input class="input-box" id="ledgername" type="text" autocomplete="off"/>
-    <label class="label">Opening Balance ↓↓</label><input class="input-box" id="opbal" type="number" autocomplete="off"/>
-    <label class="label">Credit/Debit ↓↓</label><input class="input-box" id="balTypeLed" type="text" autocomplete="off"/>
-    <label class="label">Narration ↓↓</label><input class="input-box" id="lnar" type="text" autocomplete="off"/>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('ledger')">👉Save Ledger👈</button>
+<div id="bhaduvat" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <label class="label">Select Plot N0 ↓↓</label><input class="input-box" id="plotgroup" type="text" autocomplete="off"/>
+    <label class="label">Bhaduvat Name ↓↓</label><input class="input-box" id="bhaduvatname" type="text" autocomplete="off"/>
+    <label class="label">Meter Reading ↓↓</label><input class="input-box" id="meterreading" type="number" autocomplete="off"/>
+    <label class="label">Monthly Bhadu ↓↓</label><input class="input-box" id="mbamt" type="number" autocomplete="off"/>
+    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveBhaduvat()">👉Save👈</button>
 </div>
 
-<div id="product" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Select Product Group ↓↓</label><input class="input-box" id="productgroup" type="text" autocomplete="off"/>
-    <label class="label">Product Name ↓↓</label><input class="input-box" id="productname" type="text" autocomplete="off"/>
-    <label class="label">Opening Stock ↓↓</label><input class="input-box" id="opstk" type="number"/>
-    <label class="label">Narration ↓↓</label><input class="input-box" id="pnar" type="text" autocomplete="off"/>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveProdLed('product')">👉Save Product👈</button>
+<div id="mvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <label class="label">Party Name ↓↓</label><input class="input-box" id="mvpartyname" type="text" autocomplete="off"/>
+    <label class="label">Monthly Vyaj ↓↓</label><input class="input-box" id="mvamt" type="number" autocomplete="off"/>
+    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveMvparty()">👉Save👈</button>
+</div>
+
+<div id="qvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <label class="label">Party Name ↓↓</label><input class="input-box" id="qvpartyname" type="text" autocomplete="off"/>
+    <label class="label">Quarterly Vyaj ↓↓</label><input class="input-box" id="qvamt" type="number" autocomplete="off"/>
+    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveQvparty()">👉Save👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Transaction Type ↓↓</label><input class="input-box" id="ttype" type="text" autocomplete="off"/>
     <label class="label">Date ↓↓</label><input class="date-input input-box" id="date" type="text"/>
     <label class="label">From ↓↓</label><input class="input-box" id="txtfrom" type="text" autocomplete="off">
     <label class="label">To ↓↓</label><input class="input-box" id="txtto" type="text" autocomplete="off">
@@ -95,7 +99,7 @@
     </div>
 </div>
 
-<div id="errorBox" class="hidden fixed top-0 left-0 w-full max-w-md bg-gray-900 shadow-lg rounded-lg text-left z-50">
+<div id="errorBox" class="hidden w-full max-w-md bg-gray-900 shadow-lg rounded-lg text-left z-50">
     <h2 class="bg-red-800 text-white font-semibold px-4 py-4 mb-3 rounded-t-lg">⚠️ Information</h2>
     <p id="errorMessage" class="text-left px-4 mt-5 mb-5 bg-gray-900"></p>
     <button onclick="closeDialog()" class="w-full text-white font-semibold py-3 mt-3 bg-orange-600 hover:bg-orange-800 rounded-b-lg">Close</button>
@@ -104,48 +108,63 @@
 <div id="dashboard" class="hidden w-full max-w-md ml-1">
     <h2>Dashboard</h2><canvas id="dashboardChart"></canvas>
 </div>
+
+<div id="mtable" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
+    <table id="metersTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Old Reading</th>
+                <th>New Reading</th>
+                <th>Consumption</th>
+                <th>AdjUnits</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="metersTableBody"></tbody>
+    </table>
+
+    <button id="calculateBtn" class="mx-auto mt-5 mb-5 px-2 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg" onclick="calculate()">Calculate Distribution</button>
+    <button id="saveBtn" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script type="module">
     import {initializeApp} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import {getFirestore, collection, getDocs, getDoc, setDoc, deleteDoc, doc, updateDoc, query, where, addDoc, writeBatch, deleteField} 
+    import {getFirestore, collection, getDocs, getDoc, doc, setDoc, deleteDoc, updateDoc, query, where, addDoc, writeBatch, deleteField} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
     const firebaseConfig = {
-        apiKey: "AIzaSyDQWZC6iA5zYKvTXsFl9TYLkZCTl5BzfwA",
-        authDomain: "accounts-19d08.firebaseapp.com",
-        projectId: "accounts-19d08",
-        storageBucket: "accounts-19d08.appspot.com",
-        messagingSenderId: "247308606105",
-        appId: "1:247308606105:web:9bfc179368524244bf3608", };
+        apiKey: "AIzaSyDrI9vIDUePbzHrTSRCKAcJ7oCfCIrSIUI",
+        authDomain: "apps-a5358.firebaseapp.com",
+        projectId: "apps-a5358",
+        storageBucket: "apps-a5358.firebasestorage.app",
+        messagingSenderId: "796844706882",
+        appId: "1:796844706882:web:16b8e105ba28b1390971db",
+        measurementId: "G-9TVN21KVF3"
+        };
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const tranCol = collection(db, "umesh");
-    const groupNames = ["Cash", "Bank", "Creditors", "Debitors", "Angadiya", "Expense", "Sproducts", "Pproducts"];
+    const tranCol = collection(db, "gopal");
     window.currentDocId = null;
+    let mainMeter = null;
+    let meters = [];
+    let groupId = null;
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             document.getElementById("topbar").classList.remove("hidden");
-            await createAndDeduplicateDocuments();
             await loadDropdownData();
-            attachDropdown(document.getElementById("ledgergroup"), window.ledgergroup_list);
-            attachDropdown(document.getElementById("productgroup"), window.productgroup_list);
-            attachDropdown(document.getElementById("ttype"), window.ttype_list);
-            attachDropdown(document.getElementById("balTypeLed"), window.baltype_list); } 
+            attachDropdown(document.getElementById("plotgroup"), window.plot_list);
+            attachDropdown(document.getElementById("txtfrom"), window.names_list); 
+            attachDropdown(document.getElementById("txtto"), window.names_list); 
+        } 
         else { 
             document.getElementById("topbar").classList.add("hidden");
             showCont("loginContainer"); } 
     });  
-    window.createAndDeduplicateDocuments = async function () {
-        for (const groupName of groupNames) {
-            const data = { grp: groupName, ttype: "Group" };
-            const q = query(tranCol, where("grp", "==", groupName), where("ttype", "==", "Group"));
-            const snapshot = await getDocs(q);
-            if (snapshot.empty) { await addDoc(tranCol, data); } 
-        } 
-    };
     document.addEventListener('DOMContentLoaded', () => {
         const labelClass = "mt-3 pl-[10px] text-gray-400 block mb-1";
         document.querySelectorAll('label').forEach(label => {
@@ -191,7 +210,6 @@
         } 
     });
     flatpickr(".date-input", { dateFormat: "d-m-Y", });
-    
     window.showDialog = function (message, type = "error", onClose) {
         const errorBox = document.getElementById('errorBox');
         const errorMessage = document.getElementById('errorMessage');
@@ -216,16 +234,14 @@
             if (typeof onClose === 'function') { onClose(); }
         };
     };
-
     window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
     window.clear = function () {
         document.querySelectorAll("input").forEach(el => el.value = "");
-        document.getElementById("ttype").disabled = false;
         loadDropdownData(); 
     };
     window.showCont = function (...idToShow) {
         clear();
-        const allIds = ['loginContainer', 'group', 'ledger', 'product', 'transaction', 'tableCont', 'profitLoss', 'dashboard'];
+        const allIds = ['loginContainer', 'bhaduvat', 'mvparty', 'qvparty', 'transaction', 'tableCont', 'profitLoss', 'dashboard', 'mtable'];
         allIds.forEach(id => {
             const el = document.getElementById(id);
             if (el) {
@@ -246,38 +262,16 @@
     window.loadDropdownData = async function () {
         const snapshot = await getDocs(tranCol);
         const nameSet = new Set();
-        const sproductSet = new Set();
-        const pproductSet = new Set();
-        const crdbSet = new Set();
-        const crdbcsbkangSet = new Set();
-        const crdbcsbkangexpSet = new Set();
-
         snapshot.forEach((doc) => {
             const data = doc.data();
-            const grp = (data.grp || "").trim();
             const name = (data.name || "").trim();
             if (name.length > 0) {nameSet.add(name);}
-            if (grp === "Sproducts" && name.length > 0) {sproductSet.add(name);}
-            if (grp === "Pproducts" && name.length > 0) {pproductSet.add(name);}
-            if (["Creditors", "Debitors"].includes(grp) && name.length > 0) {crdbSet.add(name);}
-            if (["Creditors", "Debitors", "Cash", "Bank", "Angadiya",].includes(grp) && name.length > 0) {crdbcsbkangSet.add(name);}
-            if (["Creditors", "Debitors", "Cash", "Bank", "Angadiya", "Expense"].includes(grp) && name.length > 0) {crdbcsbkangexpSet.add(name);} 
         });
-
+        window.plot_list = ["116", "119"];
         window.names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
-        window.sproduct_list = [...sproductSet].sort((a, b) => a.localeCompare(b));
-        window.pproduct_list = [...pproductSet].sort((a, b) => a.localeCompare(b));
-        window.crdb_list = [...crdbSet].sort((a, b) => a.localeCompare(b));
-        window.crdbcsbkang_list = [...crdbcsbkangSet].sort((a, b) => a.localeCompare(b));
-        window.crdbcsbkangexp_list = [...crdbcsbkangexpSet].sort((a, b) => a.localeCompare(b)); 
-        window.baltype_list = ["Credit", "Debit"]; 
-        window.productgroup_list = ["Sproducts", "Pproducts"];
-        window.ttype_list = ["Sales", "Purchase", "Receipt", "Payment"];
-        window.ledgergroup_list = [ "Angadiya", "Bank", "Cash", "Creditors", "Debitors", "Expense"]; 
     };  
     window.attachDropdown = function (inputElement, dataList) {
         if (inputElement._dropdownCleanup) { inputElement._dropdownCleanup(); }
-
         let wrapper = inputElement.parentElement;
         if (!wrapper.classList.contains("relative")) {
             wrapper = document.createElement("div");
@@ -303,7 +297,6 @@
                 li.addEventListener('click', () => {
                     inputElement.value = item;
                     dropdown.classList.add("hidden");
-                    if (inputElement.id === "ttype") { changeLists(); }
                 });
                 dropdown.appendChild(li);
             });
@@ -346,7 +339,7 @@
                 title: "",
                 field: "__delete",
                 formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
-                width: 50,
+                width: 70,
                 hozAlign: "center",
                 cellClick: async (e, cell) => {
                     e.stopPropagation();
@@ -365,7 +358,7 @@
                 title: "",
                 field: "__update",
                 formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
-                width: 50,
+                width: 70,
                 hozAlign: "center",
                 cellClick: (e, cell) => {
                     e.stopPropagation();
@@ -384,7 +377,6 @@
             maxHeight: "600px",
             columns: fullColumns, 
         });
-
         document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
         document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
@@ -405,84 +397,32 @@
         const type = (rowData.ttype || "").trim();
         document.getElementById("tableCont").classList.add("hidden");
         document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
+        showCont('transaction');
+        document.getElementById("ttype").value = rowData.ttype || "";
+        const dateInput = document.getElementById("date");
+        if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
+        document.getElementById("amt").value = rowData.amount || "";
+        document.getElementById("nar").value = rowData.nar || "";
 
-        switch (type) {
-            case "Sales":
-            case "Purchase":
-            case "Receipt":
-            case "Payment":
-                showCont('transaction');
-                document.getElementById("ttype").value = rowData.ttype || "";
-                const dateInput = document.getElementById("date");
-                if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
-                document.getElementById("txtfrom").value = rowData.fparty || "";
-                document.getElementById("txtto").value = rowData.tparty || "";
-                document.getElementById("amt").value = rowData.amt || "";
-                document.getElementById("nar").value = rowData.nar || "";
-                break;
-            case "Opening Balance":
-                showCont('ledger')
-                document.getElementById("ledgergroup").value = rowData.grp || "";
-                document.getElementById("ledgername").value = rowData.name || "";  
-                document.getElementById("opbal").value = rowData.amt || "";
-                document.getElementById("balTypeLed").value = rowData.baltype || "";
-                document.getElementById("lnar").value = rowData.nar || "";
-                break;
-            case "Opening Stock":
-                showCont('product')
-                document.getElementById("productgroup").value = rowData.grp || "";
-                document.getElementById("productname").value = rowData.name || "";  
-                document.getElementById("opstk").value = rowData.amt || "";
-                document.getElementById("pnar").value = rowData.nar || "";
-                break; 
+        if (type === "Ebill") {
+            document.getElementById("txtto").value = rowData.tparty || "";
+            document.getElementById("txtfrom").disabled = true;
+        } else {
+            document.getElementById("txtfrom").disabled = false;
+            document.getElementById("txtfrom").value = rowData.fparty || "";
+            document.getElementById("txtto").value = rowData.tparty || "";
         }
-        document.getElementById("ttype").disabled = true;
-        changeLists(); 
     };
-    window.changeLists = function () {
-        const ttype = document.getElementById("ttype").value;
-        const txtfrom = document.getElementById("txtfrom");
-        const txtto = document.getElementById("txtto");
-        
-        if (ttype === "Sales") {
-            attachDropdown(txtfrom, window.sproduct_list);
-            attachDropdown(txtto, window.crdb_list);
-        } else if (ttype === "Purchase") {
-            attachDropdown(txtfrom, window.crdb_list);
-            attachDropdown(txtto, window.pproduct_list);
-        } else if (ttype === "Receipt" || ttype === "Payment") {
-            attachDropdown(txtfrom, window.crdbcsbkang_list);
-            attachDropdown(txtto, window.crdbcsbkangexp_list); 
-        }
-     };
-
+    
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false, filterCashGroup = false) {
-        let cashNames = new Set();
-        if (filterCashGroup) {
-            const partySnapshot = await getDocs(tranCol);
-            partySnapshot.forEach((doc) => {
-                const data = doc.data();
-                if ((data.grp || "").trim() === "Cash") { 
-                    cashNames.add((data.name || "").trim()); 
-                } 
-            }); 
-        };
-
         const snapshot = await getDocs(tranCol);
         const rows = [];
-        
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
             const ttype = (data.ttype || "").trim();
             const date = (data.date || "").trim();
 
             if (ttype === "Group" || !date) return;
-            if (filterCashGroup) { 
-                if (!cashNames.has((data.fparty || "").trim()) && !cashNames.has((data.tparty || "").trim())) { 
-                    return; 
-                } 
-            }
-
             rows.push({
                 id: docSnap.id,
                 date: date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
@@ -490,7 +430,7 @@
                 fparty: data.fparty || "",
                 tparty: data.tparty || "",
                 nar: data.nar || "",
-                amt: data.amt || "", }); });
+                amount: data.amount || "", }); });
 
         const columns = [
             {title: "Date", field: "date"}, 
@@ -498,7 +438,7 @@
             {title: "From Party", field: "fparty"}, 
             {title: "To Party", field: "tparty"}, 
             {title: "Narration", field: "nar"}, 
-            {title: "Amount", field: "amt", hozAlign: "right"}, 
+            {title: "Amount", field: "amount", hozAlign: "right"}, 
             {title: "ID", field: "id", visible: false} 
         ];
 
@@ -510,7 +450,6 @@
         const odate = document.getElementById("date");
         const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
         const fparty = document.getElementById("txtfrom").value.trim();
-        const tparty = document.getElementById("txtto").value.trim();
         const amt = parseFloat(document.getElementById("amt").value.trim()) || 0;
         const nar = document.getElementById("nar").value.trim();
         
@@ -529,163 +468,50 @@
         window.currentDocId = null; 
     };
 
-    window.insertProdLed = async function (type) {
-        const snapshot = await getDocs(tranCol);
-        const rows = [];
-
-        snapshot.forEach((docSnap) => {
-            const data = docSnap.data();
-            const ttype = (data.ttype || "").trim();
-
-            if (ttype === type) {
-                rows.push({
-                    id: docSnap.id,
-                    ttype: ttype,
-                    amt: data.amt || "",
-                    nar: data.nar || "",
-                    name: data.name || "",
-                    grp: data.grp || "",
-                    baltype: data.baltype || "", 
-                }); 
-            }; 
-        });
-
-        const columns = [
-            {title: "Group", field: "grp"},
-            {title: "Name", field: "name"},
-            {title: "Amount", field: "amt", hozAlign: "right"},
-            {title: "Narration", field: "nar"},             
-        ];
-        createEditableTable(rows, columns, false, true, false);
-        await showCont("tableCont");
-    };
-    window.saveProdLed = async function (type) {
-        let group, newName, amtValue, nar, balType, amt;
-        const isProductGroup = (g) => g === "Sproducts" || g === "Pproducts";
-
-        if (type === "product") {
-            group = document.getElementById("productgroup").value.trim();
-            newName = document.getElementById("productname").value.trim();
-            amtValue = document.getElementById("opstk").value.trim();
-            nar = document.getElementById("pnar").value.trim();
-            balType = "Credit"; 
-        } 
-        else if (type === "ledger") {
-            group = document.getElementById("ledgergroup").value.trim();
-            newName = document.getElementById("ledgername").value.trim();
-            amtValue = document.getElementById("opbal").value.trim();
-            nar = document.getElementById("lnar").value.trim();
-            balType = document.getElementById("balTypeLed").value.trim(); 
-        }
-
-        const docId = window.currentDocId;
-        if (amtValue !== "" && !isNaN(amtValue)) amt = parseFloat(amtValue);
-        if (!group || !newName) { 
-            showDialog("Group and Name are required. 👨‍👨‍👦‍👦 🧾", "error"); 
-            return; 
-        }
-        if (amtValue.trim() !== "") { 
-            if (balType !== "Credit" && balType !== "Debit") { 
-                showDialog("If amount is entered, Balance Type must be Credit or Debit. 💰", "error"); 
-                return; 
-            } 
-        }
-        
-        let oldName = null;
-        if (docId) { 
-            const existingDoc = await getDoc(doc(db, "umesh", docId)); oldName = existingDoc.data().name || "";
-        }
-        if (!docId || (docId && newName !== oldName)) {
-            const q = query(tranCol, where("name", "==", newName));
-            const snapshot = await getDocs(q);
-            if (!snapshot.empty) { 
-                showDialog(`A ${type === "product" ? "product" : "ledger"} with this name already exists. 👯‍♀️ 🧾`, "error"); 
-                return; 
-            }
-        }
-            
-        let ttype = isProductGroup(group) ? "Opening Stock" : "Opening Balance";
-        const assignPartyFields = (dataObj) => {
-            if (amt !== undefined) { 
-                dataObj.amt = amt;
-                if (isProductGroup(group)) { 
-                    dataObj.fparty = newName; 
-                } 
-                else if (balType === "Credit") { 
-                    dataObj.fparty = newName; 
-                } 
-                else if (balType === "Debit") { 
-                    dataObj.tparty = newName; 
-                } 
-            } 
-        };
-
-        if (docId) {
-            const updateObj = { grp: group, name: newName, ttype: ttype };
-            if (amt !== undefined) updateObj.amt = amt;
-            updateObj.nar = nar ? nar : deleteField();
-
-            if (isProductGroup(group)) { updateObj.fparty = newName; } 
-            else if (balType === "Credit") { updateObj.fparty = newName; updateObj.tparty = deleteField(); } 
-            else if (balType === "Debit") { updateObj.tparty = newName; updateObj.fparty = deleteField(); } 
-            else { updateObj.fparty = deleteField(); updateObj.tparty = deleteField(); }
-
-            const existingDoc = await getDoc(doc(db, "umesh", docId));
-            const oldName = existingDoc.data().name || "";
-            updateObj.baltype = (balType === "Credit" || balType === "Debit") ? balType : deleteField();
-            await updateDoc(doc(db, "umesh", docId), updateObj);
-
-            const querySnapshot = await getDocs(tranCol);
-            const batch = writeBatch(db);
-            querySnapshot.forEach((docSnap) => {
-                const data = docSnap.data();
-                const updates = {};
-                let shouldUpdate = false;
-
-                if (data.fparty === oldName) { 
-                    updates.fparty = (balType === "Credit" || isProductGroup(group)) ? newName : deleteField(); 
-                    shouldUpdate = true; 
-                }
-                if (data.tparty === oldName) { 
-                    updates.tparty = (balType === "Debit") ? newName : deleteField(); 
-                    shouldUpdate = true; 
-                }
-                if (shouldUpdate) { batch.update(doc(db, "umesh", docSnap.id), updates); }
-            });
-            await batch.commit();
-            showDialog(`${type === "product" ? "Product" : "Ledger"} and linked entries updated successfully. ✏️ 🧾`, "success", () => { 
-                insertProdLed(`${type === "product" ? "Opening Stock" : "Opening Balance"}`); });
-        } 
-        else {
-            const newDocData = { grp: group, name: newName, ttype: ttype };
-            if (nar) newDocData.nar = nar;
-            assignPartyFields(newDocData);
-            if (balType === "Credit" || balType === "Debit") newDocData.baltype = balType;
-            await addDoc(tranCol, newDocData);
-            showDialog(`New ${type === "product" ? "product" : "ledger"} saved successfully. 🧾`, "success"); 
-        }
+    window.saveBhaduvat = async function () {
+        let group, name, nar;
+        group = document.getElementById("plotgroup").value.trim();
+        name = document.getElementById("bhaduvatname").value.trim();
+        nread = document.getElementById("meterreading").value.trim();
+        mbamt = document.getElementById("mbamt").value.trim();
+        if (!group || !name || !nmead || !mbamt) { return showDialog("Group, Name, Meter Reading\nMonthly Bhada Amount Required. 👨‍👨‍👦‍👦 🧾", "error"); }
+        const newDocData = { group: group, name: name, nread: nread, tparty: name, mbamt: mbamt, ttype: "Bhaduvat", date: getCurrentDateString()};
+        await addDoc(tranCol, newDocData);
+        showDialog("ledger saved successfully. 🧾", "success"); 
         clear();
-        window.currentDocId = null; 
     };
-    window.viewProdLed = async function (type) {
+    
+    window.saveMvparty = async function () {
+        name = document.getElementById("mvpartyname").value.trim();
+        mvamt = document.getElementById("mvamt").value.trim();
+        if (!name || !mvamt) { return showDialog("Name, Monthly Vyaj Amount Required. 👨‍👨‍👦‍👦 🧾", "error"); }
+        const newDocData = { group: "MV Party", name: name, mvamt: mvamt, ttype: "MV Party", date: getCurrentDateString()};
+        await addDoc(tranCol, newDocData);
+        showDialog("ledger saved successfully. 🧾", "success"); 
+        clear();
+    };
+    
+    window.saveQvparty = async function () {
+        name = document.getElementById("qvpartyname").value.trim();
+        qvamt = document.getElementById("qvamt").value.trim();
+        if (!name || !qvamt) { return showDialog("Name, Quarterly Vyaj Amount Required. 👨‍👨‍👦‍👦 🧾", "error"); }
+        const newDocData = { group: "QV Party", name: name, qvamt: qvamt, ttype: "QV Party", date: getCurrentDateString()};
+        await addDoc(tranCol, newDocData);
+        showDialog("ledger saved successfully. 🧾", "success"); 
+        clear();
+    };
+    
+    window.viewLedger = async function (type) {
         const snapshot = await getDocs(tranCol);
         const rows = [];
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
-            const grp = (data.grp || "").trim();
+            const group = (data.group || "").trim();
             const name = (data.name || "").trim();
-
-            if (!grp || !name) return;
-            if (type === "ledger" && grp !== "Sproducts" && grp !== "Pproducts") { 
-                rows.push({ id: docSnap.id, grp: grp, name: name }); 
-            } 
-            else if (type === "product" && (grp === "Sproducts" || grp === "Pproducts")) { 
-                rows.push({ id: docSnap.id, grp: grp, name: name }); 
-            } 
+            if (type === "ledger") { if (group !== "" && name !== "") { rows.push({ group: group, name: name }); } }
         });
-
         const columns = [ 
-            { title: "Group", field: "grp" }, 
+            { title: "Group", field: "group" }, 
             { title: "Name", field: "name" } 
         ];
         createEditableTable(rows, columns, false, false, false);
@@ -861,19 +687,19 @@
             const month = jsDate.toLocaleString('default', { month: 'short' });
             if (!monthlyData[month]) {
                  monthlyData[month] = { 
-                    sales: 0, purchase: 0, expense: 0 
+                    bhadu: 0, vyaj: 0
                 }; 
             }
 
             const ttype = (data.ttype || "").trim().toLowerCase();
-            if (ttype === "sales") { monthlyData[month].sales += data.amt || 0; } 
-            if (ttype === "purchase") { monthlyData[month].purchase += data.amt || 0; } 
+            if (ttype === "bhadu") { monthlyData[month].bhadu += data.amount || 0; } 
+            if (ttype === "vyaj") { monthlyData[month].vyaj += data.amount || 0; } 
         });
 
         const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const labels = Object.keys(monthlyData).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-        const sales = labels.map(m => monthlyData[m].sales);
-        const purchase = labels.map(m => monthlyData[m].purchase);
+        const sales = labels.map(m => monthlyData[m].bhadu);
+        const purchase = labels.map(m => monthlyData[m].vyaj);
 
         if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
 
@@ -881,8 +707,8 @@
             type: 'bar',
             data: { labels,
                     datasets: [
-                        { label: "Sales", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" },
-                        { label: "Purchase", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } 
+                        { label: "Bhadu", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" },
+                        { label: "Vyaj", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } 
                     ] 
             }, 
             options: { 
@@ -903,6 +729,203 @@
         e.preventDefault(); 
         e.returnValue = ""; 
     });
+
+    async function fetchCustomers(groupId) {
+        console.log(groupId);
+        const colRef = collection(db, "gopal");
+        const qNames = query(colRef, where("group", "==", groupId));
+        const snapshotNames = await getDocs(qNames);
+        const namesSet = new Set();
+        snapshotNames.forEach(docSnap => {
+            const data = docSnap.data();
+            if (data.name) { namesSet.add(data.name.trim()); }
+        });
+        const names = Array.from(namesSet);
+        if (names.length === 0) return [];
+        const customers = [];
+        for (const name of names) {
+            const qTparty = query(colRef, where("tparty", "==", name));
+            const snapshotTparty = await getDocs(qTparty);
+            let latestDoc = null;
+            let latestDate = new Date(0);
+            snapshotTparty.forEach(docSnap => {
+                const data = docSnap.data();
+                if (data.date) {
+                    const docDate = new Date(data.date);
+                    if (docDate > latestDate) {
+                        latestDate = docDate;
+                        latestDoc = data;
+                    }
+                }
+            });
+            const oldReading = latestDoc && latestDoc.nread ? latestDoc.nread : 0;
+            customers.push({
+                name,
+                oldReading,
+                newReading: '',
+                amount: '',
+            });
+        }
+        return customers;
+    };
+
+    window.renderTable = async function () {
+        const tbody = document.getElementById("metersTableBody");
+        tbody.innerHTML = "";
+        meters.forEach((meter, i) => {
+            tbody.insertAdjacentHTML("beforeend", `
+                <tr>
+                    <td>${meter.name}</td>
+                    <td>${meter.oldReading}</td>
+                    <td>
+                    <input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${i}" class="newReadingInput bg-gray-800 text-right" />
+                    </td>
+                    <td class="consumption">-</td>
+                    <td class="adjustedUnits">-</td>
+                    <td>
+                    <input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${i}" class="amountInput bg-gray-800 text-right" />
+                    </td>
+                </tr>
+            `);
+        });
+    };
+
+    window.calculate = function () {
+        const newReadingInputs = document.querySelectorAll(".newReadingInput");
+        const amountInputs = document.querySelectorAll(".amountInput");
+        const mainMeterName = `Main ${groupId}`;
+        const mainIndex = meters.findIndex(m => m.name === mainMeterName);
+        if (mainIndex === -1) { return alert(`Main meter for group ${groupId} not found!`); }
+
+        let mainNewReading = parseFloat(newReadingInputs[mainIndex].value);
+        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { return alert(`Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`); }
+        meters[mainIndex].newReading = mainNewReading;
+        meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
+
+        let mainAmount = parseFloat(amountInputs[mainIndex].value);
+        if (isNaN(mainAmount) || mainAmount <= 0) { return alert("Please enter valid Main Meter Amount > 0"); }
+        meters[mainIndex].amount = mainAmount;
+        for (let i = 0; i < meters.length; i++) {
+            if (i === mainIndex) continue;
+            let newRead = parseFloat(newReadingInputs[i].value);
+            if (isNaN(newRead) || newRead < meters[i].oldReading) { return alert(`New reading for customer "${meters[i].name}" must be >= old reading (${meters[i].oldReading})`); }
+            meters[i].newReading = newRead;
+            meters[i].consumption = newRead - meters[i].oldReading;
+        }
+
+        if (meters[mainIndex].consumption === 0) { return alert("Main Meter consumption cannot be zero!"); }
+        const totalCustomerConsumption = meters.reduce((sum, m, idx) => idx !== mainIndex ? sum + m.consumption : sum, 0);
+        const diff = meters[mainIndex].consumption - totalCustomerConsumption;
+        meters.forEach((meter, idx) => {
+            if (idx === mainIndex) { meter.adjustedUnits = meter.consumption; } 
+            else {
+                const shareDiff = (meter.consumption / totalCustomerConsumption) * diff;
+                meter.adjustedUnits = meter.consumption + shareDiff;
+                meter.amount = (meter.adjustedUnits / meters[mainIndex].consumption) * meters[mainIndex].amount;
+            }
+        });
+
+        const tbody = document.getElementById("metersTableBody");
+        Array.from(tbody.children).forEach((row, i) => {
+            row.querySelector(".consumption").textContent = meters[i].consumption.toFixed(0);
+            row.querySelector(".adjustedUnits").textContent = meters[i].adjustedUnits.toFixed(0);
+            row.querySelector(".amountInput").value = meters[i].amount.toFixed(0);
+        });
+    };
+
+    function getCurrentDateString() {
+        const d = new Date();
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    window.saveData = async function () {
+        const newReadingInputs = document.querySelectorAll(".newReadingInput");
+        const amountInputs = document.querySelectorAll(".amountInput");
+        const batch = writeBatch(db);
+
+        for (let i = 0; i < meters.length; i++) {
+            const meter = meters[i];
+            const nread = parseFloat(newReadingInputs[i].value);
+            const amount = parseFloat(amountInputs[i].value);
+            const consumption = nread - meter.oldReading;
+
+            if (isNaN(nread) || nread < meter.oldReading || isNaN(amount) || amount < 0) {
+                return alert("Enter proper amount and new readings");
+            }
+
+            const newDocRef = doc(collection(db, "gopal"));
+            batch.set(newDocRef, {
+                ttype: "Ebill",
+                tparty: meter.name,
+                nread,
+                cons: consumption,
+                amount,
+                date: getCurrentDateString(),
+            });
+        }
+
+        await batch.commit();
+        alert("Data saved successfully!");
+        meters = await fetchCustomers(groupId);  // use global groupId
+        renderTable();
+    };
+
+    window.showMtable = async function (grpId) {
+        groupId = grpId;
+        meters = await fetchCustomers(groupId);
+        renderTable();
+        showCont('mtable')
+    }
+    
+    window.saveHavala = async function (type) {
+        const confirmSave = confirm(`Are you sure you want to save ${type.toUpperCase()} havala?`);
+        if (!confirmSave) return;
+        const fieldMap = {
+            mbamt: "mbamt",
+            mvamt: "mvamt",
+            qvamt: "qvamt"
+        };
+        const ttypeMap = {
+            mbamt: "Bhadu",
+            mvamt: "Vyaj",
+            qvamt: "Vyaj"
+        };
+        const amtField = fieldMap[type];
+        const ttypeValue = ttypeMap[type];
+        const gpzipCollectionRef = collection(db, 'gopal');
+        const q = query(gpzipCollectionRef, where(amtField, '!=', null));
+        const gpzipSnapshot = await getDocs(q);
+        const fetchedItems = [];
+        gpzipSnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            if (
+                data.tparty !== undefined &&
+                (typeof data[amtField] !== 'string' || data[amtField] !== '')
+            ) {
+                fetchedItems.push({
+                    party: data.tparty,
+                    amount: data[amtField],
+                });
+            }
+        });
+        const batch = writeBatch(db);
+        for (const item of fetchedItems) {
+            const newDoc = {
+                ttype: ttypeValue,
+                tparty: item.party,
+                amount: item.amount,
+                date: new Date().toISOString().split('T')[0],
+            };
+            const newDocRef = doc(collection(db, 'gopal'));
+            batch.set(newDocRef, newDoc);
+        }
+        await batch.commit();
+        alert(`${type.toUpperCase()} entries added.`);
+    };
+
 </script>
 </body>
 </html>
