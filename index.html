@@ -24,22 +24,23 @@
 <header id="topbar" class="w-full bg-gray-800 text-green-500 px-5 py-2 cursor-pointer hidden text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
 <nav id="top-nav" class="fixed top-[-1px] left-0 h-[576px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 cursor-pointer menu-link" id="close">Home 🏚️</a></li>
-        <li><a class="block hover:bg-yellow-600 px-2 py-3 bg-indigo-800 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('bhaduvat')">Bhaduvat 🧑‍🚒</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 🧛</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showMtable('116')">Ele 116 ☠️</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showMtable('119')">Ele 119 🥶</a></li>
-        <li><a class="block hover:bg-red-600     px-2 py-3 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction 📝</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook 📖</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger('ledger')">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
-        <li><a class="block hover:bg-lime-600    px-2 py-3 bg-lime-800 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-800 cursor-pointer menu-link" id="close">Home 🏚️</a></li>
+        <li><a class="block hover:bg-yellow-600 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('bhaduvat')">Bhaduvat 🧑</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 👮</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showMtable('116')">Ele 116 ☠️</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showMtable('119')">Ele 119 🥶</a></li>
+        <li><a class="block hover:bg-red-600     px-2 py-3 bg-red-800 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction ✍</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook 📖</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="viewLedger('ledger')">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('deleteCont')">Delete Party 📢⛔</a></li>
+        <li><a class="block hover:bg-lime-600    px-2 py-3 bg-lime-600 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
     </ul>
 </nav>
 
@@ -67,6 +68,11 @@
     <label class="label">Party Name ↓↓</label><input class="input-box" id="qvpartyname" type="text" autocomplete="off"/>
     <label class="label">Quarterly Vyaj ↓↓</label><input class="input-box" id="qvamt" type="number" autocomplete="off"/>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveQvparty()">👉Save👈</button>
+</div>
+
+<div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <label class="label">Party Name ↓↓</label><input class="input-box" id="deleteparty" type="text" autocomplete="off"/>
+    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
@@ -142,6 +148,7 @@
             attachDropdown(document.getElementById("plotgroup"), window.plot_list);
             attachDropdown(document.getElementById("txtfrom"), window.names_list); 
             attachDropdown(document.getElementById("txtto"), window.names_list); 
+            attachDropdown(document.getElementById("deleteparty"), window.names_list); 
         } 
         else { 
             document.getElementById("topbar").classList.add("hidden");
@@ -211,13 +218,13 @@
             if (typeof onClose === 'function') { onClose(); }
         };
     };
-    window.closeDialog = async function () { document.getElementById('errorBox').classList.add('hidden'); };
+    window.closeDialog = function () { document.getElementById('errorBox').classList.add('hidden'); };
     window.clear = function () {
         document.querySelectorAll("input").forEach(el => el.value = "");
     };
     window.showCont = function (...idToShow) {
         clear();
-        const allIds = ['loginContainer', 'bhaduvat', 'mvparty', 'qvparty', 'transaction', 'tableCont', 'dashboard', 'mtable'];
+        const allIds = ['loginContainer', 'bhaduvat', 'mvparty', 'qvparty', 'deleteCont', 'transaction', 'tableCont', 'dashboard', 'mtable'];
         allIds.forEach(id => {
             const el = document.getElementById(id);
             if (el) {
@@ -239,7 +246,7 @@
         const nameSet = new Set();
         snapshot.forEach((doc) => {
             const data = doc.data();
-            const name = (data.name || "").trim();
+            const name = (data.tparty || "").trim();
             if (name.length > 0) {nameSet.add(name);}
         });
         window.plot_list = ["116", "119"];
@@ -254,7 +261,7 @@
             wrapper.appendChild(inputElement);
         }
         let dropdown = document.createElement("ul");
-        dropdown.className = "absolute z-50 w-full max-h-100 overflow-y-auto bg-gray-800 border border-green-600 rounded-md hidden";
+        dropdown.className = "absolute z-50 max-h-100 w-full overflow-y-auto bg-gray-800 border border-green-600 rounded-md hidden";
         wrapper.appendChild(dropdown);
 
         function filterList() {
@@ -474,7 +481,7 @@
         nread = document.getElementById("meterreading").value.trim();
         mbamt = document.getElementById("mbamt").value.trim();
         if (!group || !name || !nread || !mbamt) { return showDialog("Group, Name, Meter Reading\nMonthly Bhada Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: group, name: name, nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: group, nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
         await addDoc(tranCol, newDocData);
         showDialog("Bhaduvat saved successfully.", "success"); 
         clear();
@@ -484,7 +491,7 @@
         name = document.getElementById("mvpartyname").value.trim();
         mvamt = document.getElementById("mvamt").value.trim();
         if (!name || !mvamt) { return showDialog("Name, Monthly Vyaj Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: "MV Party", name: name, mvamt: Number(mvamt), ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: "MV Party", tparty: name, mvamt: Number(mvamt), ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
         await addDoc(tranCol, newDocData);
         showDialog("MV Party saved successfully.", "success"); 
         clear();
@@ -494,13 +501,13 @@
         name = document.getElementById("qvpartyname").value.trim();
         qvamt = document.getElementById("qvamt").value.trim();
         if (!name || !qvamt) { return showDialog("Name, Quarterly Vyaj Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: "QV Party", name: name, qvamt: Number(qvamt), ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: "QV Party", tparty: name, qvamt: Number(qvamt), ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
         await addDoc(tranCol, newDocData);
         showDialog("QV Party saved successfully.", "success"); 
         clear();
     };
     window.saveHavala = async function (type) {
-        const confirmSave = confirm(`Are you sure you want to save ${type.toUpperCase()} havala?`);
+        const confirmSave = confirm(`Are you sure you want to save ${type.toUpperCase()} Havala?`);
         if (!confirmSave) return;
         const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
         const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
@@ -512,15 +519,8 @@
         const fetchedItems = [];
         gpzipSnapshot.forEach((docSnap) => {
             const data = docSnap.data();
-            if (
-                data.tparty !== undefined &&
-                (typeof data[amtField] !== 'string' || data[amtField] !== '')
-            ) {
-                fetchedItems.push({
-                    party: data.tparty,
-                    amount: data[amtField],
-                });
-            }
+            if ( data.tparty !== undefined && (typeof data[amtField] !== 'string' || data[amtField] !== '') ) 
+            { fetchedItems.push({ party: data.tparty, amount: data[amtField], }); }
         });
         const batch = writeBatch(db);
         for (const item of fetchedItems) {
@@ -528,7 +528,6 @@
                 ttype: ttypeValue,
                 tparty: item.party,
                 fparty: "Gpzip",
-                name: item.party,
                 amount: Number(item.amount),
                 date: new Date().toISOString().split('T')[0],
             };
@@ -536,7 +535,25 @@
             batch.set(newDocRef, newDoc);
         }
         await batch.commit();
-        showDialog(`${type.toUpperCase()} entries added.`, "success");
+        showDialog(`${type.toUpperCase()} Havala Added.`, "success");
+    };
+    window.deleteParty = async function () {
+        const name = document.getElementById("deleteparty").value.trim();
+        if (!name) {  return showDialog("Please enter a name", "error"); }
+        if (!confirm('Are you sure you want to Delete?')) return;
+        let deleted = 0;
+        const fDocs = await getDocs(query(tranCol, where("fparty", "==", name)));
+        for (const docSnap of fDocs.docs) {
+            await deleteDoc(docSnap.ref);
+            deleted++;
+        }
+        const tDocs = await getDocs(query(tranCol, where("tparty", "==", name)));
+        for (const docSnap of tDocs.docs) {
+            await deleteDoc(docSnap.ref);
+            deleted++;
+        }
+        showDialog(`Deleted ${deleted} document(s).`, "success");
+        clear();
     };
 
     window.viewLedger = async function (type) {
@@ -545,7 +562,7 @@
         snapshot.forEach((docSnap) => {
             const data = docSnap.data();
             const group = (data.group || "").trim();
-            const name = (data.name || "").trim();
+            const name = (data.tparty || "").trim();
             if (type === "ledger") { if (group !== "" && name !== "") { rows.push({ group: group, name: name }); } }
         });
         const columns = [ 
@@ -578,15 +595,16 @@
         createEditableTable(rows, columns, false, false, false);
         showCont("tableCont");
     };
-        
-    async function fetchCustomers(groupId) {
+    
+    function getInputByIdx(cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
+    window.fetchCustomers = async function (groupId) {
         const colRef = collection(db, "gopal");
         const qNames = query(colRef, where("group", "==", groupId));
         const snapshotNames = await getDocs(qNames);
         const namesSet = new Set();
         snapshotNames.forEach(docSnap => {
             const data = docSnap.data();
-            if (data.name) { namesSet.add(data.name.trim()); }
+            if (data.tparty) { namesSet.add(data.tparty.trim()); }
         });
         const names = Array.from(namesSet);
         if (names.length === 0) return [];
@@ -614,89 +632,106 @@
     window.renderTable = async function () {
         const tbody = document.getElementById("metersTableBody");
         tbody.innerHTML = "";
-        const sortedMeters = [...meters].sort((a, b) => {
-            const priorityNames = ["Main 116", "Main 119"];
-            const aPriority = priorityNames.includes(a.name) ? 0 : 1;
-            const bPriority = priorityNames.includes(b.name) ? 0 : 1;
-            if (aPriority !== bPriority) { return aPriority - bPriority; }
-            return a.name.localeCompare(b.name);
-        });
-        sortedMeters.forEach((meter, i) => {
+        const mainMeterName = `Main ${groupId}`;
+        const sortedIndices = meters
+            .map((_, idx) => idx)
+            .sort((ai, bi) => {
+                const a = meters[ai], b = meters[bi];
+                const aPriority = (a.name === mainMeterName) ? 0 : 1;
+                const bPriority = (b.name === mainMeterName) ? 0 : 1;
+                if (aPriority !== bPriority) return aPriority - bPriority;
+                return a.name.localeCompare(b.name);
+            });
+        sortedIndices.forEach((idx) => {
+            const meter = meters[idx];
             tbody.insertAdjacentHTML("beforeend", `
-                <tr>
+                <tr data-index="${idx}">
                     <td>${meter.name}</td>
                     <td>${meter.oldReading}</td>
-                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${i}" class="newReadingInput w-[130px] text-right bg-gray-900" /></td>
+                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${idx}" class="newReadingInput w-[130px] text-right bg-gray-900" /></td>
                     <td class="consumption">-</td>
                     <td class="adjustedUnits">-</td>
-                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${i}" class="amountInput w-[100px] text-right bg-gray-900" /></td>
+                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${idx}" class="amountInput w-[100px] text-right bg-gray-900" /></td>
                 </tr>
             `);
         });
     };
     window.calculate = function () {
-        const newReadingInputs = document.querySelectorAll(".newReadingInput");
-        const amountInputs = document.querySelectorAll(".amountInput");
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
         if (mainIndex === -1) { return showDialog(`Main meter for group ${groupId} not found!`, "error"); }
 
-        let mainNewReading = parseFloat(newReadingInputs[mainIndex].value);
-        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { return showDialog(`Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`, "error"); }
+        const mainNewReadingInput = getInputByIdx("newReadingInput", mainIndex);
+        const mainAmountInput     = getInputByIdx("amountInput", mainIndex);
+        if (!mainNewReadingInput || !mainAmountInput) { return showDialog("Main meter row not found in table.", "error"); }
+
+        let mainNewReading = parseFloat(mainNewReadingInput.value);
+        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { return showDialog( `Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`, "error" ); }
         meters[mainIndex].newReading = mainNewReading;
         meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
 
-        let mainAmount = parseFloat(amountInputs[mainIndex].value);
+        let mainAmount = parseFloat(mainAmountInput.value);
         if (isNaN(mainAmount) || mainAmount <= 0) { return showDialog("Please enter valid Main Meter Amount > 0", "error"); }
         meters[mainIndex].amount = mainAmount;
+
         for (let i = 0; i < meters.length; i++) {
             if (i === mainIndex) continue;
-            let newRead = parseFloat(newReadingInputs[i].value);
-            if (isNaN(newRead) || newRead < meters[i].oldReading) { return showDialog(`New reading for customer "${meters[i].name}" must be >= old reading (${meters[i].oldReading})`, "error"); }
+            const input = getInputByIdx("newReadingInput", i);
+            if (!input) return showDialog(`Row for "${meters[i].name}" not found.`, "error");
+
+            let newRead = parseFloat(input.value);
+            if (isNaN(newRead) || newRead < meters[i].oldReading) { return showDialog( `New reading for customer "${meters[i].name}" must be >= old reading (${meters[i].oldReading})`, "error" ); }
             meters[i].newReading = newRead;
             meters[i].consumption = newRead - meters[i].oldReading;
         }
+
         if (meters[mainIndex].consumption === 0) { return showDialog("Main Meter consumption cannot be zero!", "error"); }
-        const totalCustomerConsumption = meters.reduce((sum, m, idx) => idx !== mainIndex ? sum + m.consumption : sum, 0);
+        const totalCustomerConsumption = meters.reduce((sum, m, idx) => { return idx !== mainIndex ? sum + m.consumption : sum; }, 0);
         const diff = meters[mainIndex].consumption - totalCustomerConsumption;
         meters.forEach((meter, idx) => {
-            if (idx === mainIndex) { meter.adjustedUnits = meter.consumption; } 
-            else {
+            if (idx === mainIndex) {
+                meter.adjustedUnits = meter.consumption;
+            } else {
                 const shareDiff = (meter.consumption / totalCustomerConsumption) * diff;
                 meter.adjustedUnits = meter.consumption + shareDiff;
                 meter.amount = (meter.adjustedUnits / meters[mainIndex].consumption) * meters[mainIndex].amount;
             }
         });
-        const tbody = document.getElementById("metersTableBody");
-        Array.from(tbody.children).forEach((row, i) => {
-            row.querySelector(".consumption").textContent = meters[i].consumption.toFixed(0);
-            row.querySelector(".adjustedUnits").textContent = meters[i].adjustedUnits.toFixed(0);
-            row.querySelector(".amountInput").value = meters[i].amount.toFixed(0);
+        meters.forEach((m, idx) => {
+            const row = document.querySelector(`#metersTableBody tr[data-index="${idx}"]`);
+            if (!row) return;
+            row.querySelector(".consumption").textContent = m.consumption.toFixed(0);
+            row.querySelector(".adjustedUnits").textContent = m.adjustedUnits.toFixed(0);
+            const amtInput = row.querySelector(".amountInput");
+            if (amtInput) amtInput.value = m.amount.toFixed(0);
         });
     };
     window.saveData = async function () {
-        const newReadingInputs = document.querySelectorAll(".newReadingInput");
-        const amountInputs = document.querySelectorAll(".amountInput");
         const batch = writeBatch(db);
         for (let i = 0; i < meters.length; i++) {
             const meter = meters[i];
-            const nread = parseFloat(newReadingInputs[i].value);
-            const amount = parseFloat(amountInputs[i].value);
+            const nreadInput = getInputByIdx("newReadingInput", i);
+            const amountInput = getInputByIdx("amountInput", i);
+            if (!nreadInput || !amountInput) { return showDialog(`Inputs missing for "${meter.name}".`, "error"); }
+
+            const nread = parseFloat(nreadInput.value);
+            const amount = parseFloat(amountInput.value);
             const consumption = nread - meter.oldReading;
             if (isNaN(nread) || nread < meter.oldReading || isNaN(amount) || amount < 0) { return showDialog("Enter proper amount and new readings", "error"); }
+
             const newDocRef = doc(collection(db, "gopal"));
             batch.set(newDocRef, {
-                ttype: "Ebill",
-                tparty: meter.name,
-                fparty: "Gpzip",
-                nread,
-                cons: consumption,
-                amount,
-                date: new Date().toISOString().split('T')[0],
+            ttype: "Ebill",
+            tparty: meter.name,
+            fparty: "Gpzip",
+            nread,
+            cons: consumption,
+            amount,
+            date: new Date().toISOString().split('T')[0],
             });
         }
         await batch.commit();
-        showDialog("Data saved successfully.", "success"); 
+        showDialog("Data saved successfully.", "success");
     };
     window.showMtable = async function (grpId) {
         groupId = grpId;
