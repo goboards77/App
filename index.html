@@ -14,32 +14,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
     <style>
-        table { border-collapse: collapse; width: 100%; max-width: 900px; }
-        th, td { border: 1px solid #ccc; text-align: right; }
+        table { border-collapse: collapse; table-layout: auto; max-width: 900px; }
+        th, td { border: 1px solid #ccc; text-align: right; white-space: nowrap; }
         th:first-child { text-align: left; }
         td:first-child { text-align: left; }
     </style>
 </head>
 <body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
-<header id="topbar" class="w-full bg-gray-800 text-green-500 px-5 py-2 cursor-pointer hidden text-[20px]">।।श्री राम।। 🪶🦚राधे राधे𓃔🦚</header>
-<nav id="top-nav" class="fixed top-[-1px] left-0 h-[580px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
+<header id="topbar" class="w-full bg-gray-800 text-green-500 px-5 py-2 cursor-pointer hidden text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
+<nav id="top-nav" class="fixed top-[-1px] left-0 h-[576px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" id="close">Home</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('bhaduvat')">Bhaduvat</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('qvparty')">Querterly Vparty</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showMtable('116')">Ele 116</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showMtable('119')">Ele 119</a></li>
-        <li><a class="block hover:bg-red-600     px-2 py-3 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mbamt')">Monthly Bhada Havala</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger('ledger')">Ledgers & Groups</a></li>
-        <li><a class="block hover:bg-lime-600    px-2 py-3 cursor-pointer menu-link" onclick="window.logout()">Logout</a></li>
+        <li><a class="block hover:bg-indigo-600 px-2 py-3 cursor-pointer menu-link" id="close">Home 🏚️</a></li>
+        <li><a class="block hover:bg-yellow-600 px-2 py-3 bg-indigo-800 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('bhaduvat')">Bhaduvat 🧑‍🚒</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 🧛</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showMtable('116')">Ele 116 ☠️</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showMtable('119')">Ele 119 🥶</a></li>
+        <li><a class="block hover:bg-red-600     px-2 py-3 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction 📝</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook 📖</a></li>
+        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger('ledger')">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
+        <li><a class="block hover:bg-lime-600    px-2 py-3 bg-lime-800 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
     </ul>
 </nav>
 
@@ -70,6 +70,7 @@
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <label class="label">Transaction Type ↓↓</label><input class="input-box" id="ttype" type="text"/>
     <label class="label">Date ↓↓</label><input class="date-input input-box" id="date" type="text"/>
     <label class="label">From ↓↓</label><input class="input-box" id="txtfrom" type="text" autocomplete="off">
     <label class="label">To ↓↓</label><input class="input-box" id="txtto" type="text" autocomplete="off">
@@ -81,22 +82,14 @@
     </div>
 </div>
 
-<div id="tableCont-profitLoss">
-    <div id="tableCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
-        <div class="flex items-center gap-1 mb-1 flex-nowrap">
-            <button class="bg-green-800 px-2 h-10 rounded-lg" id="excelBtn">𝄜XL</button>
-            <button class="bg-red-800 px-2 h-10 rounded-lg" id="pdfBtn">PDF</button>
-            <button class="bg-blue-800 px-3 h-10 rounded-lg" id="printBtn">🖨️</button>
-            <input class="w-full px-2 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
-        </div>
-        <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
+<div id="tableCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
+    <div class="flex items-center gap-1 mb-1 flex-nowrap">
+        <button class="bg-green-800 px-2 h-10 rounded-lg" id="excelBtn">𝄜XL</button>
+        <button class="bg-red-800 px-2 h-10 rounded-lg" id="pdfBtn">PDF</button>
+        <button class="bg-blue-800 px-3 h-10 rounded-lg" id="printBtn">🖨️</button>
+        <input class="w-96 px-2 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
     </div>
-    <div id="profitLoss" class="hidden w-full ml-1 rounded-b-2xl bg-gray-900">
-        <div class="flex items-center gap-1 flex-nowrap">
-            <button class="mb-5 w-[120px] h-10 bg-green-700 hover:bg-green-600 rounded-lg" onclick="profit_loss()">👉View👈</button>
-            <input class="w-full mb-5 px-2 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="clostk" type="number" placeholder="Closing Stock"/>
-        </div>
-    </div>
+    <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
 <div id="errorBox" class="hidden fixed top-0 left-0 w-full max-w-md bg-gray-900 shadow-lg rounded-lg text-left z-50">
@@ -109,9 +102,9 @@
     <h2>Dashboard</h2><canvas id="dashboardChart"></canvas>
 </div>
 
-<div id="mtable" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
+<div id="mtable" class="hidden w-full ml-1 mt-1 rounded-b-2xl bg-gray-900">
     <table id="metersTable">
-        <thead><tr><th>Name</th><th>Old Reading</th><th>New Reading</th><th>Consumption</th><th>AdjUnits</th><th>Amount</th></tr></thead>
+        <thead><tr><th>Name</th><th>Old Reading</th><th>New Reading ↓↓</th><th>Consumption</th><th>AdjUnits</th><th>Amount ↓↓</th></tr></thead>
         <tbody id="metersTableBody"></tbody>
     </table>
     <button id="calculateBtn" class="mx-auto mt-5 mb-5 px-2 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg" onclick="calculate()">Calculate</button>
@@ -224,7 +217,7 @@
     };
     window.showCont = function (...idToShow) {
         clear();
-        const allIds = ['loginContainer', 'bhaduvat', 'mvparty', 'qvparty', 'transaction', 'tableCont', 'profitLoss', 'dashboard', 'mtable'];
+        const allIds = ['loginContainer', 'bhaduvat', 'mvparty', 'qvparty', 'transaction', 'tableCont', 'dashboard', 'mtable'];
         allIds.forEach(id => {
             const el = document.getElementById(id);
             if (el) {
@@ -412,6 +405,7 @@
         document.getElementById("tableCont").classList.add("hidden");
         document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
         showCont('transaction');
+        document.getElementById("ttype").value = rowData.ttype || "";
         const dateInput = document.getElementById("date");
         if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
         document.getElementById("txtfrom").value = rowData.fparty || "";
@@ -449,6 +443,7 @@
         showCont("tableCont"); 
     };
     window.saveTransaction = async function () {
+        const ttype = document.getElementById("ttype").value.trim();
         const odate = document.getElementById("date");
         const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
         const fparty = document.getElementById("txtfrom").value.trim();
@@ -456,8 +451,8 @@
         const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
         const nar = document.getElementById("nar").value.trim();
         
-        if (!date || !fparty || !tparty || isNaN(amount) || amount <= 0) { return showDialog("Please fill all required fields properly\nAmount must be a number > 0", "error"); }        
-        const tranData = {date, fparty, tparty, amount };
+        if (!ttype || !date || !fparty || !tparty || isNaN(amount) || amount <= 0) { return showDialog("Please fill all required fields properly\nAmount must be a number > 0", "error"); }        
+        const tranData = {ttype, date, fparty, tparty, amount };
         if (nar) tranData.nar = nar;
         if (window.currentDocId) {
             const docRef = doc(db, "gopal", window.currentDocId);
@@ -479,7 +474,7 @@
         nread = document.getElementById("meterreading").value.trim();
         mbamt = document.getElementById("mbamt").value.trim();
         if (!group || !name || !nread || !mbamt) { return showDialog("Group, Name, Meter Reading\nMonthly Bhada Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: group, name: name, nread: nread, tparty: name, mbamt: mbamt, ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: group, name: name, nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
         await addDoc(tranCol, newDocData);
         showDialog("Bhaduvat saved successfully.", "success"); 
         clear();
@@ -489,7 +484,7 @@
         name = document.getElementById("mvpartyname").value.trim();
         mvamt = document.getElementById("mvamt").value.trim();
         if (!name || !mvamt) { return showDialog("Name, Monthly Vyaj Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: "MV Party", name: name, mvamt: mvamt, ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: "MV Party", name: name, mvamt: Number(mvamt), ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
         await addDoc(tranCol, newDocData);
         showDialog("MV Party saved successfully.", "success"); 
         clear();
@@ -499,7 +494,7 @@
         name = document.getElementById("qvpartyname").value.trim();
         qvamt = document.getElementById("qvamt").value.trim();
         if (!name || !qvamt) { return showDialog("Name, Quarterly Vyaj Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: "QV Party", name: name, qvamt: qvamt, ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: "QV Party", name: name, qvamt: Number(qvamt), ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
         await addDoc(tranCol, newDocData);
         showDialog("QV Party saved successfully.", "success"); 
         clear();
@@ -534,7 +529,7 @@
                 tparty: item.party,
                 fparty: "Gpzip",
                 name: item.party,
-                amount: item.amount,
+                amount: Number(item.amount),
                 date: new Date().toISOString().split('T')[0],
             };
             const newDocRef = doc(collection(db, 'gopal'));
@@ -577,9 +572,9 @@
         });
         const rows = [];
         for (const [party, amount] of Object.entries(balances)) {
-            if (amount) { rows.push({ party: party, amount: Math.abs(amount).toFixed(0) }); }
+            if (amount) { rows.push({ party: party, amount: amount.toFixed(0) }); }
         }
-        const columns = [ { title: "Party", field: "party" }, { title: "Amount", field: "amount" } ];
+        const columns = [ { title: "Party", field: "party" }, { title: "Amount", field: "amount", hozAlign: "right" } ];
         createEditableTable(rows, columns, false, false, false);
         showCont("tableCont");
     };
@@ -619,15 +614,22 @@
     window.renderTable = async function () {
         const tbody = document.getElementById("metersTableBody");
         tbody.innerHTML = "";
-        meters.forEach((meter, i) => {
+        const sortedMeters = [...meters].sort((a, b) => {
+            const priorityNames = ["Main 116", "Main 119"];
+            const aPriority = priorityNames.includes(a.name) ? 0 : 1;
+            const bPriority = priorityNames.includes(b.name) ? 0 : 1;
+            if (aPriority !== bPriority) { return aPriority - bPriority; }
+            return a.name.localeCompare(b.name);
+        });
+        sortedMeters.forEach((meter, i) => {
             tbody.insertAdjacentHTML("beforeend", `
                 <tr>
                     <td>${meter.name}</td>
                     <td>${meter.oldReading}</td>
-                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${i}" class="newReadingInput bg-gray-800 text-right" /></td>
+                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${i}" class="newReadingInput w-[130px] text-right bg-gray-900" /></td>
                     <td class="consumption">-</td>
                     <td class="adjustedUnits">-</td>
-                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${i}" class="amountInput bg-gray-800 text-right" /></td>
+                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${i}" class="amountInput w-[100px] text-right bg-gray-900" /></td>
                 </tr>
             `);
         });
