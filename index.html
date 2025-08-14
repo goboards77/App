@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -6,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
@@ -21,37 +21,36 @@
     </style>
 </head>
 <body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
-<header id="topbar" class="w-full bg-gray-800 text-green-500 px-5 py-2 cursor-pointer hidden text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
+<header id="topbar" class="w-full bg-gray-800 hover:bg-blue-800 text-green-500 px-5 py-2 cursor-pointer hidden text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
 <nav id="top-nav" class="fixed top-[-1px] left-0 h-[576px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-indigo-600 px-2 py-3 bg-indigo-800 cursor-pointer menu-link" id="close">Home 🏚️</a></li>
-        <li><a class="block hover:bg-yellow-600 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('bhaduvat')">Bhaduvat 🧑</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 👮</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="showMtable('116')">Ele 116 ☠️</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showMtable('119')">Ele 119 🥶</a></li>
-        <li><a class="block hover:bg-red-600     px-2 py-3 bg-red-800 cursor-pointer menu-link" onclick="insertTran(true, true, false, false)">Update Transaction ✍</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="insertTran(false, false, false, false)">DayBook 📖</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 bg-fuchsia-800 cursor-pointer menu-link" onclick="viewLedger('ledger')">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
-        <li><a class="block hover:bg-fuchsia-600 px-2 py-3 cursor-pointer menu-link" onclick="showCont('deleteCont')">Delete Party 📢⛔</a></li>
-        <li><a class="block hover:bg-lime-600    px-2 py-3 bg-lime-600 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-lime-600" id="close">Home 🏚️</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showCont('bhaduvat')">Bhaduvat 🧑</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 👮</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showMtable(116)">Ele 116 ☠️</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showMtable(119)">Ele 119 🥶</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="insertTran(true, true, false)">DayBook 📖</a></li>
+        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showCont('deleteCont')">Delete Party 📢⛔</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
     </ul>
 </nav>
 
-<div id="loginContainer" class="hidden w-full max-w-md p-1 mt-[50px] rounded-b-2xl bg-gray-900">
+<div id="loginCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
     <label>Email</label><input class="input-box mt-10" id="loginEmail" placeholder="Email ....." type="email"><br><br>
     <label>Password</label><input class="input-box" id="loginPassword" placeholder="Password ....." type="password"><br><br>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
 <div id="bhaduvat" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Select Plot N0 ↓↓</label><input class="input-box" id="plotgroup" type="text" autocomplete="off"/>
+    <label class="label">Select Plot N0 ↓↓</label><input class="input-box" list="plot_datalist" id="plotgroup" type="text" autocomplete="off"/>
     <label class="label">Bhaduvat Name ↓↓</label><input class="input-box" id="bhaduvatname" type="text" autocomplete="off"/>
     <label class="label">Meter Reading ↓↓</label><input class="input-box" id="meterreading" type="number" autocomplete="off"/>
     <label class="label">Monthly Bhadu ↓↓</label><input class="input-box" id="mbamt" type="number" autocomplete="off"/>
@@ -71,15 +70,15 @@
 </div>
 
 <div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Party Name ↓↓</label><input class="input-box" id="deleteparty" type="text" autocomplete="off"/>
+    <label class="label">Party Name ↓↓</label><input class="input-box" list = "names_datalist" id="deleteparty" type="text" autocomplete="off"/>
     <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
     <label class="label">Transaction Type ↓↓</label><input class="input-box" id="ttype" type="text"/>
     <label class="label">Date ↓↓</label><input class="date-input input-box" id="date" type="text"/>
-    <label class="label">From ↓↓</label><input class="input-box" id="txtfrom" type="text" autocomplete="off">
-    <label class="label">To ↓↓</label><input class="input-box" id="txtto" type="text" autocomplete="off">
+    <label class="label">From ↓↓</label><input class="input-box" list = "names_datalist" id="txtfrom" type="text" autocomplete="off">
+    <label class="label">To ↓↓</label><input class="input-box" list = "names_datalist" id="txtto" type="text" autocomplete="off">
     <label class="label">Amount ↓↓</label><input class="input-box" id="amt" type="number"/>
     <label class="label">Narration ↓↓</label><input class="input-box" id="nar" type="text" autocomplete="off"/>
     <div class="flex items-center gap-1 flex-nowrap">
@@ -98,16 +97,6 @@
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
-<div id="errorBox" class="hidden fixed top-0 left-0 w-full max-w-md bg-gray-900 shadow-lg rounded-lg text-left z-50">
-    <h2 class="bg-red-800 text-white font-semibold px-4 py-4 mb-3 rounded-t-lg">⚠️ Information</h2>
-    <p id="errorMessage" class="text-left px-4 mt-5 mb-5 bg-gray-900"></p>
-    <button onclick="closeDialog()" class="w-full text-white font-semibold py-3 mt-3 bg-orange-600 hover:bg-orange-800 rounded-b-lg">Close</button>
-</div>
-
-<div id="dashboard" class="hidden w-full max-w-md ml-1">
-    <h2>Dashboard</h2><canvas id="dashboardChart"></canvas>
-</div>
-
 <div id="mtable" class="hidden w-full ml-1 mt-1 rounded-b-2xl bg-gray-900">
     <table id="metersTable">
         <thead><tr><th>Name</th><th>Old Reading</th><th>New Reading ↓↓</th><th>Consumption</th><th>AdjUnits</th><th>Amount ↓↓</th></tr></thead>
@@ -117,13 +106,17 @@
     <button id="saveBtn" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
 </div>
 
+<div id="dashboard" class="hidden w-full max-w-md ml-1"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+
+<datalist id="names_datalist"></datalist>
+<datalist id="plot_datalist"></datalist>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script type="module">
     import {initializeApp} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import {getFirestore, collection, getDocs, getDoc, doc, setDoc, deleteDoc, updateDoc, query, where, addDoc, writeBatch, deleteField} 
+    import {getFirestore, collection, getDocs, getDoc, doc, deleteDoc, updateDoc, query, where, addDoc, writeBatch, onSnapshot } 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
     const firebaseConfig = {
         apiKey: "AIzaSyDrI9vIDUePbzHrTSRCKAcJ7oCfCIrSIUI",
@@ -138,27 +131,72 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const tranCol = collection(db, "gopal");
+    window.appState = { table: null, globalTransactionsUnsubscribe: null, allTransactions: [], ledgerCache: null, receivablesCache: null, activeViewInfo: null, };
+    let initialDropdownsLoaded = false;
+    window.cleanupListener = function () {
+        if (window.appState.globalTransactionsUnsubscribe) {
+            window.appState.globalTransactionsUnsubscribe();
+            window.appState.globalTransactionsUnsubscribe = null;
+        }
+    };
+    window.initializeGlobalTable = function () { 
+        if (window.appState.table) { return; }
+        window.appState.table = new Tabulator(document.getElementById('table'), { data: [], layout: "fitDataTable", reactiveData: true, rowHeight: 40, maxHeight: "600px", columns: [], });
+        document.getElementById('excelBtn')?.addEventListener("click", () => { window.appState.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
+        document.getElementById('pdfBtn')?.addEventListener("click", () => { window.appState.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
+        document.getElementById('printBtn')?.addEventListener("click", () => { window.appState.table.print(false, true); });
+        window.bindSearch(); 
+    };
+    let dropdownCache = null, meters = [], mainMeter = null, groupId = null;
     window.currentDocId = null;
-    let mainMeter = null, meters = [], groupId = null;
     flatpickr(".date-input", { dateFormat: "d-m-Y", });
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             document.getElementById("topbar").classList.remove("hidden");
-            await loadDropdownData();
-            attachDropdown(document.getElementById("plotgroup"), window.plot_list);
-            attachDropdown(document.getElementById("txtfrom"), window.names_list); 
-            attachDropdown(document.getElementById("txtto"), window.names_list); 
-            attachDropdown(document.getElementById("deleteparty"), window.names_list); 
+            if (!window.appState.globalTransactionsUnsubscribe) {
+                const initialSnapshotPromise = new Promise(resolve => {
+                    window.appState.globalTransactionsUnsubscribe = onSnapshot(tranCol, (snapshot) => {
+                        const tempAllTransactions = [];
+                        snapshot.forEach((docSnap) => { tempAllTransactions.push({ id: docSnap.id, ...docSnap.data() }); });
+                        window.appState.allTransactions = tempAllTransactions;
+                        window.appState.ledgerCache = null;
+                        window.appState.receivablesCache = null;
+
+                        loadDropdownData();
+                        populateDatalist("names_datalist", names_list);
+                        populateDatalist("plot_datalist", plot_list);
+                        if (!initialDropdownsLoaded) { resolve(); initialDropdownsLoaded = true; } 
+                        else {
+                            if (window.appState.activeViewInfo && document.getElementById('tableCont').style.display !== 'none') {
+                                let newRows = [];
+                                switch (window.appState.activeViewInfo.type) {
+                                    case 'daybook': newRows = _processDaybookData(window.appState.allTransactions, window.appState.activeViewInfo.params); break;
+                                    case 'ledger': 
+                                        window.appState.ledgerCache = _processLedgerData(window.appState.allTransactions, window.appState.activeViewInfo.params);
+                                        newRows = window.appState.ledgerCache;
+                                        break;
+                                    case 'receivables':
+                                        window.appState.receivablesCache = _processReceivablesData(window.appState.allTransactions, window.appState.activeViewInfo.params);
+                                        newRows = window.appState.receivablesCache;
+                                        break;
+                                }
+                                if (window.appState.table) { window.appState.table.setData(newRows); }
+                            }
+                        }
+                    }, (error) => {
+                        console.error("Error with global Firestore listener:", error);
+                        alert("Error fetching core data. Please refresh.");
+                    });
+                });
+                await initialSnapshotPromise;
+            }
         } 
-        else { 
-            document.getElementById("topbar").classList.add("hidden");
-            showCont("loginContainer"); } 
+        else { document.getElementById("topbar").classList.add("hidden"); showCont("loginCont"); cleanupListener(); initialDropdownsLoaded = false; } 
     });  
     document.addEventListener('DOMContentLoaded', () => {
+        initializeGlobalTable();
         const labelClass = "mt-3 pl-[10px] text-gray-400 block mb-1";
-        document.querySelectorAll('label').forEach(label => {
-            label.classList.add(...labelClass.split(' '));
-        });
+        document.querySelectorAll('label').forEach(label => { label.classList.add(...labelClass.split(' ')); });
         const inputClass = "w-full px-2 py-2 bg-gray-900 border border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-yellow-500";
         document.querySelectorAll('.input-box').forEach(input => {
             input.classList.add(...inputClass.split(' '));
@@ -172,10 +210,7 @@
             } 
         }); 
     });                 
-    document.getElementById('topbar').addEventListener('click', () => { 
-        document.getElementById('top-nav').classList.remove('-translate-y-full'); 
-        showCont("topbar");
-    });
+    document.getElementById('topbar').addEventListener('click', () => { document.getElementById('top-nav').classList.remove('-translate-y-full'); showCont(); });
     document.querySelectorAll('.menu-link').forEach(link => {
         link.addEventListener('click', e => {
             if (link.getAttribute('id') === 'close') { e.preventDefault(); }
@@ -184,188 +219,30 @@
     });
     document.getElementById("calc").addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
-            try {
-                const raw = this.value.trim();
-                if (/^[\d+\-*/().\s]+$/.test(raw)) {
-                    const result = Function('"use strict";return (' + raw + ')')();
-                    this.value = result; } 
-                else { showDialog("Invalid expression. Only numbers and + - * / allowed. 🤕", "error"); } 
-            } 
-            catch (error) { showDialog("Invalid calculation. 🎲", "error"); } 
+            const raw = this.value.trim();
+            if (/^[\d+\-*/().\s]+$/.test(raw)) {
+                const result = Function('"use strict";return (' + raw + ')')();
+                this.value = result; } 
+            else { alert("Invalid expression. Only numbers and + - * / allowed. 🤕"); } 
         } 
     });
-    window.showDialog = function (message, type = "error", onClose) {
-        const errorBox = document.getElementById('errorBox');
-        const errorMessage = document.getElementById('errorMessage');
-        const titleEl = errorBox.querySelector('h2');
-        const closeBtn = errorBox.querySelector('button');
-        errorMessage.innerHTML = message.replace(/\n/g, '<br>');
-        titleEl.classList.remove('bg-red-800', 'bg-green-800');
-        closeBtn.classList.remove('bg-orange-600', 'hover:bg-orange-800', 'bg-green-600', 'hover:bg-green-800');
-        if (type === "success") {
-            titleEl.classList.add('bg-green-800');
-            titleEl.textContent = "✅ Success";
-            closeBtn.classList.add('bg-green-600', 'hover:bg-green-800');
-        } else {
-            titleEl.classList.add('bg-red-800');
-            titleEl.textContent = "⚠️ Error";
-            closeBtn.classList.add('bg-orange-600', 'hover:bg-orange-800');
-        }
-        errorBox.classList.remove('hidden');
-        closeBtn.onclick = null;
-        closeBtn.onclick = function () {
-            errorBox.classList.add('hidden');
-            if (typeof onClose === 'function') { onClose(); }
-        };
-    };
-    window.closeDialog = function () { document.getElementById('errorBox').classList.add('hidden'); };
-    window.clear = function () {
-        document.querySelectorAll("input").forEach(el => el.value = "");
-    };
+
+    window.clear = function () { document.querySelectorAll("input").forEach(el => el.value = ""); };
     window.showCont = function (...idToShow) {
         clear();
-        const allIds = ['loginContainer', 'bhaduvat', 'mvparty', 'qvparty', 'deleteCont', 'transaction', 'tableCont', 'dashboard', 'mtable'];
+        const allIds = ['loginCont', 'bhaduvat', 'mvparty', 'qvparty', 'deleteCont', 'transaction', 'tableCont', 'dashboard', 'mtable'];
         allIds.forEach(id => {
             const el = document.getElementById(id);
-            if (el) {
-                el.classList.add("hidden");
-                el.style.setProperty('display', 'none', 'important'); 
-            } 
+            if (el) { el.classList.add("hidden"); el.style.setProperty('display', 'none', 'important'); } 
         });
         idToShow.forEach(id => {
             const el = document.getElementById(id);
-            if (el) {
-                el.classList.remove("hidden");
-                el.style.setProperty('display', 'block', 'important'); 
-            } 
+            if (el) { el.classList.remove("hidden"); el.style.setProperty('display', 'block', 'important'); } 
         }); 
     };
-
-    window.loadDropdownData = async function () {
-        const snapshot = await getDocs(tranCol);
-        const nameSet = new Set();
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            const name = (data.tparty || "").trim();
-            if (name.length > 0) {nameSet.add(name);}
-        });
-        window.plot_list = ["116", "119"];
-        window.names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
-    };  
-    window.attachDropdown = function (inputElement, dataList) {
-        let wrapper = inputElement.parentElement;
-        if (!wrapper.classList.contains("relative")) {
-            wrapper = document.createElement("div");
-            wrapper.className = "relative w-full";
-            inputElement.parentNode.insertBefore(wrapper, inputElement);
-            wrapper.appendChild(inputElement);
-        }
-        let dropdown = document.createElement("ul");
-        dropdown.className = "absolute z-50 max-h-100 w-full overflow-y-auto bg-gray-800 border border-green-600 rounded-md hidden";
-        wrapper.appendChild(dropdown);
-
-        function filterList() {
-            const search = inputElement.value.toLowerCase();
-            const matches = dataList.filter(item => item.toLowerCase().includes(search));
-            populateDropdown(matches);
-        }
-        function populateDropdown(list) {
-            dropdown.innerHTML = "";
-            list.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = item;
-                li.className = "px-2 py-2 hover:bg-gray-700 cursor-pointer";
-                li.addEventListener('click', () => {
-                    inputElement.value = item;
-                    dropdown.classList.add("hidden");
-                });
-                dropdown.appendChild(li);
-            });
-        }
-        const onInput = () => { dropdown.classList.remove("hidden"); filterList(); };
-        const onClick = () => { dropdown.classList.remove("hidden"); filterList(); };
-        const onBlur = () => {
-            setTimeout(() => {
-                const value = inputElement.value.trim().toLowerCase();
-                if (value && !dataList.some(item => item.toLowerCase() === value)) {
-                    showDialog("Please select a valid option from the list. 🚫", "error");
-                    inputElement.value = "";
-                    return;
-                }
-            }, 200);
-        };
-        const onDocClick = (e) => { if (!wrapper.contains(e.target)) dropdown.classList.add("hidden"); };
-        inputElement.addEventListener("input", onInput);
-        inputElement.addEventListener("click", onClick);
-        inputElement.addEventListener("blur", onBlur);
-        document.addEventListener("click", onDocClick);
-    };
-
-    window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
-        if (window.table && typeof window.table.destroy === "function") window.table.destroy();
-        const searchId = document.getElementById('searchBox');
-        const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
-
-        if (showDelete) {
-            fullColumns.push({
-                title: "",
-                field: "__delete",
-                formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
-                width: 70,
-                hozAlign: "center",
-                cellClick: async (e, cell) => {
-                    e.stopPropagation();
-                    const rowData = cell.getRow().getData();
-                    const confirmed = confirm("Delete? Are You Sure?");
-                    if (confirmed && rowData.id) {
-                        await deleteDoc(doc(db, "umesh", rowData.id));
-                        cell.getRow().delete(); 
-                    } 
-                }, 
-            }); 
-        }
-        if (showUpdate) {
-            fullColumns.push({
-                title: "",
-                field: "__update",
-                formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
-                width: 70,
-                hozAlign: "center",
-                cellClick: (e, cell) => {
-                    e.stopPropagation();
-                    const rowData = cell.getRow().getData();
-                    window.currentDocId = rowData.id;
-                    showTransactionContainer(rowData); 
-                } 
-            }); 
-        }
-        window.table = new Tabulator(document.getElementById('table'), {
-            data: rows,
-            layout: "fitDataTable",
-            reactiveData: true,
-            rowHeight: 40,
-            maxHeight: "600px",
-            columns: fullColumns, 
-        });
-        document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
-        document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
-        document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
-        bindSearch(); 
-    };
-    window.bindSearch = function () {
-        const searchbox = document.getElementById("searchBox");
-        searchbox.addEventListener("input", function () {
-            const value = this.value.toLowerCase().trim();
-            table.setFilter(function (data) {
-                if (value === "") { return true; }
-                return Object.values(data).some(val => String(val).toLowerCase().includes(value)); 
-            }); 
-        }); 
-    };
-
     window.showDashboard = async function () {
         showCont("dashboard");
-        const querySnapshot = await getDocs(tranCol);
+        const querySnapshot = await getDocs(tranCol); 
         const monthlyData = {};
         querySnapshot.forEach((docSnap) => {
             const data = docSnap.data();
@@ -408,6 +285,68 @@
         }); 
     };
 
+    window.loadDropdownData = function () {
+        const transactionsData = window.appState.allTransactions; 
+        const nameSet = new Set();
+        transactionsData.forEach((data) => { const name = (data.tparty || "").trim(); if (name.length > 0) { nameSet.add(name); } });
+        const plot_list = ["116", "119"]; 
+        const names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
+        populateDatalist("names_datalist", names_list);
+        populateDatalist("plot_datalist", plot_list);
+    };
+    function populateDatalist(datalistId, dataArray) {
+        const datalistElement = document.getElementById(datalistId);
+        datalistElement.innerHTML = '';
+        dataArray.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item;
+            datalistElement.appendChild(option);
+        });
+    };
+        
+    window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
+        if (!window.appState.table) { initializeGlobalTable(); }
+        const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
+        if (showDelete) {
+            fullColumns.push({
+                title: "",
+                field: "__delete",
+                formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
+                width: 70,
+                hozAlign: "center",
+                cellClick: async (e, cell) => {
+                    e.stopPropagation();
+                    const rowData = cell.getRow().getData();
+                    if (confirm("Delete? Are You Sure? This action cannot be undone.")) { if (rowData.id) { await deleteDoc(doc(db, "gopal", rowData.id)); alert("Document deleted successfully."); } }
+                }, 
+            }); 
+        }
+        if (showUpdate) {
+            fullColumns.push({
+                title: "",
+                field: "__update",
+                formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
+                width: 70,
+                hozAlign: "center",
+                cellClick: (e, cell) => {
+                    e.stopPropagation();
+                    const rowData = cell.getRow().getData();
+                    window.currentDocId = rowData.id;
+                    showTransactionContainer(rowData); 
+                } 
+            }); 
+        }
+        window.appState.table.setColumns(fullColumns);
+        window.appState.table.setData(rows);
+    };    
+    window.bindSearch = function () {
+        const searchbox = document.getElementById("searchBox");
+        searchbox.addEventListener("input", function () {
+            const value = this.value.toLowerCase().trim();
+            if (window.appState.table) { window.appState.table.setFilter(function (data) { if (value === "") { return true; } return Object.values(data).some(val => String(val).toLowerCase().includes(value)); }); }
+        }); 
+    };
+
     window.showTransactionContainer = function (rowData) {
         document.getElementById("tableCont").classList.add("hidden");
         document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
@@ -420,35 +359,101 @@
         document.getElementById("amt").value = rowData.amount || "";
         document.getElementById("nar").value = rowData.nar || "";
     };
-    window.insertTran = async function (showDelete = true, showUpdate = true, editable = false, filterCashGroup = false) {
-        const snapshot = await getDocs(tranCol);
+    function getDynamicColumns(baseColumns, showDelete = false, showUpdate = false, editable = false) {
+        const fullColumns = baseColumns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
+        if (showDelete) {
+            fullColumns.push({
+                title: "", field: "__delete", width: 70, hozAlign: "center",
+                formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
+                cellClick: async (e, cell) => {
+                    e.stopPropagation();
+                    const rowData = cell.getRow().getData();
+                    if (confirm("Delete? Are You Sure? This action cannot be undone.")) { if (rowData.id) { await deleteDoc(doc(db, "gopal", rowData.id)); alert("Document deleted successfully."); } }
+                },
+            });
+        }
+        if (showUpdate) {
+            fullColumns.push({
+                title: "", field: "__update", width: 70, hozAlign: "center",
+                formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
+                cellClick: (e, cell) => {
+                    e.stopPropagation();
+                    const rowData = cell.getRow().getData();
+                    window.currentDocId = rowData.id;
+                    showTransactionContainer(rowData);
+                }
+            });
+        }
+        return fullColumns;
+    };
+    function _processDaybookData(transactions, params) {
         const rows = [];
-        snapshot.forEach((docSnap) => {
-            const data = docSnap.data();
+        transactions.forEach((data) => {
             const fparty = (data.fparty || "").trim();
             if (!fparty) return;
-            rows.push({
-                id: docSnap.id,
-                date: (data.date || "").split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
-                ttype: data.ttype,
-                fparty: data.fparty || "",
-                tparty: data.tparty || "",
-                amount: data.amount || "",
-                nar: data.nar || "",
-            }); 
+            rows.push({ id: data.id, date: (data.date || "").split('-').reverse().join('-'), ttype: data.ttype, fparty: data.fparty || "", tparty: data.tparty || "", amount: data.amount || "", nar: data.nar || "", });
         });
-        const columns = [
-            {title: "Date", field: "date"}, 
-            {title: "Type", field: "ttype"}, 
-            {title: "From Party", field: "fparty"}, 
+        return rows;
+    };
+    function _processLedgerData(transactions, params) {
+        const rows = [];
+        const uniqueEntries = new Set();
+        transactions.forEach((data) => {
+            const group = data.group || "";
+            const name = data.tparty || "";
+            const key = `${group}|${name}`;
+            if (group !== "" && name !== "" && !uniqueEntries.has(key)) { rows.push({ group: group, name: name }); uniqueEntries.add(key); }
+        });
+        return rows.sort((a, b) => { 
+            const groupA = String(a.group);
+            const groupB = String(b.group);
+            if (groupA === groupB) { return a.name.localeCompare(b.name); }
+            return groupA.localeCompare(groupB); 
+        });
+    };
+    function _processReceivablesData(transactions, params) {
+        const balances = {};
+        transactions.forEach((data) => {
+            const amount = parseFloat(data.amount || "0");
+            if (data.fparty) { const party = data.fparty.trim(); balances[party] = (balances[party] || 0) + amount; }
+            if (data.tparty) { const party = data.tparty.trim(); balances[party] = (balances[party] || 0) - amount; }
+        });
+        const rows = [];
+        for (const [party, amount] of Object.entries(balances)) { if (amount) { rows.push({ party: party, amount: amount.toFixed(0) }); } }
+        return rows.sort((a,b) => a.party.localeCompare(b.party));
+    };
+
+    window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
+        window.appState.activeViewInfo = { type: 'daybook', params: { showDelete, showUpdate, editable } };
+        const columns = getDynamicColumns([
+            {title: "Date", field: "date"},
+            {title: "Type", field: "ttype"},
+            {title: "From Party", field: "fparty"},
             {title: "To Party", field: "tparty"},
             {title: "Amount", field: "amount", hozAlign: "right"},
             {title: "Narration", field: "nar"},
-            {title: "ID", field: "id", visible: false} 
-        ];
-        createEditableTable(rows, columns, showDelete, showUpdate, editable);
-        showCont("tableCont"); 
+            {title: "ID", field: "id", visible: false}
+        ], showDelete, showUpdate, editable);
+        window.appState.table.setColumns(columns);
+        const rows = _processDaybookData(window.appState.allTransactions, window.appState.activeViewInfo.params);
+        window.appState.table.setData(rows); 
+        showCont("tableCont");
     };
+    window.viewLedger = async function () {
+        window.appState.activeViewInfo = { type: 'ledger', params: {} };
+        const columns = getDynamicColumns([ { title: "Group", field: "group" }, { title: "Name", field: "name" } ], false, false, false);
+        window.appState.table.setColumns(columns);
+        if (!window.appState.ledgerCache) { window.appState.ledgerCache = _processLedgerData(window.appState.allTransactions, window.appState.activeViewInfo.params); }
+        window.appState.table.setData(window.appState.ledgerCache); showCont("tableCont");
+    };
+    window.viewReceivables = function () {
+        window.appState.activeViewInfo = { type: 'receivables', params: {} };
+        const columns = getDynamicColumns([ { title: "Party", field: "party" }, { title: "Amount", field: "amount", hozAlign: "right" } ], false, false, false);
+        window.appState.table.setColumns(columns);        
+        if (!window.appState.receivablesCache) { window.appState.receivablesCache = _processReceivablesData(window.appState.allTransactions, window.appState.activeViewInfo.params); }
+        window.appState.table.setData(window.appState.receivablesCache); showCont("tableCont");
+    };
+    
     window.saveTransaction = async function () {
         const ttype = document.getElementById("ttype").value.trim();
         const odate = document.getElementById("date");
@@ -458,170 +463,84 @@
         const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
         const nar = document.getElementById("nar").value.trim();
         
-        if (!ttype || !date || !fparty || !tparty || isNaN(amount) || amount <= 0) { return showDialog("Please fill all required fields properly\nAmount must be a number > 0", "error"); }        
+        if (!ttype || !date || !fparty || !tparty || isNaN(amount) || amount <= 0) { return alert("Please fill all required fields properly\nAmount must be a number > 0"); }       
         const tranData = {ttype, date, fparty, tparty, amount };
         if (nar) tranData.nar = nar;
-        if (window.currentDocId) {
-            const docRef = doc(db, "gopal", window.currentDocId);
-            await updateDoc(docRef, tranData);
-            showDialog("Transaction updated successfully. 🛒 ✏️", "success", () => { insertTran(); });
-        } 
-        else {
-            await addDoc(collection(db, "gopal"), tranData);
-            showDialog("Transaction saved successfully. 🛒 💾", "success"); 
-        }
-        clear(); 
-        window.currentDocId = null; 
+        if (window.currentDocId) { const docRef = doc(db, "gopal", window.currentDocId); await updateDoc(docRef, tranData); alert("Transaction updated successfully."); } 
+        else { await addDoc(collection(db, "gopal"), tranData); alert("Transaction saved successfully."); }
+        clear(); window.currentDocId = null; 
     };
-
     window.saveBhaduvat = async function () {
-        let group, name, nread, mbamt;
-        group = document.getElementById("plotgroup").value.trim();
-        name = document.getElementById("bhaduvatname").value.trim();
-        nread = document.getElementById("meterreading").value.trim();
-        mbamt = document.getElementById("mbamt").value.trim();
-        if (!group || !name || !nread || !mbamt) { return showDialog("Group, Name, Meter Reading\nMonthly Bhada Amount Required. 👨‍👨‍👦‍👦", "error"); }
-        const newDocData = { group: group, nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData);
-        showDialog("Bhaduvat saved successfully.", "success"); 
-        clear();
+        const group = document.getElementById("plotgroup").value.trim();
+        const name = document.getElementById("bhaduvatname").value.trim();
+        const nread = document.getElementById("meterreading").value.trim();
+        const mbamt = document.getElementById("mbamt").value.trim();
+        if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required. 👨‍👨‍👦‍👦"); }
+        const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
+        await addDoc(tranCol, newDocData); alert(`${name} saved successfully.`); clear();
     };
     window.saveMvparty = async function () {
-        let name, mvamt;
-        name = document.getElementById("mvpartyname").value.trim();
-        mvamt = document.getElementById("mvamt").value.trim();
-        if (!name || !mvamt) { return showDialog("Name, Monthly Vyaj Amount Required. 👨‍👨‍👦‍👦", "error"); }
+        const name = document.getElementById("mvpartyname").value.trim();
+        const mvamt = document.getElementById("mvamt").value.trim();
+        if (!name || !mvamt) { return alert("Name, Monthly Vyaj Amount Required. 👨‍👨‍👦‍👦"); }
         const newDocData = { group: "MV Party", tparty: name, mvamt: Number(mvamt), ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData);
-        showDialog("MV Party saved successfully.", "success"); 
-        clear();
+        await addDoc(tranCol, newDocData); alert(`${name} saved successfully.`); clear();
     }; 
     window.saveQvparty = async function () {
-        let name, qvamt;
-        name = document.getElementById("qvpartyname").value.trim();
-        qvamt = document.getElementById("qvamt").value.trim();
-        if (!name || !qvamt) { return showDialog("Name, Quarterly Vyaj Amount Required. 👨‍👨‍👦‍👦", "error"); }
+        const name = document.getElementById("qvpartyname").value.trim();
+        const qvamt = document.getElementById("qvamt").value.trim();
+        if (!name || !qvamt) { return alert("Name, Quarterly Vyaj Amount Required."); }
         const newDocData = { group: "QV Party", tparty: name, qvamt: Number(qvamt), ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData);
-        showDialog("QV Party saved successfully.", "success"); 
-        clear();
+        await addDoc(tranCol, newDocData); alert(`${name} saved successfully.`); clear();
     };
     window.saveHavala = async function (type) {
-        const confirmSave = confirm(`Are you sure you want to save ${type.toUpperCase()} Havala?`);
-        if (!confirmSave) return;
         const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
         const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
         const amtField = fieldMap[type];
         const ttypeValue = ttypeMap[type];
-        const gpzipCollectionRef = collection(db, 'gopal');
-        const q = query(gpzipCollectionRef, where(amtField, '!=', null));
-        const gpzipSnapshot = await getDocs(q);
-        const fetchedItems = [];
-        gpzipSnapshot.forEach((docSnap) => {
-            const data = docSnap.data();
-            if ( data.tparty !== undefined && (typeof data[amtField] !== 'string' || data[amtField] !== '') ) 
-            { fetchedItems.push({ party: data.tparty, amount: data[amtField], }); }
-        });
-        const batch = writeBatch(db);
-        for (const item of fetchedItems) {
-            const newDoc = {
-                ttype: ttypeValue,
-                tparty: item.party,
-                fparty: "Gpzip",
-                amount: Number(item.amount),
-                date: new Date().toISOString().split('T')[0],
-            };
-            const newDocRef = doc(collection(db, 'gopal'));
-            batch.set(newDocRef, newDoc);
+        
+        if (confirm(`Are you sure you want to save ${type.toUpperCase()} Havala?`)) {
+            const itemsToProcess = window.appState.allTransactions.filter(data => 
+                data[amtField] !== undefined && data[amtField] !== null && 
+                (typeof data[amtField] !== 'string' || data[amtField] !== '') &&
+                data.tparty !== undefined
+            );
+            const batch = writeBatch(db);
+            for (const item of itemsToProcess) {
+                const newDoc = { ttype: ttypeValue, tparty: item.tparty, fparty: "Gpzip", amount: Number(item[amtField]), date: new Date().toISOString().split('T')[0], };
+                const newDocRef = doc(collection(db, 'gopal'));
+                batch.set(newDocRef, newDoc);
+            }
+            await batch.commit();
         }
-        await batch.commit();
-        showDialog(`${type.toUpperCase()} Havala Added.`, "success");
     };
     window.deleteParty = async function () {
         const name = document.getElementById("deleteparty").value.trim();
-        if (!name) {  return showDialog("Please enter a name", "error"); }
-        if (!confirm('Are you sure you want to Delete?')) return;
-        let deleted = 0;
-        const fDocs = await getDocs(query(tranCol, where("fparty", "==", name)));
-        for (const docSnap of fDocs.docs) {
-            await deleteDoc(docSnap.ref);
-            deleted++;
+        if (!name) {  return alert("Please enter a name"); }
+        if (confirm('Are you sure you want to Delete this party and all related transactions? This action cannot be undone.')) {
+            const batch = writeBatch(db);
+            const docsToDelete = window.appState.allTransactions.filter(data => data.fparty === name || data.tparty === name );
+            for (const docData of docsToDelete) { batch.delete(doc(db, "gopal", docData.id)); }
+            await batch.commit(); alert(`Deleted ${name} And Related Documents.`); clear();
         }
-        const tDocs = await getDocs(query(tranCol, where("tparty", "==", name)));
-        for (const docSnap of tDocs.docs) {
-            await deleteDoc(docSnap.ref);
-            deleted++;
-        }
-        showDialog(`Deleted ${deleted} document(s).`, "success");
-        clear();
     };
 
-    window.viewLedger = async function (type) {
-        const snapshot = await getDocs(tranCol);
-        const rows = [];
-        snapshot.forEach((docSnap) => {
-            const data = docSnap.data();
-            const group = (data.group || "").trim();
-            const name = (data.tparty || "").trim();
-            if (type === "ledger") { if (group !== "" && name !== "") { rows.push({ group: group, name: name }); } }
-        });
-        const columns = [ 
-            { title: "Group", field: "group" }, 
-            { title: "Name", field: "name" } 
-        ];
-        createEditableTable(rows, columns, false, false, false);
-        showCont("tableCont"); 
-    };
-    window.viewReceivables = async function () {
-        const snapshot = await getDocs(tranCol);
-        const balances = {};
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            const amount = parseFloat(data.amount || "0");
-            if (data.fparty) {
-                const party = data.fparty.trim();
-                balances[party] = (balances[party] || 0) + amount;
-            }
-            if (data.tparty) {
-                const party = data.tparty.trim();
-                balances[party] = (balances[party] || 0) - amount;
-            }
-        });
-        const rows = [];
-        for (const [party, amount] of Object.entries(balances)) {
-            if (amount) { rows.push({ party: party, amount: amount.toFixed(0) }); }
-        }
-        const columns = [ { title: "Party", field: "party" }, { title: "Amount", field: "amount", hozAlign: "right" } ];
-        createEditableTable(rows, columns, false, false, false);
-        showCont("tableCont");
-    };
-    
     function getInputByIdx(cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
-    window.fetchCustomers = async function (groupId) {
-        const colRef = collection(db, "gopal");
-        const qNames = query(colRef, where("group", "==", groupId));
-        const snapshotNames = await getDocs(qNames);
+    window.fetchCustomers = function (groupId) {
+        const transactionsData = window.appState.allTransactions;
         const namesSet = new Set();
-        snapshotNames.forEach(docSnap => {
-            const data = docSnap.data();
-            if (data.tparty) { namesSet.add(data.tparty.trim()); }
-        });
+        transactionsData.forEach(data => { if (data.group === groupId) { if (data.tparty) { namesSet.add(data.tparty.trim()); } } });
         const names = Array.from(namesSet);
         if (names.length === 0) return [];
         const customers = [];
+
         for (const name of names) {
-            const qTparty = query(colRef, where("tparty", "==", name));
-            const snapshotTparty = await getDocs(qTparty);
             let latestDoc = null;
             let latestDate = new Date(0);
-            snapshotTparty.forEach(docSnap => {
-                const data = docSnap.data();
-                if (data.date) {
+            transactionsData.forEach(data => {
+                if (data.tparty === name && data.nread !== undefined && data.date) {
                     const docDate = new Date(data.date);
-                    if (docDate > latestDate) {
-                        latestDate = docDate;
-                        latestDoc = data;
-                    }
+                    if (docDate > latestDate) { latestDate = docDate; latestDoc = data; }
                 }
             });
             const oldReading = latestDoc && latestDoc.nread ? latestDoc.nread : 0;
@@ -646,11 +565,9 @@
             const meter = meters[idx];
             tbody.insertAdjacentHTML("beforeend", `
                 <tr data-index="${idx}">
-                    <td>${meter.name}</td>
-                    <td>${meter.oldReading}</td>
+                    <td>${meter.name}</td><td>${meter.oldReading}</td>
                     <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${idx}" class="newReadingInput w-[130px] text-right bg-gray-900" /></td>
-                    <td class="consumption">-</td>
-                    <td class="adjustedUnits">-</td>
+                    <td class="consumption">-</td><td class="adjustedUnits">-</td>
                     <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${idx}" class="amountInput w-[100px] text-right bg-gray-900" /></td>
                 </tr>
             `);
@@ -659,44 +576,45 @@
     window.calculate = function () {
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
-        if (mainIndex === -1) { return showDialog(`Main meter for group ${groupId} not found!`, "error"); }
+        if (mainIndex === -1) { return alert(`Main meter for group ${groupId} not found!`); }
 
         const mainNewReadingInput = getInputByIdx("newReadingInput", mainIndex);
         const mainAmountInput     = getInputByIdx("amountInput", mainIndex);
-        if (!mainNewReadingInput || !mainAmountInput) { return showDialog("Main meter row not found in table.", "error"); }
+        if (!mainNewReadingInput || !mainAmountInput) { return alert("Main meter row not found in table."); }
 
         let mainNewReading = parseFloat(mainNewReadingInput.value);
-        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { return showDialog( `Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`, "error" ); }
+        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { return alert( `Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`); }
         meters[mainIndex].newReading = mainNewReading;
         meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
 
         let mainAmount = parseFloat(mainAmountInput.value);
-        if (isNaN(mainAmount) || mainAmount <= 0) { return showDialog("Please enter valid Main Meter Amount > 0", "error"); }
+        if (isNaN(mainAmount) || mainAmount <= 0) { return alert("Please enter valid Main Meter Amount > 0"); }
         meters[mainIndex].amount = mainAmount;
 
         for (let i = 0; i < meters.length; i++) {
             if (i === mainIndex) continue;
             const input = getInputByIdx("newReadingInput", i);
-            if (!input) return showDialog(`Row for "${meters[i].name}" not found.`, "error");
+            if (!input) return alert(`Row for "${meters[i].name}" not found.`);
 
             let newRead = parseFloat(input.value);
-            if (isNaN(newRead) || newRead < meters[i].oldReading) { return showDialog( `New reading for customer "${meters[i].name}" must be >= old reading (${meters[i].oldReading})`, "error" ); }
+            if (isNaN(newRead) || newRead < meters[i].oldReading) { return alert( `New reading for customer "${meters[i].name}" must be >= old reading (${meters[i].oldReading})`); }
             meters[i].newReading = newRead;
             meters[i].consumption = newRead - meters[i].oldReading;
         }
 
-        if (meters[mainIndex].consumption === 0) { return showDialog("Main Meter consumption cannot be zero!", "error"); }
+        if (meters[mainIndex].consumption === 0) { return alert("Main Meter consumption cannot be zero!"); }
         const totalCustomerConsumption = meters.reduce((sum, m, idx) => { return idx !== mainIndex ? sum + m.consumption : sum; }, 0);
         const diff = meters[mainIndex].consumption - totalCustomerConsumption;
+        
         meters.forEach((meter, idx) => {
-            if (idx === mainIndex) {
-                meter.adjustedUnits = meter.consumption;
-            } else {
+            if (idx === mainIndex) { meter.adjustedUnits = meter.consumption; } 
+            else {
                 const shareDiff = (meter.consumption / totalCustomerConsumption) * diff;
                 meter.adjustedUnits = meter.consumption + shareDiff;
                 meter.amount = (meter.adjustedUnits / meters[mainIndex].consumption) * meters[mainIndex].amount;
             }
         });
+
         meters.forEach((m, idx) => {
             const row = document.querySelector(`#metersTableBody tr[data-index="${idx}"]`);
             if (!row) return;
@@ -712,69 +630,37 @@
             const meter = meters[i];
             const nreadInput = getInputByIdx("newReadingInput", i);
             const amountInput = getInputByIdx("amountInput", i);
-            if (!nreadInput || !amountInput) { return showDialog(`Inputs missing for "${meter.name}".`, "error"); }
-
+            if (!nreadInput || !amountInput) { return alert(`Inputs missing for "${meter.name}".`); }
             const nread = parseFloat(nreadInput.value);
             const amount = parseFloat(amountInput.value);
             const consumption = nread - meter.oldReading;
-            if (isNaN(nread) || nread < meter.oldReading || isNaN(amount) || amount < 0) { return showDialog("Enter proper amount and new readings", "error"); }
-
+            if (isNaN(nread) || nread < meter.oldReading || isNaN(amount) || amount < 0) { return alert("Enter proper amount and new readings"); }
             const newDocRef = doc(collection(db, "gopal"));
-            batch.set(newDocRef, {
-            ttype: "Ebill",
-            tparty: meter.name,
-            fparty: "Gpzip",
-            nread,
-            cons: consumption,
-            amount,
-            date: new Date().toISOString().split('T')[0],
-            });
+            batch.set(newDocRef, { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread, cons: consumption, amount, date: new Date().toISOString().split('T')[0], }); 
         }
-        await batch.commit();
-        showDialog("Data saved successfully.", "success");
+            await batch.commit();
+            alert("Data saved successfully.");
+            document.getElementById("mtable").style.setProperty('display', 'none', 'important');
     };
-    window.showMtable = async function (grpId) {
-        groupId = grpId;
-        meters = await fetchCustomers(groupId);
-        renderTable();
-        showCont('mtable')
-    }
+    window.showMtable = async function (grpId) { groupId = grpId; meters = fetchCustomers(groupId); renderTable(); showCont('mtable'); }
     
     window.login = async function () {
         const email = document.getElementById("loginEmail").value;
         const password = document.getElementById("loginPassword").value;
-        try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists() && docSnap.data().approved === true) {
-                showDialog("Login successful and approved! 🔓", "success");
-                showCont("topbar");
-            } 
-        } 
-        catch (error) { 
-            showDialog("Login failed\nEnter registered email/password\nor\nContact Gopalji. 😡", "error"); 
-        } 
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists() && docSnap.data().approved === true) { alert("Login successful and approved! 🔓"); showCont("topbar"); }
     };
     window.logout = async function () {
-        if (!confirm("Are you sure you want to logout?")) 
-        return;
-        try {
-            clear();
-            window.currentDocId = null;
-            await signOut(auth);
-            showDialog("Logged out successfully. 👋", "success");
-            document.getElementById("topbar").classList.add("hidden");
-            document.getElementById("topbar").style.setProperty('display', 'none', 'important'); 
-            showCont("loginContainer"); 
-        } 
-        catch (error) { showDialog("Network issue: Failed to logout. Please try again.", "error"); } 
+        if (confirm("Are you sure you want to logout?")) {
+            clear(); window.currentDocId = null; cleanupListener(); 
+            await signOut(auth); alert("Logged out successfully. 👋");
+            document.getElementById("topbar").style.setProperty('display', 'none', 'important'); showCont("loginCont"); 
+        }
     };
-    window.addEventListener("beforeunload", function (e) { 
-        e.preventDefault(); 
-        e.returnValue = ""; 
-    });
+    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
 </script>
 </body>
 </html>
