@@ -290,7 +290,7 @@
         }); 
     };
 
-    window.showTransactionContainer = function (rowData) {
+    window.showTransactionContainer = function (rowData) { 
         showCont('transaction');
         document.getElementById("ttype").value = rowData.ttype || "";
         const dateInput = document.getElementById("date");
@@ -313,9 +313,9 @@
                 tparty: item.tparty || "", 
                 nar: item.nar || "", 
                 amount: item.amount || "", 
+                oread: item.oread || "",
                 nread: item.nread || "", 
-                cons: item.cons || "", 
-                adjunit: item.adjunit || "", 
+                unitdiff: item.unitdiff || "", 
             }); 
         });
         const columns = [
@@ -324,9 +324,9 @@
             {title: "From Party", field: "fparty"}, 
             {title: "To Party", field: "tparty"},  
             {title: "Amount", field: "amount", hozAlign: "right"}, 
+            {title: "Oread", field: "oread", hozAlign: "right"},
             {title: "Nread", field: "nread", hozAlign: "right"}, 
-            {title: "Cons", field: "cons", hozAlign: "right"},
-            {title: "AdjU", field: "adjunit", hozAlign: "right"},
+            {title: "Udiff", field: "unitdiff", hozAlign: "right"},
             {title: "Narration", field: "nar"}, 
             {title: "ID", field: "id", visible: false} 
         ];
@@ -375,7 +375,7 @@
         }       
         const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
         const tranData = {ttype, date, fparty, tparty, amount };
-
+        
         if (nar) tranData.nar = nar;
         if (window.currentDocId) { 
             const docRef = doc(db, "gopal", window.currentDocId); 
@@ -559,11 +559,12 @@
         const newItems = [];
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
-
+        
         for (let i = 0; i < meters.length; i++) {
             const meter = meters[i];
+            const unitDiff = meter.adjustedUnits - meter.consumption;
             const newDocRef = doc(collection(db, "gopal"));
-            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread: meter.newReading, cons: meter.consumption, adjunit: meter.adjustedUnits, date: new Date().toISOString().split('T')[0], };
+            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", oread: meter.oldReading, nread: meter.newReading, unitdiff: Math.round(unitDiff), date: new Date().toISOString().split('T')[0], };
             if (i !== mainIndex) { tranData.amount = Math.round(meter.amount); }
             batch.set(newDocRef, tranData);
             newItems.push(tranData);
