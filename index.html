@@ -22,7 +22,7 @@
 </head>
 <body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
 <header id="topbar" class="hidden w-full bg-gray-800 hover:bg-blue-800 text-green-500 px-5 py-3 cursor-pointer text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
-<nav id="top-nav" class="fixed top-[-1px] left-0 h-[670px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
+<nav id="top-nav" class="fixed top-[-1px] left-0 h-[670px] w-full bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
         <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" id="close">Home 🏚️</a></li>
         <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
@@ -44,44 +44,44 @@
 </nav>
 
 <div id="loginCont" class="hidden w-full max-w-md p-1 mt-200 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" id="loginEmail" type="email" placeholder=" "/><label for="loginEmail" class="label">Email</label></div>
-    <div class="relative mt-6"><input class="input-box" id="loginPassword" type="password" placeholder=" "/><label for="loginPassword" class="label">Password</label></div>
+    <div class="relative mt-6"><input class="input-box" id="loginEmail" type="email" placeholder=" " autocomplete="off"/><label for="loginEmail" class="label">Email</label></div>
+    <div class="relative mt-6"><input class="input-box" id="loginPassword" type="password" placeholder=" " autocomplete="off"/><label for="loginPassword" class="label">Password</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
 <div id="bhaduvat" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" list="plot_datalist" id="plotgroup" type="text" placeholder=" "/><label for="plotgroup" class="label">Select Plot N0</label></div>
-    <div class="relative mt-6"><input class="input-box" id="bhaduvatname" type="text" placeholder=" "/><label for="bhaduvatname" class="label">Bhaduvat Name</label></div>
-    <div class="relative mt-6"><input class="input-box" id="meterreading" type="number" placeholder=" "/><label for="meterreading" class="label">Meter Reading</label></div>
-    <div class="relative mt-6"><input class="input-box" id="mbamt" type="number" placeholder=" "/><label for="mbamt" class="label">Monthly Bhadu</label></div>
+    <div class="relative mt-6"><input class="input-box" list="plot_datalist" id="plotgroup" type="text" placeholder=" " autocomplete="off"/><label for="plotgroup" class="label">Select Plot N0</label></div>
+    <div class="relative mt-6"><input class="input-box" id="bhaduvatname" type="text" placeholder=" " autocomplete="off"/><label for="bhaduvatname" class="label">Bhaduvat Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="meterreading" type="number" placeholder=" " autocomplete="off"/><label for="meterreading" class="label">Meter Reading</label></div>
+    <div class="relative mt-6"><input class="input-box" id="mbamt" type="number" placeholder=" " autocomplete="off"/><label for="mbamt" class="label">Monthly Bhadu</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveBhaduvat()">👉Save👈</button>
 </div>
 
 <div id="mvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" id="mvpartyname" type="text" placeholder=" "/><label for="mvpartyname" class="label">Party Name</label></div>
-    <div class="relative mt-6"><input class="input-box" id="mvamt" type="number" placeholder=" "/><label for="mvamt" class="label">Monthly Vyaj</label></div>
-    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('MV')">👉Save👈</button>
+    <div class="relative mt-6"><input class="input-box" id="mvpartyname" type="text" placeholder=" " autocomplete="off"/><label for="mvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="mvamt" type="number" placeholder=" " autocomplete="off"/><label for="mvamt" class="label">Monthly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('mv')">👉Save👈</button>
 </div>
 
 <div id="qvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" id="qvpartyname" type="text" placeholder=" "/><label for="qvpartyname" class="label">Party Name</label></div>
-    <div class="relative mt-6"><input class="input-box" id="qvamt" type="number" placeholder=" "/><label for="qvamt" class="label">Quarterly Vyaj</label></div>
-    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('QV')">👉Save👈</button>
+    <div class="relative mt-6"><input class="input-box" id="qvpartyname" type="text" placeholder=" " autocomplete="off"/><label for="qvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="qvamt" type="number" placeholder=" " autocomplete="off"/><label for="qvamt" class="label">Quarterly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('qv')">👉Save👈</button>
 </div>
 
 <div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="deleteparty" type="text" placeholder=" "><label for="deleteparty" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="deleteparty" type="text" placeholder=" " autocomplete="off"><label for="deleteparty" class="label">Party Name</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" "/><label for="ttype" class="label">Transaction Type</label></div>
-    <div class="relative mt-6"><input class="input-box date-input" id="date" type="text" placeholder=" "/><label for="date" class="label">Date</label></div>
-    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" "><label for="txtfrom" class="label">From</label></div>
-    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" "><label for="txtto" class="label">To</label></div>
-    <div class="relative mt-6"><input class="input-box" id="amt" type="number" placeholder=" "/><label for="amt" class="label">Amount</label></div>
-    <div class="relative mt-6"><input class="input-box" id="nar" type="text" placeholder=" " /><label for="nar" class="label">Narration</label></div>
-    <div class="relative mt-6"><input class="input-box" id="calc" type="text" placeholder=" "/><label for="calc" class="label">🧮 Calculator</label></div>
+    <div class="relative mt-6"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" " autocomplete="off"/><label for="ttype" class="label">Transaction Type</label></div>
+    <div class="relative mt-6"><input class="input-box date-input" id="date" type="text" placeholder=" " autocomplete="off"/><label for="date" class="label">Date</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" " autocomplete="off"/><label for="txtfrom" class="label">From</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" " autocomplete="off"/><label for="txtto" class="label">To</label></div>
+    <div class="relative mt-6"><input class="input-box" id="amt" type="number" placeholder=" " autocomplete="off"/><label for="amt" class="label">Amount</label></div>
+    <div class="relative mt-6"><input class="input-box" id="nar" type="text" placeholder=" " autocomplete="off"/><label for="nar" class="label">Narration</label></div>
+    <div class="relative mt-6"><input class="input-box" id="calc" type="text" placeholder=" " autocomplete="off"/><label for="calc" class="label">🧮 Calculator</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTransaction()">👉Save👈</button>
 </div>
 
@@ -89,7 +89,7 @@
     <button class="bg-green-800  min-w-[113px] h-10 rounded-lg" id="excelBtn">Excel</button>
     <button class="bg-red-800 min-w-[113px] h-10 rounded-lg" id="pdfBtn">PDF</button>
     <button class="bg-blue-800 min-w-[113px] h-10 rounded-lg" id="printBtn">🖨️</button>
-    <input class="w-full max-w-[348px] px-2 mt-1 mb-1 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
+    <input class="w-full max-w-[348px] px-2 mt-1 mb-1 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text" autocomplete="off"/>
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
@@ -315,6 +315,7 @@
                 amount: item.amount || "", 
                 nread: item.nread || "", 
                 cons: item.cons || "", 
+                adjunit: item.adjunit || "", 
             }); 
         });
         const columns = [
@@ -325,6 +326,7 @@
             {title: "Amount", field: "amount", hozAlign: "right"}, 
             {title: "Nread", field: "nread", hozAlign: "right"}, 
             {title: "Cons", field: "cons", hozAlign: "right"},
+            {title: "AdjU", field: "adjunit", hozAlign: "right"},
             {title: "Narration", field: "nar"}, 
             {title: "ID", field: "id", visible: false} 
         ];
@@ -335,9 +337,12 @@
         const data = await fetchAllOnce();
         const rows = [];
         data.forEach(item => {
-            const group = (item.group || "");
-            const name = (item.tparty || "");
-            if (group.length > 0 && name.length > 0) { rows.push({ group, name }); }
+            const group = item.group ?? "";
+            const name = item.tparty ?? "";
+            if ((group !== "" && group !== null && group !== undefined) &&
+                (name !== "" && name !== null && name !== undefined)) {
+                rows.push({ group, name });
+            }
         });
         const columns = [ { title: "Group", field: "group", width: 108 }, { title: "Name", field: "name", width: 240 }, ];
         createEditableTable(rows, columns, false, false, false);
@@ -391,7 +396,7 @@
         const nread = document.getElementById("meterreading").value.trim();
         const mbamt = document.getElementById("mbamt").value.trim();
         if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required."); }
-        const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
+        const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), date: new Date().toISOString().split('T')[0], };
         const docRef = await addDoc(tranCol, newDocData);
         const savedData = { id: docRef.id, ...newDocData };
         window.cachedData.push(savedData); 
@@ -405,8 +410,8 @@
         const name = document.getElementById(nameInputId).value.trim();
         const amt = document.getElementById(amtInputId).value.trim();
 
-        if (!name || !amt) { return alert(`Name, ${partyType === "MV" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); }
-        const newDocData = { group: partyType + " Party", tparty: name, [amtField]: Number(amt), ttype: partyType + " Party", date: new Date().toISOString().split('T')[0], };
+        if (!name || !amt) { return alert(`Name, ${partyType === "mv" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); }
+        const newDocData = { group: partyType + "Party", tparty: name, [amtField]: Number(amt), date: new Date().toISOString().split('T')[0], };
         const docRef = await addDoc(tranCol, newDocData);
         const savedData = { id: docRef.id, ...newDocData };
         window.cachedData.push(savedData);
@@ -558,7 +563,7 @@
         for (let i = 0; i < meters.length; i++) {
             const meter = meters[i];
             const newDocRef = doc(collection(db, "gopal"));
-            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread: meter.newReading, cons: meter.consumption, date: new Date().toISOString().split('T')[0], };
+            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread: meter.newReading, cons: meter.consumption, adjunit: meter.adjustedUnits, date: new Date().toISOString().split('T')[0], };
             if (i !== mainIndex) { tranData.amount = Math.round(meter.amount); }
             batch.set(newDocRef, tranData);
             newItems.push(tranData);
