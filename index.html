@@ -44,55 +44,53 @@
 </nav>
 
 <div id="loginCont" class="hidden w-full max-w-md p-1 mt-200 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-5"><input class="input-box" id="loginEmail" type="email" placeholder=" "/><label for="loginEmail" class="label">Email</label></div>
-    <div class="relative mt-5"><input class="input-box" id="loginPassword" type="password" placeholder=" "/><label for="loginPassword" class="label">Password</label></div>
+    <div class="relative mt-6"><input class="input-box" id="loginEmail" type="email" placeholder=" "/><label for="loginEmail" class="label">Email</label></div>
+    <div class="relative mt-6"><input class="input-box" id="loginPassword" type="password" placeholder=" "/><label for="loginPassword" class="label">Password</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
 <div id="bhaduvat" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-5"><input class="input-box" list="plot_datalist" id="plotgroup" type="text" placeholder=" "/><label for="plotgroup" class="label">Select Plot N0</label></div>
-    <div class="relative mt-5"><input class="input-box" id="bhaduvatname" type="text" placeholder=" "/><label for="bhaduvatname" class="label">Bhaduvat Name</label></div>
-    <div class="relative mt-5"><input class="input-box" id="meterreading" type="number" placeholder=" "/><label for="meterreading" class="label">Meter Reading</label></div>
-    <div class="relative mt-5"><input class="input-box" id="mbamt" type="number" placeholder=" "/><label for="mbamt" class="label">Monthly Bhadu</label></div>
+    <div class="relative mt-6"><input class="input-box" list="plot_datalist" id="plotgroup" type="text" placeholder=" "/><label for="plotgroup" class="label">Select Plot N0</label></div>
+    <div class="relative mt-6"><input class="input-box" id="bhaduvatname" type="text" placeholder=" "/><label for="bhaduvatname" class="label">Bhaduvat Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="meterreading" type="number" placeholder=" "/><label for="meterreading" class="label">Meter Reading</label></div>
+    <div class="relative mt-6"><input class="input-box" id="mbamt" type="number" placeholder=" "/><label for="mbamt" class="label">Monthly Bhadu</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveBhaduvat()">👉Save👈</button>
 </div>
 
 <div id="mvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-5"><input class="input-box" id="mvpartyname" type="text" placeholder=" "/><label for="mvpartyname" class="label">Party Name</label></div>
-    <div class="relative mt-5"><input class="input-box" id="mvamt" type="number" placeholder=" "/><label for="mvamt" class="label">Monthly Vyaj</label></div>
-    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveMvparty()">👉Save👈</button>
+    <div class="relative mt-6"><input class="input-box" id="mvpartyname" type="text" placeholder=" "/><label for="mvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="mvamt" type="number" placeholder=" "/><label for="mvamt" class="label">Monthly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('MV')">👉Save👈</button>
 </div>
 
 <div id="qvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-5"><input class="input-box" id="qvpartyname" type="text" placeholder=" "/><label for="qvpartyname" class="label">Party Name</label></div>
-    <div class="relative mt-5"><input class="input-box" id="qvamt" type="number" placeholder=" "/><label for="qvamt" class="label">Quarterly Vyaj</label></div>
-    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveQvparty()">👉Save👈</button>
+    <div class="relative mt-6"><input class="input-box" id="qvpartyname" type="text" placeholder=" "/><label for="qvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="qvamt" type="number" placeholder=" "/><label for="qvamt" class="label">Quarterly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('QV')">👉Save👈</button>
 </div>
 
 <div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-5"><input class="input-box" list="names_datalist" id="deleteparty" type="text" placeholder=" "><label for="deleteparty" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="deleteparty" type="text" placeholder=" "><label for="deleteparty" class="label">Party Name</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-5"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" "/><label for="ttype" class="label">Transaction Type</label></div>
-    <div class="relative mt-5"><input class="input-box date-input" id="date" type="text" placeholder=" "/><label for="date" class="label">Date</label></div>
-    <div class="relative mt-5"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" "><label for="txtfrom" class="label">From</label></div>
-    <div class="relative mt-5"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" "><label for="txtto" class="label">To</label></div>
-    <div class="relative mt-5"><input class="input-box" id="amt" type="number" placeholder=" "/><label for="amt" class="label">Amount</label></div>
-    <div class="relative mt-5"><input class="input-box" id="nar" type="text" placeholder=" " /><label for="nar" class="label">Narration</label></div>
-    <div class="relative mt-5"><input class="input-box" id="calc" type="text" placeholder=" "/><label for="calc" class="label">🧮 Calculator</label></div>
+    <div class="relative mt-6"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" "/><label for="ttype" class="label">Transaction Type</label></div>
+    <div class="relative mt-6"><input class="input-box date-input" id="date" type="text" placeholder=" "/><label for="date" class="label">Date</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" "><label for="txtfrom" class="label">From</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" "><label for="txtto" class="label">To</label></div>
+    <div class="relative mt-6"><input class="input-box" id="amt" type="number" placeholder=" "/><label for="amt" class="label">Amount</label></div>
+    <div class="relative mt-6"><input class="input-box" id="nar" type="text" placeholder=" " /><label for="nar" class="label">Narration</label></div>
+    <div class="relative mt-6"><input class="input-box" id="calc" type="text" placeholder=" "/><label for="calc" class="label">🧮 Calculator</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTransaction()">👉Save👈</button>
 </div>
 
 <div id="tableCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
-    <div class="flex items-center gap-2 mb-1 flex-nowrap">
-        <button class="bg-green-800  min-w-[110px] h-10 rounded-lg" id="excelBtn">Excel</button>
-        <button class="bg-red-800 min-w-[112px] h-10 rounded-lg" id="pdfBtn">PDF</button>
-        <button class="bg-blue-800 min-w-[111px] h-10 rounded-lg" id="printBtn">🖨️</button>
-    </div>
-    <input class="w-full max-w-[348px] px-2 mr-2 mb-1 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
-    <div class="overflow-x-auto"><div id="table" class="mr-1 rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
+    <button class="bg-green-800  min-w-[113px] h-10 rounded-lg" id="excelBtn">Excel</button>
+    <button class="bg-red-800 min-w-[113px] h-10 rounded-lg" id="pdfBtn">PDF</button>
+    <button class="bg-blue-800 min-w-[113px] h-10 rounded-lg" id="printBtn">🖨️</button>
+    <input class="w-full max-w-[348px] px-2 mt-1 mb-1 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
+    <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
 <div id="mtable" class="hidden w-full ml-1 mt-1 rounded-b-2xl bg-gray-900">
@@ -104,7 +102,7 @@
     <button id="saveBtn" style="display:none;" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
 </div>
 
-<div id="dashboard" class="hidden w-full max-w-md ml-1"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+<div id="dashboard" class="hidden w-full max-w-md ml-1 mt-5"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
 
 <datalist id="ttype_datalist"></datalist>
 <datalist id="names_datalist"></datalist>
@@ -131,7 +129,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const tranCol = collection(db, "gopal");
-    window.cachedData = null
+    window.cachedData = null;
     let meters = [], mainMeter = null, groupId = null, currentDocId = null; 
     flatpickr(".date-input", { dateFormat: "d-m-Y", });
     onAuthStateChanged(auth, async (user) => {
@@ -143,7 +141,7 @@
         else { document.getElementById("topbar").classList.add("hidden"); showCont("loginCont"); } 
     });  
     document.addEventListener('DOMContentLoaded', () => {
-        const labelClass = "absolute top-2 left-0 px-2 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:text-blue-600";
+        const labelClass = "absolute top-2 left-0 px-2 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-80 peer-focus:text-blue-600";
         document.querySelectorAll('label').forEach(label => { label.classList.add(...labelClass.split(' ')); });
         const inputClass = "peer w-full px-2 border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600 pr-2";
         document.querySelectorAll('.input-box').forEach(input => {
@@ -259,7 +257,7 @@
                     if (confirmed && rowData.id) {
                         await deleteDoc(doc(db, "gopal", rowData.id));
                         cell.getRow().delete(); 
-                        if (window.cachedAllData) { window.cachedAllData = window.cachedAllData.filter(doc => doc.id !== rowData.id); }
+                        if (window.cachedData) { window.cachedData = window.cachedData.filter(doc => doc.id !== rowData.id); }
                     } 
                 }, 
             }); 
@@ -322,7 +320,7 @@
         const data = await fetchAllOnce();
         const rows = [];
         data.forEach(item => {
-            if (!item.date) return;
+            if (!item.date || !item.fparty) return;
             rows.push({
                 id: item.id,
                 date: item.date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
@@ -357,7 +355,7 @@
             const name = (item.tparty || "");
             if (group.length > 0 && name.length > 0) { rows.push({ group, name }); }
         });
-        const columns = [ { title: "Group", field: "group", width: 110 }, { title: "Name", field: "name", width: 220 }, ];
+        const columns = [ { title: "Group", field: "group", width: 108 }, { title: "Name", field: "name", width: 240 }, ];
         createEditableTable(rows, columns, false, false, false);
         showCont("tableCont");
     };
@@ -370,7 +368,7 @@
             if (item.tparty) { const party = item.tparty.trim(); balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); }
         });
         for (const party in balances) { if ((balances[party]) !== 0) { rows.push({ party: party, amount: (balances[party]).toFixed(0) }); } }
-        const columns = [ { title: "Party", field: "party", width: 220 }, { title: "Amount", field: "amount", width: 110, hozAlign: "right" } ];
+        const columns = [ { title: "Party", field: "party", width: 240 }, { title: "Amount", field: "amount", width: 108, hozAlign: "right" } ];
         createEditableTable(rows, columns, false, false, false);
         showCont("tableCont");
     };
@@ -410,28 +408,34 @@
         const mbamt = document.getElementById("mbamt").value.trim();
         if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required."); }
         const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData); 
-        window.cachedData.push({ id: docRef.id, ...tranData }); 
+        const docRef = await addDoc(tranCol, newDocData);
+        const savedData = { id: docRef.id, ...newDocData };
+        window.cachedData.push(savedData); 
+        loadDropdownData();
         clear();
     };
-    window.saveMvparty = async function () {
-        const name = document.getElementById("mvpartyname").value.trim();
-        const mvamt = document.getElementById("mvamt").value.trim();
-        if (!name || !mvamt) { return alert("Name, Monthly Vyaj Amount Required."); }
-        const newDocData = { group: "MV Party", tparty: name, mvamt: Number(mvamt), ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData); 
-        window.cachedData.push({ id: docRef.id, ...tranData }); 
-        clear();
-    }; 
-    window.saveQvparty = async function () {
-        const name = document.getElementById("qvpartyname").value.trim();
-        const qvamt = document.getElementById("qvamt").value.trim();
-        if (!name || !qvamt) { return alert("Name, Quarterly Vyaj Amount Required."); }
-        const newDocData = { group: "QV Party", tparty: name, qvamt: Number(qvamt), ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData); 
-        window.cachedData.push({ id: docRef.id, ...tranData }); 
+    window.saveParty = async function (partyType) {
+        const nameInputId = partyType.toLowerCase() + "partyname";
+        const amtInputId = partyType.toLowerCase() + "amt";
+        const amtField = partyType.toLowerCase() + "amt";
+        const name = document.getElementById(nameInputId).value.trim();
+        const amt = document.getElementById(amtInputId).value.trim();
+
+        if (!name || !amt) { return alert(`Name, ${partyType === "MV" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); }
+        const newDocData = {
+            group: partyType + " Party",
+            tparty: name,
+            [amtField]: Number(amt),
+            ttype: partyType + " Party",
+            date: new Date().toISOString().split('T')[0],
+        };
+        const docRef = await addDoc(tranCol, newDocData);
+        const savedData = { id: docRef.id, ...newDocData };
+        window.cachedData.push(savedData);
+        loadDropdownData();
         clear();
     };
+
     window.saveHavala = async function (type) {
         const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
         const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
@@ -525,7 +529,7 @@
 
         let mainNewReading = parseFloat(mainNewReadingInput.value);
         if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { 
-            return alert( `Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`); 
+            return alert( `Main Meter new reading must be > old reading (${meters[mainIndex].oldReading})`); 
         }
         meters[mainIndex].newReading = mainNewReading;
         meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
@@ -610,4 +614,3 @@
 </script>
 </body>
 </html>
-
