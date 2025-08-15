@@ -94,10 +94,7 @@
 </div>
 
 <div id="mtable" class="hidden w-full ml-1 mt-1 rounded-b-2xl bg-gray-900">
-    <table id="metersTable">
-        <thead><tr><th>Name</th><th>Old Reading</th><th>New Reading ↓↓</th><th>Consumption</th><th>AdjUnits</th><th>Amount ↓↓</th></tr></thead>
-        <tbody id="metersTableBody"></tbody>
-    </table>
+    <table id="metersTable"><thead><tr><th>Name</th><th>Old Reading</th><th>New Reading ↓↓</th><th>Consumption</th><th>AdjUnits</th><th>Amount ↓↓</th></tr></thead><tbody id="metersTableBody"></tbody></table>
     <button id="calculateBtn" class="mx-auto mt-5 mb-5 px-2 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg" onclick="calculate()">Calculate</button>
     <button id="saveBtn" style="display:none;" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
 </div>
@@ -136,7 +133,7 @@
         if (user) { 
             showCont('topbar'); 
             await fetchAllOnce();
-            loadDropdownData(); 
+            await loadDropdownData(); 
         } 
         else { document.getElementById("topbar").classList.add("hidden"); showCont("loginCont"); } 
     });  
@@ -183,14 +180,8 @@
     window.showCont = function (...idToShow) {
         clear();
         const allIds = ['loginCont', 'bhaduvat', 'mvparty', 'qvparty', 'deleteCont', 'transaction', 'tableCont', 'dashboard', 'mtable'];
-        allIds.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) { el.classList.add("hidden"); el.style.setProperty('display', 'none', 'important'); } 
-        });
-        idToShow.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) { el.classList.remove("hidden"); el.style.setProperty('display', 'block', 'important'); } 
-        }); 
+        allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.classList.add("hidden"); el.style.setProperty('display', 'none', 'important'); } });
+        idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.classList.remove("hidden"); el.style.setProperty('display', 'block', 'important'); } }); 
     };
     window.showDashboard = async function () {
         showCont("dashboard");
@@ -224,7 +215,6 @@
         const ttype_list = ["Receipt"];
         const plot_list = ["116", "119"]; 
         const names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
-
         populateDatalist("ttype_datalist", ttype_list);
         populateDatalist("names_datalist", names_list);
         populateDatalist("plot_datalist", plot_list);
@@ -242,7 +232,6 @@
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
         const searchId = document.getElementById('searchBox');
         const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
-
         if (showDelete) {
             fullColumns.push({
                 title: "",
@@ -262,7 +251,6 @@
                 }, 
             }); 
         }
-
         if (showUpdate) {
             fullColumns.push({
                 title: "",
@@ -278,7 +266,6 @@
                 } 
             }); 
         }
-
         window.table = new Tabulator(document.getElementById('table'), {
             data: rows,
             layout: "fitDataTable",
@@ -287,7 +274,6 @@
             maxHeight: "600px",
             columns: fullColumns, 
         });
-        
         document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
         document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
@@ -305,8 +291,6 @@
     };
 
     window.showTransactionContainer = function (rowData) {
-        document.getElementById("tableCont").classList.add("hidden");
-        document.querySelectorAll("input:not(#ttype)").forEach(el => el.value = "");
         showCont('transaction');
         document.getElementById("ttype").value = rowData.ttype || "";
         const dateInput = document.getElementById("date");
@@ -324,12 +308,12 @@
             rows.push({
                 id: item.id,
                 date: item.date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
-                ttype: item.ttype,
+                ttype: item.ttype, 
                 fparty: item.fparty || "",
-                tparty: item.tparty || "",
-                nar: item.nar || "",
-                amount: item.amount || "",
-                nread: item.nread || "",
+                tparty: item.tparty || "", 
+                nar: item.nar || "", 
+                amount: item.amount || "", 
+                nread: item.nread || "", 
                 cons: item.cons || "", 
             }); 
         });
@@ -422,13 +406,7 @@
         const amt = document.getElementById(amtInputId).value.trim();
 
         if (!name || !amt) { return alert(`Name, ${partyType === "MV" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); }
-        const newDocData = {
-            group: partyType + " Party",
-            tparty: name,
-            [amtField]: Number(amt),
-            ttype: partyType + " Party",
-            date: new Date().toISOString().split('T')[0],
-        };
+        const newDocData = { group: partyType + " Party", tparty: name, [amtField]: Number(amt), ttype: partyType + " Party", date: new Date().toISOString().split('T')[0], };
         const docRef = await addDoc(tranCol, newDocData);
         const savedData = { id: docRef.id, ...newDocData };
         window.cachedData.push(savedData);
@@ -550,7 +528,6 @@
             meters[i].newReading = newRead;
             meters[i].consumption = newRead - meters[i].oldReading;
         }
-
         const totalCustomerConsumption = meters.reduce((sum, m, idx) => { return idx !== mainIndex ? sum + m.consumption : sum; }, 0);
         const diff = meters[mainIndex].consumption - totalCustomerConsumption;        
         meters.forEach((meter, idx) => {
@@ -574,7 +551,6 @@
     };
     window.saveData = async function () {
         const batch = writeBatch(db);
-        const today = new Date().toISOString().split('T')[0]; 
         const newItems = [];
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
@@ -582,13 +558,12 @@
         for (let i = 0; i < meters.length; i++) {
             const meter = meters[i];
             const newDocRef = doc(collection(db, "gopal"));
-            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread: meter.newReading, cons: meter.consumption, date: today, };
+            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread: meter.newReading, cons: meter.consumption, date: new Date().toISOString().split('T')[0], };
             if (i !== mainIndex) { tranData.amount = Math.round(meter.amount); }
             batch.set(newDocRef, tranData);
             newItems.push(tranData);
         }
         await batch.commit();
-        if (!Array.isArray(window.cachedData)) window.cachedData = [];
         window.cachedData.push(...newItems);
         document.getElementById("mtable").style.setProperty('display', 'none', 'important');
     };
