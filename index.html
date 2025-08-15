@@ -21,80 +21,78 @@
     </style>
 </head>
 <body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
-<header id="topbar" class="w-full bg-gray-800 hover:bg-blue-800 text-green-500 px-5 py-2 cursor-pointer hidden text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
+<header id="topbar" class="hidden w-full bg-gray-800 hover:bg-blue-800 text-green-500 px-5 py-3 cursor-pointer text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
 <nav id="top-nav" class="fixed top-[-1px] left-0 h-[670px] w-[350px] bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-lime-600" id="close">Home 🏚️</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showCont('bhaduvat')">Bhaduvat 🧑</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 👮</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showMtable(116)">Ele 116 ☠️</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="showMtable(119)">Ele 119 🥶</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="insertTran(true, true, false)">DayBook 📖</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
-        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-fuchsia-600" onclick="showCont('deleteCont')">Delete Party 📢⛔</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" id="close">Home 🏚️</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showCont('bhaduvat')">Bhaduvat 🧑</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 👮</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showMtable(116)">Ele 116 ☠️</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showMtable(119)">Ele 119 🥶</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="insertTran(true, true, false)">DayBook 📖</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showCont('deleteCont')">Delete Party 📢⛔</a></li>
         <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
     </ul>
 </nav>
 
-<div id="loginCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label>Email</label><input class="input-box mt-10" id="loginEmail" placeholder="Email ....." type="email"><br><br>
-    <label>Password</label><input class="input-box" id="loginPassword" placeholder="Password ....." type="password"><br><br>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
+<div id="loginCont" class="hidden w-full max-w-md p-1 mt-200 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-5"><input class="input-box" id="loginEmail" type="email" placeholder=" "/><label for="loginEmail" class="label">Email</label></div>
+    <div class="relative mt-5"><input class="input-box" id="loginPassword" type="password" placeholder=" "/><label for="loginPassword" class="label">Password</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
 <div id="bhaduvat" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Select Plot N0 ↓↓</label><input class="input-box" list="plot_datalist" id="plotgroup" type="text" autocomplete="off"/>
-    <label class="label">Bhaduvat Name ↓↓</label><input class="input-box" id="bhaduvatname" type="text" autocomplete="off"/>
-    <label class="label">Meter Reading ↓↓</label><input class="input-box" id="meterreading" type="number" autocomplete="off"/>
-    <label class="label">Monthly Bhadu ↓↓</label><input class="input-box" id="mbamt" type="number" autocomplete="off"/>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveBhaduvat()">👉Save👈</button>
+    <div class="relative mt-5"><input class="input-box" list="plot_datalist" id="plotgroup" type="text" placeholder=" "/><label for="plotgroup" class="label">Select Plot N0</label></div>
+    <div class="relative mt-5"><input class="input-box" id="bhaduvatname" type="text" placeholder=" "/><label for="bhaduvatname" class="label">Bhaduvat Name</label></div>
+    <div class="relative mt-5"><input class="input-box" id="meterreading" type="number" placeholder=" "/><label for="meterreading" class="label">Meter Reading</label></div>
+    <div class="relative mt-5"><input class="input-box" id="mbamt" type="number" placeholder=" "/><label for="mbamt" class="label">Monthly Bhadu</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveBhaduvat()">👉Save👈</button>
 </div>
 
 <div id="mvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Party Name ↓↓</label><input class="input-box" id="mvpartyname" type="text" autocomplete="off"/>
-    <label class="label">Monthly Vyaj ↓↓</label><input class="input-box" id="mvamt" type="number" autocomplete="off"/>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveMvparty()">👉Save👈</button>
+    <div class="relative mt-5"><input class="input-box" id="mvpartyname" type="text" placeholder=" "/><label for="mvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-5"><input class="input-box" id="mvamt" type="number" placeholder=" "/><label for="mvamt" class="label">Monthly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveMvparty()">👉Save👈</button>
 </div>
 
 <div id="qvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Party Name ↓↓</label><input class="input-box" id="qvpartyname" type="text" autocomplete="off"/>
-    <label class="label">Quarterly Vyaj ↓↓</label><input class="input-box" id="qvamt" type="number" autocomplete="off"/>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveQvparty()">👉Save👈</button>
+    <div class="relative mt-5"><input class="input-box" id="qvpartyname" type="text" placeholder=" "/><label for="qvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-5"><input class="input-box" id="qvamt" type="number" placeholder=" "/><label for="qvamt" class="label">Quarterly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveQvparty()">👉Save👈</button>
 </div>
 
 <div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <label class="label">Party Name ↓↓</label><input class="input-box" list = "names_datalist" id="deleteparty" type="text" autocomplete="off"/>
-    <button class="block mx-auto mt-10 mb-5 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
+    <div class="relative mt-5"><input class="input-box" list="names_datalist" id="deleteparty" type="text" placeholder=" "><label for="deleteparty" class="label">Party Name</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-3"><input class="input-box" id="ttype" type="text" placeholder=" "/><label for="ttype" class="label">Transaction Type</label></div>
-    <div class="relative mt-3"><input class="input-box date-input" id="date" type="text" placeholder=" "/><label for="date" class="label">Date</label></div>
-    <div class="relative mt-3"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" "><label for="txtfrom" class="label">From</label></div>
-    <div class="relative mt-3"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" "><label for="txtto" class="label">To</label></div>
-    <div class="relative mt-3"><input class="input-box" id="amt" type="number" placeholder=" "/><label for="amt" class="label">Amount</label></div>
-    <div class="relative mt-3"><input class="input-box" id="nar" type="text" placeholder=" " /><label for="nar" class="label">Narration</label></div>
-    <div class="flex items-center gap-1 flex-nowrap">
-        <button class="mt-5 mb-5 w-[120px] h-10 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTransaction()">👉Save👈</button>
-        <input class="w-full mt-5 mb-5 px-2 h-10 bg-gray-900 border border-green-600 rounded-lg" id="calc" type="number" placeholder="🧮 Calculator"/>
-    </div>
+    <div class="relative mt-5"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" "/><label for="ttype" class="label">Transaction Type</label></div>
+    <div class="relative mt-5"><input class="input-box date-input" id="date" type="text" placeholder=" "/><label for="date" class="label">Date</label></div>
+    <div class="relative mt-5"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" "><label for="txtfrom" class="label">From</label></div>
+    <div class="relative mt-5"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" "><label for="txtto" class="label">To</label></div>
+    <div class="relative mt-5"><input class="input-box" id="amt" type="number" placeholder=" "/><label for="amt" class="label">Amount</label></div>
+    <div class="relative mt-5"><input class="input-box" id="nar" type="text" placeholder=" " /><label for="nar" class="label">Narration</label></div>
+    <div class="relative mt-5"><input class="input-box" id="calc" type="text" placeholder=" "/><label for="calc" class="label">🧮 Calculator</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTransaction()">👉Save👈</button>
 </div>
 
 <div id="tableCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
-    <div class="flex items-center gap-1 mb-1 flex-nowrap">
-        <button class="bg-green-800 px-7 h-10 rounded-lg" id="excelBtn">𝄜XL</button>
-        <button class="bg-red-800 px-7 h-10 rounded-lg" id="pdfBtn">PDF</button>
-        <button class="bg-blue-800 px-9 h-10 rounded-lg" id="printBtn">🖨️</button>
+    <div class="flex items-center gap-2 mb-1 flex-nowrap">
+        <button class="bg-green-800  min-w-[110px] h-10 rounded-lg" id="excelBtn">Excel</button>
+        <button class="bg-red-800 min-w-[112px] h-10 rounded-lg" id="pdfBtn">PDF</button>
+        <button class="bg-blue-800 min-w-[111px] h-10 rounded-lg" id="printBtn">🖨️</button>
     </div>
-    <input class="w-full max-w-[350px] px-2 mb-1 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
-    <div><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
+    <input class="w-full max-w-[348px] px-2 mr-2 mb-1 h-10 bg-gray-900 border border-blue-600 rounded-lg" id="searchBox" placeholder="Search..." type="text"/>
+    <div><div id="table" class="mr-1 rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
 <div id="mtable" class="hidden w-full ml-1 mt-1 rounded-b-2xl bg-gray-900">
@@ -103,13 +101,15 @@
         <tbody id="metersTableBody"></tbody>
     </table>
     <button id="calculateBtn" class="mx-auto mt-5 mb-5 px-2 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg" onclick="calculate()">Calculate</button>
-    <button id="saveBtn" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
+    <button id="saveBtn" style="display:none;" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
 </div>
 
 <div id="dashboard" class="hidden w-full max-w-md ml-1"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
 
+<datalist id="ttype_datalist"></datalist>
 <datalist id="names_datalist"></datalist>
 <datalist id="plot_datalist"></datalist>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script type="module">
     import {initializeApp} 
@@ -131,70 +131,21 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const tranCol = collection(db, "gopal");
-    window.appState = { table: null, globalTransactionsUnsubscribe: null, allTransactions: [], ledgerCache: null, receivablesCache: null, activeViewInfo: null, };
-    let initialDropdownsLoaded = false;
-    window.cleanupListener = function () {
-        if (window.appState.globalTransactionsUnsubscribe) {
-            window.appState.globalTransactionsUnsubscribe();
-            window.appState.globalTransactionsUnsubscribe = null;
-        }
-    };
-    window.initializeGlobalTable = function () { 
-        if (window.appState.table) { return; }
-        window.appState.table = new Tabulator(document.getElementById('table'), { data: [], layout: "fitDataTable", reactiveData: true, rowHeight: 40, maxHeight: "600px", columns: [], });
-        document.getElementById('excelBtn')?.addEventListener("click", () => { window.appState.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
-        document.getElementById('pdfBtn')?.addEventListener("click", () => { window.appState.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
-        document.getElementById('printBtn')?.addEventListener("click", () => { window.appState.table.print(false, true); });
-        window.bindSearch(); 
-    };
-    let dropdownCache = null, meters = [], mainMeter = null, groupId = null;
-    window.currentDocId = null;
+    window.cachedData = null
+    let meters = [], mainMeter = null, groupId = null, currentDocId = null; 
     flatpickr(".date-input", { dateFormat: "d-m-Y", });
     onAuthStateChanged(auth, async (user) => {
-        if (user) {
-            document.getElementById("topbar").classList.remove("hidden");
-            if (!window.appState.globalTransactionsUnsubscribe) {
-                const initialSnapshotPromise = new Promise(resolve => {
-                    window.appState.globalTransactionsUnsubscribe = onSnapshot(tranCol, (snapshot) => {
-                        const tempAllTransactions = [];
-                        snapshot.forEach((docSnap) => { tempAllTransactions.push({ id: docSnap.id, ...docSnap.data() }); });
-                        window.appState.allTransactions = tempAllTransactions;
-                        window.appState.ledgerCache = null;
-                        window.appState.receivablesCache = null;
-                        loadDropdownData();
-                        if (!initialDropdownsLoaded) { resolve(); initialDropdownsLoaded = true; } 
-                        else {
-                            if (window.appState.activeViewInfo && document.getElementById('tableCont').style.display !== 'none') {
-                                let newRows = [];
-                                switch (window.appState.activeViewInfo.type) {
-                                    case 'daybook': newRows = _processDaybookData(window.appState.allTransactions, window.appState.activeViewInfo.params); break;
-                                    case 'ledger': 
-                                        window.appState.ledgerCache = _processLedgerData(window.appState.allTransactions, window.appState.activeViewInfo.params);
-                                        newRows = window.appState.ledgerCache;
-                                        break;
-                                    case 'receivables':
-                                        window.appState.receivablesCache = _processReceivablesData(window.appState.allTransactions, window.appState.activeViewInfo.params);
-                                        newRows = window.appState.receivablesCache;
-                                        break;
-                                }
-                                if (window.appState.table) { window.appState.table.setData(newRows); }
-                            }
-                        }
-                    }, (error) => {
-                        console.error("Error with global Firestore listener:", error);
-                        alert("Error fetching core data. Please refresh.");
-                    });
-                });
-                await initialSnapshotPromise;
-            }
+        if (user) { 
+            showCont('topbar'); 
+            await fetchAllOnce();
+            loadDropdownData(); 
         } 
-        else { document.getElementById("topbar").classList.add("hidden"); showCont("loginCont"); cleanupListener(); initialDropdownsLoaded = false; } 
+        else { document.getElementById("topbar").classList.add("hidden"); showCont("loginCont"); } 
     });  
     document.addEventListener('DOMContentLoaded', () => {
-        initializeGlobalTable();
-        const labelClass = "absolute top-2 left-0 px-2 text-gray-500 transform -translate-y-5 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:text-blue-600";
+        const labelClass = "absolute top-2 left-0 px-2 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:text-blue-600";
         document.querySelectorAll('label').forEach(label => { label.classList.add(...labelClass.split(' ')); });
-        const inputClass = "peer w-full px-2 border-b-2 border-gray-300 bg-transparent pt-2 focus:outline-none focus:border-blue-600 pr-2";
+        const inputClass = "peer w-full px-2 border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600 pr-2";
         document.querySelectorAll('.input-box').forEach(input => {
             input.classList.add(...inputClass.split(' '));
             if (input.tagName === "INPUT" && input.type === "text") {
@@ -224,6 +175,12 @@
         } 
     });
 
+    window.fetchAllOnce = async function () { 
+        if (cachedData) { return cachedData; } 
+        const snapshot = await getDocs(collection(db, "gopal")); 
+        cachedData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); 
+        return cachedData; 
+    };
     window.clear = function () { document.querySelectorAll("input").forEach(el => el.value = ""); };
     window.showCont = function (...idToShow) {
         clear();
@@ -239,18 +196,13 @@
     };
     window.showDashboard = async function () {
         showCont("dashboard");
-        const querySnapshot = await getDocs(tranCol); 
+        const transactionsData = await fetchAllOnce();
         const monthlyData = {};
-        querySnapshot.forEach((docSnap) => {
-            const data = docSnap.data();
+        transactionsData.forEach((data) => {
             let jsDate = new Date(data.date);
             if (isNaN(jsDate)) return;
             const month = jsDate.toLocaleString('default', { month: 'short' });
-            if (!monthlyData[month]) {
-                 monthlyData[month] = { 
-                    bhadu: 0, vyaj: 0
-                }; 
-            }
+            if (!monthlyData[month]) { monthlyData[month] = { bhadu: 0, vyaj: 0 }; }
             const ttype = (data.ttype || "").trim().toLowerCase();
             if (ttype === "bhadu") { monthlyData[month].bhadu += data.amount || 0; } 
             if (ttype === "vyaj") { monthlyData[month].vyaj += data.amount || 0; } 
@@ -262,32 +214,20 @@
         if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
         window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
             type: 'bar',
-            data: { labels,
-                    datasets: [
-                        { label: "Bhadu", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" },
-                        { label: "Vyaj", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } 
-                    ] 
-            }, 
-            options: { 
-                responsive: true, 
-                plugins: { 
-                    datalabels: { 
-                        anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), 
-                        font: { weight: 'bold' }, color: '#fff' 
-                    } 
-                }, 
-                scales: { y: { beginAtZero: true } } 
-            }, 
-            plugins: [ChartDataLabels] 
+            data: { labels, datasets: [ { label: "Bhadu", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" }, { label: "Vyaj", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } ] }, 
+            options: { responsive: true, plugins: { datalabels: { anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), font: { weight: 'bold' }, color: '#fff' } }, scales: { y: { beginAtZero: true } } },
         }); 
     };
 
-    window.loadDropdownData = function () {
-        const transactionsData = window.appState.allTransactions; 
+    window.loadDropdownData = async function () {
+        const transactionsData = await fetchAllOnce();
         const nameSet = new Set();
         transactionsData.forEach((data) => { const name = (data.tparty || "").trim(); if (name.length > 0) { nameSet.add(name); } });
+        const ttype_list = ["Receipt"];
         const plot_list = ["116", "119"]; 
         const names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
+
+        populateDatalist("ttype_datalist", ttype_list);
         populateDatalist("names_datalist", names_list);
         populateDatalist("plot_datalist", plot_list);
     };
@@ -300,10 +240,11 @@
             datalistElement.appendChild(option);
         });
     };
-        
     window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
-        if (!window.appState.table) { initializeGlobalTable(); }
+        if (window.table && typeof window.table.destroy === "function") window.table.destroy();
+        const searchId = document.getElementById('searchBox');
         const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
+
         if (showDelete) {
             fullColumns.push({
                 title: "",
@@ -314,10 +255,16 @@
                 cellClick: async (e, cell) => {
                     e.stopPropagation();
                     const rowData = cell.getRow().getData();
-                    if (confirm("Delete? Are You Sure? This action cannot be undone.")) { if (rowData.id) { await deleteDoc(doc(db, "gopal", rowData.id)); alert("Document deleted successfully."); } }
+                    const confirmed = confirm("Delete? Are You Sure?");
+                    if (confirmed && rowData.id) {
+                        await deleteDoc(doc(db, "gopal", rowData.id));
+                        cell.getRow().delete(); 
+                        if (window.cachedAllData) { window.cachedAllData = window.cachedAllData.filter(doc => doc.id !== rowData.id); }
+                    } 
                 }, 
             }); 
         }
+
         if (showUpdate) {
             fullColumns.push({
                 title: "",
@@ -333,14 +280,29 @@
                 } 
             }); 
         }
-        window.appState.table.setColumns(fullColumns);
-        window.appState.table.setData(rows);
-    };    
+
+        window.table = new Tabulator(document.getElementById('table'), {
+            data: rows,
+            layout: "fitDataTable",
+            reactiveData: true,
+            rowHeight: 40,
+            maxHeight: "600px",
+            columns: fullColumns, 
+        });
+        
+        document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
+        document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
+        document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
+        bindSearch(); 
+    };
     window.bindSearch = function () {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
             const value = this.value.toLowerCase().trim();
-            if (window.appState.table) { window.appState.table.setFilter(function (data) { if (value === "") { return true; } return Object.values(data).some(val => String(val).toLowerCase().includes(value)); }); }
+            table.setFilter(function (data) {
+                if (value === "") { return true; }
+                return Object.values(data).some(val => String(val).toLowerCase().includes(value)); 
+            }); 
         }); 
     };
 
@@ -356,115 +318,89 @@
         document.getElementById("amt").value = rowData.amount || "";
         document.getElementById("nar").value = rowData.nar || "";
     };
-    function getDynamicColumns(baseColumns, showDelete = false, showUpdate = false, editable = false) {
-        const fullColumns = baseColumns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
-        if (showDelete) {
-            fullColumns.push({
-                title: "", field: "__delete", width: 70, hozAlign: "center",
-                formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
-                cellClick: async (e, cell) => {
-                    e.stopPropagation();
-                    const rowData = cell.getRow().getData();
-                    if (confirm("Delete? Are You Sure? This action cannot be undone.")) { if (rowData.id) { await deleteDoc(doc(db, "gopal", rowData.id)); alert("Document deleted successfully."); } }
-                },
-            });
-        }
-        if (showUpdate) {
-            fullColumns.push({
-                title: "", field: "__update", width: 70, hozAlign: "center",
-                formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
-                cellClick: (e, cell) => {
-                    e.stopPropagation();
-                    const rowData = cell.getRow().getData();
-                    window.currentDocId = rowData.id;
-                    showTransactionContainer(rowData);
-                }
-            });
-        }
-        return fullColumns;
-    };
-    function _processDaybookData(transactions, params) {
-        const rows = [];
-        transactions.forEach((data) => {
-            const fparty = (data.fparty || "").trim();
-            if (!fparty) return;
-            rows.push({ id: data.id, date: (data.date || "").split('-').reverse().join('-'), ttype: data.ttype, fparty: data.fparty || "", tparty: data.tparty || "", amount: data.amount || "", nar: data.nar || "", });
-        });
-        return rows;
-    };
-    function _processLedgerData(transactions, params) {
-        const rows = [];
-        const uniqueEntries = new Set();
-        transactions.forEach((data) => {
-            const group = data.group || "";
-            const name = data.tparty || "";
-            const key = `${group}|${name}`;
-            if (group !== "" && name !== "" && !uniqueEntries.has(key)) { rows.push({ group: group, name: name }); uniqueEntries.add(key); }
-        });
-        return rows.sort((a, b) => { 
-            const groupA = String(a.group);
-            const groupB = String(b.group);
-            if (groupA === groupB) { return a.name.localeCompare(b.name); }
-            return groupA.localeCompare(groupB); 
-        });
-    };
-    function _processReceivablesData(transactions, params) {
-        const balances = {};
-        transactions.forEach((data) => {
-            const amount = parseFloat(data.amount || "0");
-            if (data.fparty) { const party = data.fparty.trim(); balances[party] = (balances[party] || 0) + amount; }
-            if (data.tparty) { const party = data.tparty.trim(); balances[party] = (balances[party] || 0) - amount; }
-        });
-        const rows = [];
-        for (const [party, amount] of Object.entries(balances)) { if (amount) { rows.push({ party: party, amount: amount.toFixed(0) }); } }
-        return rows.sort((a,b) => a.party.localeCompare(b.party));
-    };
-
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
-        window.appState.activeViewInfo = { type: 'daybook', params: { showDelete, showUpdate, editable } };
-        const columns = getDynamicColumns([
-            {title: "Date", field: "date"},
-            {title: "Type", field: "ttype"},
-            {title: "From Party", field: "fparty"},
-            {title: "To Party", field: "tparty"},
-            {title: "Amount", field: "amount", hozAlign: "right"},
-            {title: "Narration", field: "nar"},
-            {title: "ID", field: "id", visible: false}
-        ], showDelete, showUpdate, editable);
-        window.appState.table.setColumns(columns);
-        const rows = _processDaybookData(window.appState.allTransactions, window.appState.activeViewInfo.params);
-        window.appState.table.setData(rows); 
-        showCont("tableCont");
+        const data = await fetchAllOnce();
+        const rows = [];
+        data.forEach(item => {
+            if (!item.date) return;
+            rows.push({
+                id: item.id,
+                date: item.date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
+                ttype: item.ttype,
+                fparty: item.fparty || "",
+                tparty: item.tparty || "",
+                nar: item.nar || "",
+                amount: item.amount || "",
+                nread: item.nread || "",
+                cons: item.cons || "", 
+            }); 
+        });
+        const columns = [
+            {title: "Date", field: "date"}, 
+            {title: "Type", field: "ttype"}, 
+            {title: "From Party", field: "fparty"}, 
+            {title: "To Party", field: "tparty"},  
+            {title: "Amount", field: "amount", hozAlign: "right"}, 
+            {title: "Nread", field: "nread", hozAlign: "right"}, 
+            {title: "Cons", field: "cons", hozAlign: "right"},
+            {title: "Narration", field: "nar"}, 
+            {title: "ID", field: "id", visible: false} 
+        ];
+        createEditableTable(rows, columns, showDelete, showUpdate, editable);
+        showCont("tableCont"); 
     };
     window.viewLedger = async function () {
-        window.appState.activeViewInfo = { type: 'ledger', params: {} };
-        const columns = getDynamicColumns([ { title: "Group", field: "group" }, { title: "Name", field: "name" } ], false, false, false);
-        window.appState.table.setColumns(columns);
-        if (!window.appState.ledgerCache) { window.appState.ledgerCache = _processLedgerData(window.appState.allTransactions, window.appState.activeViewInfo.params); }
-        window.appState.table.setData(window.appState.ledgerCache); showCont("tableCont");
+        const data = await fetchAllOnce();
+        const rows = [];
+        data.forEach(item => {
+            const group = (item.group || "");
+            const name = (item.tparty || "");
+            if (group.length > 0 && name.length > 0) { rows.push({ group, name }); }
+        });
+        const columns = [ { title: "Group", field: "group", width: 110 }, { title: "Name", field: "name", width: 220 }, ];
+        createEditableTable(rows, columns, false, false, false);
+        showCont("tableCont");
     };
-    window.viewReceivables = function () {
-        window.appState.activeViewInfo = { type: 'receivables', params: {} };
-        const columns = getDynamicColumns([ { title: "Party", field: "party" }, { title: "Amount", field: "amount", hozAlign: "right" } ], false, false, false);
-        window.appState.table.setColumns(columns);        
-        if (!window.appState.receivablesCache) { window.appState.receivablesCache = _processReceivablesData(window.appState.allTransactions, window.appState.activeViewInfo.params); }
-        window.appState.table.setData(window.appState.receivablesCache); showCont("tableCont");
+    window.viewReceivables = async function () {
+        const data = await fetchAllOnce(); 
+        let rows = []; 
+        const balances = {};
+        data.forEach(item => {
+            if (item.fparty) { const party = item.fparty.trim(); balances[party] = (balances[party] || 0) + parseFloat(item.amount || "0"); }
+            if (item.tparty) { const party = item.tparty.trim(); balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); }
+        });
+        for (const party in balances) { if ((balances[party]) !== 0) { rows.push({ party: party, amount: (balances[party]).toFixed(0) }); } }
+        const columns = [ { title: "Party", field: "party", width: 220 }, { title: "Amount", field: "amount", width: 110, hozAlign: "right" } ];
+        createEditableTable(rows, columns, false, false, false);
+        showCont("tableCont");
     };
     
     window.saveTransaction = async function () {
         const ttype = document.getElementById("ttype").value.trim();
         const odate = document.getElementById("date");
-        const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
         const fparty = document.getElementById("txtfrom").value.trim();
         const tparty = document.getElementById("txtto").value.trim();
         const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
         const nar = document.getElementById("nar").value.trim();
         
-        if (!ttype || !date || !fparty || !tparty || isNaN(amount) || amount <= 0) { return alert("Please fill all required fields properly\nAmount must be a number > 0"); }       
+        if (!ttype || !odate || !fparty || !tparty || isNaN(amount) || amount <= 0) { 
+            return alert("Please fill all required fields properly\nAmount must be a number > 0"); 
+        }       
+        const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
         const tranData = {ttype, date, fparty, tparty, amount };
+
         if (nar) tranData.nar = nar;
-        if (window.currentDocId) { const docRef = doc(db, "gopal", window.currentDocId); await updateDoc(docRef, tranData); alert("Transaction updated successfully."); } 
-        else { await addDoc(collection(db, "gopal"), tranData); alert("Transaction saved successfully."); }
+        if (window.currentDocId) { 
+            const docRef = doc(db, "gopal", window.currentDocId); 
+            await updateDoc(docRef, tranData); 
+            const index = window.cachedData.findIndex(item => item.id === docRef.id);
+            if (index !== -1) { window.cachedData[index] = { ...window.cachedData[index], ...tranData }; }
+            insertTran();
+        } 
+        else { 
+            const newDocRef = await addDoc(collection(db, "gopal"), tranData); 
+            window.cachedData.push({ id: newDocRef.id, ...tranData });
+        }
         clear(); window.currentDocId = null; 
     };
     window.saveBhaduvat = async function () {
@@ -472,32 +408,39 @@
         const name = document.getElementById("bhaduvatname").value.trim();
         const nread = document.getElementById("meterreading").value.trim();
         const mbamt = document.getElementById("mbamt").value.trim();
-        if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required. 👨‍👨‍👦‍👦"); }
+        if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required."); }
         const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), ttype: "Bhaduvat", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData); alert(`${name} saved successfully.`); clear();
+        await addDoc(tranCol, newDocData); 
+        window.cachedData.push({ id: docRef.id, ...tranData }); 
+        clear();
     };
     window.saveMvparty = async function () {
         const name = document.getElementById("mvpartyname").value.trim();
         const mvamt = document.getElementById("mvamt").value.trim();
-        if (!name || !mvamt) { return alert("Name, Monthly Vyaj Amount Required. 👨‍👨‍👦‍👦"); }
+        if (!name || !mvamt) { return alert("Name, Monthly Vyaj Amount Required."); }
         const newDocData = { group: "MV Party", tparty: name, mvamt: Number(mvamt), ttype: "MV Party", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData); alert(`${name} saved successfully.`); clear();
+        await addDoc(tranCol, newDocData); 
+        window.cachedData.push({ id: docRef.id, ...tranData }); 
+        clear();
     }; 
     window.saveQvparty = async function () {
         const name = document.getElementById("qvpartyname").value.trim();
         const qvamt = document.getElementById("qvamt").value.trim();
         if (!name || !qvamt) { return alert("Name, Quarterly Vyaj Amount Required."); }
         const newDocData = { group: "QV Party", tparty: name, qvamt: Number(qvamt), ttype: "QV Party", date: new Date().toISOString().split('T')[0], };
-        await addDoc(tranCol, newDocData); alert(`${name} saved successfully.`); clear();
+        await addDoc(tranCol, newDocData); 
+        window.cachedData.push({ id: docRef.id, ...tranData }); 
+        clear();
     };
     window.saveHavala = async function (type) {
         const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
         const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
         const amtField = fieldMap[type];
         const ttypeValue = ttypeMap[type];
+        const newItems = [];
         
         if (confirm(`Are you sure you want to save ${type.toUpperCase()} Havala?`)) {
-            const itemsToProcess = window.appState.allTransactions.filter(data => 
+            const itemsToProcess = window.cachedData.filter(data => 
                 data[amtField] !== undefined && data[amtField] !== null && 
                 (typeof data[amtField] !== 'string' || data[amtField] !== '') &&
                 data.tparty !== undefined
@@ -507,24 +450,28 @@
                 const newDoc = { ttype: ttypeValue, tparty: item.tparty, fparty: "Gpzip", amount: Number(item[amtField]), date: new Date().toISOString().split('T')[0], };
                 const newDocRef = doc(collection(db, 'gopal'));
                 batch.set(newDocRef, newDoc);
+                newItems.push(newDoc);
             }
             await batch.commit();
+            window.cachedData.push(...newItems);
         }
     };
     window.deleteParty = async function () {
         const name = document.getElementById("deleteparty").value.trim();
-        if (!name) {  return alert("Please enter a name"); }
+        if (!name) { return alert("Please enter a name"); }
         if (confirm('Are you sure you want to Delete this party and all related transactions? This action cannot be undone.')) {
             const batch = writeBatch(db);
-            const docsToDelete = window.appState.allTransactions.filter(data => data.fparty === name || data.tparty === name );
+            const docsToDelete = window.cachedData.filter( data => data.fparty === name || data.tparty === name );
             for (const docData of docsToDelete) { batch.delete(doc(db, "gopal", docData.id)); }
-            await batch.commit(); alert(`Deleted ${name} And Related Documents.`); clear();
+            await batch.commit();
+            window.cachedData = window.cachedData.filter( data => data.fparty !== name && data.tparty !== name );
+            clear();
         }
     };
 
     function getInputByIdx(cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
-    window.fetchCustomers = function (groupId) {
-        const transactionsData = window.appState.allTransactions;
+    window.fetchCustomers = async function (groupId) {
+        const transactionsData = await fetchAllOnce(); 
         const namesSet = new Set();
         transactionsData.forEach(data => { if (data.group === groupId) { if (data.tparty) { namesSet.add(data.tparty.trim()); } } });
         const names = Array.from(namesSet);
@@ -573,14 +520,13 @@
     window.calculate = function () {
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
-        if (mainIndex === -1) { return alert(`Main meter for group ${groupId} not found!`); }
-
         const mainNewReadingInput = getInputByIdx("newReadingInput", mainIndex);
         const mainAmountInput     = getInputByIdx("amountInput", mainIndex);
-        if (!mainNewReadingInput || !mainAmountInput) { return alert("Main meter row not found in table."); }
 
         let mainNewReading = parseFloat(mainNewReadingInput.value);
-        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { return alert( `Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`); }
+        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { 
+            return alert( `Main Meter new reading must be >= old reading (${meters[mainIndex].oldReading})`); 
+        }
         meters[mainIndex].newReading = mainNewReading;
         meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
 
@@ -594,15 +540,15 @@
             if (!input) return alert(`Row for "${meters[i].name}" not found.`);
 
             let newRead = parseFloat(input.value);
-            if (isNaN(newRead) || newRead < meters[i].oldReading) { return alert( `New reading for customer "${meters[i].name}" must be >= old reading (${meters[i].oldReading})`); }
+            if (isNaN(newRead) || newRead <= meters[i].oldReading) { 
+                return alert( `New reading for customer "${meters[i].name}" must be > old reading (${meters[i].oldReading})`); 
+            }
             meters[i].newReading = newRead;
             meters[i].consumption = newRead - meters[i].oldReading;
         }
 
-        if (meters[mainIndex].consumption === 0) { return alert("Main Meter consumption cannot be zero!"); }
         const totalCustomerConsumption = meters.reduce((sum, m, idx) => { return idx !== mainIndex ? sum + m.consumption : sum; }, 0);
-        const diff = meters[mainIndex].consumption - totalCustomerConsumption;
-        
+        const diff = meters[mainIndex].consumption - totalCustomerConsumption;        
         meters.forEach((meter, idx) => {
             if (idx === mainIndex) { meter.adjustedUnits = meter.consumption; } 
             else {
@@ -620,26 +566,35 @@
             const amtInput = row.querySelector(".amountInput");
             if (amtInput) amtInput.value = m.amount.toFixed(0);
         });
+        document.getElementById("saveBtn").style.display = "inline-block";
     };
     window.saveData = async function () {
         const batch = writeBatch(db);
+        const today = new Date().toISOString().split('T')[0]; 
+        const newItems = [];
+        const mainMeterName = `Main ${groupId}`;
+        const mainIndex = meters.findIndex(m => m.name === mainMeterName);
+
         for (let i = 0; i < meters.length; i++) {
             const meter = meters[i];
-            const nreadInput = getInputByIdx("newReadingInput", i);
-            const amountInput = getInputByIdx("amountInput", i);
-            if (!nreadInput || !amountInput) { return alert(`Inputs missing for "${meter.name}".`); }
-            const nread = parseFloat(nreadInput.value);
-            const amount = parseFloat(amountInput.value);
-            const consumption = nread - meter.oldReading;
-            if (isNaN(nread) || nread < meter.oldReading || isNaN(amount) || amount < 0) { return alert("Enter proper amount and new readings"); }
             const newDocRef = doc(collection(db, "gopal"));
-            batch.set(newDocRef, { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread, cons: consumption, amount, date: new Date().toISOString().split('T')[0], }); 
+            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", nread: meter.newReading, cons: meter.consumption, date: today, };
+            if (i !== mainIndex) { tranData.amount = Math.round(meter.amount); }
+            batch.set(newDocRef, tranData);
+            newItems.push(tranData);
         }
-            await batch.commit();
-            alert("Data saved successfully.");
-            document.getElementById("mtable").style.setProperty('display', 'none', 'important');
+        await batch.commit();
+        if (!Array.isArray(window.cachedData)) window.cachedData = [];
+        window.cachedData.push(...newItems);
+        document.getElementById("mtable").style.setProperty('display', 'none', 'important');
     };
-    window.showMtable = async function (grpId) { groupId = grpId; meters = fetchCustomers(groupId); renderTable(); showCont('mtable'); }
+    window.showMtable = async function (grpId) { 
+        groupId = grpId; 
+        meters = await fetchCustomers(groupId); 
+        renderTable(); 
+        showCont('mtable'); 
+        document.getElementById("saveBtn").style.display = "none";
+    };
     
     window.login = async function () {
         const email = document.getElementById("loginEmail").value;
@@ -648,15 +603,9 @@
         const user = userCredential.user;
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists() && docSnap.data().approved === true) { alert("Login successful and approved! 🔓"); showCont("topbar"); }
+        if (docSnap.exists() && docSnap.data().approved === true) { showCont("topbar"); }
     };
-    window.logout = async function () {
-        if (confirm("Are you sure you want to logout?")) {
-            clear(); window.currentDocId = null; cleanupListener(); 
-            await signOut(auth); alert("Logged out successfully. 👋");
-            document.getElementById("topbar").style.setProperty('display', 'none', 'important'); showCont("loginCont"); 
-        }
-    };
+    window.logout = async function () { await signOut(auth); showCont("loginCont"); };
     window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
 </script>
 </body>
