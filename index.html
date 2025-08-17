@@ -70,15 +70,15 @@
 </div>
 
 <div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="deleteparty" type="text" placeholder=" " autocomplete="off"><label for="deleteparty" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" onblur="checkList('deleteparty', 'names_datalist')" id="deleteparty" type="text" placeholder=" " autocomplete="off"><label for="deleteparty" class="label">Party Name</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
 </div>
 
 <div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
     <div class="relative mt-6"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" " autocomplete="off"/><label for="ttype" class="label">Transaction Type</label></div>
     <div class="relative mt-6"><input class="input-box date-input" id="date" type="text" placeholder=" " autocomplete="off"/><label for="date" class="label">Date</label></div>
-    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtfrom" type="text" placeholder=" " autocomplete="off"/><label for="txtfrom" class="label">From</label></div>
-    <div class="relative mt-6"><input class="input-box" list="names_datalist" id="txtto" type="text" placeholder=" " autocomplete="off"/><label for="txtto" class="label">To</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist", onblur="checkList('txtfrom', 'names_datalist')", id="txtfrom" type="text" placeholder=" " autocomplete="off"/><label for="txtfrom" class="label">From</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" onblur="checkList('txtto', 'names_datalist')" id="txtto" type="text" placeholder=" " autocomplete="off"/><label for="txtto" class="label">To</label></div>
     <div class="relative mt-6"><input class="input-box" id="amt" type="number" placeholder=" " autocomplete="off"/><label for="amt" class="label">Amount</label></div>
     <div class="relative mt-6"><input class="input-box" id="nar" type="text" placeholder=" " autocomplete="off"/><label for="nar" class="label">Narration</label></div>
     <div class="relative mt-6"><input class="input-box" id="calc" type="text" placeholder=" " autocomplete="off"/><label for="calc" class="label">🧮 Calculator</label></div>
@@ -206,6 +206,17 @@
             data: { labels, datasets: [ { label: "Bhadu", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" }, { label: "Vyaj", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } ] }, 
             options: { responsive: true, plugins: { datalabels: { anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), font: { weight: 'bold' }, color: '#fff' } }, scales: { y: { beginAtZero: true } } },
         }); 
+    };
+
+    window.checkList = function (inputId, datalistId) {
+        const input = document.getElementById(inputId);
+        const datalist = document.getElementById(datalistId);
+        const allowedValues = Array.from(datalist.options).map(option => option.value);
+        if (!allowedValues.includes(input.value)) {
+            input.value = "";
+            alert("Invalid value! Please select from the list.");
+            input.focus();
+        }
     };
 
     window.loadDropdownData = async function () {
