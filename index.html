@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Inventory Management System</title>
+    <title>Gopal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
@@ -13,65 +13,79 @@
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        table { border-collapse: collapse; table-layout: auto; max-width: 900px; }
+        th, td { border: 1px solid #ccc; text-align: right; white-space: nowrap; }
+        th:first-child { text-align: left; }
+        td:first-child { text-align: left; }
+    </style>
 </head>
-<body class="min-h-screen bg-gray-900 text-white text-[16px]" style="font-family: 'Poppins', sans-serif;">
-<header id="topbar" class="w-full bg-gray-800 hover:bg-blue-800 text-green-500 px-5 py-3 cursor-pointer text-[16px]">☰ Inventory App</header>
+<body class="min-h-screen bg-gray-900 text-white font-serif text-[16px]">
+<header id="topbar" class="hidden w-full bg-gray-800 hover:bg-blue-800 text-green-500 px-5 py-3 cursor-pointer text-[20px]">🦚।।श्री राम।। राधे राधे🦚</header>
 <nav id="top-nav" class="fixed top-[-1px] left-0 h-[670px] w-full bg-gray-900 transform -translate-y-full transition-transform duration-300 z-50 overflow-y-auto">
     <ul>
-        <li><a class="block hover:bg-gray-900 px-2 py-3 cursor-pointer menu-link text-blue-500 mt-3" id="close">🏠 Home</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link text-green-500" onclick="showCont('tranCont')">🔁 Transaction</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link text-red-500" onclick="insertTran()">✍️ Update</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link text-yellow-500" onclick="viewStock()">🚨 Stock</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link text-yellow-500" onclick="viewDeptCons()">👀 Deptwise</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link text-yellow-500" onclick="viewCatgwiseStock()">🗃️ Catgwise</a></li>
-        <li><a class="block hover:bg-gray-800 px-2 py-3 cursor-pointer menu-link text-orange-500" onclick="logout()">🚀 Logout</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" id="close">Home 🏚️</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showDashboard()">Dashboard 📊</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showCont('bhaduvat')">Bhaduvat 🧑</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('mvparty')">Monthly Vparty 👮</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showCont('qvparty')">Querterly Vparty 🤖</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showCont('transaction')">Transaction 🛒💸💰</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showMtable(116)">Ele 116 ☠️</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="showMtable(119)">Ele 119 🥶</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="saveHavala('mbamt')">Monthly Bhada Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 📚</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="viewReceivables()">Receivables 💴</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="insertTran(true, true, false)">DayBook 📖</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link bg-gray-800" onclick="showCont('deleteCont')">Delete Party 📢⛔</a></li>
+        <li><a class="block hover:bg-lime-800 px-2 py-3 cursor-pointer menu-link" onclick="window.logout()">Logout🚀</a></li>
     </ul>
 </nav>
 
-<div id="lgnCont" class="hidden w-full max-w-md p-1 mt-200 rounded-b-2xl bg-gray-900">
-    <div class="relative mt-6"><input id="loginEmail" class="input-box" type="email"/><label for="loginEmail" class="label">Email</label></div>
-    <div class="relative mt-6"><input id="loginPassword" class="input-box" type="password"/><label for="loginPassword" class="label">Password</label></div>
+<div id="loginCont" class="hidden w-full max-w-md p-1 mt-200 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-6"><input class="input-box" id="loginEmail" type="email" placeholder=" " autocomplete="off"/><label for="loginEmail" class="label">Email</label></div>
+    <div class="relative mt-6"><input class="input-box" id="loginPassword" type="password" placeholder=" " autocomplete="off"/><label for="loginPassword" class="label">Password</label></div>
     <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
-<div id="tranCont" class="hidden max-w-md p-3">
-    <div id="ttypeDiv" class="relative mt-6"><input id="ttype1" class="input-box" type="text"/><label for="ttype1" class="label">In or Out</label></div>
-    <div id="dateDiv" class="relative mt-6"><input id="date1" class="input-box date-input" type="date"/><label for="date1" class="label">Date</label></div>
-    <div id="suppDiv" class="relative mt-6"><input id="supp1" class="input-box" type="text"/><label for="supp1" class="label">Supplier</label><button class="absolute right-1 text-green-500" onclick="showCont('tranCont', 'suppCont')">✚</button></div>
-    <div id="deptDiv" class="relative mt-6"><input id="dept1" class="input-box" type="text"/><label for="dept1" class="label">Department</label><button class="absolute right-1 text-green-500" onclick="showCont('tranCont', 'deptCont')">✚</button></div>
-    <div id="catgDiv" class="relative mt-6"><input id="catg1" class="input-box" type="text"/><label for="catg1" class="label">Category</label><button class="absolute right-1 text-green-500" onclick="showCont('tranCont', 'catgCont')">✚</button></div>
-    <div id="itemDiv" class="relative mt-6"><input id="item1" class="input-box" type="text"/><label for="item1" class="label">Item</label><button class="absolute right-1 text-green-500" onclick="showCont('tranCont', 'itemCont')">✚</button></div>
-    <div id="pricDiv" class="relative mt-6"><input id="pric1" class="input-box" type="number"/><label for="pric1" class="label">Purchase Price</label></div>
-    <div id="qtyDiv" class="relative mt-6"><input id="qty1" class="input-box" type="number"/><label for="qty1" class="label">Quantity</label></div>
-    <div id="narDiv" class="relative mt-6"><input id="nar1" class="input-box" type="text"/><label for="nar1" class="label">Narration</label></div>
-    <button id="btnDiv" class="w-full mt-20 px-10 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTran()">Save</button>
-
-    <div id="suppCont" class="hidden w-[340px] p-1 fixed top-0 mt-[220px] z-50 bg-white rounded-lg">
-        <div class="relative mt-6"><input id="suppname" class="input-box text-black" type="text"/><label for="suppname" class="label">New Supplier Name</label></div>
-        <button class="mt-7 mb-3 px-10 ml-10 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveCDSI('suppname')">Save</button>
-        <button class="mt-7 mb-3 px-10 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg" onclick="showCont('tranCont')">Close</button>
-    </div>
-    <div id="deptCont" class="hidden w-[340px] p-1 fixed top-0 mt-[220px] z-50 bg-white rounded-lg">
-        <div class="relative mt-6"><input id="deptname" class="input-box text-black" type="text"/><label for="deptname" class="label">New Department Name</label></div>
-        <button class="mt-7 mb-3 px-10 ml-10 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveCDSI('deptname')">Save</button>
-        <button class="mt-7 mb-3 px-10 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg" onclick="showCont('tranCont')">Close</button>
-    </div>
-    <div id="catgCont" class="hidden w-[340px] p-1 fixed top-0 mt-[220px] z-50 bg-white rounded-lg">
-        <div class="relative mt-6"><input id="catgname" class="input-box text-black" type="text"/><label for="catgname" class="label">New Category Name</label></div>
-        <button class="mt-7 mb-3 px-10 ml-10 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveCDSI('catgname')">Save</button>
-        <button class="mt-7 mb-3 px-10 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg" onclick="showCont('tranCont')">Close</button>
-    </div>
-    <div id="itemCont" class="hidden w-[340px] p-1 fixed top-0 mt-[150px] z-50 bg-white rounded-lg">
-        <div class="relative mt-6"><input id="catggrp" class="input-box text-black" type="text"/><label for="catggrp" class="label">Category</label></div>
-        <div class="relative mt-6"><input id="itemname" class="input-box text-black" type="text"/><label for="itemname" class="label">Item Name</label></div>
-        <div class="relative mt-6"><input id="loc" class="input-box text-black" type="text"/><label for="loc" class="label">Location(Store3,Shelf2,Rack6....)</label></div>
-        <button class="mt-7 mb-3 px-10 ml-10 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveCDSI('itemname')">Save</button>
-        <button class="mt-7 mb-3 px-10 py-2 bg-purple-700 hover:bg-purple-600 rounded-lg" onclick="showCont('tranCont')">Close</button>
-    </div>
+<div id="bhaduvat" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-6"><input class="input-box" list="plot_datalist" id="plotgroup" type="text" placeholder=" " autocomplete="off"/><label for="plotgroup" class="label">Select Plot N0</label></div>
+    <div class="relative mt-6"><input class="input-box" id="bhaduvatname" type="text" placeholder=" " autocomplete="off"/><label for="bhaduvatname" class="label">Bhaduvat Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="meterreading" type="number" placeholder=" " autocomplete="off"/><label for="meterreading" class="label">Meter Reading</label></div>
+    <div class="relative mt-6"><input class="input-box" id="mbamt" type="number" placeholder=" " autocomplete="off"/><label for="mbamt" class="label">Monthly Bhadu</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveBhaduvat()">👉Save👈</button>
 </div>
 
-<div id="tblCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
+<div id="mvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-6"><input class="input-box" id="mvpartyname" type="text" placeholder=" " autocomplete="off"/><label for="mvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="mvamt" type="number" placeholder=" " autocomplete="off"/><label for="mvamt" class="label">Monthly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('mv')">👉Save👈</button>
+</div>
+
+<div id="qvparty" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-6"><input class="input-box" id="qvpartyname" type="text" placeholder=" " autocomplete="off"/><label for="qvpartyname" class="label">Party Name</label></div>
+    <div class="relative mt-6"><input class="input-box" id="qvamt" type="number" placeholder=" " autocomplete="off"/><label for="qvamt" class="label">Quarterly Vyaj</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveParty('qv')">👉Save👈</button>
+</div>
+
+<div id="deleteCont" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" onblur="checkList('deleteparty', 'names_datalist')" id="deleteparty" type="text" placeholder=" " autocomplete="off"><label for="deleteparty" class="label">Party Name</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-red-700 hover:bg-red-500 rounded-lg" onclick="deleteParty()">👉Delete👈</button>
+</div>
+
+<div id="transaction" class="hidden w-full max-w-md p-1 rounded-b-2xl bg-gray-900">
+    <div class="relative mt-6"><input class="input-box" list="ttype_datalist" id="ttype" type="text" placeholder=" " autocomplete="off"/><label for="ttype" class="label">Transaction Type</label></div>
+    <div class="relative mt-6"><input class="input-box date-input" id="date" type="text" placeholder=" " autocomplete="off"/><label for="date" class="label">Date</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist", onblur="checkList('txtfrom', 'names_datalist')", id="txtfrom" type="text" placeholder=" " autocomplete="off"/><label for="txtfrom" class="label">From</label></div>
+    <div class="relative mt-6"><input class="input-box" list="names_datalist" onblur="checkList('txtto', 'names_datalist')" id="txtto" type="text" placeholder=" " autocomplete="off"/><label for="txtto" class="label">To</label></div>
+    <div class="relative mt-6"><input class="input-box" id="amt" type="number" placeholder=" " autocomplete="off"/><label for="amt" class="label">Amount</label></div>
+    <div class="relative mt-6"><input class="input-box" id="nar" type="text" placeholder=" " autocomplete="off"/><label for="nar" class="label">Narration</label></div>
+    <div class="relative mt-6"><input class="input-box" id="calc" type="text" placeholder=" " autocomplete="off"/><label for="calc" class="label">🧮 Calculator</label></div>
+    <button class="block mx-auto mt-10 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveTransaction()">👉Save👈</button>
+</div>
+
+<div id="tableCont" class="hidden w-full p-1 rounded-b-2xl bg-gray-900">
     <button class="bg-green-800  min-w-[113px] h-10 rounded-lg" id="excelBtn">Excel</button>
     <button class="bg-red-800 min-w-[113px] h-10 rounded-lg" id="pdfBtn">PDF</button>
     <button class="bg-blue-800 min-w-[113px] h-10 rounded-lg" id="printBtn">🖨️</button>
@@ -79,13 +93,25 @@
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
+<div id="mtable" class="hidden w-full ml-1 mt-1 rounded-b-2xl bg-gray-900">
+    <table id="metersTable"><thead><tr><th>Name</th><th>Old Reading</th><th>New Reading ↓↓</th><th>Consumption</th><th>AdjUnits</th><th>Amount ↓↓</th></tr></thead><tbody id="metersTableBody"></tbody></table>
+    <button id="calculateBtn" class="mx-auto mt-5 mb-5 px-2 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg" onclick="calculate()">Calculate</button>
+    <button id="saveBtn" style="display:none;" class="mx-auto mt-5 mb-5 px-5 py-2 bg-green-700 hover:bg-green-600 rounded-lg" onclick="saveData()">Save Data</button>
+</div>
+
+<div id="dashboard" class="hidden w-full max-w-md ml-1 mt-5"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+
+<datalist id="ttype_datalist"></datalist>
+<datalist id="names_datalist"></datalist>
+<datalist id="plot_datalist"></datalist>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script type="module">
     import {initializeApp} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut,} 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import {getFirestore, collection, getDocs, getDoc, doc, deleteDoc, updateDoc, addDoc } 
+    import {getFirestore, collection, getDocs, getDoc, doc, deleteDoc, updateDoc, query, where, addDoc, writeBatch, onSnapshot } 
     from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
     const firebaseConfig = {
         apiKey: "AIzaSyDrI9vIDUePbzHrTSRCKAcJ7oCfCIrSIUI",
@@ -99,24 +125,24 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const tranCol = collection(db, "inventory");
-    window.cachedData = null, window.currentDocId = null;
+    const tranCol = collection(db, "gopal");
+    window.cachedData = null;
+    let meters = [], mainMeter = null, groupId = null, currentDocId = null; 
     flatpickr(".date-input", { dateFormat: "d-m-Y", });
     onAuthStateChanged(auth, async (user) => {
         if (user) { 
             showCont('topbar'); 
             await fetchAllOnce();
-            await loadDropdownData();
-        } else { document.getElementById("topbar").classList.add("hidden"); showCont("lgnCont"); } 
-    });
+            await loadDropdownData(); 
+        } 
+        else { document.getElementById("topbar").classList.add("hidden"); showCont("loginCont"); } 
+    });  
     document.addEventListener('DOMContentLoaded', () => {
         const labelClass = "absolute top-2 left-0 px-2 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-80 peer-focus:text-blue-600";
         document.querySelectorAll('label').forEach(label => { label.classList.add(...labelClass.split(' ')); });
-        const inputClass = "peer w-full max-w-md px-2 border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600 pr-2";
+        const inputClass = "peer w-full px-2 border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600 pr-2";
         document.querySelectorAll('.input-box').forEach(input => {
             input.classList.add(...inputClass.split(' '));
-            input.setAttribute('placeholder', ' ');
-            input.setAttribute('autocomplete', 'off');
             if (input.tagName === "INPUT" && input.type === "text") {
                 input.addEventListener('input', function () {
                     const start = this.selectionStart;
@@ -127,105 +153,92 @@
             } 
         }); 
     });                 
-    document.getElementById('topbar').addEventListener('click', () => { document.getElementById('top-nav').classList.remove('-translate-y-full'); showCont(); clear(); });
+    document.getElementById('topbar').addEventListener('click', () => { document.getElementById('top-nav').classList.remove('-translate-y-full'); showCont(); });
     document.querySelectorAll('.menu-link').forEach(link => {
         link.addEventListener('click', e => {
             if (link.getAttribute('id') === 'close') { e.preventDefault(); }
             document.getElementById('top-nav').classList.add('-translate-y-full');
         });
     });
-    
-    window.fetchAllOnce = async function() {
-        if (!window.cachedData) {
-            const snapshot = await getDocs(collection(db, "inventory")); 
-            window.cachedData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); 
-        }
-        return window.cachedData;
+    document.getElementById("calc").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            const raw = this.value.trim();
+            if (/^[\d+\-*/().\s]+$/.test(raw)) {
+                const result = Function('"use strict";return (' + raw + ')')();
+                this.value = result; } 
+            else { alert("Invalid expression. Only numbers and + - * / allowed. 🤕"); } 
+        } 
+    });
+
+    window.fetchAllOnce = async function () { 
+        if (cachedData) { return cachedData; } 
+        const snapshot = await getDocs(collection(db, "gopal")); 
+        cachedData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); 
+        return cachedData; 
     };
-    window.clear = function () { document.querySelectorAll("input").forEach(el => el.value = ""); };  
+    window.clear = function () { document.querySelectorAll("input").forEach(el => el.value = ""); };
     window.showCont = function (...idToShow) {
-        const allIds = ['lgnCont', 'suppCont', 'deptCont', 'catgCont', 'itemCont', 'delCont', 'tranCont', 'tblCont',];
+        clear();
+        const allIds = ['loginCont', 'bhaduvat', 'mvparty', 'qvparty', 'deleteCont', 'transaction', 'tableCont', 'dashboard', 'mtable'];
         allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.classList.add("hidden"); el.style.setProperty('display', 'none', 'important'); } });
         idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.classList.remove("hidden"); el.style.setProperty('display', 'block', 'important'); } }); 
     };
-    
-    window.loadDropdownData = async function () {
-        const dropData = await fetchAllOnce();
-        const suppSet = new Set();
-        const catgSet = new Set();
-        const deptSet = new Set();
-        const itemSet = new Set();
-        const selectedCatg = document.getElementById("catg1").value.trim();
-        dropData.forEach((data) => {
-            const mgrp = (data.mgrp || "").trim();
-            const grp = (data.grp || "").trim();
-            const name = (data.name || "").trim();
-            if (grp === "Supplier" && name.length > 0) {suppSet.add(name);}
-            if (grp === "Department" && name.length > 0) {deptSet.add(name);}
-            if (mgrp === "Category" && grp.length > 0) {catgSet.add(grp);}
-            if (selectedCatg && grp === selectedCatg && name.length > 0) { itemSet.add(name); }
+    window.showDashboard = async function () {
+        showCont("dashboard");
+        const transactionsData = await fetchAllOnce();
+        const monthlyData = {};
+        transactionsData.forEach((data) => {
+            let jsDate = new Date(data.date);
+            if (isNaN(jsDate)) return;
+            const month = jsDate.toLocaleString('default', { month: 'short' });
+            if (!monthlyData[month]) { monthlyData[month] = { bhadu: 0, vyaj: 0 }; }
+            const ttype = (data.ttype || "").trim().toLowerCase();
+            if (ttype === "bhadu") { monthlyData[month].bhadu += data.amount || 0; } 
+            if (ttype === "vyaj") { monthlyData[month].vyaj += data.amount || 0; } 
         });
-        window.supplst = [...suppSet].sort((a, b) => a.localeCompare(b));
-        window.catglst = [...catgSet].sort((a, b) => a.localeCompare(b));
-        window.deptlst = [...deptSet].sort((a, b) => a.localeCompare(b));
-        window.itemlst = [...itemSet].sort((a, b) => a.localeCompare(b));
-        attachDropdown(document.getElementById("catggrp"), window.catglst);
-        attachDropdown(document.getElementById("supp1"), window.supplst);
-        attachDropdown(document.getElementById("catg1"), window.catglst);
-        attachDropdown(document.getElementById("dept1"), window.deptlst);
-        attachDropdown(document.getElementById("item1"), window.itemlst);
+        const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const labels = Object.keys(monthlyData).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+        const sales = labels.map(m => monthlyData[m].bhadu);
+        const purchase = labels.map(m => monthlyData[m].vyaj);
+        if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
+        window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
+            type: 'bar',
+            data: { labels, datasets: [ { label: "Bhadu", data: sales, backgroundColor: "rgba(75, 192, 192, 0.6)" }, { label: "Vyaj", data: purchase, backgroundColor: "rgba(255, 159, 64, 0.6)" } ] }, 
+            options: { responsive: true, plugins: { datalabels: { anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), font: { weight: 'bold' }, color: '#fff' } }, scales: { y: { beginAtZero: true } } },
+        }); 
     };
-    window.attachDropdown = function (inputElement, dataList) {
-        if (inputElement._dropdownCleanup) { inputElement._dropdownCleanup(); }
-        let wrapper = inputElement.parentElement;
-        if (!wrapper.classList.contains("relative")) {
-            wrapper = document.createElement("div");
-            wrapper.className = "relative w-full";
-            inputElement.parentNode.insertBefore(wrapper, inputElement);
-            wrapper.appendChild(inputElement);
-        }
-        let dropdown = document.createElement("ul");
-        dropdown.className = "absolute z-50 w-full max-h-100 overflow-y-auto bg-gray-800 border border-green-600 rounded-md hidden";
-        wrapper.appendChild(dropdown);
 
-        function filterList() {
-            const search = inputElement.value.toLowerCase();
-            const matches = dataList.filter(item => item.toLowerCase().includes(search));
-            populateDropdown(matches);
+    window.checkList = function (inputId, datalistId) {
+        const input = document.getElementById(inputId);
+        const datalist = document.getElementById(datalistId);
+        const allowedValues = Array.from(datalist.options).map(option => option.value);
+        if (!allowedValues.includes(input.value)) {
+            input.value = "";
+            alert("Invalid value! Please select from the list.");
+            input.focus();
         }
-        function populateDropdown(list) {
-            dropdown.innerHTML = "";
-            list.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = item;
-                li.className = "px-2 py-2 hover:bg-gray-700 cursor-pointer";
-                li.addEventListener('mousedown', (e) => { e.preventDefault(); inputElement.value = item; dropdown.classList.add("hidden"); });
-                dropdown.appendChild(li);
-            });
-        }
-        const onInput = () => { dropdown.classList.remove("hidden"); filterList(); };
-        const onClick = () => { dropdown.classList.remove("hidden"); filterList(); };
-        const onBlur = () => {
-            setTimeout(() => {
-                const value = inputElement.value.trim().toLowerCase();
-                if (value && !dataList.some(item => item.toLowerCase() === value)) { alert("Please select a valid option from the list."); inputElement.value = ""; return; }
-            }, 200);
-        };
-        const onDocClick = (e) => { if (!wrapper.contains(e.target)) dropdown.classList.add("hidden"); };
-        inputElement.addEventListener("input", onInput);
-        inputElement.addEventListener("click", onClick);
-        inputElement.addEventListener("blur", onBlur);
-        document.addEventListener("click", onDocClick);
-        inputElement._dropdownCleanup = () => {
-            inputElement.removeEventListener("input", onInput);
-            inputElement.removeEventListener("click", onClick);
-            inputElement.removeEventListener("blur", onBlur);
-            document.removeEventListener("click", onDocClick);
-            if (dropdown.parentNode) dropdown.parentNode.removeChild(dropdown);
-            inputElement._dropdownCleanup = null;
-        };
     };
-    
+
+    window.loadDropdownData = async function () {
+        const transactionsData = await fetchAllOnce();
+        const nameSet = new Set();
+        transactionsData.forEach((data) => { const name = (data.tparty || "").trim(); if (name.length > 0) { nameSet.add(name); } });
+        const ttype_list = ["Receipt"];
+        const plot_list = ["116", "119"]; 
+        const names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
+        populateDatalist("ttype_datalist", ttype_list);
+        populateDatalist("names_datalist", names_list);
+        populateDatalist("plot_datalist", plot_list);
+    };
+    function populateDatalist(datalistId, dataArray) {
+        const datalistElement = document.getElementById(datalistId);
+        datalistElement.innerHTML = '';
+        dataArray.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item;
+            datalistElement.appendChild(option);
+        });
+    };
     window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
         const searchId = document.getElementById('searchBox');
@@ -265,7 +278,13 @@
             }); 
         }
         window.table = new Tabulator(document.getElementById('table'), {
-            data: rows, layout: "fitDataTable", reactiveData: true, rowHeight: 40, maxHeight: "600px", columns: fullColumns, });
+            data: rows,
+            layout: "fitDataTable",
+            reactiveData: true,
+            rowHeight: 40,
+            maxHeight: "600px",
+            columns: fullColumns, 
+        });
         document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", {sheetName: "Sheet1"}); });
         document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", {orientation: "portrait"}); });
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
@@ -282,172 +301,297 @@
         }); 
     };
 
-    window.saveCDSI = async function(type) {
-        let name = "", grp = "";
-        if (type === "suppname") { name = document.getElementById("suppname").value.trim(); grp = "Supplier"; if (!name) return alert('Supplier Name is required.'); } 
-        if (type === "deptname") { name = document.getElementById("deptname").value.trim(); grp = "Department"; if (!name) return alert('Department Name is required.'); } 
-        if (type === "catgname") { grp = document.getElementById("catgname").value.trim(); if (!grp) return alert('Category Name is required.'); }
-        if (type === "itemname") { name = document.getElementById("itemname").value.trim(); grp = document.getElementById("catggrp").value.trim(); if (!grp || !name) return alert('Category & Item Name are required.'); } 
-        const loc = document.getElementById("loc").value.trim();
-        const newDocData = { grp, ...(name ? { name } : {}) };
-        if (loc) newDocData.loc = loc;
-        if (type === "catgname") newDocData.mgrp = "Category";
-        const docRef = await addDoc(tranCol, newDocData);
-        const savedData = { id: docRef.id, ...newDocData };
-        window.cachedData.push(savedData);
-        await loadDropdownData();
-        showCont('tranCont');
+    window.showTransactionContainer = function (rowData) { 
+        showCont('transaction');
+        document.getElementById("ttype").value = rowData.ttype || "";
+        const dateInput = document.getElementById("date");
+        if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
+        document.getElementById("txtfrom").value = rowData.fparty || "";
+        document.getElementById("txtto").value = rowData.tparty || "";
+        document.getElementById("amt").value = rowData.amount || "";
+        document.getElementById("nar").value = rowData.nar || "";
     };
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
         const data = await fetchAllOnce();
         const rows = [];
         data.forEach(item => {
-            if (!item.date) return;
+            if (!item.date || !item.fparty) return;
             rows.push({
                 id: item.id,
                 date: item.date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
                 ttype: item.ttype, 
-                supp: item.supp || "",
-                dept: item.dept || "", 
-                catg: item.catg || "", 
-                item: item.item || "", 
-                price: item.price || "",
-                qty: item.qty || "", 
+                fparty: item.fparty || "",
+                tparty: item.tparty || "", 
                 nar: item.nar || "", 
+                amount: item.amount || "", 
+                oread: item.oread || "",
+                nread: item.nread || "", 
+                unitdiff: item.unitdiff || "", 
             }); 
         });
         const columns = [
             {title: "Date", field: "date"}, 
             {title: "Type", field: "ttype"}, 
-            {title: "Supplier", field: "supp"}, 
-            {title: "Department", field: "dept"},  
-            {title: "Category", field: "catg"}, 
-            {title: "Items", field: "item"},
-            {title: "Price", field: "price", hozAlign: "right"}, 
-            {title: "Qty", field: "qty", hozAlign: "right"},
+            {title: "From Party", field: "fparty"}, 
+            {title: "To Party", field: "tparty"},  
+            {title: "Amount", field: "amount", hozAlign: "right"}, 
+            {title: "Oread", field: "oread", hozAlign: "right"},
+            {title: "Nread", field: "nread", hozAlign: "right"}, 
+            {title: "Udiff", field: "unitdiff", hozAlign: "right"},
             {title: "Narration", field: "nar"}, 
             {title: "ID", field: "id", visible: false} 
         ];
         createEditableTable(rows, columns, showDelete, showUpdate, editable);
-        showCont("tblCont"); 
-    }; 
-    window.showTransactionContainer = function (rowData) { 
-        const fieldDivs = ['dateDiv','suppDiv','deptDiv','catgDiv','itemDiv','pricDiv','qtyDiv','narDiv','btnDiv'];
-        document.getElementById("ttype1").value = rowData.ttype || "";
-        const ttype = document.getElementById("ttype1").value
-        const dateInput = document.getElementById("date1");
-        if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
-        document.getElementById("catg1").value = rowData.catg || "";
-        document.getElementById("item1").value = rowData.item || "";
-        document.getElementById("qty1").value = rowData.qty || "";
-        document.getElementById("nar1").value = rowData.nar || "";
-        fieldDivs.forEach(id => {
-            const div = document.getElementById(id);
-            if (ttype === 'In') {
-                if (id === 'deptDiv') div.style.display = 'none';
-                else div.style.display = '';
-                document.getElementById("supp1").value = rowData.supp || "";
-                document.getElementById("pric1").value = rowData.price || "";
-            } else if (ttype === 'Out') {
-                if (id === 'suppDiv' || id === 'pricDiv') div.style.display = 'none';
-                else div.style.display = '';
-                document.getElementById("dept1").value = rowData.dept || "";
-            } else { div.style.display = 'none'; }
-        });
-        showCont('tranCont');
+        showCont("tableCont"); 
     };
-    window.saveTran = async function () {
-        const fields = ['ttype1','date1','supp1','dept1','catg1','item1','pric1','qty1','nar1'];    
-        const values = {};
-        fields.forEach(id => { const el = document.getElementById(id); values[id] = el ? el.value.trim() : ""; });
-        const required = ['ttype1','date1','catg1','item1','qty1'];
-        for (const r of required) { if (!values[r]) { return alert('Transaction Type, Date, Category, Item, Qty are required.'); } }
-        const date = date1._flatpickr.formatDate( date1._flatpickr.parseDate(values.date1, "d-m-Y"), "Y-m-d" );
-        const tranData = { ttype: values.ttype1, date: date, catg: values.catg1, item: values.item1, qty: Number(values.qty1), };
-        if (values.supp1) tranData.supp = values.supp1;
-        if (values.dept1) tranData.dept = values.dept1;
-        if (values.pric1) tranData.price = Number(values.pric1);
-        if (values.nar1) tranData.nar = values.nar1;
-
+    window.viewLedger = async function () {
+        const data = await fetchAllOnce();
+        const rows = [];
+        data.forEach(item => {
+            const group = item.group ?? "";
+            const name = item.tparty ?? "";
+            if ((group !== "" && group !== null && group !== undefined) &&
+                (name !== "" && name !== null && name !== undefined)) {
+                rows.push({ group, name });
+            }
+        });
+        const columns = [ { title: "Group", field: "group", width: 108 }, { title: "Name", field: "name", width: 240 }, ];
+        createEditableTable(rows, columns, false, false, false);
+        showCont("tableCont");
+    };
+    window.viewReceivables = async function () {
+        const data = await fetchAllOnce(); 
+        let rows = []; 
+        const balances = {};
+        data.forEach(item => {
+            if (item.fparty) { const party = item.fparty.trim(); balances[party] = (balances[party] || 0) + parseFloat(item.amount || "0"); }
+            if (item.tparty) { const party = item.tparty.trim(); balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); }
+        });
+        for (const party in balances) { if ((balances[party]) !== 0) { rows.push({ party: party, amount: (balances[party]).toFixed(0) }); } }
+        const columns = [ { title: "Party", field: "party", width: 240 }, { title: "Amount", field: "amount", width: 108, hozAlign: "right" } ];
+        createEditableTable(rows, columns, false, false, false);
+        showCont("tableCont");
+    };
+    
+    window.saveTransaction = async function () {
+        const ttype = document.getElementById("ttype").value.trim();
+        const odate = document.getElementById("date");
+        const fparty = document.getElementById("txtfrom").value.trim();
+        const tparty = document.getElementById("txtto").value.trim();
+        const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
+        const nar = document.getElementById("nar").value.trim();
+        
+        if (!ttype || !odate || !fparty || !tparty || isNaN(amount) || amount <= 0) { 
+            return alert("Please fill all required fields properly\nAmount must be a number > 0"); 
+        }       
+        const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
+        const tranData = {ttype, date, fparty, tparty, amount };
+        
+        if (nar) tranData.nar = nar;
         if (window.currentDocId) { 
-            const docRef = doc(db, "inventory", window.currentDocId); 
+            const docRef = doc(db, "gopal", window.currentDocId); 
             await updateDoc(docRef, tranData); 
             const index = window.cachedData.findIndex(item => item.id === docRef.id);
             if (index !== -1) { window.cachedData[index] = { ...window.cachedData[index], ...tranData }; }
             insertTran();
         } 
         else { 
-            const newDocRef = await addDoc(collection(db, "inventory"), tranData); 
+            const newDocRef = await addDoc(collection(db, "gopal"), tranData); 
             window.cachedData.push({ id: newDocRef.id, ...tranData });
         }
-        clear(); window.currentDocId = null; window.onload();
+        clear(); window.currentDocId = null; 
+    };
+    window.saveBhaduvat = async function () {
+        const group = document.getElementById("plotgroup").value.trim();
+        const name = document.getElementById("bhaduvatname").value.trim();
+        const nread = document.getElementById("meterreading").value.trim();
+        const mbamt = document.getElementById("mbamt").value.trim();
+        if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required."); }
+        const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), date: new Date().toISOString().split('T')[0], };
+        const docRef = await addDoc(tranCol, newDocData);
+        const savedData = { id: docRef.id, ...newDocData };
+        window.cachedData.push(savedData); 
+        loadDropdownData();
+        clear();
+    };
+    window.saveParty = async function (partyType) {
+        const nameInputId = partyType.toLowerCase() + "partyname";
+        const amtInputId = partyType.toLowerCase() + "amt";
+        const amtField = partyType.toLowerCase() + "amt";
+        const name = document.getElementById(nameInputId).value.trim();
+        const amt = document.getElementById(amtInputId).value.trim();
+
+        if (!name || !amt) { return alert(`Name, ${partyType === "mv" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); }
+        const newDocData = { group: partyType + "Party", tparty: name, [amtField]: Number(amt), date: new Date().toISOString().split('T')[0], };
+        const docRef = await addDoc(tranCol, newDocData);
+        const savedData = { id: docRef.id, ...newDocData };
+        window.cachedData.push(savedData);
+        loadDropdownData();
+        clear();
     };
 
-    window.viewStock = async function () {
-        const data = await fetchAllOnce();
-        const stockMap = {};
-        data.forEach(item => {
-            const key = item.item?.trim();
-            if (!key) return;
-            const qty = Number(item.qty) || 0;
-            if (!stockMap[key]) stockMap[key] = { in: 0, out: 0 };
-            if (item.ttype?.toLowerCase() === "in") { stockMap[key].in += qty; } 
-            else if (item.ttype?.toLowerCase() === "out") { stockMap[key].out += qty; }
-        });
-        const stockRows = Object.entries(stockMap).map(([item, q]) => ({ item, inqty: q.in, outqty: q.out, stock: q.in - q.out, }));
-        const stockColumns = [ {title: "Item", field: "item"}, {title: "In", field: "inqty", hozAlign: "right"}, {title: "Out", field: "outqty", hozAlign: "right"}, {title: "Stock", field: "stock", hozAlign: "right"}, ];
-        createEditableTable(stockRows, stockColumns, false, false, false);
-        showCont("tblCont"); 
+    window.saveHavala = async function (type) {
+        const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
+        const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
+        const amtField = fieldMap[type];
+        const ttypeValue = ttypeMap[type];
+        const newItems = [];
+        
+        if (confirm(`Are you sure you want to save ${type.toUpperCase()} Havala?`)) {
+            const itemsToProcess = window.cachedData.filter(data => 
+                data[amtField] !== undefined && data[amtField] !== null && 
+                (typeof data[amtField] !== 'string' || data[amtField] !== '') &&
+                data.tparty !== undefined
+            );
+            const batch = writeBatch(db);
+            for (const item of itemsToProcess) {
+                const newDoc = { ttype: ttypeValue, tparty: item.tparty, fparty: "Gpzip", amount: Number(item[amtField]), date: new Date().toISOString().split('T')[0], };
+                const newDocRef = doc(collection(db, 'gopal'));
+                batch.set(newDocRef, newDoc);
+                newItems.push(newDoc);
+            }
+            await batch.commit();
+            window.cachedData.push(...newItems);
+        }
     };
-    window.viewDeptCons = async function () {
-        const data = await fetchAllOnce();
-        const deptMap = {};
-        data.forEach(item => {
-            if (item.ttype?.toLowerCase() !== "out") return;
-            const dept = item.dept || "Unknown Dept";
-            const itm  = item.item || "Unknown Item";
-            const qty  = Number(item.qty) || 0;
-            if (!deptMap[dept]) deptMap[dept] = {};
-            if (!deptMap[dept][itm]) deptMap[dept][itm] = 0;
-            deptMap[dept][itm] += qty;
-        });
-        const rows = [];
-        Object.entries(deptMap).forEach(([dept, items]) => { Object.entries(items).forEach(([itm, qty]) => { rows.push({ dept, item: itm, qty }); }); });
-        const columns = [ {title: "Department", field: "dept"}, {title: "Item", field: "item"}, {title: "Consumed Qty", field: "qty", hozAlign: "right"}, ];
-        createEditableTable(rows, columns, false, false, false);
-        showCont("tblCont");
-    };
-    window.viewCatgwiseStock = async function () {
-        const data = await fetchAllOnce();
-        const catgMap = {};
-        data.forEach(item => {
-            const catg = item.catg?.trim();
-            if (!catg) return;
-            const qty  = Number(item.qty) || 0;
-            if (!catgMap[catg]) catgMap[catg] = { in: 0, out: 0 };
-            if (item.ttype?.toLowerCase() === "in") { catgMap[catg].in += qty; } else if (item.ttype?.toLowerCase() === "out") { catgMap[catg].out += qty; }
-        });
-        const rows = Object.entries(catgMap).map(([catg, q]) => ({ category: catg, inqty: q.in, outqty: q.out, stock: q.in - q.out, }));
-        const columns = [ {title: "Category", field: "category"}, {title: "In Qty", field: "inqty", hozAlign: "right"}, {title: "Out Qty", field: "outqty", hozAlign: "right"}, {title: "Stock", field: "stock", hozAlign: "right"}, ];
-        createEditableTable(rows, columns, false, false, false);
-        showCont("tblCont");
+    window.deleteParty = async function () {
+        const name = document.getElementById("deleteparty").value.trim();
+        if (!name) { return alert("Please enter a name"); }
+        if (confirm('Are you sure you want to Delete this party and all related transactions? This action cannot be undone.')) {
+            const batch = writeBatch(db);
+            const docsToDelete = window.cachedData.filter( data => data.fparty === name || data.tparty === name );
+            for (const docData of docsToDelete) { batch.delete(doc(db, "gopal", docData.id)); }
+            await batch.commit();
+            window.cachedData = window.cachedData.filter( data => data.fparty !== name && data.tparty !== name );
+            clear();
+        }
     };
 
-    window.onload = () => {
-        const fieldDivs = ['dateDiv','suppDiv','deptDiv','catgDiv','itemDiv','pricDiv','qtyDiv','narDiv','btnDiv'];
-        fieldDivs.forEach(id => document.getElementById(id).style.display = 'none');
-        document.getElementById('ttype1').addEventListener('input', () => {
-            document.querySelectorAll("input:not(#ttype1)").forEach(el => el.value = "");
-            const ttype = document.getElementById('ttype1').value;
-            fieldDivs.forEach(id => {
-                const div = document.getElementById(id);
-                if (ttype === 'In') { if (id === 'deptDiv') div.style.display = 'none'; else div.style.display = ''; } 
-                else if (ttype === 'Out') { if (id === 'suppDiv' || id === 'pricDiv') div.style.display = 'none'; else div.style.display = ''; } 
-                else { div.style.display = 'none'; }
+    function getInputByIdx(cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
+    window.fetchCustomers = async function (groupId) {
+        const transactionsData = await fetchAllOnce(); 
+        const namesSet = new Set();
+        transactionsData.forEach(data => { if (data.group === groupId) { if (data.tparty) { namesSet.add(data.tparty.trim()); } } });
+        const names = Array.from(namesSet);
+        if (names.length === 0) return [];
+        const customers = [];
+
+        for (const name of names) {
+            let latestDoc = null;
+            let latestDate = new Date(0);
+            transactionsData.forEach(data => {
+                if (data.tparty === name && data.nread !== undefined && data.date) {
+                    const docDate = new Date(data.date);
+                    if (docDate > latestDate) { latestDate = docDate; latestDoc = data; }
+                }
             });
+            const oldReading = latestDoc && latestDoc.nread ? latestDoc.nread : 0;
+            customers.push({ name, oldReading, newReading: '', amount: '', });
+        }
+        return customers;
+    };
+    window.renderTable = async function () {
+        const tbody = document.getElementById("metersTableBody");
+        tbody.innerHTML = "";
+        const mainMeterName = `Main ${groupId}`;
+        const sortedIndices = meters
+            .map((_, idx) => idx)
+            .sort((ai, bi) => {
+                const a = meters[ai], b = meters[bi];
+                const aPriority = (a.name === mainMeterName) ? 0 : 1;
+                const bPriority = (b.name === mainMeterName) ? 0 : 1;
+                if (aPriority !== bPriority) return aPriority - bPriority;
+                return a.name.localeCompare(b.name);
+            });
+        sortedIndices.forEach((idx) => {
+            const meter = meters[idx];
+            tbody.insertAdjacentHTML("beforeend", `
+                <tr data-index="${idx}">
+                    <td>${meter.name}</td><td>${meter.oldReading}</td>
+                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${idx}" class="newReadingInput w-[130px] text-right bg-gray-900" /></td>
+                    <td class="consumption">-</td><td class="adjustedUnits">-</td>
+                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${idx}" class="amountInput w-[100px] text-right bg-gray-900" /></td>
+                </tr>
+            `);
         });
     };
-    document.getElementById("catg1").addEventListener("blur", () => { document.getElementById("item1").value = ""; loadDropdownData(); });
+    window.calculate = function () {
+        const mainMeterName = `Main ${groupId}`;
+        const mainIndex = meters.findIndex(m => m.name === mainMeterName);
+        const mainNewReadingInput = getInputByIdx("newReadingInput", mainIndex);
+        const mainAmountInput     = getInputByIdx("amountInput", mainIndex);
+
+        let mainNewReading = parseFloat(mainNewReadingInput.value);
+        if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { 
+            return alert( `Main Meter new reading must be > old reading (${meters[mainIndex].oldReading})`); 
+        }
+        meters[mainIndex].newReading = mainNewReading;
+        meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
+
+        let mainAmount = parseFloat(mainAmountInput.value);
+        if (isNaN(mainAmount) || mainAmount <= 0) { return alert("Please enter valid Main Meter Amount > 0"); }
+        meters[mainIndex].amount = mainAmount;
+
+        for (let i = 0; i < meters.length; i++) {
+            if (i === mainIndex) continue;
+            const input = getInputByIdx("newReadingInput", i);
+            if (!input) return alert(`Row for "${meters[i].name}" not found.`);
+
+            let newRead = parseFloat(input.value);
+            if (isNaN(newRead) || newRead <= meters[i].oldReading) { 
+                return alert( `New reading for customer "${meters[i].name}" must be > old reading (${meters[i].oldReading})`); 
+            }
+            meters[i].newReading = newRead;
+            meters[i].consumption = newRead - meters[i].oldReading;
+        }
+        const totalCustomerConsumption = meters.reduce((sum, m, idx) => { return idx !== mainIndex ? sum + m.consumption : sum; }, 0);
+        const diff = meters[mainIndex].consumption - totalCustomerConsumption;        
+        meters.forEach((meter, idx) => {
+            if (idx === mainIndex) { meter.adjustedUnits = meter.consumption; } 
+            else {
+                const shareDiff = (meter.consumption / totalCustomerConsumption) * diff;
+                meter.adjustedUnits = meter.consumption + shareDiff;
+                meter.amount = (meter.adjustedUnits / meters[mainIndex].consumption) * meters[mainIndex].amount;
+            }
+        });
+
+        meters.forEach((m, idx) => {
+            const row = document.querySelector(`#metersTableBody tr[data-index="${idx}"]`);
+            if (!row) return;
+            row.querySelector(".consumption").textContent = m.consumption.toFixed(0);
+            row.querySelector(".adjustedUnits").textContent = m.adjustedUnits.toFixed(0);
+            const amtInput = row.querySelector(".amountInput");
+            if (amtInput) amtInput.value = m.amount.toFixed(0);
+        });
+        document.getElementById("saveBtn").style.display = "inline-block";
+    };
+    window.saveData = async function () {
+        const batch = writeBatch(db);
+        const newItems = [];
+        const mainMeterName = `Main ${groupId}`;
+        const mainIndex = meters.findIndex(m => m.name === mainMeterName);
+        
+        for (let i = 0; i < meters.length; i++) {
+            const meter = meters[i];
+            const unitDiff = meter.adjustedUnits - meter.consumption;
+            const newDocRef = doc(collection(db, "gopal"));
+            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", oread: meter.oldReading, nread: meter.newReading, unitdiff: Math.round(unitDiff), date: new Date().toISOString().split('T')[0], };
+            if (i !== mainIndex) { tranData.amount = Math.round(meter.amount); }
+            batch.set(newDocRef, tranData);
+            newItems.push(tranData);
+        }
+        await batch.commit();
+        window.cachedData.push(...newItems);
+        document.getElementById("mtable").style.setProperty('display', 'none', 'important');
+    };
+    window.showMtable = async function (grpId) { 
+        groupId = grpId; 
+        meters = await fetchCustomers(groupId); 
+        renderTable(); 
+        showCont('mtable'); 
+        document.getElementById("saveBtn").style.display = "none";
+    };
+    
     window.login = async function () {
         const email = document.getElementById("loginEmail").value;
         const password = document.getElementById("loginPassword").value;
@@ -457,7 +601,7 @@
         const docSnap = await getDoc(docRef);
         if (docSnap.exists() && docSnap.data().approved === true) { showCont("topbar"); }
     };
-    window.logout = async function () { if (confirm("Are you sure you want to logout?")) { await signOut(auth); showCont("lgnCont"); } };
+    window.logout = async function () { await signOut(auth); showCont("loginCont"); };
     window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
 </script>
 </body>
