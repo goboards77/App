@@ -20,53 +20,51 @@
         td:first-child { text-align: left; }
     </style>
 </head>
-<body class="min-h-screen bg-gray-200 p-2" style="font-family: 'Roboto'; font-size: 18px;">
-<header id="topbar" class="hidden w-full fixed top-0 left-0 hover:bg-gray-200 px-5 py-3 cursor-pointer font-medium bg-white shadow-xl">🦚।।श्री राम।। राधे राधे🦚</header>
-<nav id="top-nav" class="hidden max-w-md px-2 py-5 mt-[50px] font-medium transform -translate-y-full transition-transform duration-300 overflow-y-auto rounded-2xl bg-white shadow-xl">
-    <ul>
-        <li><a id="close" onclick="showCont()">Home 🏚️</a></li>
-        <li><a class="menu-link" onclick="showCont('crtCont')">Create 🧑</a></li>
-        <li><a class="menu-link" onclick="showCont('vchCont')">Vouchers ✅⛔</a></li>
-        <li><a class="menu-link" onclick="showCont('hvlCont')">Havala 📚</a></li>
-        <li><a class="menu-link" onclick="showCont('rptCont')">Reports 📊✏️</a></li>
-        <li><a onclick="window.logout()">Logout 🚀</a></li>
-    </ul>
-</nav>
+<body class="p-1 bg-gray-200" style="font-family: 'Roboto'; font-size: 18px;">
 
-<div id="lgnCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
+<div id="topbar" class="hidden w-full fixed top-0 left-0 h-11 px-2 py-2 bg-white hover:bg-green-300 cursor-pointer shadow-xl">☰ Start Here</div>
+<div id="top-nav" class="hidden w-[475px] mt-11 overflow-y-auto rounded-lg bg-white shadow-xl">
+    <button class="btnClass text-left mt-3" onclick="showCont()">Home 🏚️</button>
+    <button class="btnClass text-left" onclick="showCont('top-nav', 'crtCont')">Create 🧑</button>
+    <div id ="crtCont" class="hidden w-full max-w-md ml-5 bg-white">
+        <button class="btnClass text-left" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
+        <button class="btnClass text-left" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
+        <button class="btnClass text-left" onclick="showCont('qvpCont')">Quarterly Vyaj Party 👮</button>
+    </div>
+
+    <button class="btnClass text-left" onclick="showCont('top-nav', 'vchCont')">Vouchers ✚</button>
+    <div id ="vchCont" class="hidden w-full max-w-md ml-5 bg-white">
+        <button class="btnClass text-left" onclick="showCont('tranCont')">Transaction 💰</button>
+        <button class="btnClass text-left" onclick="showMtable(116)">Ele 116 😱</button>
+        <button class="btnClass text-left" onclick="showMtable(119)">Ele 119 🥶</button>
+    </div>
+
+    <button class="btnClass text-left" onclick="showCont('top-nav', 'hvlCont')">Havala 📚</button>
+    <div id ="hvlCont" class="hidden w-full max-w-md ml-5 bg-white">
+        <button class="btnClass text-left" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
+        <button class="btnClass text-left" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
+        <button class="btnClass text-left" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
+    </div>
+
+    <button class="btnClass text-left" onclick="showCont('top-nav', 'rptCont')">Reports 👀📊</button>
+    <div id ="rptCont" class="hidden w-full max-w-md ml-5 bg-white">
+        <button class="btnClass text-left" onclick="viewReceivables()">Receivables 👀💴</button>
+        <button class="btnClass text-left" onclick="insertTran(true, true, false)">DayBook 👀⛔✏️</button>
+        <!-- <button class="btnClass text-left" onclick="insertTran(true, true, false, true)">DayBook Mobile 👀⛔✏️</button> -->
+        <button class="btnClass text-left" onclick="showCont('delCont')">Delete Party ⛔👮</button>
+        <button class="btnClass text-left" onclick="viewLedger()">Ledgers & Groups 👀🧑🏼‍🤝‍🧑🏼</button>
+        <button class="btnClass text-left" onclick="showDashboard()">Dashboard 👀📊</button>
+    </div>
+    <button class="btnClass text-left mb-3" onclick="window.logout()">Logout 🚀</button>
+</div>
+
+<div id="lgnCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
     <input class="input-box" id="loginPassword" type="password" /><label for="loginPassword" class="label">Password</label>
     <button class="btnClass mt-10" onclick="login()">🏠︎ Login</button>
 </div>
 
-<div id ="crtCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
-    <button class="btnClass mt-0 text-left" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
-    <button class="btnClass mt-2 text-left" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
-    <button class="btnClass mt-2 text-left" onclick="showCont('qvpCont')">Quarterly Vyaj Party 👮</button>
-</div>
-
-<div id ="vchCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
-    <button class="btnClass mt-0 text-left" onclick="showCont('tranCont')">Transaction 💰</button>
-    <button class="btnClass mt-2 text-left" onclick="showMtable(116)">Ele 116 😱</button>
-    <button class="btnClass mt-2 text-left" onclick="showMtable(119)">Ele 119 🥶</button>
-    <button class="btnClass mt-2 text-left" onclick="showCont('delCont')">Delete Party 📢⛔</button>
-</div>
-
-<div id ="hvlCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
-    <button class="btnClass mt-0 text-left" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
-    <button class="btnClass mt-2 text-left" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
-    <button class="btnClass mt-2 text-left" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
-</div>
-
-<div id ="rptCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
-    <button class="btnClass mt-0 text-left" onclick="viewReceivables()">Receivables 💴</button>
-    <button class="btnClass mt-2 text-left" onclick="insertTran(true, true, false)">DayBook PC 📙</button>
-    <button class="btnClass mt-2 text-left" onclick="insertTran(true, true, false, true)">DayBook Mobile 📙</button>
-    <button class="btnClass mt-2 text-left" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
-    <button class="btnClass mt-2 text-left" onclick="showDashboard()">Dashboard 📊</button>
-</div>
-
-<div id="bhdCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
+<div id="bhdCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="plotgroup" type="text"/><label for="plotgroup" class="label">Select Plot N0</label>
     <input class="input-box" id="bhaduvatname" type="text"/><label for="bhaduvatname" class="label">Bhaduvat Name</label>
     <input class="input-box" id="meterreading" type="number"/><label for="meterreading" class="label">Meter Reading</label>
@@ -74,25 +72,25 @@
     <button class="btnClass mt-10 bg-blue-500" onclick="saveBhaduvat()">Save</button>
 </div>
 
-<div id="mvpCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
+<div id="mvpCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="mvpartyname" type="text"/><label for="mvpartyname" class="label">Party Name</label>
     <input class="input-box" id="mvamt" type="number"/><label for="mvamt" class="label">Monthly Vyaj</label>
     <button class="btnClass mt-10 bg-blue-500" onclick="saveParty('mv')">Save</button>
 </div>
 
-<div id="qvpCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
+<div id="qvpCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="qvpartyname" type="text"/><label for="qvpartyname" class="label">Party Name</label>
     <input class="input-box" id="qvamt" type="number"/><label for="qvamt" class="label">Quarterly Vyaj</label>
     <button class="btnClass mt-10 bg-blue-500" onclick="saveParty('qv')">Save</button>
 </div>
 
-<div id="delCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
+<div id="delCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="deleteparty" type="text"/><label for="deleteparty" class="label">Party Name To Delete</label>
     <button class="btnClass mt-10 bg-red-500" onclick="deleteParty()">Delete</button>
 </div>
 
-<div id="tranCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
-    <h4 id = "balanceInfo" class="text-xl font-medium px-2 mb-2"></h4>
+<div id="tranCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
+    <h4 id = "balanceInfo" class="text-lg font-medium mb-2"></h4>
     <input class="input-box" id="ttype" type="text"/><label for="ttype" class="label">Transaction Type</label>
     <input class="input-box date-input" id="date" type="text"/><label for="date" class="label">Date</label>
     <input class="input-box" id="from1" type="text"/><label for="from1" class="label">From</label>
@@ -100,10 +98,14 @@
     <input class="input-box" id="amt" type="number"/><label for="amt" class="label">Amount</label>
     <input class="input-box" id="nar" type="text"/><label for="nar" class="label">Narration</label>
     <input class="input-box" id="calc" type="text"/><label for="calc" class="label">🧮 Calculator</label>
-    <button class="btnClass mt-10 bg-blue-500" onclick="saveTransaction()">Save</button>
+    <div class="flex gap-1 justify-center">
+        <button class="btnClass mt-10 bg-blue-500" onclick="saveTransaction()">Save</button>
+        <button class="btnClass mt-10 bg-orange-500" onclick="insertTran(true, true, false)">Daybook</button>
+        <!-- <button class="btnClass mt-10 bg-yellow-500" onclick="insertTran(true, true, false)">Daybook mbl</button> -->
+    </div>
 </div>
 
-<div id="tblCont" class="hidden w-fit p-3 rounded-2xl bg-white shadow-xl mt-[50px]">
+<div id="tblCont" class="hidden w-fit p-1 mt-11 rounded-lg bg-white shadow-xl">
     <div><input id="searchBox" class="w-full max-w-md px-2 mb-1 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
     <div class="flex gap-1 mb-1 justify-left [&>button]:max-w-md [&>button]:inline-block">
         <button id="excelBtn" class="bg-green-500 h-10 rounded-lg">XL</button>
@@ -113,7 +115,7 @@
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
-<div id="mtblCont" class="hidden w-fit p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
+<div id="mtblCont" class="hidden w-fit p-1 mt-11 rounded-lg bg-white shadow-xl">
     <table id="metersTable"><thead><tr><th>Name</th><th>O Read</th><th>N Read ↓↓</th><th>Consum</th><th>AdjUnt</th><th>Amt ↓↓</th></tr></thead><tbody id="metersTableBody"></tbody></table>
     <div class="flex gap-4 justify-left mt-1 [&>button]:w-auto [&>button]:inline-block">
         <button id="calculateBtn" class="btnClass mt-5 bg-yellow-500" onclick="calculate()">Calculate</button>
@@ -121,7 +123,7 @@
     </div>
 </div>
 
-<div id="dashCont" class="hidden w-fit p-3 mt-[50px] rounded-2xl bg-white shadow-xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+<div id="dashCont" class="hidden max-w-md p-1 mt-11 rounded-lg bg-white shadow-xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script> flatpickr(".date-input", { dateFormat: "d-m-Y", defaultDate: new Date() }); </script>
@@ -161,15 +163,12 @@
     });  
     
     document.addEventListener('DOMContentLoaded', () => {
-        const liClass = "block hover:bg-gray-300 px-5 py-2 mt-1 cursor-pointer rounded-lg";
-        document.querySelectorAll('ul li a').forEach(a => { a.classList.add(...liClass.split(' ')); });
-
-        const btnClass = "block w-full px-5 py-2 font-medium hover:bg-gray-300 rounded-lg";
+        const btnClass = "block w-full px-5 py-3 font-medium hover:bg-gray-300 rounded-lg";
         document.querySelectorAll('button').forEach(btn => { btn.classList.add(...btnClass.split(' ')); });
 
         const wrapperClass = "relative mt-6";
-        const inputClass = "peer w-full px-2 border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600 pr-2";
-        const labelClass = "absolute top-2 left-0 px-2 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-80 peer-focus:text-blue-600";
+        const inputClass = "peer w-full border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600";
+        const labelClass = "absolute top-2 left-0 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-80 peer-focus:text-blue-600";
 
         document.querySelectorAll('.input-box').forEach(input => {
             const label = input.nextElementSibling;
@@ -197,14 +196,7 @@
         });
     });
         
-    document.getElementById('topbar').addEventListener('click', () => { document.getElementById('top-nav').classList.remove('-translate-y-full'); showCont('top-nav'); });
-    
-    document.querySelectorAll('.menu-link').forEach(link => {
-        link.addEventListener('click', e => {
-            if (link.getAttribute('id') === 'close') { e.preventDefault(); }
-            document.getElementById('top-nav').classList.add('-translate-y-full');
-        });
-    });
+    document.getElementById('topbar').addEventListener('click', () => { showCont('top-nav'); });
     
     document.getElementById("calc").addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
@@ -342,6 +334,133 @@
     
     window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
+
+        // ✅ Auto-detect mobile or PC by screen width
+        const isMobile = window.innerWidth < 768;  
+
+        const searchId = document.getElementById('searchBox');
+        let fullColumns = columns.map(col => {
+            // hide id column in mobile
+            if (isMobile && col.field === "id") return { ...col, visible: false };
+            return { ...col, editor: editable ? col.editor || "input" : false };
+        });
+
+        // Add Delete & Update only for PC mode
+        if (!isMobile) {
+            if (showDelete) {
+                fullColumns.push({
+                    title: "",
+                    field: "__delete",
+                    formatter: () => `<div class="text-center cursor-pointer">⛔</div>`,
+                    width: 70,
+                    hozAlign: "center",
+                    cellClick: async (e, cell) => {
+                        e.stopPropagation();
+                        const rowData = cell.getRow().getData();
+                        const confirmed = confirm("Delete? Are You Sure?");
+                        if (confirmed && rowData.id) {
+                            await deleteDoc(doc(db, "gopal", rowData.id));
+                            cell.getRow().delete();
+                            if (window.cachedData) window.cachedData = window.cachedData.filter(doc => doc.id !== rowData.id);
+                        }
+                    },
+                });
+            }
+
+            if (showUpdate) {
+                fullColumns.push({
+                    title: "",
+                    field: "__update",
+                    formatter: () => `<div class="text-center cursor-pointer">✏️</div>`,
+                    width: 70,
+                    hozAlign: "center",
+                    cellClick: (e, cell) => {
+                        e.stopPropagation();
+                        const rowData = cell.getRow().getData();
+                        window.currentDocId = rowData.id;
+                        showTransactionContainer(rowData);
+                    },
+                });
+            }
+        }
+
+        // Create Tabulator
+        window.table = new Tabulator(document.getElementById('table'), {
+            data: rows,
+            layout: "fitDataTable",
+            reactiveData: true,
+            rowHeight: 40,
+            maxHeight: "600px",
+            headerVisible: !isMobile,
+            columns: fullColumns,
+            rowFormatter: isMobile ? function (row) {
+                row.getElement().style.display = "block";
+                let d = row.getData();
+                let card = document.createElement("div");
+                card.className = `w-full max-w-md bg-white grid grid-cols-[100px_1fr] mb-1 text-[18px] font-[Roboto] rounded-lg border border-green-500`;
+
+                let inner = "";
+                columns.forEach(col => {
+                    if (col.field !== "__delete" && col.field !== "__update") {
+                        const val = d[col.field];
+                        if (val !== undefined && val !== null && val !== "") {
+                            inner += `
+                                <div class="text-gray-600 text-right px-1">${col.title}:</div> 
+                                <div class="text-gray-900 px-1">${val}</div>
+                            `;
+                        }
+                    }
+                });
+
+                if (showDelete || showUpdate) {
+                    inner += `<div class="col-span-2 pb-2 pr-5 flex justify-end gap-20 rounded-lg">`;
+                    if (showDelete) inner += `<span class="delete-btn cursor-pointer">⛔</span>`;
+                    if (showUpdate) inner += `<span class="update-btn cursor-pointer">✏️</span>`;
+                    inner += `</div>`;
+                }
+
+                card.innerHTML = inner;
+                row.getElement().innerHTML = "";
+                row.getElement().appendChild(card);
+
+                if (showDelete) {
+                    card.querySelector(".delete-btn")?.addEventListener("click", async (e) => {
+                        e.stopPropagation();
+                        const confirmed = confirm("Delete? Are You Sure?");
+                        if (confirmed && d.id) {
+                            await deleteDoc(doc(db, "gopal", d.id));
+                            row.delete();
+                            if (window.cachedData) window.cachedData = window.cachedData.filter(doc => doc.id !== d.id);
+                        }
+                    });
+                }
+
+                if (showUpdate) {
+                    card.querySelector(".update-btn")?.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        window.currentDocId = d.id;
+                        showTransactionContainer(d);
+                    });
+                }
+            } : undefined
+        });
+
+        // Export buttons
+        document.getElementById('excelBtn')?.addEventListener("click", () => {
+            window.table.download("xlsx", "data.xlsx", { sheetName: "Sheet1" });
+        });
+        document.getElementById('pdfBtn')?.addEventListener("click", () => {
+            window.table.download("pdf", "data.pdf", { orientation: "portrait" });
+        });
+        document.getElementById('printBtn')?.addEventListener("click", () => {
+            window.table.print(false, true);
+        });
+
+        bindSearch();
+    };
+    /*
+    window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
+        if (window.table && typeof window.table.destroy === "function") window.table.destroy();
         const searchId = document.getElementById('searchBox');
         const fullColumns = columns.map(col => ({...col, editor: editable ? col.editor || "input" : false,}));
 
@@ -471,7 +590,7 @@
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
         bindSearch();
     };
-
+    */
     window.bindSearch = function () {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
@@ -494,7 +613,7 @@
         document.getElementById("nar").value = rowData.nar || "";
     };
     
-    window.insertTran = async function (showDelete = true, showUpdate = true, editable = false, type=null) {
+    window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
         const data = await fetchAllOnce();
         const rows = [];
         data.forEach(item => {
@@ -525,8 +644,9 @@
             {title: "Narr", field: "nar"}, 
             //{title: "ID", field: "id", visible: false} 
         ];
-        if (type) { createEditableTableMob(rows, columns, showDelete, showUpdate, editable); }
-        else  {createEditableTable(rows, columns, showDelete, showUpdate, editable);}
+        //if (type) { createEditableTableMob(rows, columns, showDelete, showUpdate, editable); }
+        //else  {createEditableTable(rows, columns, showDelete, showUpdate, editable);}
+        createEditableTable(rows, columns, true, true, false);
         showCont("tblCont"); 
     };
     
@@ -819,7 +939,7 @@
         partiesToCheck.forEach(party => { if (party && party !== "Gpzip") { const bal = balances[party] || 0; document.getElementById("balanceInfo").textContent = `${party}: ${bal.toFixed(0)}`;} }); 
     });
     
-    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
+    //window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
 
 </script>
 </body>
