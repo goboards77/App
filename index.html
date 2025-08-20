@@ -148,8 +148,8 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const tranCol = collection(db, "gopal");
-
-    let meters = [], mainMeter = null, groupId = null, currentDocId = null, cachedData = null;
+    window.cachedData = null;
+    let meters = [], mainMeter = null, groupId = null, currentDocId = null;
     let balances = {};
     
     onAuthStateChanged(auth, async (user) => {
@@ -822,3 +822,4 @@
 </script>
 </body>
 </html>
+
