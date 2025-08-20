@@ -46,11 +46,15 @@
         <button class="btnClass text-left" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
     </div>
 
+    <button class="btnClass text-left" onclick="showCont('topNav', 'updtCont')">Update ⛔✏️</button>
+    <div id ="updtCont" class="hidden w-full max-w-md ml-5 bg-white">
+        <button class="btnClass text-left" onclick="insertTran(true, true, false)">Transaction 👀⛔✏️</button>
+        <button class="btnClass text-left" onclick="showCont('delCont')">Delete Party ⛔👮</button>
+    </div>
+
     <button class="btnClass text-left" onclick="showCont('topNav', 'rptCont')">Reports 👀📊</button>
     <div id ="rptCont" class="hidden w-full max-w-md ml-5 bg-white">
         <button class="btnClass text-left" onclick="viewReceivables()">Receivables 👀💴</button>
-        <button class="btnClass text-left" onclick="insertTran(true, true, false)">DayBook 👀⛔✏️</button>
-        <button class="btnClass text-left" onclick="showCont('delCont')">Delete Party ⛔👮</button>
         <button class="btnClass text-left" onclick="viewLedger()">Ledgers & Groups 👀🧑🏼‍🤝‍🧑🏼</button>
         <button class="btnClass text-left" onclick="showDashboard()">Dashboard 👀📊</button>
     </div>
@@ -215,7 +219,7 @@
 
     window.showCont = function (...idToShow) {
         clear();
-        const allIds = ['topNav', 'lgnCont', 'crtCont', 'vchCont', 'hvlCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont'];
+        const allIds = ['topNav', 'lgnCont', 'crtCont', 'vchCont', 'hvlCont', 'updtCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont'];
         allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'none', 'important'); } });
         idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'block', 'important'); } });
         document.getElementById("ttype").value = "Receipt";
