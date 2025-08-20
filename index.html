@@ -25,6 +25,7 @@
 <div id="topBar" class="hidden w-full fixed top-0 left-0 h-11 px-2 py-2 bg-white hover:bg-green-300 cursor-pointer shadow-xl">☰ Start Here</div>
 <div id="topNav" class="hidden w-[475px] mt-11 overflow-y-auto rounded-lg bg-white shadow-xl">
     <button class="btnClass text-left mt-3" onclick="showCont()">Home 🏚️</button>
+    
     <button class="btnClass text-left" onclick="showCont('topNav', 'crtCont')">Create 🧑</button>
     <div id ="crtCont" class="hidden w-full max-w-md ml-5 bg-white">
         <button class="btnClass text-left" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
@@ -34,29 +35,26 @@
 
     <button class="btnClass text-left" onclick="showCont('topNav', 'vchCont')">Vouchers ✚</button>
     <div id ="vchCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="showCont('tranCont')">Transaction 💰</button>
         <button class="btnClass text-left" onclick="showMtable(116)">Ele 116 😱</button>
         <button class="btnClass text-left" onclick="showMtable(119)">Ele 119 🥶</button>
-    </div>
-
-    <button class="btnClass text-left" onclick="showCont('topNav', 'hvlCont')">Havala 📚</button>
-    <div id ="hvlCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
+        <button class="btnClass text-left" onclick="showCont('tranCont')">Transaction 💰</button>
         <button class="btnClass text-left" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
+        <button class="btnClass text-left" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
         <button class="btnClass text-left" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
     </div>
 
-    <button class="btnClass text-left" onclick="showCont('topNav', 'updtCont')">Update ⛔✏️</button>
+    <button class="btnClass text-left" onclick="showCont('topNav', 'updtCont')">Update ✏️</button>
     <div id ="updtCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="insertTran(true, true, false)">Transaction 👀⛔✏️</button>
+        <button class="btnClass text-left" onclick="insertTran(true, true, false)">Transaction ⛔✏️</button>
         <button class="btnClass text-left" onclick="showCont('delCont')">Delete Party ⛔👮</button>
     </div>
 
-    <button class="btnClass text-left" onclick="showCont('topNav', 'rptCont')">Reports 👀📊</button>
+    <button class="btnClass text-left" onclick="showCont('topNav', 'rptCont')">Reports 👀</button>
     <div id ="rptCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="viewReceivables()">Receivables 👀💴</button>
-        <button class="btnClass text-left" onclick="viewLedger()">Ledgers & Groups 👀🧑🏼‍🤝‍🧑🏼</button>
-        <button class="btnClass text-left" onclick="showDashboard()">Dashboard 👀📊</button>
+        <button class="btnClass text-left" onclick="insertTran(false, false, false)">Daybook 📕</button>
+        <button class="btnClass text-left" onclick="showDashboard()">Dashboard 📊</button>
+        <button class="btnClass text-left" onclick="viewReceivables()">Receivables 💴</button>
+        <button class="btnClass text-left" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
     </div>
     <button class="btnClass text-left mb-3" onclick="window.logout()">Logout 🚀</button>
 </div>
@@ -196,7 +194,7 @@
         });
     });
         
-    document.getElementById('topBar').addEventListener('click', () => { showCont('topNav'); });
+    document.getElementById('topBar').addEventListener('click', () => { currentDocId = null; showCont('topNav'); });
     
     document.getElementById("calc").addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
@@ -219,7 +217,7 @@
 
     window.showCont = function (...idToShow) {
         clear();
-        const allIds = ['topNav', 'lgnCont', 'crtCont', 'vchCont', 'hvlCont', 'updtCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont'];
+        const allIds = ['topNav', 'lgnCont', 'crtCont', 'vchCont', 'updtCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont'];
         allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'none', 'important'); } });
         idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'block', 'important'); } });
         document.getElementById("ttype").value = "Receipt";
@@ -369,7 +367,7 @@
                     cellClick: (e, cell) => {
                         e.stopPropagation();
                         const rowData = cell.getRow().getData();
-                        window.currentDocId = rowData.id;
+                        currentDocId = rowData.id;
                         showTransactionContainer(rowData);
                     },
                 });
@@ -426,7 +424,7 @@
                 if (showUpdate) {
                     card.querySelector(".update-btn")?.addEventListener("click", (e) => {
                         e.stopPropagation();
-                        window.currentDocId = d.id;
+                        currentDocId = d.id;
                         showTransactionContainer(d);
                     });
                 }
@@ -491,7 +489,7 @@
             {title: "Udiff", field: "unitdiff", hozAlign: "right"},
             {title: "Narr", field: "nar"}, 
         ];
-        createEditableTable(rows, columns, true, true, false);
+        createEditableTable(rows, columns, showDelete, showUpdate, editable);
         showCont("tblCont"); 
     };
     
@@ -543,8 +541,8 @@
         const tranData = {ttype, date, fparty, tparty, amount };
         
         if (nar) tranData.nar = nar;
-        if (window.currentDocId) { 
-            const docRef = doc(tranCol, window.currentDocId); 
+        if (currentDocId) { 
+            const docRef = doc(tranCol, currentDocId); 
             await updateDoc(docRef, tranData); 
             const index = cachedData.findIndex(item => item.id === docRef.id);
             if (index !== -1) { cachedData[index] = { ...cachedData[index], ...tranData }; }
@@ -554,7 +552,7 @@
             const newDocRef = await addDoc(tranCol, tranData); 
             cachedData.push({ id: newDocRef.id, ...tranData });
         }
-        clear(); window.currentDocId = null; 
+        clear(); currentDocId = null; 
     };
     
     window.saveBhaduvat = async function () {
