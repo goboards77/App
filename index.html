@@ -61,6 +61,7 @@
 <div id ="rptCont" class="hidden max-w-md p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
     <button class="btnClass mt-0 text-left" onclick="viewReceivables()">Receivables 💴</button>
     <button class="btnClass mt-2 text-left" onclick="insertTran(true, true, false)">DayBook 📙</button>
+    <button class="btnClass mt-2 text-left" onclick="insertTran(true, true, false, true)">DayBook Mobile📙</button>
     <button class="btnClass mt-2 text-left" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
     <button class="btnClass mt-2 text-left" onclick="showDashboard()">Dashboard 📊</button>
 </div>
@@ -109,7 +110,7 @@
         <button id="pdfBtn" class="bg-red-500 h-10 rounded-lg">PDF</button>
         <button id="printBtn" class="bg-blue-500 h-10 rounded-lg">🖨️</button>
     </div>
-    <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto"></div></div>
+    <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
 <div id="mtblCont" class="hidden w-fit p-3 mt-[50px] rounded-2xl bg-white shadow-xl">
@@ -147,7 +148,7 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     const tranCol = collection(db, "gopal");
-    //window.cachedData = null;
+
     let meters = [], mainMeter = null, groupId = null, currentDocId = null, cachedData = null;
     let balances = {};
     
@@ -395,6 +396,80 @@
         bindSearch(); 
     };
     
+    window.createEditableTableMob = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
+        if (window.table && typeof window.table.destroy === "function") window.table.destroy();
+        const searchId = document.getElementById('searchBox');
+        const fullColumns = columns.map(col => {
+            if (col.field === "id") { return { ...col, visible: false }; }
+            return { ...col, editor: editable ? col.editor || "input" : false };
+        });
+
+        window.table = new Tabulator(document.getElementById('table'), {
+            data: rows,
+            layout: "fitDataTable",
+            reactiveData: true,
+            headerVisible: false,
+            rowHeight: 40,
+            maxHeight: "600px",
+            columns: fullColumns,
+            rowFormatter: function (row) {
+                row.getElement().style.display = "block";
+                let d = row.getData();
+                let card = document.createElement("div");
+                card.className = ` w-full max-w-md bg-white shadow-md p-4 mb-3 grid grid-cols-[100px_1fr] gap-x-4 gap-y-3 text-[18px] font-[Roboto] `;
+
+                let inner = "";
+                columns.forEach(col => { if (col.field !== "__delete" && col.field !== "__update") { inner += ` <div class="text-gray-600 text-right">${col.title}:</div> <div class="text-gray-900">${d[col.field] ?? ""}</div> `; } });
+                if (showDelete || showUpdate) {
+                    inner += `<div class="col-span-2 flex justify-end gap-6 pt-3">`;
+                    if (showDelete) inner += `<span class="delete-btn cursor-pointer text-red-500 text-xl">⛔</span>`;
+                    if (showUpdate) inner += `<span class="update-btn cursor-pointer text-blue-500 text-xl">✏️</span>`;
+                    inner += `</div>`;
+                }
+
+                card.innerHTML = inner;
+                row.getElement().innerHTML = "";
+                row.getElement().appendChild(card);
+
+                if (showDelete) {
+                    card.querySelector(".delete-btn")?.addEventListener("click", async (e) => {
+                        e.stopPropagation();
+                        const confirmed = confirm("Delete? Are You Sure?");
+                        if (confirmed && d.id) {
+                            await deleteDoc(doc(db, "gopal", d.id));
+                            row.delete();
+                            if (window.cachedData) {
+                                window.cachedData = window.cachedData.filter(doc => doc.id !== d.id);
+                            }
+                        }
+                    });
+                }
+
+                if (showUpdate) {
+                    card.querySelector(".update-btn")?.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        window.currentDocId = d.id;
+                        showTransactionContainer(d);
+                    });
+                }
+            }
+        });
+
+        const titleId = "custom-table-title";
+        if (!document.getElementById(titleId)) {
+            const title = document.createElement("div");
+            title.id = titleId;
+            title.className = "text-center font-bold text-lg my-3";
+            title.innerText = "Transactions";
+            document.getElementById("table").before(title);
+        }
+
+        document.getElementById('excelBtn')?.addEventListener("click", () => { window.table.download("xlsx", "data.xlsx", { sheetName: "Sheet1" }); });
+        document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", { orientation: "portrait" }); });
+        document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
+        bindSearch();
+    };
+
     window.bindSearch = function () {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
@@ -417,7 +492,7 @@
         document.getElementById("nar").value = rowData.nar || "";
     };
     
-    window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
+    window.insertTran = async function (showDelete = true, showUpdate = true, editable = false, type=null) {
         const data = await fetchAllOnce();
         const rows = [];
         data.forEach(item => {
@@ -446,9 +521,10 @@
             {title: "Nread", field: "nread", hozAlign: "right"}, 
             {title: "Udiff", field: "unitdiff", hozAlign: "right"},
             {title: "Narration", field: "nar"}, 
-            {title: "ID", field: "id", visible: false} 
+            //{title: "ID", field: "id", visible: false} 
         ];
-        createEditableTable(rows, columns, showDelete, showUpdate, editable);
+        if (type) { createEditableTableMob(rows, columns, showDelete, showUpdate, editable); }
+        else  {createEditableTable(rows, columns, showDelete, showUpdate, editable);}
         showCont("tblCont"); 
     };
     
