@@ -22,47 +22,47 @@
 </head>
 <body class="p-1 bg-gray-200" style="font-family: 'Roboto'; font-size: 18px;">
 
-<div id="topBar" class="hidden w-full fixed top-0 left-0 h-11 px-2 py-2 bg-white hover:bg-green-300 cursor-pointer shadow-xl">☰ Start Here</div>
-<div id="topNav" class="hidden w-[475px] mt-11 overflow-y-auto rounded-lg bg-white shadow-xl">
-    <button class="btnClass text-left mt-3" onclick="showCont()">Home 🏚️</button>
+<div id="topBar" class="hidden w-full fixed top-0 left-0 px-10 py-2 bg-white hover:bg-green-400 cursor-pointer shadow-xl transform transition-all duration-300 hover:scale-105">☰ Start Here</div>
+<div id="topNav" class="hidden max-w-md mt-11 overflow-y-auto rounded-lg bg-white shadow-xl">
+    <button class="w-full px-10 py-4 text-left hover:bg-blue-400 rounded-lg" onclick="showCont()">Home 🏚️</button>
     
-    <button class="btnClass text-left" onclick="showCont('topNav', 'crtCont')">Create 🧑</button>
-    <div id ="crtCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
-        <button class="btnClass text-left" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
-        <button class="btnClass text-left" onclick="showCont('qvpCont')">Quarterly Vyaj Party 👮</button>
+    <button class="w-full px-10 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showCont('topNav', 'crtCont')">Create 🧑</button>
+    <div id ="crtCont" class="hidden w-fit ml-10 bg-white">
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showCont('qvpCont')">Quarterly Vyaj Party 👮</button>
     </div>
 
-    <button class="btnClass text-left" onclick="showCont('topNav', 'vchCont')">Vouchers ✚</button>
-    <div id ="vchCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="showMtable(116)">Ele 116 😱</button>
-        <button class="btnClass text-left" onclick="showMtable(119)">Ele 119 🥶</button>
-        <button class="btnClass text-left" onclick="showCont('tranCont')">Transaction 💰</button>
-        <button class="btnClass text-left" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
-        <button class="btnClass text-left" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
-        <button class="btnClass text-left" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
+    <button class="w-full px-10 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showCont('topNav', 'vchCont')">Vouchers ✚</button>
+    <div id ="vchCont" class="hidden w-fit ml-10 bg-white">
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showMtable(116)">Ele 116 😱</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showMtable(119)">Ele 119 🥶</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="showCont('tranCont')">Transaction 💰</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-green-400 rounded-lg" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
     </div>
 
-    <button class="btnClass text-left" onclick="showCont('topNav', 'updtCont')">Update ✏️</button>
-    <div id ="updtCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="insertTran(true, true, false)">Transaction ⛔✏️</button>
-        <button class="btnClass text-left" onclick="showCont('delCont')">Delete Party ⛔👮</button>
+    <button class="w-full px-10 py-4 text-left hover:bg-red-400 rounded-lg" onclick="showCont('topNav', 'updtCont')">Update ✏️</button>
+    <div id ="updtCont" class="hidden w-fit ml-10 bg-white">
+        <button class="w-full px-5 py-4 text-left hover:bg-red-400 rounded-lg" onclick="insertTran(true, true, false)">Update Transaction ⛔✏️</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-red-400 rounded-lg" onclick="showCont('delCont')">Delete Party ⛔👮</button>
     </div>
 
-    <button class="btnClass text-left" onclick="showCont('topNav', 'rptCont')">Reports 👀</button>
-    <div id ="rptCont" class="hidden w-full max-w-md ml-5 bg-white">
-        <button class="btnClass text-left" onclick="insertTran(false, false, false)">Daybook 📕</button>
-        <button class="btnClass text-left" onclick="showDashboard()">Dashboard 📊</button>
-        <button class="btnClass text-left" onclick="viewReceivables()">Receivables 💴</button>
-        <button class="btnClass text-left" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
+    <button class="w-full px-10 py-4 text-left hover:bg-yellow-400 rounded-lg" onclick="showCont('topNav', 'rptCont')">Reports 👀</button>
+    <div id ="rptCont" class="hidden w-fit ml-10 bg-white">
+        <button class="w-full px-5 py-4 text-left hover:bg-yellow-400 rounded-lg" onclick="insertTran(false, false, false)">Daybook 📕</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-yellow-400 rounded-lg" onclick="showDashboard()">Dashboard 📊</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-yellow-400 rounded-lg" onclick="viewReceivables()">Receivables 💴</button>
+        <button class="w-full px-5 py-4 text-left hover:bg-yellow-400 rounded-lg" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
     </div>
-    <button class="btnClass text-left mb-3" onclick="window.logout()">Logout 🚀</button>
+    <button class="w-full px-10 py-4 text-left hover:bg-orange-400 rounded-lg" onclick="window.logout()">Logout 🚀</button>
 </div>
 
 <div id="lgnCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
     <input class="input-box" id="loginPassword" type="password" /><label for="loginPassword" class="label">Password</label>
-    <button class="btnClass mt-10 bg-blue-500 text-white" onclick="login()">🏠︎ Login</button>
+    <button class="w-full py-3 text-white mt-10 bg-green-700 hover:bg-green-800 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
 <div id="bhdCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
@@ -70,24 +70,24 @@
     <input class="input-box" id="bhaduvatname" type="text"/><label for="bhaduvatname" class="label">Bhaduvat Name</label>
     <input class="input-box" id="meterreading" type="number"/><label for="meterreading" class="label">Meter Reading</label>
     <input class="input-box" id="mbamt" type="number"/><label for="mbamt" class="label">Monthly Bhadu</label>
-    <button class="btnClass mt-10 bg-blue-500 text-white" onclick="saveBhaduvat()">Save</button>
+    <button class="w-full py-3 text-white mt-10 bg-green-700 hover:bg-green-800 rounded-lg" onclick="saveBhaduvat()">Save</button>
 </div>
 
 <div id="mvpCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="mvpartyname" type="text"/><label for="mvpartyname" class="label">Party Name</label>
     <input class="input-box" id="mvamt" type="number"/><label for="mvamt" class="label">Monthly Vyaj</label>
-    <button class="btnClass mt-10 bg-blue-500 text-white" onclick="saveParty('mv')">Save</button>
+    <button class="w-full py-3 text-white mt-10 bg-green-700 hover:bg-green-800 rounded-lg" onclick="saveParty('mv')">Save</button>
 </div>
 
 <div id="qvpCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="qvpartyname" type="text"/><label for="qvpartyname" class="label">Party Name</label>
     <input class="input-box" id="qvamt" type="number"/><label for="qvamt" class="label">Quarterly Vyaj</label>
-    <button class="btnClass mt-10 bg-blue-500 text-white" onclick="saveParty('qv')">Save</button>
+    <button class="w-full py-3 text-white mt-10 bg-green-700 hover:bg-green-800 rounded-lg" onclick="saveParty('qv')">Save</button>
 </div>
 
 <div id="delCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
     <input class="input-box" id="deleteparty" type="text"/><label for="deleteparty" class="label">Party Name To Delete</label>
-    <button class="btnClass mt-10 bg-red-500 text-white" onclick="deleteParty()">Delete</button>
+    <button class="w-full py-3 text-white mt-10 bg-red-700 hover:bg-red-800 rounded-lg" onclick="deleteParty()">Delete</button>
 </div>
 
 <div id="tranCont" class="hidden max-w-md p-3 mt-11 rounded-lg bg-white shadow-xl">
@@ -100,26 +100,26 @@
     <input class="input-box" id="nar" type="text"/><label for="nar" class="label">Narration</label>
     <input class="input-box" id="calc" type="text"/><label for="calc" class="label">🧮 Calculator</label>
     <div class="flex gap-1 justify-center">
-        <button class="btnClass mt-10 bg-blue-500 text-white" onclick="saveTransaction()">Save</button>
-        <button class="btnClass mt-10 bg-orange-500 text-white" onclick="insertTran(true, true, false)">Daybook</button>
+        <button class="w-full py-3 text-white mt-10 bg-green-700 hover:bg-green-800 rounded-lg" onclick="saveTransaction()">Save</button>
+        <button class="w-full py-3 text-white mt-10 bg-blue-700 hover:bg-blue-800 rounded-lg" onclick="insertTran(true, true, false)">Daybook</button>
     </div>
 </div>
 
 <div id="tblCont" class="hidden w-fit p-1 mt-11 rounded-lg bg-white shadow-xl">
     <div><input id="searchBox" class="w-full max-w-md px-2 mb-1 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
-    <div class="flex gap-1 mb-1 justify-left [&>button]:max-w-md [&>button]:inline-block">
-        <button id="excelBtn" class="bg-green-500 h-10 rounded-lg text-white">XL</button>
-        <button id="pdfBtn" class="bg-red-500 h-10 rounded-lg text-white">PDF</button>
-        <button id="printBtn" class="bg-blue-500 h-10 rounded-lg text-white">🖨️</button>
+    <div class="flex gap-1 mb-1 justify-left">
+        <button id="excelBtn" class="w-full bg-green-700 h-10 rounded-lg text-white">XL</button>
+        <button id="pdfBtn" class="w-full bg-red-700 h-10 rounded-lg text-white">PDF</button>
+        <button id="printBtn" class="w-full bg-blue-700 h-10 rounded-lg text-white">🖨️</button>
     </div>
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
 <div id="mtblCont" class="hidden w-fit p-1 mt-11 rounded-lg bg-white shadow-xl">
     <table id="metersTable"><thead><tr><th>Name</th><th>O Read</th><th>N Read ↓↓</th><th>Consum</th><th>AdjUnt</th><th>Amt ↓↓</th></tr></thead><tbody id="metersTableBody"></tbody></table>
-    <div class="flex gap-4 justify-left mt-1 [&>button]:w-auto [&>button]:inline-block">
-        <button id="calculateBtn" class="btnClass mt-5 bg-orange-500 text-white" onclick="calculate()">Calculate</button>
-        <button id="saveBtn" style="display:none;" class="btnClass mt-5 bg-blue-500 text-white" onclick="saveData()">Save Data</button>
+    <div class="flex gap-4 justify-left mt-1">
+        <button id="calculateBtn" class="w-full h-10 mt-10 text-white bg-blue-700 hover:bg-green-800 rounded-lg" onclick="calculate()">Calculate</button>
+        <button id="saveBtn" style="display:none;" class="w-full h-10 text-white mt-3 bg-green-700 hover:bg-green-800 rounded-lg" onclick="saveData()">Save Data</button>
     </div>
 </div>
 
@@ -161,9 +161,6 @@
     });  
     
     document.addEventListener('DOMContentLoaded', () => {
-        const btnClass = "block w-full px-5 py-3 hover:bg-gray-300 rounded-lg";
-        document.querySelectorAll('button').forEach(btn => { btn.classList.add(...btnClass.split(' ')); });
-
         const wrapperClass = "relative mt-6";
         const inputClass = "peer w-full border-b-2 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-blue-600";
         const labelClass = "absolute top-2 left-0 text-gray-500 transform -translate-y-6 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-80 peer-focus:text-blue-600";
@@ -611,14 +608,14 @@
     window.deleteParty = async function () {
         const name = document.getElementById("deleteparty").value.trim();
         if (!name) { return alert("Please enter a name"); }
-        if (confirm('Are you sure you want to Delete this party and all related transactions? This action cannot be undone.')) {
+        if (confirm('Are you sure you want to Delete this party and all related transactions?\nHoshiyar 🙋🏻‍♂️🤓\nThis action cannot be undone. 😱')) {
             const batch = writeBatch(db);
             const docsToDelete = cachedData.filter( data => data.fparty === name || data.tparty === name );
             for (const docData of docsToDelete) { batch.delete(doc(trancol, docData.id)); }
             await batch.commit();
             cachedData = cachedData.filter( data => data.fparty !== name && data.tparty !== name );
-            clear();
         }
+        clear();
     };
 
     function getInputByIdx(cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
