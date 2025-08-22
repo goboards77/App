@@ -55,9 +55,9 @@
 
 <div id="topBar"class="flex">
     <button id="crt" class="w-10 h-10 ml-3 rounded-full text-center bg-green-500 ring-green-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('crtCont')">✚</button>
-    <button id="upd" class="w-10 h-10 ml-3 rounded-full text-center bg-purple-800 ring-purple-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('updtCont')">✍️</button>
-    <button id="view" class="w-10 h-10 ml-3 rounded-full text-center bg-yellow-800 ring-yellow-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('rptCont')">👀</button>
-    <button class="w-10 h-10 ml-3 rounded-full text-center bg-orange-800 ring-orange-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="window.logout()">🔐</button>
+    <button id="upd" class="w-10 h-10 ml-3 rounded-full text-center bg-red-600 ring-red-700 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('updtCont')">▬</button>
+    <button id="view" class="w-10 h-10 ml-3 rounded-full text-center bg-yellow-800 ring-yellow-700 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('rptCont')">👀</button>
+    <button class="w-10 h-10 ml-3 rounded-full text-center bg-orange-800 ring-orange-700 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="window.logout()">🔐</button>
     <button class="w-10 h-10 ml-3 rounded-full text-center bg-lime-500 ring-lime-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="switchTheme()">🌗</button>
 
     <div id ="crtCont" class="hidden card max-w-md mt-5 ml-2 p-2 rounded-lg">
@@ -73,7 +73,7 @@
     </div>
 
     <div id ="updtCont" class="hidden card max-w-md mt-5 ml-[65px] p-2 rounded-lg">
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="insertTran(true, true, false)">Update Transaction ⛔✏️</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="insertTran(true, true, false)">Transaction ⛔✏️</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1" onclick="showCont('delCont')">Delete Party ⛔👮</button>
     </div>
 
@@ -113,7 +113,7 @@
 
 <div id="delCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <input class="input-box" id="deleteparty" type="text"/><label for="deleteparty" class="label">Select Party To Delete</label>
-    <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="deleteParty()">Delete</button>
+    <button class="btn block mx-auto mt-10 w-12 h-12 mb-2 rounded-full text-center ring-red-500 hover:ring-8 transition" onclick="deleteParty()">Delete</button>
 </div>
 
 <div id="tranCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
@@ -126,17 +126,17 @@
     <input class="input-box" id="nar" type="text"/><label for="nar" class="label">Narration</label>
     <input class="input-box" id="calc" type="text"/><label for="calc" class="label">🧮 Calculator</label>
     <div class="flex gap-1 justify-center">
-        <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveTransaction()">Save</button>
-        <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="insertTran(true, true, false)">📙</button>
+        <button class="btn block mx-auto mt-10 w-12 h-12 mb-2 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveTransaction()">Save</button>
+        <button class="btn block mx-auto mt-10 w-12 h-12 mb-2 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="insertTran(true, true, false)">📙</button>
     </div>
 </div>
 
 <div id="tblCont" class="hidden card w-fit p-1 mt-2 rounded-lg shadow-xl">
-    <div><input id="searchBox" class="drpdwn w-full max-w-md px-2 mb-1 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
+    <div><input id="searchBox" class="drpdwn w-full max-w-md px-2 mb-2 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
     <div class="flex gap-1 justify-left">
-        <button id="excelBtn" class="btn block mx-auto w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition">Excel</button>
-        <button id="pdfBtn" class="btn block mx-auto w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition">PDF</button>
-        <button id="printBtn" class="btn block mx-auto w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition">🖨️</button>
+        <button id="excelBtn" class="btn block mx-auto w-12 h-12 p-1 rounded-full text-center ring-green-500 hover:ring-8 transition">Excel</button>
+        <button id="pdfBtn" class="btn block mx-auto w-12 h-12 p-1 rounded-full text-center ring-green-500 hover:ring-8 transition">PDF</button>
+        <button id="printBtn" class="btn block mx-auto w-12 h-12 p-1 rounded-full text-center ring-green-500 hover:ring-8 transition">🖨️</button>
     </div>
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
@@ -149,7 +149,7 @@
     </div>
 </div>
 
-<div id="dashCont" class="hidden card max-w-md p-1 mt-2 rounded-lg shadow-xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+<div id="dashCont" class="hidden max-w-md p-1 mt-2 rounded-lg shadow-xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script> flatpickr(".date-input", { dateFormat: "d-m-Y", defaultDate: new Date() }); </script>
@@ -173,7 +173,8 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const tranCol = collection(db, "gopal");
+    const tranCol = [];
+    //const tranCol = collection(db, "gopal");
     let meters = [], balances = {}, mainMeter = null, groupId = null, currentDocId = null, cachedData = null;
     onAuthStateChanged(auth, async (user) => {
         if (user) { 
@@ -274,12 +275,37 @@
         const labels = Object.keys(monthlyData).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
         const sales = labels.map(m => monthlyData[m].bhadu);
         const purchase = labels.map(m => monthlyData[m].vyaj);
+        const textColor = getComputedStyle(document.body).getPropertyValue('--text-color').trim();
 
         if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
         window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
             type: 'bar',
-            data: { labels, datasets: [ { label: "Bhadu", data: sales, backgroundColor: "rgba(2, 255, 25, 1)" }, { label: "Vyaj", data: purchase, backgroundColor: "rgba(25, 25, 255, 1)" } ] }, 
-            options: { responsive: true, plugins: { datalabels: { anchor: 'end', align: 'start', formatter: value => value.toLocaleString(), font: { weight: 'bold' }, color: '#fff' } }, scales: { y: { beginAtZero: true } } },
+            data: { 
+                labels, 
+                datasets: [ 
+                    { label: "Bhadu", data: sales, backgroundColor: "rgba(2, 255, 25, 1)" }, 
+                    { label: "Vyaj", data: purchase, backgroundColor: "rgba(242, 51, 217, 1)" } 
+                ] 
+            }, 
+            options: { 
+                responsive: true, 
+                plugins: { 
+                    legend: {
+                        labels: { color: textColor }
+                    },
+                    datalabels: { 
+                        anchor: 'end', 
+                        align: 'start', 
+                        formatter: value => value.toLocaleString(), 
+                        font: { weight: 'bold' },
+                        color: textColor              
+                    } 
+                }, 
+                scales: { 
+                    x: { ticks: { color: textColor } },  
+                    y: { beginAtZero: true, ticks: { color: textColor } } 
+                } 
+            },
         }); 
     };
 
@@ -631,7 +657,7 @@
             const batch = writeBatch(db);
             for (const item of itemsToProcess) {
                 const newDoc = { ttype: ttypeValue, tparty: item.tparty, fparty: "Gpzip", amount: Number(item[amtField]), date: new Date().toISOString().split('T')[0], };
-                const newDocRef = doc(trancol);
+                const newDocRef = doc(tranCol);
                 batch.set(newDocRef, newDoc);
                 newItems.push(newDoc);
             }
@@ -646,7 +672,7 @@
         if (confirm('Are you sure you want to Delete this party and all related transactions?\nHoshiyar 🙋🏻‍♂️🤓\nThis action cannot be undone. 😱')) {
             const batch = writeBatch(db);
             const docsToDelete = cachedData.filter( data => data.fparty === name || data.tparty === name );
-            for (const docData of docsToDelete) { batch.delete(doc(trancol, docData.id)); }
+            for (const docData of docsToDelete) { batch.delete(doc(tranCol, docData.id)); }
             await batch.commit();
             cachedData = cachedData.filter( data => data.fparty !== name && data.tparty !== name );
         }
@@ -828,4 +854,3 @@
 </script>
 </body>
 </html>
-
