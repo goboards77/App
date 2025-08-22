@@ -62,61 +62,61 @@
 
     <div id ="crtCont" class="hidden card max-w-md mt-5 ml-2 p-2 rounded-lg">
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1 mb-1" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showCont('qvpCont')">Quarterly Vyaj Party 👮</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showMtable(116)">Ele 116 😱</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1 mb-1" onclick="showMtable(116)">Ele 116 😱</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showMtable(119)">Ele 119 🥶</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showCont('tranCont')">Transaction 💰</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1 mb-1" onclick="showCont('tranCont')">Transaction 💰</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1 mb-1" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
     </div>
 
     <div id ="updtCont" class="hidden card max-w-md mt-5 ml-[65px] p-2 rounded-lg">
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="insertTran(true, true, false)">Update Transaction ⛔✏️</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showCont('delCont')">Delete Party ⛔👮</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1" onclick="showCont('delCont')">Delete Party ⛔👮</button>
     </div>
 
     <div id ="rptCont" class="hidden card max-w-md mt-5 ml-[120px] p-2 rounded-lg">
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="insertTran(false, false, false)">Daybook 📕</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showDashboard()">Dashboard 📊</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1 mb-1" onclick="showDashboard()">Dashboard 📊</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="viewReceivables()">Receivables 💴</button>
-        <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
+        <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
     </div>
 </div>
 
-<div id="lgnCont" class="hidden card max-w-md p-3 mt-[50px] rounded-lg shadow-xl">
+<div id="lgnCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
     <input class="input-box" id="loginPassword" type="password" /><label for="loginPassword" class="label">Password</label>
     <button class="btn w-full py-3 mt-10 rounded-lg" onclick="login()">🏠︎ Login</button>
 </div>
 
-<div id="bhdCont" class="hidden card max-w-md p-3 mt-[50px] rounded-lg hadow-xl">
+<div id="bhdCont" class="hidden card max-w-md p-3 mt-2 rounded-lg hadow-xl">
     <input class="input-box" id="plotgroup" type="text"/><label for="plotgroup" class="label">Select Plot No</label>
     <input class="input-box" id="bhaduvatname" type="text"/><label for="bhaduvatname" class="label">Bhaduvat Name</label>
     <input class="input-box" id="meterreading" type="number"/><label for="meterreading" class="label">Meter Reading</label>
     <input class="input-box" id="mbamt" type="number"/><label for="mbamt" class="label">Monthly Bhadu</label>
-    <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-blue-500 hover:ring-4 transition" onclick="saveBhaduvat()">Save</button>
+    <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveBhaduvat()">Save</button>
 </div>
 
-<div id="mvpCont" class="hidden card max-w-md p-3 mt-[50px] rounded-lg shadow-xl">
+<div id="mvpCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <input class="input-box" id="mvpartyname" type="text"/><label for="mvpartyname" class="label">Party Name</label>
     <input class="input-box" id="mvamt" type="number"/><label for="mvamt" class="label">Monthly Vyaj</label>
-    <button class="btn w-full py-3 mt-10 rounded-lg" onclick="saveParty('mv')">Save</button>
+    <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveParty('mv')">Save</button>
 </div>
 
-<div id="qvpCont" class="hidden card max-w-md p-3 mt-[50px] rounded-lg shadow-xl">
+<div id="qvpCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <input class="input-box" id="qvpartyname" type="text"/><label for="qvpartyname" class="label">Party Name</label>
     <input class="input-box" id="qvamt" type="number"/><label for="qvamt" class="label">Quarterly Vyaj</label>
-    <button class="btn w-full py-3 mt-10 rounded-lg" onclick="saveParty('qv')">Save</button>
+    <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveParty('qv')">Save</button>
 </div>
 
-<div id="delCont" class="hidden card max-w-md p-3 mt-[50px] rounded-lg shadow-xl">
+<div id="delCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <input class="input-box" id="deleteparty" type="text"/><label for="deleteparty" class="label">Select Party To Delete</label>
-    <button class="btn w-full py-3 mt-10 rounded-lg" onclick="deleteParty()">Delete</button>
+    <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="deleteParty()">Delete</button>
 </div>
 
-<div id="tranCont" class="hidden card max-w-md p-3 mt-[50px] rounded-lg shadow-xl">
+<div id="tranCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <h4 id = "balanceInfo" class="text-lg font-medium mb-2"></h4>
     <input class="input-box" id="ttype" type="text"/><label for="ttype" class="label">Transaction Type</label>
     <input class="input-box date-input" id="date" type="text"/><label for="date" class="label">Date</label>
@@ -126,30 +126,30 @@
     <input class="input-box" id="nar" type="text"/><label for="nar" class="label">Narration</label>
     <input class="input-box" id="calc" type="text"/><label for="calc" class="label">🧮 Calculator</label>
     <div class="flex gap-1 justify-center">
-        <button class="btn w-full py-3 mt-10 rounded-lg" onclick="saveTransaction()">Save</button>
-        <button class="btn w-full py-3 mt-10 rounded-lg" onclick="insertTran(true, true, false)">Daybook</button>
+        <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveTransaction()">Save</button>
+        <button class="btn block mx-auto mt-10 w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="insertTran(true, true, false)">📙</button>
     </div>
 </div>
 
-<div id="tblCont" class="hidden card w-fit p-1 mt-[50px] rounded-lg shadow-xl">
-    <div><input id="searchBox" class="drpdwn w-full max-w-md px-2 mb-1 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
-    <div class="flex gap-1 mb-1 justify-left">
-        <button id="excelBtn" class="btn w-full h-10 rounded-lg">Excel</button>
-        <button id="pdfBtn" class="btn w-full h-10 rounded-lg">PDF</button>
-        <button id="printBtn" class="btn w-full h-10 rounded-lg">🖨️</button>
+<div id="tblCont" class="hidden card w-fit p-1 mt-2 rounded-lg shadow-xl">
+    <div><input id="searchBox" class="drpdwn w-full max-w-md px-2 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
+    <div class="flex gap-1 justify-left">
+        <button id="excelBtn" class="btn block mx-auto w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition">Excel</button>
+        <button id="pdfBtn" class="btn block mx-auto w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition">PDF</button>
+        <button id="printBtn" class="btn block mx-auto w-12 h-12 rounded-full text-center ring-green-500 hover:ring-8 transition">🖨️</button>
     </div>
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
-<div id="mtblCont" class="hidden card w-fit p-1 mt-[50px] rounded-lg shadow-xl">
+<div id="mtblCont" class="hidden card w-fit p-1 mt-2 rounded-lg shadow-xl">
     <table id="metersTable"><thead><tr><th>Name</th><th>O Read</th><th>N Read ↓↓</th><th>Consum</th><th>AdjUnt</th><th>Amt ↓↓</th></tr></thead><tbody id="metersTableBody"></tbody></table>
     <div class="flex gap-4 justify-left mt-1">
-        <button id="calculateBtn" class="btn w-full h-10 mt-10 rounded-lg" onclick="calculate()">Calculate</button>
-        <button id="saveBtn" style="display:none;" class="btn w-full h-10 mt-3 rounded-lg" onclick="saveData()">Save Data</button>
+        <button id="calculateBtn" class="btn block mx-auto mt-10 w-12 h-12 mb-2 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="calculate()">📠</button>
+        <button id="saveBtn" style="display:none;" class="btn block mx-auto mt-10 w-12 h-12 mb-2 rounded-full text-center ring-green-500 hover:ring-8 transition" onclick="saveData()">Save</button>
     </div>
 </div>
 
-<div id="dashCont" class="hidden card max-w-md p-1 mt-[50px] rounded-lg shadow-xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+<div id="dashCont" class="hidden card max-w-md p-1 mt-2 rounded-lg shadow-xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script> flatpickr(".date-input", { dateFormat: "d-m-Y", defaultDate: new Date() }); </script>
