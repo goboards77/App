@@ -53,13 +53,14 @@
 </head>
 <body class="p-2" style="font-family: 'Roboto'; font-size: 18px;">
 
-<div id="topBar"class="flex">
+<div id="topBar"class="hidden flex">
     <button id="crt" class="w-10 h-10 ml-3 rounded-full text-center bg-green-500 ring-green-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('crtCont')">✚</button>
     <button id="upd" class="w-10 h-10 ml-3 rounded-full text-center bg-red-600 ring-red-700 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('updtCont')">▬</button>
     <button id="view" class="w-10 h-10 ml-3 rounded-full text-center bg-yellow-800 ring-yellow-700 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="showCont('rptCont')">👀</button>
     <button class="w-10 h-10 ml-3 rounded-full text-center bg-orange-800 ring-orange-700 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="window.logout()">🔐</button>
     <button class="w-10 h-10 ml-3 rounded-full text-center bg-lime-500 ring-lime-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="switchTheme()">🌗</button>
-
+    <button id="jokeBtn" class="w-10 h-10 ml-3 rounded-full text-center bg-blue-500 ring-blue-600 hover:ring-8 transform transition-all duration-300 hover:scale-125 origin-left" onclick="jokes()">😂</button>
+    
     <div id ="crtCont" class="hidden card max-w-md mt-5 ml-2 p-2 rounded-lg">
         <button class="btn w-full px-2 py-2 text-left rounded-lg" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
         <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1 mb-1" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
@@ -84,6 +85,8 @@
         <button class="btn w-full px-2 py-2 text-left rounded-lg mt-1" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
     </div>
 </div>
+
+<div id="jokeBox" class="hidden w-full max-w-md p-3 mt-[50px] rounded-lg"></div>
 
 <div id="lgnCont" class="hidden card max-w-md p-3 mt-2 rounded-lg shadow-xl">
     <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
@@ -173,8 +176,7 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const tranCol = [];
-    //const tranCol = collection(db, "gopal");
+    const tranCol = collection(db, "gopal");
     let meters = [], balances = {}, mainMeter = null, groupId = null, currentDocId = null, cachedData = null;
     onAuthStateChanged(auth, async (user) => {
         if (user) { 
@@ -239,9 +241,8 @@
     };
     window.underConstruction = function () { alert('Under Construction!!!!!!!');}
     window.showCont = function (...idToShow) {
-        clear();
         const allBtns = ['crt', 'upd', 'view'];
-        const allIds = ['lgnCont', 'crtCont', 'updtCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont'];
+        const allIds = ['lgnCont', 'crtCont', 'updtCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont', 'jokeBox'];
         allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'none', 'important'); } });
         allBtns.forEach(btnId => {
             const btn = document.getElementById(btnId);
@@ -851,6 +852,16 @@
             document.body.classList.remove('dark-mode');
         }
     };
+
+    window.jokes = async function () {
+        showCont('jokeBox');
+        const jokeBox = document.getElementById("jokeBox");
+        jokeBox.textContent = "Loading joke...";
+        const res = await fetch("https://official-joke-api.appspot.com/random_joke");
+        const data = await res.json();
+        jokeBox.textContent = data.setup + " 🤔 ... " + data.punchline;
+    };
+
 </script>
 </body>
 </html>
