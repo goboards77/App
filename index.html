@@ -17,130 +17,82 @@
         table { border-collapse: collapse; table-layout: auto; max-width: 900px; }
         th, td { border: 1px solid var(--text-color); text-align: right; white-space: nowrap; padding-left: 10px; padding-top: 5px; }
         th, td:first-child { text-align: left; }
-        
+
         :root {
             --body-bg: #111827;      /* 900 */ 
             --card-bg: #18202f;      /* 850 */ 
-            --dd-bg: #1f2937;        /* 800 */ 
             --text-color: #ffffff;   /* white */
+            --hovclr: #185ec1;
         }
 
         body.light-mode {
             --body-bg: #d1d5db;      /* 300 */
             --card-bg: #ffffff;      /* white */
-            --dd-bg: #eceef0;        /* 150 */
             --text-color: #000000;   /* black */
+            --hovclr: #8299c8;
         }
 
         body { background-color: var(--body-bg); color: var(--text-color); }
         .card { background-color: var(--card-bg); }
-        .btnDD:hover { background-color: var(--body-bg); }
-        .drpdwn {background-color: var(--dd-bg); }
-        .input-box { background-color: var(--dd-bg); } 
+        .btnDD:hover { background-color: var(--hovclr); }
     </style>
 </head>
 <body class="p-1" style="font-family: 'Roboto'; font-size: 18px;">
-
-<div id="topBar"class="hidden card w-full flex p-1 h-[50px] fixed top-0 left-0 z-50">
-    <button class="btnM" title="New Transactions" onclick="showCont('crtCont')">✍🏻</button>
-    <button class="btnM" title="Update/Delete" onclick="showCont('updtCont')">✏️</button>
-    <button class="btnM" title="View Reports" onclick="showCont('rptCont')">👀</button>
-    <button class="btnM" title="New Parties" onclick="showCont('newCont')">🆕</button>
-    <button class="btnM" title="Logout" onclick="window.logout()">🔐</button>
-    <button class="btnM" title="Dark/lite" onclick="switchTheme()">🌗</button>
-    <button class="btnM" title="Create Jokes" onclick="jokes()">😂</button>
+<button id="topBar"class="card w-full h-[50px] fixed top-0 left-0 z-50 text-lg text-left px-7" onclick="showCont('menuCont')">☰ Start Here</button>
+<div id="menuCont"class="hidden card w-full max-w-md mt-[50px] rounded-lg">
+    <button class="btnDD" onclick="showEle(1,2,3)">👔 Create</button>
+    <button class="btnDD" onclick="showEle(11,12)">✏️ Alter</button>
+    <button class="btnDD" onclick="showEle(21,22,23,24,25,26)">✍🏻 Voucher</button>
+    <button class="btnDD" onclick="showEle(31,32,33,34)">👀 Report</button>
+    <button class="btnDD" onclick="switchTheme()">🌈 Themes</button>
+    <button class="btnDD" onclick="logout()">🔐 Logout</button>
 </div>
 
-<div id ="crtCont" class="hidden card max-w-md mt-[50px] rounded-lg">
-    <h2 class="ml-5 py-5 text-[#e92c7b] text-2xl">All Type Of Transactions</h2>
-    <button class="btnDD" onclick="showMtable(116)">Ele 116 😱</button>
-    <button class="btnDD" onclick="showMtable(119)">Ele 119 🥶</button>
-    <button class="btnDD" onclick="showCont('tranCont')">Transaction 💰</button>
-    <button class="btnDD" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
-    <button class="btnDD" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
-    <button class="btnDD mb-3" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
-</div>
+<div id ="btnCont" class="hidden card max-w-md mt-[50px] p-2 rounded-lg">
+    <button id=1 class="btnDD" onclick="showEle(101,102,103,104,1010)">Bhaduvat 🧑‍🚒</button>
+    <button id=2 class="btnDD" onclick="showEle(102,201,2010)">Monthly Vyaj Party 🧛</button>
+    <button id=3 class="btnDD" onclick="showEle(102,301,3010)">Quarterly Vyaj Party 👮</button>
 
-<div id ="updtCont" class="hidden card max-w-md mt-[50px] rounded-lg">
-    <h2 class="ml-5 py-5 text-[#e92c7b] text-2xl">Modify/Delete Transactions/Party</h2>
-    <button class="btnDD" onclick="insertTran(true, true, false)">Transaction ⛔✏️</button>
-    <button class="btnDD mb-3" onclick="showCont('delCont')">Delete Party ⛔👮</button>
-</div>
+    <button id=11 class="btnDD" onclick="insertTran(true, true, false)">Transaction ⛔✏️</button>
+    <button id=12 class="btnDD" onclick="showEle(401,4010)">Delete Party ⛔👮</button>
 
-<div id ="rptCont" class="hidden card max-w-md mt-[50px] rounded-lg">
-    <h2 class="ml-5 py-5 text-[#e92c7b] text-2xl">View Reports</h2>
-    <button class="btnDD" onclick="insertTran(false, false, false)">Daybook 📕</button>
-    <button class="btnDD" onclick="showDashboard()">Dashboard 📊</button>
-    <button class="btnDD" onclick="viewReceivables()">Receivables 💴</button>
-    <button class="btnDD mb-3" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
-</div>
+    <button id=21 class="btnDD" onclick="showMtable(116)">Ele 116 😱</button>
+    <button id=22 class="btnDD" onclick="showMtable(119)">Ele 119 🥶</button>
+    <button id=23 class="btnDD" onclick="showEle(501,502,503,504,505,506,5010)">Transaction 💰</button>
+    <button id=24 class="btnDD" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
+    <button id=25 class="btnDD" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
+    <button id=26 class="btnDD" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
 
-<div id ="newCont" class="hidden card max-w-md mt-[50px] rounded-lg">
-    <h2 class="ml-5 py-5 text-[#e92c7b] text-2xl">Create New Parties</h2>
-    <button class="btnDD" onclick="showCont('bhdCont')">Bhaduvat 🧑‍🚒</button>
-    <button class="btnDD" onclick="showCont('mvpCont')">Monthly Vyaj Party 🧛</button>
-    <button class="btnDD" onclick="showCont('qvpCont')">Quarterly Vyaj Party 👮</button>
-</div>
+    <button id=31 class="btnDD" onclick="insertTran(false, false, false)">Daybook 📕</button>
+    <button id=32 class="btnDD" onclick="showDashboard()">Dashboard 📊</button>
+    <button id=33 class="btnDD" onclick="viewReceivables()">Receivables 💴</button>
+    <button id=34 class="btnDD" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
 
-<div id="jokeBox" class="hidden card w-full max-w-md p-2 mt-[50px] rounded-lg"></div>
+    <input id=101 class="input-box" type="text"/><label class="label">Select Plot No</label>
+    <input id=102 class="input-box" type="text"/><label class="label">Name</label>
+    <input id=103 class="input-box" type="number"/><label class="label">Meter Reading</label>
+    <input id=104 class="input-box" type="number"/><label class="label">Monthly Bhadu</label>
+    <button id=1010 class="btnSV block mx-auto" onclick="saveBhaduvat()">💾</button>
 
-<div id="lgnCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
-    <h2 class="ml-5 py-5 text-[#e92c7b] text-2xl">Login</h2>
-    <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
-    <input class="input-box" id="loginPassword" type="password" /><label for="loginPassword" class="label">Password</label>
-    <button class="btnSV" title="Login" onclick="login()">🏠︎</button>
-</div>
+    <input id=201 class="input-box" type="number"/><label class="label">Monthly Vyaj</label>
+    <button id=2010 class="btnSV block mx-auto" onclick="saveParty('mv')">💾</button>
 
-<div id="bhdCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
-    <h2 class="py-2 text-[#e92c7b] text-xl">Enter Bhaduvat Details</h2>
-    <input class="input-box" id="plotgroup" type="text"/><label for="plotgroup" class="label">Select Plot No</label>
-    <input class="input-box" id="bhaduvatname" type="text"/><label for="bhaduvatname" class="label">Bhaduvat Name</label>
-    <input class="input-box" id="meterreading" type="number"/><label for="meterreading" class="label">Meter Reading</label>
-    <input class="input-box" id="mbamt" type="number"/><label for="mbamt" class="label">Monthly Bhadu</label>
-    <button class="btnSV" title="Save Party" onclick="saveBhaduvat()">💾</button>
-</div>
+    <input id=301 class="input-box" type="number"/><label class="label">Quarterly Vyaj</label>
+    <button id=3010 class="btnSV block mx-auto" onclick="saveParty('qv')">💾</button>
 
-<div id="mvpCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
-    <h2 class="py-2 text-[#e92c7b] text-xl">Enter Monthly Vyaj Party Details</h2>
-    <input class="input-box" id="mvpartyname" type="text"/><label for="mvpartyname" class="label">Party Name</label>
-    <input class="input-box" id="mvamt" type="number"/><label for="mvamt" class="label">Monthly Vyaj</label>
-    <button class="btnSV" title="Save Party" onclick="saveParty('mv')">💾</button>
-</div>
+    <input id=401 class="input-box" type="text"/><label class="label">Select Party</label>
+    <button id=4010 class="btnSV block mx-auto" onclick="deleteParty()">🗑️</button>
 
-<div id="qvpCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
-    <h2 class="py-2 text-[#e92c7b] text-xl">Enter Quarterly Vyaj Party Details</h2>
-    <input class="input-box" id="qvpartyname" type="text"/><label for="qvpartyname" class="label">Party Name</label>
-    <input class="input-box" id="qvamt" type="number"/><label for="qvamt" class="label">Quarterly Vyaj</label>
-    <button class="btnSV" title="Save Party" onclick="saveParty('qv')">💾</button>
-</div>
-
-<div id="delCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
-    <h2 class="py-2 text-[#e92c7b] text-xl">Savdhan Hoshiyar</h2>
-    <input class="input-box" id="deleteparty" type="text"/><label for="deleteparty" class="label">Select Party To Delete</label>
-    <button class="btnSV" title="Delete Party??" onclick="deleteParty()">🗑️</button>
-</div>
-
-<div id="tranCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
-    <h4 id = "balanceInfo" class="text-lg font-medium mb-2"></h4>
-    <input class="input-box" id="ttype" type="text"/><label for="ttype" class="label">Transaction Type</label>
-    <input class="input-box date-input" id="date" type="text"/><label for="date" class="label">Date</label>
-    <input class="input-box" id="from1" type="text"/><label for="from1" class="label">From</label>
-    <input class="input-box" id="to1" type="text"/><label for="to1" class="label">To</label>   
-    <input class="input-box" id="amt" type="number"/><label for="amt" class="label">Amount</label>
-    <input class="input-box" id="nar" type="text"/><label for="nar" class="label">Narration</label>
-    <input class="input-box" id="calc" type="text"/><label for="calc" class="label">🧮 Calculator</label>
-    <button class="btnSV inline-block ml-10" title="Save Transaction" onclick="saveTransaction()">💾</button>
-    <button class="btnSV inline-block ml-10" title="View Daybook" onclick="insertTran(true, true, false)">📙</button>
-</div>
-
-<div id="tblCont" class="hidden card w-fit mt-[50px] rounded-lg">
-    <div><input id="searchBox" class="card w-full max-w-md px-2 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
-    <div class="flex gap-1 justify-left">
-        <button id="excelBtn" class="btn block mx-auto w-10 h-10 p-1 rounded-full text-center ring-green-500 hover:ring-4 transition">Xl</button>
-        <button id="pdfBtn" class="btn block mx-auto w-10 h-10 p-1 rounded-full text-center ring-green-500 hover:ring-4 transition">PDF</button>
-        <button id="printBtn" class="btn block mx-auto w-10 h-10 p-1 rounded-full text-center ring-green-500 hover:ring-4 transition">🖨️</button>
+    <input id=501 class="input-box date-input" type="text"/><label class="label">Date</label>
+    <input id=502 class="input-box" type="text"/><label class="label">From</label>
+    <input id=503 class="input-box" type="text"/><label class="label">To</label>   
+    <input id=504 class="input-box" type="number"/><label class="label">Amount</label>
+    <input id=505 class="input-box" type="text"/><label class="label">Narration</label>
+    <input id=506 class="input-box" type="text"/><label class="label">🧮 Calculator</label>
+    <div id=5010 class="flex">
+        <button class="btnSV ml-[70px]" onclick="saveTransaction()">💾</button>
+        <button class="btnSV ml-[200px]" title="View Daybook" onclick="insertTran(true, true, false)">📙</button>
     </div>
-    <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
 <div id="mtblCont" class="hidden card w-fit p-2 mt-[50px] rounded-lg">
@@ -149,7 +101,24 @@
     <button class="btnSV inline-block ml-10 mb-5" title="Save Bill" onclick="saveData()" style="display:none;" id="saveBtn">💾</button>
 </div>
 
+<div id="tblCont" class="hidden card w-fit mt-[50px] rounded-lg">
+    <div><input id="searchBox" class="card w-full max-w-md px-2 h-10 border border-blue-600 rounded-lg" placeholder="Search..." type="text" autocomplete="off"/></div>
+    <div class="w-full max-w-md flex gap-1 justify-left">
+        <button id="excelBtn" class="btn block mx-auto w-10 h-10 p-1 rounded-full text-center ring-green-500 hover:ring-4 transition">XL</button>
+        <button id="pdfBtn" class="btn block mx-auto w-10 h-10 p-1 rounded-full text-center ring-green-500 hover:ring-4 transition">PDF</button>
+        <button id="printBtn" class="btn block mx-auto w-10 h-10 p-1 rounded-full text-center ring-green-500 hover:ring-4 transition">🖨️</button>
+    </div>
+    <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
+</div>
+
 <div id="dashCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+
+<div id="lgnCont" class="hidden card max-w-md p-2 mt-[50px] rounded-lg">
+    <h2 class="ml-5 py-5 text-[#e92c7b] text-xl">Login</h2>
+    <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
+    <input class="input-box" id="loginPassword" type="password" /><label for="loginPassword" class="label">Password</label>
+    <button class="btnSV block mx-auto" title="Login" onclick="login()">🏠︎</button>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script> flatpickr(".date-input", { dateFormat: "d-m-Y", defaultDate: new Date() }); </script>
@@ -173,15 +142,17 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const tranCol = collection(db, "gopal");
     let meters = [], balances = {}, mainMeter = null, groupId = null, currentDocId = null, cachedData = null;
     
     onAuthStateChanged(auth, async (user) => {
         if (user) { 
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) { const dbName = docSnap.data().db; window.tranCol = collection(db, dbName);};
             showCont('topBar'); 
             await fetchAllOnce();
             await loadDropdownData(); 
-        } else { document.getElementById("topBar").classList.add("hidden"); showCont("lgnCont"); } 
+        } else { showCont("lgnCont"); } 
     });  
     
     document.addEventListener('DOMContentLoaded', () => {
@@ -224,22 +195,42 @@
         });
     });   
     
-    const btnClass1 = "ml-2 text-[28px] rounded-full duration-500 hover:scale-150 cursor-pointer";
-    document.querySelectorAll('.btnM').forEach(btn => { btn.classList.add(...btnClass1.split(' ')); });
-
-    const btnClass2 = "w-full px-5 py-3 text-left cursor-pointer";
+    const btnClass2 = "block w-full max-w-md px-5 py-3 text-left cursor-pointer";
     document.querySelectorAll('.btnDD').forEach(btn => { btn.classList.add(...btnClass2.split(' ')); });
+    const btnClass3 = "mt-10 mb-2 text-[30px] rounded-full duration-500 hover:scale-150 cursor-pointer ring-green-500 hover:ring-4";
+    document.querySelectorAll('.btnSV').forEach(btn => { btn.classList.add(...btnClass3.split(' ')); });    
     
-    const btnClass3 = "block mx-auto mt-10 text-[30px] rounded-full duration-500 hover:scale-125 cursor-pointer ring-green-500 hover:ring-2";
-    document.querySelectorAll('.btnSV').forEach(btn => { btn.classList.add(...btnClass3.split(' ')); });
+    document.getElementById("505").addEventListener("focus", async function () {
+        await viewReceivables(false);
+        const fromParty = document.getElementById("from1").value.trim();
+        const toParty = document.getElementById("to1").value.trim();
+        const partiesToCheck = [fromParty, toParty];
+        partiesToCheck.forEach(party => { if (party && party !== "Gpzip") { const bal = balances[party] || 0; document.getElementById("balanceInfo").textContent = `${party}: ${bal.toFixed(0)}`;} }); 
+    });
 
-    window.clear = function () { loadDropdownData(); document.querySelectorAll("input").forEach(el => { if (el.id !== "date" && el.id !== "ttype") { el.value = ""; } }); };
+    window.showEle = function (...ids) {
+        document.getElementById("menuCont").style.setProperty('display', 'none', 'important');
+        const cont = document.getElementById("btnCont");
+        cont.style.setProperty('display', 'block', 'important');
+        Array.from(cont.children).forEach(child  => child.style.setProperty('display', 'none', 'important'));
+        ids.forEach(id => {
+            let el = document.getElementById(id);
+            if (el) {
+                if (el.tagName === "INPUT" || el.tagName === "LABEL") { el = el.parentElement;}
+                el.style.setProperty('display', 'block', 'important');
+            }
+        });
+    };
+
+    window.showCont = function (...idToShow) {
+        const allIds = ['menuCont', 'btnCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'mtblCont', 'tblCont', 'dashCont', 'lgnCont'];
+        allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'none', 'important'); } });
+        idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'block', 'important'); } });
+    };   
     
-    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
+    window.clear = function () { loadDropdownData(); document.querySelectorAll("input").forEach(el => { if (el.id !== "date") { el.value = ""; } }); };
     
-    window.getInputByIdx = function (cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
-    
-    document.getElementById("calc").addEventListener("keydown", function (e) {
+    document.getElementById("506").addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             const raw = this.value.trim();
             if (/^[\d+\-*/().\s]+$/.test(raw)) {
@@ -256,66 +247,6 @@
         return cachedData; 
     };
     
-    window.showCont = function (...idToShow) {
-        const allIds = ['lgnCont', 'newCont', 'crtCont', 'updtCont', 'rptCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'tblCont', 'mtblCont', 'dashCont', 'jokeBox'];
-        allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'none', 'important'); } });
-        idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'block', 'important'); } });
-        document.getElementById("ttype").value = "Receipt";
-    };
-    
-    window.showDashboard = async function () {
-        showCont("dashCont");
-        const transactionsData = await fetchAllOnce();
-        const monthlyData = {};
-
-        transactionsData.forEach((data) => {
-            let jsDate = new Date(data.date);
-            if (isNaN(jsDate)) return;
-            const month = jsDate.toLocaleString('default', { month: 'short' });
-            if (!monthlyData[month]) { monthlyData[month] = { bhadu: 0, vyaj: 0 }; }
-            const ttype = (data.ttype || "").trim().toLowerCase();
-            if (ttype === "bhadu") { monthlyData[month].bhadu += data.amount || 0; } 
-            if (ttype === "vyaj") { monthlyData[month].vyaj += data.amount || 0; } 
-        });
-
-        const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const labels = Object.keys(monthlyData).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
-        const sales = labels.map(m => monthlyData[m].bhadu);
-        const purchase = labels.map(m => monthlyData[m].vyaj);
-        const textColor = getComputedStyle(document.body).getPropertyValue('--text-color').trim();
-
-        if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
-        window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
-            type: 'bar',
-            data: { 
-                labels, 
-                datasets: [ 
-                    { label: "Bhadu", data: sales, backgroundColor: "rgba(2, 255, 25, 1)" }, 
-                    { label: "Vyaj", data: purchase, backgroundColor: "rgba(242, 51, 217, 1)" } 
-                ] 
-            }, 
-            options: { 
-                responsive: true, 
-                plugins: { 
-                    legend: {
-                        labels: { color: textColor }
-                    },
-                    datalabels: { 
-                        anchor: 'end', 
-                        align: 'start', 
-                        formatter: value => value.toLocaleString(), 
-                        font: { weight: 'bold' },
-                        color: textColor              
-                    } 
-                }, 
-                scales: { 
-                    x: { ticks: { color: textColor } },  
-                    y: { beginAtZero: true, ticks: { color: textColor } } 
-                } 
-            },
-        }); 
-    };
-
     window.loadDropdownData = async function () {
         const transactionsData = await fetchAllOnce();
         const nameSet = new Set();
@@ -323,10 +254,9 @@
         const plot_list = ["116", "119"]; 
         const names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
 
-        attachDropdown(document.getElementById("plotgroup"), plot_list);
-        ["from1","to1","deleteparty"].forEach(id => attachDropdown(document.getElementById(id), names_list));
-    };
-    
+        attachDropdown(document.getElementById("101"), plot_list);
+        ["401","502","503"].forEach(id => attachDropdown(document.getElementById(id), names_list));
+    }; 
     window.attachDropdown = function (inputElement, dataList) {
         if (inputElement._dropdownCleanup) { inputElement._dropdownCleanup(); }
         let wrapper = inputElement.parentElement;
@@ -339,7 +269,7 @@
         }
 
         let dropdown = document.createElement("ul");
-        dropdown.className = "drpdwn absolute z-50 w-full h-[300px] overflow-y-auto hidden rounded-b-lg";
+        dropdown.className = "card absolute z-50 w-full h-[300px] overflow-y-auto hidden rounded-b-lg";
         wrapper.appendChild(dropdown);
 
         function filterList() {
@@ -353,7 +283,7 @@
             list.forEach(item => {
                 const btn = document.createElement("button");
                 btn.textContent = item;
-                btn.className = "btnDD block w-full text-left px-2 py-3 cursor-pointer";
+                btn.className = "btnDD block w-full text-left px-2 py-3 cursor-pointer border-b border-gray-300 last:border-b-0";
                 btn.addEventListener('click', () => {
                     inputElement.value = item;
                     dropdown.classList.add("hidden");
@@ -390,8 +320,7 @@
             if (dropdown.parentNode) dropdown.parentNode.removeChild(dropdown);
             inputElement._dropdownCleanup = null;
         };
-    };
-    
+    };    
     window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
         const isMobile = window.innerWidth < 768;  
@@ -500,8 +429,7 @@
         document.getElementById('pdfBtn')?.addEventListener("click", () => { window.table.download("pdf", "data.pdf", { orientation: "portrait" }); });
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
         bindSearch();
-    };
-    
+    };    
     window.bindSearch = function () {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
@@ -512,18 +440,15 @@
             }); 
         }); 
     };
-
     window.showTransactionContainer = function (rowData) { 
-        showCont('tranCont');
-        document.getElementById("ttype").value = rowData.ttype || "";
-        const dateInput = document.getElementById("date");
-        if (dateInput._flatpickr) { dateInput._flatpickr.setDate(rowData.date || "", true);};
-        document.getElementById("from1").value = rowData.fparty || "";
-        document.getElementById("to1").value = rowData.tparty || "";
-        document.getElementById("amt").value = rowData.amount || "";
-        document.getElementById("nar").value = rowData.nar || "";
-    };
-    
+        showEle(501,502,503,504,505,506,5010,5011);
+        document.getElementById('tblCont').style.setProperty('display', 'none', 'important');
+        document.getElementById("501").value = rowData.date || "";
+        document.getElementById("502").value = rowData.fparty || "";
+        document.getElementById("503").value = rowData.tparty || "";
+        document.getElementById("504").value = rowData.amount || "";
+        document.getElementById("505").value = rowData.nar || "";
+    };   
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
         const data = await fetchAllOnce();
         const rows = [];
@@ -558,68 +483,6 @@
         showCont("tblCont"); 
     };
     
-    window.viewLedger = async function () {
-        const data = await fetchAllOnce();
-        const rows = [];
-        data.forEach(item => {
-            const group = item.group ?? "";
-            const name = item.tparty ?? "";
-            if ((group !== "" && group !== null && group !== undefined) &&
-                (name !== "" && name !== null && name !== undefined)) {
-                rows.push({ group, name });
-            }
-        });
-        const columns = [ { title: "Group", field: "group", width: 108 }, { title: "Name", field: "name", width: 240 }, ];
-        createEditableTable(rows, columns, false, false, false);
-        showCont("tblCont");
-    };
-    
-    window.viewReceivables = async function (showTable = true) {
-        const data = await fetchAllOnce();
-        balances = {};
-        let rows = [];
-        data.forEach(item => {
-            if (item.fparty) { const party = item.fparty.trim(); balances[party] = (balances[party] || 0) + parseFloat(item.amount || "0"); }
-            if (item.tparty) { const party = item.tparty.trim(); balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); }
-        });
-
-        if (showTable) {
-            for (const party in balances) { if ((balances[party]) !== 0) { rows.push({ party: party, amount: (balances[party]).toFixed(0) }); } }
-            const columns = [ { title: "Party", field: "party", width: 240 }, { title: "Amount", field: "amount", width: 108, hozAlign: "right" } ];
-            createEditableTable(rows, columns, false, false, false);
-            showCont("tblCont");
-        }
-    };
-    
-    window.saveTransaction = async function () {
-        const ttype = document.getElementById("ttype").value.trim();
-        const odate = document.getElementById("date");
-        const fparty = document.getElementById("from1").value.trim();
-        const tparty = document.getElementById("to1").value.trim();
-        const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
-        const nar = document.getElementById("nar").value.trim();
-        
-        if (!ttype || !odate || !fparty || !tparty || isNaN(amount) || amount <= 0) { 
-            return alert("Please fill all required fields properly\nAmount must be a number > 0"); 
-        }       
-        const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
-        const tranData = {ttype, date, fparty, tparty, amount };
-        
-        if (nar) tranData.nar = nar;
-        if (currentDocId) { 
-            const docRef = doc(tranCol, currentDocId); 
-            await updateDoc(docRef, tranData); 
-            const index = cachedData.findIndex(item => item.id === docRef.id);
-            if (index !== -1) { cachedData[index] = { ...cachedData[index], ...tranData }; }
-            insertTran();
-        } 
-        else { 
-            const newDocRef = await addDoc(tranCol, tranData); 
-            cachedData.push({ id: newDocRef.id, ...tranData });
-        }
-        clear(); currentDocId = null; 
-    };
-    
     window.saveBhaduvat = async function () {
         const group = document.getElementById("plotgroup").value.trim();
         const name = document.getElementById("bhaduvatname").value.trim();
@@ -632,7 +495,6 @@
         cachedData.push(savedData); 
         clear();
     };
-    
     window.saveParty = async function (partyType) {
         const nameInputId = partyType.toLowerCase() + "partyname";
         const amtInputId = partyType.toLowerCase() + "amt";
@@ -647,7 +509,6 @@
         cachedData.push(savedData);
         clear();
     };
-
     window.saveHavala = async function (type) {
         const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
         const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
@@ -673,19 +534,7 @@
         }
     };
     
-    window.deleteParty = async function () {
-        const name = document.getElementById("deleteparty").value.trim();
-        if (!name) { return alert("Please enter a name"); }
-        if (confirm('Are you sure you want to Delete this party and all related transactions?\nHoshiyar 🙋🏻‍♂️🤓\nThis action cannot be undone. 😱')) {
-            const batch = writeBatch(db);
-            const docsToDelete = cachedData.filter( data => data.fparty === name || data.tparty === name );
-            for (const docData of docsToDelete) { batch.delete(doc(tranCol, docData.id)); }
-            await batch.commit();
-            cachedData = cachedData.filter( data => data.fparty !== name && data.tparty !== name );
-        }
-        clear();
-    };
-
+    window.getInputByIdx = function (cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
     window.fetchCustomers = async function (groupId) {
         const transactionsData = await fetchAllOnce(); 
         const namesSet = new Set();
@@ -708,7 +557,6 @@
         }
         return customers;
     };
-    
     window.renderTable = async function () {
         const tbody = document.getElementById("metersTableBody");
         tbody.innerHTML = "";
@@ -733,8 +581,7 @@
                 </tr>
             `);
         });
-    };
-    
+    };  
     window.calculate = function () {
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
@@ -788,8 +635,7 @@
             if (amtInput) amtInput.value = m.amount.toFixed(0);
         });
         document.getElementById("saveBtn").style.display = "inline-block";
-    };
-    
+    };    
     window.saveData = async function () {
         const batch = writeBatch(db);
         const newItems = [];
@@ -809,8 +655,7 @@
         cachedData.push(...newItems);
         document.getElementById("mtblCont").style.setProperty('display', 'none', 'important');
         alert('Data saved, success');
-    };
-    
+    };    
     window.showMtable = async function (grpId) { 
         groupId = grpId; 
         meters = await fetchCustomers(groupId); 
@@ -819,30 +664,130 @@
         document.getElementById("saveBtn").style.display = "none";
     };
     
-    window.login = async function () {
-        const email = document.getElementById("loginEmail").value;
-        const password = document.getElementById("loginPassword").value;
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists() && docSnap.data().approved === true) { showCont("topBar"); }
+    window.saveTransaction = async function () {
+        const odate = document.getElementById("date");
+        const fparty = document.getElementById("from1").value.trim();
+        const tparty = document.getElementById("to1").value.trim();
+        const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
+        const nar = document.getElementById("nar").value.trim();
+        
+        if (!odate || !fparty || !tparty || isNaN(amount) || amount <= 0) { return alert("Please fill all required fields properly\nAmount must be a number > 0"); }       
+        const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
+        const tranData = {ttype: "Receipt", date, fparty, tparty, amount };
+        
+        if (nar) tranData.nar = nar;
+        if (currentDocId) { 
+            const docRef = doc(tranCol, currentDocId); 
+            await updateDoc(docRef, tranData); 
+            const index = cachedData.findIndex(item => item.id === docRef.id);
+            if (index !== -1) { cachedData[index] = { ...cachedData[index], ...tranData }; }
+            insertTran();
+        } 
+        else { 
+            const newDocRef = await addDoc(tranCol, tranData); 
+            cachedData.push({ id: newDocRef.id, ...tranData });
+        }
+        clear(); currentDocId = null; 
     };
     
-    window.logout = async function () { 
-        showCont();
-        if (confirm("Are you sure you want to logout?")) { 
-            await signOut(auth); showCont("lgnCont"); 
-        } 
+    window.deleteParty = async function () {
+        const name = document.getElementById("deleteparty").value.trim();
+        if (!name) { return alert("Please enter a name"); }
+        if (confirm('Are you sure you want to Delete this party and all related transactions?\nHoshiyar 🙋🏻‍♂️🤓\nThis action cannot be undone. 😱')) {
+            const batch = writeBatch(db);
+            const docsToDelete = cachedData.filter( data => data.fparty === name || data.tparty === name );
+            for (const docData of docsToDelete) { batch.delete(doc(tranCol, docData.id)); }
+            await batch.commit();
+            cachedData = cachedData.filter( data => data.fparty !== name && data.tparty !== name );
+        }
+        clear();
     };
 
-    document.getElementById("amt").addEventListener("focus", async function () {
-        await viewReceivables(false);
-        const fromParty = document.getElementById("from1").value.trim();
-        const toParty = document.getElementById("to1").value.trim();
-        const partiesToCheck = [fromParty, toParty];
-        partiesToCheck.forEach(party => { if (party && party !== "Gpzip") { const bal = balances[party] || 0; document.getElementById("balanceInfo").textContent = `${party}: ${bal.toFixed(0)}`;} }); 
-    });
+    window.viewReceivables = async function (showTable = true) {
+        const data = await fetchAllOnce();
+        balances = {};
+        let rows = [];
+        data.forEach(item => {
+            if (item.fparty) { const party = item.fparty.trim(); balances[party] = (balances[party] || 0) + parseFloat(item.amount || "0"); }
+            if (item.tparty) { const party = item.tparty.trim(); balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); }
+        });
+
+        if (showTable) {
+            for (const party in balances) { if ((balances[party]) !== 0) { rows.push({ party: party, amount: (balances[party]).toFixed(0) }); } }
+            const columns = [ { title: "Party", field: "party", width: 240 }, { title: "Amount", field: "amount", width: 108, hozAlign: "right" } ];
+            createEditableTable(rows, columns, false, false, false);
+            showCont("tblCont");
+        }
+    };
+    
+    window.viewLedger = async function () {
+        const data = await fetchAllOnce();
+        const rows = [];
+        data.forEach(item => {
+            const group = item.group ?? "";
+            const name = item.tparty ?? "";
+            if ((group !== "" && group !== null && group !== undefined) &&
+                (name !== "" && name !== null && name !== undefined)) {
+                rows.push({ group, name });
+            }
+        });
+        const columns = [ { title: "Group", field: "group", width: 108 }, { title: "Name", field: "name", width: 240 }, ];
+        createEditableTable(rows, columns, false, false, false);
+        showCont("tblCont");
+    };
+    
+    window.showDashboard = async function () {
+        showCont("dashCont");
+        const transactionsData = await fetchAllOnce();
+        const monthlyData = {};
+
+        transactionsData.forEach((data) => {
+            let jsDate = new Date(data.date);
+            if (isNaN(jsDate)) return;
+            const month = jsDate.toLocaleString('default', { month: 'short' });
+            if (!monthlyData[month]) { monthlyData[month] = { bhadu: 0, vyaj: 0 }; }
+            const ttype = (data.ttype || "").trim().toLowerCase();
+            if (ttype === "bhadu") { monthlyData[month].bhadu += data.amount || 0; } 
+            if (ttype === "vyaj") { monthlyData[month].vyaj += data.amount || 0; } 
+        });
+
+        const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const labels = Object.keys(monthlyData).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
+        const sales = labels.map(m => monthlyData[m].bhadu);
+        const purchase = labels.map(m => monthlyData[m].vyaj);
+        const textColor = getComputedStyle(document.body).getPropertyValue('--text-color').trim();
+
+        if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
+        window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
+            type: 'bar',
+            data: { 
+                labels, 
+                datasets: [ 
+                    { label: "Bhadu", data: sales, backgroundColor: "rgba(2, 255, 25, 1)" }, 
+                    { label: "Vyaj", data: purchase, backgroundColor: "rgba(242, 51, 217, 1)" } 
+                ] 
+            }, 
+            options: { 
+                responsive: true, 
+                plugins: { 
+                    legend: {
+                        labels: { color: textColor }
+                    },
+                    datalabels: { 
+                        anchor: 'end', 
+                        align: 'start', 
+                        formatter: value => value.toLocaleString(), 
+                        font: { weight: 'bold' },
+                        color: textColor              
+                    } 
+                }, 
+                scales: { 
+                    x: { ticks: { color: textColor } },  
+                    y: { beginAtZero: true, ticks: { color: textColor } } 
+                } 
+            },
+        }); 
+    };
 
     window.switchTheme = function () {
         showCont();
@@ -855,18 +800,25 @@
         }
     };
 
-    window.jokes = async function () {
-        showCont('jokeBox');
-        const jokeBox = document.getElementById("jokeBox");
-        jokeBox.textContent = "Loading joke...";
-        const res = await fetch("https://official-joke-api.appspot.com/random_joke");
-        const data = await res.json();
-        jokeBox.textContent = data.setup + " 🤔 ... " + data.punchline;
+    window.logout = async function () { 
+        showCont();
+        if (confirm("Are you sure you want to logout?")) { 
+            await signOut(auth); showCont("lgnCont"); 
+        } 
     };
 
+    window.login = async function () {
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists() && docSnap.data().approved === true) { showCont("topBar"); }
+    };
+    
+    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
+    
 </script>
 </body>
 </html>
-
-
-
