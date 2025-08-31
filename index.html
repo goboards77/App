@@ -3,127 +3,111 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>gpzip</title>
+    <title>Gpzip</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">  
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
     <style>
         table { border-collapse: collapse; table-layout: auto; max-width: 900px; }
         th, td { border: 1px solid var(--text-color); text-align: right; white-space: nowrap; padding-left: 10px; padding-top: 5px; }
         th, td:first-child { text-align: left; }
-
-        :root {
-            --body-bg: #111827;      /* 900 */ 
-            --card-bg: #18202f;      /* 850 */ 
-            --text-color: #ffffff;   /* white */
-            --hovclr: #185ec1;
-        }
-
-        body.light-mode {
-            --body-bg: #d1d5db;      /* 300 */
-            --card-bg: #ffffff;      /* white */
-            --text-color: #000000;   /* black */
-            --hovclr: #8299c8;
-        }
-
-        body { background-color: var(--body-bg); color: var(--text-color); }
-        .card { background-color: var(--card-bg); }
-        .btnDD:hover { background-color: var(--hovclr); }
     </style>
 </head>
+
 <body id="body" class="p-1" style="font-family: 'Roboto'; font-size: 18px;">
-<button id="topBar"class="w-full h-[50px] fixed top-0 left-0 z-[2147483647] text-lg text-left px-7 shadow-2xl" onclick="showCont('menuCont')">☰ Start Here</button>
-<div id="menuCont"class="hidden w-full max-w-md mt-[50px] rounded-lg shadow-2xl">
-    <button class="btnDD" onclick="showEle(1,2,3,21,22,23,24,25,26)">✍🏻 Create</button>
-    <button class="btnDD" onclick="showEle(11,12)">✏️ Alter</button>
+
+<button id="topBar"class="hidden w-full fixed top-0 left-0 z-[2147483647] text-lg text-left h-[50px] px-6 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="showCont('menuCont')">☰ Start Here</button>
+
+<div id="menuCont"class="hidden w-full p-2 max-w-md mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)]">
+    <button class="btnDD" onclick="showEle(1,2,3)">👷🏼 Create</button>
+    <button class="btnDD" onclick="showEle(21,22,23,24,25,26)">✍🏻 Vouchers</button>
+    <button class="btnDD" onclick="showEle(11,12)">✏️ Alter Vouchers</button>
     <button class="btnDD" onclick="showEle(31,32,33,34)">👀 Report</button>
     <button class="btnDD" onclick="showCont('thmCont')">🌈 Themes</button>
     <button class="btnDD" onclick="logout()">🔐 Logout</button>
 </div>
-<div id="thmCont" class="hidden mt-[50px] w-fit p-2 rounded-lg shadow-2xl">
-    <button class="block w-[250px] px-4 py-2 mt-1 bg-gray-300 text-black rounded" onclick="switchTheme()">White</button>
-    <button class="block w-[250px] px-4 py-2 mt-1 bg-gray-800 text-white rounded" onclick="changeGradient('from-gray-900 to-gray-400')">Gray Gradient</button>
-    <button class="block w-[250px] px-4 py-2 mt-1 bg-pink-600 text-white rounded" onclick="changeGradient('from-pink-800 via-blue-500 to-yellow-300')">Pink → Yellow</button>
-    <button class="block w-[250px] px-4 py-2 mt-1 bg-blue-600 text-white rounded" onclick="changeGradient('from-blue-800 via-blue-500 to-cyan-300')">Blue → Cyan</button>
-    <button class="block w-[250px] px-4 py-2 mt-1 bg-purple-700 text-white rounded" onclick="changeGradient('from-purple-800 via-Purple-500 to-orange-300')">Purple → Orange</button>
-  </div>
-<div id ="btnCont" class="hidden max-w-md mt-[50px] p-2 rounded-lg shadow-2xl">
-    <button id=1 class="btnDD" onclick="showEle(101,102,103,104,1010)">Bhaduvat 🧑‍🚒</button>
-    <button id=2 class="btnDD" onclick="showEle(102,201,2010)">Monthly Vyaj Party 🧛</button>
-    <button id=3 class="btnDD" onclick="showEle(102,301,3010)">Quarterly Vyaj Party 👮</button>
 
-    <button id=11 class="btnDD" onclick="insertTran(true, true, false)">Transaction ⛔✏️</button>
-    <button id=12 class="btnDD" onclick="showEle(401,4010)">Delete Party ⛔👮</button>
+<div id="thmCont" class="hidden max-w-md p-2 mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)]">
+    <button class="btnDD bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 text-white" onclick="changeGradient('from-gray-900 via-gray-700 to-gray-500')">Gray → Gray</button>
+    <button class="btnDD bg-gradient-to-r from-lime-800 to-lime-300 text-white" onclick="changeGradient('from-lime-800 to-lime-300')">Lime → Lime</button>
+    <button class="btnDD bg-gradient-to-r from-red-800 via-red-500 to-orange-300 text-white" onclick="changeGradient('from-red-800 via-red-500 to-orange-300')">Red → Orange</button>
+    <button class="btnDD bg-gradient-to-r from-pink-800 via-pink-500 to-yellow-300 text-white" onclick="changeGradient('from-pink-800 via-pink-500 to-yellow-300')">Pink → Yellow</button>
+    <button class="btnDD bg-gradient-to-r from-blue-800 via-blue-500 to-cyan-300 text-white" onclick="changeGradient('from-blue-800 via-blue-500 to-cyan-300')">Blue → Cyan</button>
+    <button class="btnDD bg-gradient-to-r from-purple-800 via-purple-500 to-orange-300 text-white" onclick="changeGradient('from-purple-800 via-Purple-500 to-orange-300')">Purple → Orange</button>
+</div>
 
-    <button id=21 class="btnDD" onclick="showMtable(116)">Ele 116 😱</button>
-    <button id=22 class="btnDD" onclick="showMtable(119)">Ele 119 🥶</button>
-    <button id=23 class="btnDD" onclick="showEle(501,502,503,504,505,506,5010)">Transaction 💰</button>
-    <button id=24 class="btnDD" onclick="saveHavala('mvamt')">Monthly Vyaj Havala 💸</button>
-    <button id=25 class="btnDD" onclick="saveHavala('mbamt')">Monthly Bhada Havala 💵</button>
-    <button id=26 class="btnDD" onclick="saveHavala('qvamt')">Quarterly Vyaj Havala 💰</button>
+<div id ="btnCont" class="hidden max-w-md p-2 mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)]">
+    <button id=21 class="btnDD" onclick="showEle(501,502,503,504,505,506,5010)">💰 Transaction</button>
+        <input id=501 class="input-box" type="date"/><label class="label">Date</label>
+        <input id=502 class="input-box" type="text"/><label class="label">From</label>
+        <input id=503 class="input-box" type="text"/><label class="label">To</label>   
+        <input id=504 class="input-box" type="number"/><label class="label">Amount</label>
+        <input id=505 class="input-box" type="text"/><label class="label">Narration</label>
+        <input id=506 class="input-box" type="text"/><label class="label">🧮 Calculator</label>
+        <button id=5010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="saveTransaction()">💾 Save</button>
 
-    <button id=31 class="btnDD" onclick="insertTran(false, false, false)">Daybook 📕</button>
-    <button id=32 class="btnDD" onclick="showDashboard()">Dashboard 📊</button>
-    <button id=33 class="btnDD" onclick="viewReceivables()">Receivables 💴</button>
-    <button id=34 class="btnDD" onclick="viewLedger()">Ledgers & Groups 🧑🏼‍🤝‍🧑🏼</button>
+    <button id=22 class="btnDD" onclick="showMtable(116)">😱 Ele 116</button>
+    <button id=23 class="btnDD" onclick="showMtable(119)">🥶 Ele 119</button>
+    <button id=24 class="btnDD" onclick="saveHavala('mvamt')">💸 Monthly Vyaj Havala</button>
+    <button id=25 class="btnDD" onclick="saveHavala('mbamt')">💵 Monthly Bhada Havala</button>
+    <button id=26 class="btnDD" onclick="saveHavala('qvamt')">💰 Quarterly Vyaj Havala</button>
 
-    <input id=101 class="input-box" type="text"/><label class="label"  >Select Plot No.</label>
-    <input id=102 class="input-box" type="text"/><label class="label"  >Name...........</label>
-    <input id=103 class="input-box" type="number"/><label class="label">Meter Reading..</label>
-    <input id=104 class="input-box" type="number"/><label class="label">Monthly Bhadu..</label>
-    <button id=1010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10" onclick="saveBhaduvat()">💾 Save</button>
+    <button id=1 class="btnDD" onclick="showEle(101,102,103,104,1010)">🧑‍🚒 Bhaduvat</button>
+        <input id=101 class="input-box" type="text"/><label class="label">Select Plot No...</label>
+        <input id=102 class="input-box" type="text"/><label class="label">Name.............</label>
+        <input id=103 class="input-box" type="number"/><label class="label">Meter Reading..</label>
+        <input id=104 class="input-box" type="number"/><label class="label">Monthly Bhadu..</label>
+        <button id=1010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="saveBhaduvat()">💾 Save</button>
 
-    <input id=201 class="input-box" type="number"/><label class="label">Monthly Vyaj...</label>
-    <button id=2010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10" onclick="saveParty('mv')">💾 Save</button>
+    <button id=2 class="btnDD" onclick="showEle(102,201,2010)">🧛 Monthly Vyaj Party</button>
+        <input id=201 class="input-box" type="number"/><label class="label">Monthly Vyaj...</label>
+        <button id=2010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="saveParty('mv')">💾 Save</button>
+    
+    <button id=3 class="btnDD" onclick="showEle(102,301,3010)">👮 Quarterly Vyaj Party</button>
+        <input id=301 class="input-box" type="number"/><label class="label">Quarterly Vyaj</label>
+        <button id=3010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="saveParty('qv')">💾 Save</button>
 
-    <input id=301 class="input-box" type="number"/><label class="label">Quarterly Vyaj</label>
-    <button id=3010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10" onclick="saveParty('qv')">💾 Save</button>
+    <button id=11 class="btnDD" onclick="insertTran(true, true, false)">✏️⛔ Transaction</button>
+    <button id=12 class="btnDD" onclick="showEle(401,4010)">⛔👮 Delete Party</button>
+
+    <button id=31 class="btnDD" onclick="insertTran(false, false, false)">📕 Daybook</button>
+    <button id=33 class="btnDD" onclick="viewReceivables()">💴 Receivables</button>
+    <button id=34 class="btnDD" onclick="viewLedger()">🧑🏼‍🤝‍🧑🏼 Ledgers & Groups</button>
+    <button id=32 class="btnDD" onclick="showDashboard()">📊 Dashboard</button>
 
     <input id=401 class="input-box" type="text"/><label class="label">Select Party....</label>
-    <button id=4010 class="block mx-auto rounded bg-red-500 px-5 py-2 mt-10" onclick="deleteParty()">🗑️ Delete</button>
-
-    <input id=501 class="input-box date-input" type="text"/><label class="label">Date</label>
-    <input id=502 class="input-box" type="text"/><label class="label">From</label>
-    <input id=503 class="input-box" type="text"/><label class="label">To</label>   
-    <input id=504 class="input-box" type="number"/><label class="label">Amount</label>
-    <input id=505 class="input-box" type="text"/><label class="label">Narration</label>
-    <input id=506 class="input-box" type="text"/><label class="label">🧮 Calculator</label>
-    <button id=5010 class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10" onclick="saveTransaction()">💾 Save</button>
+    <button id=4010 class="block mx-auto rounded bg-red-500 px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="deleteParty()">🗑️ Delete</button>
 </div>
 
-<div id="mtblCont" class="hidden w-fit p-2 mt-[50px] rounded-lg shadow-2xl">
+<div id="mtblCont" class="hidden w-fit p-2 mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)] bg-green-500">
     <table id="metersTable"><thead><tr><th>Name</th><th>O Read</th><th>N Read ↓↓</th><th>Consum</th><th>AdjUnt</th><th>Amt ↓↓</th></tr></thead><tbody id="metersTableBody"></tbody></table>
-    <button class="inline-block mx-auto bg-yellow-500 rounded px-5 py-2 mt-10" onclick="calculate()">📠 Calculate</button>
-    <button class="inline-block mx-auto bg-green-500 rounded px-5 py-2 mt-10" onclick="saveData()" style="display:none;" id="saveBtn">💾 Save</button>
+    <button class="inline-block mx-auto bg-yellow-500 rounded px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="calculate()">📠 Calculate</button>
+    <button  id="saveBtn" class="inline-block mx-auto bg-green-500 rounded px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="saveData()" style="display:none;">💾 Save</button>
 </div>
 
-<div id="tblCont" class="hidden w-fit mt-[50px] p-1 rounded-lg shadow-2xl">
+<div id="tblCont" class="hidden w-fit p-2 mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)]">
     <div><input id="searchBox" class="input-box max-w-md" type="text"/><label class="label">Search...</label></div>
-    <div class="w-full max-w-md flex gap-1 justify-left">
-        <button id="excelBtn" class="block mx-auto w-10 h-10 p-1 rounded-full text-center">XL</button>
-        <button id="pdfBtn" class="block mx-auto w-10 h-10 p-1 rounded-full text-center">PDF</button>
-        <button id="printBtn" class="block mx-auto w-10 h-10 p-1 rounded-full text-center">🖨️</button>
+    <div class="w-fit flex gap-10 justify-left">
+        <button id="excelBtn" class="block mx-auto p-2">XL</button>
+        <button id="pdfBtn" class="block mx-auto p-2">PDF</button>
+        <button id="printBtn" class="block mx-auto p-2">🖨️</button>
     </div>
     <div class="overflow-x-auto"><div id="table" class="rounded-lg mx-auto text-[18px] font-[Roboto]"></div></div>
 </div>
 
-<div id="dashCont" class="hidden max-w-md p-2 mt-[50px] rounded-lg shadow-2xl"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
+<div id="dashCont" class="hidden max-w-md p-2 mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)] bg-gray-100 text-black"><h2>Dashboard</h2><canvas id="dashboardChart"></canvas></div>
 
-<div id="lgnCont" class="hidden max-w-md p-2 mt-[50px] rounded-lg shadow-2xl">
-    <h2 class="ml-5 py-5 text-[#e92c7b] text-xl">Login</h2>
+<div id="lgnCont" class="hidden max-w-md p-2 mt-[50px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.4)]">
+    <h2 class="ml-5 py-5 text-xl">Login</h2>
     <input class="input-box" id="loginEmail" type="email" /><label for="loginEmail" class="label">Email</label>
     <input class="input-box" id="loginPassword" type="password" /><label for="loginPassword" class="label">Password</label>
-    <button class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10" onclick="login()">🏠︎ Login</button>
+    <button class="block mx-auto rounded bg-green-500 px-5 py-2 mt-10 shadow-[0_8px_15px_rgba(0,0,0,0.4)]" onclick="login()">🏠︎ Login</button>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script> flatpickr(".date-input", { dateFormat: "d-m-Y", defaultDate: new Date() }); </script>
 
 <script type="module">
     import {initializeApp} 
@@ -145,24 +129,26 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
     let meters = [], balances = {}, mainMeter = null, groupId = null, currentDocId = null, cachedData = null;
-    
+
     onAuthStateChanged(auth, async (user) => {
         if (user) { 
-            const docRef = doc(db, "users", user.uid);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) { const dbName = docSnap.data().db; window.tranCol = collection(db, dbName);};
+            window.tranCol = collection(db, (await getDoc(doc(db, "users", user.uid))).data().db);
             showCont('topBar'); 
             await fetchAllOnce();
-            await loadDropdownData(); 
+            await loadDropdownData();
+            window.showDashboard();
+            changeGradient('from-green-800 via-green-500 to-lime-300');
+
         } else { showCont("lgnCont"); } 
     });  
     
     document.addEventListener('DOMContentLoaded', () => {
-        const btnClass1 = "block w-full max-w-md px-5 py-3 text-left cursor-pointer";
+        const btnClass1 = "block w-full max-w-md px-2 py-3 text-left cursor-pointer border-b border-gray-300 last:border-b-0 duration-500 hover:translate-x-5 hover:rounded-br-lg";
         document.querySelectorAll('.btnDD').forEach(btn => { btn.classList.add(...btnClass1.split(' ')); });
-        const wrapperClass = "relative mt-6";
-        const inputClass = "peer w-full border-b-2 px-1 border-gray-500 bg-transparent pt-2 focus:outline-none focus:border-yellow-600";
-        const labelClass = "absolute top-2 left-0 text-yellow-600 transform -translate-y-6 peer-focus:-translate-y-6 peer-placeholder-shown:translate-y-0 scale-[.9] peer-placeholder-shown:scale-[1]";
+        
+        const wrapperClass = "relative mt-5";
+        const inputClass = "peer w-full border-b-2 border-gray-500 bg-transparent px-1 pt-1 focus:outline-none focus:border-yellow-600";
+        const labelClass = "absolute top-2 left-0 transform -translate-y-6 peer-focus:-translate-y-6 peer-placeholder-shown:translate-y-0 scale-[.8] peer-placeholder-shown:scale-[1]";
 
         document.querySelectorAll('.input-box').forEach(input => {
             const label = input.nextElementSibling;
@@ -171,11 +157,13 @@
             const wrapper = document.createElement("div");
             wrapper.className = wrapperClass;
             input.parentNode.insertBefore(wrapper, input);
+            
             wrapper.appendChild(input);
             wrapper.appendChild(label);
 
             input.classList.add(...inputClass.split(' '));
             label.classList.add(...labelClass.split(' '));
+
             input.setAttribute("placeholder", " ");
             input.setAttribute("autocomplete", "off");
 
@@ -204,14 +192,22 @@
         const fromParty = document.getElementById("from1").value.trim();
         const toParty = document.getElementById("to1").value.trim();
         const partiesToCheck = [fromParty, toParty];
-        partiesToCheck.forEach(party => { if (party && party !== "Gpzip") { const bal = balances[party] || 0; document.getElementById("balanceInfo").textContent = `${party}: ${bal.toFixed(0)}`;} }); 
+
+        partiesToCheck.forEach(party => { 
+            if (party && party !== "Gpzip") { 
+                const bal = balances[party] || 0; 
+                document.getElementById("balanceInfo").textContent = `${party}: ${bal.toFixed(0)}`;
+            } 
+        }); 
     });
 
     window.showEle = function (...ids) {
         document.getElementById("menuCont").style.setProperty('display', 'none', 'important');
         const cont = document.getElementById("btnCont");
         cont.style.setProperty('display', 'block', 'important');
+        
         Array.from(cont.children).forEach(child  => child.style.setProperty('display', 'none', 'important'));
+        
         ids.forEach(id => {
             let el = document.getElementById(id);
             if (el) {
@@ -223,11 +219,31 @@
 
     window.showCont = function (...idToShow) {
         const allIds = ['menuCont', 'thmCont', 'btnCont', 'bhdCont', 'mvpCont', 'qvpCont', 'delCont', 'tranCont', 'mtblCont', 'tblCont', 'dashCont', 'lgnCont'];
-        allIds.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'none', 'important'); } });
-        idToShow.forEach(id => { const el = document.getElementById(id); if (el) { el.style.setProperty('display', 'block', 'important'); } });
+        
+        allIds.forEach(id => { 
+            const el = document.getElementById(id); 
+            if (el) { 
+                el.style.setProperty('display', 'none', 'important'); 
+            } 
+        });
+        
+        idToShow.forEach(id => { 
+            const el = document.getElementById(id); 
+            if (el) { 
+                el.style.setProperty('display', 'block', 'important'); 
+            } 
+        });
+        clear();
     };   
     
-    window.clear = function () { loadDropdownData(); document.querySelectorAll("input").forEach(el => { if (el.id !== "date") { el.value = ""; } }); };
+    window.clear = function () { 
+        loadDropdownData(); 
+        document.querySelectorAll("input").forEach(el => { 
+            if (el.id !== "date") { 
+                el.value = ""; 
+            } 
+        }); 
+    };
     
     document.getElementById("506").addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
@@ -249,15 +265,21 @@
     window.loadDropdownData = async function () {
         const transactionsData = await fetchAllOnce();
         const nameSet = new Set();
-        transactionsData.forEach((data) => { const name = (data.tparty || "").trim(); if (name.length > 0) { nameSet.add(name); } });
+
+        transactionsData.forEach((data) => { 
+            const name = (data.tparty || "").trim(); 
+            if (name.length > 0) { nameSet.add(name); } 
+        });
+        
         const plot_list = ["116", "119"]; 
         const names_list = [...nameSet].sort((a, b) => a.localeCompare(b));
-
         attachDropdown(document.getElementById("101"), plot_list);
         ["401","502","503"].forEach(id => attachDropdown(document.getElementById(id), names_list));
     }; 
+
     window.attachDropdown = function (inputElement, dataList) {
         if (inputElement._dropdownCleanup) { inputElement._dropdownCleanup(); }
+        
         let wrapper = inputElement.parentElement;
 
         if (!wrapper.classList.contains("relative")) {
@@ -268,7 +290,8 @@
         }
 
         let dropdown = document.createElement("ul");
-        dropdown.className = "card absolute z-50 w-full h-[300px] overflow-y-auto hidden rounded-b-lg";
+        
+        dropdown.className = "bg-gray-100  text-black absolute z-50 w-full h-[300px] overflow-y-auto hidden rounded-b-lg";
         wrapper.appendChild(dropdown);
 
         function filterList() {
@@ -279,10 +302,11 @@
 
         function populateDropdown(list) {
             dropdown.innerHTML = "";
+
             list.forEach(item => {
-                const btn = document.createElement("button");
+                const btn = document.createElement("button");    
                 btn.textContent = item;
-                btn.className = "btnDD block w-full text-left px-2 py-3 cursor-pointer border-b border-gray-300 last:border-b-0";
+                btn.className = "block w-full max-w-md px-2 py-2 text-left cursor-pointer border-b border-gray-300 last:border-b-0";
                 btn.addEventListener('click', () => {
                     inputElement.value = item;
                     dropdown.classList.add("hidden");
@@ -304,7 +328,10 @@
             }, 200);
         };
 
-        const onDocClick = (e) => { if (!wrapper.contains(e.target)) dropdown.classList.add("hidden"); };
+        const onDocClick = (e) => { 
+            if (!wrapper.contains(e.target)) dropdown.classList.add("hidden"); 
+        };
+        
         inputElement.addEventListener("input", onInput);
         inputElement.addEventListener("click", onClick);
         inputElement.addEventListener("blur", onBlur);
@@ -319,11 +346,14 @@
             if (dropdown.parentNode) dropdown.parentNode.removeChild(dropdown);
             inputElement._dropdownCleanup = null;
         };
-    };    
+    };
+
     window.createEditableTable = function (rows, columns, showDelete = true, showUpdate = true, editable = false) {
         if (window.table && typeof window.table.destroy === "function") window.table.destroy();
+        
         const isMobile = window.innerWidth < 768;  
         const searchId = document.getElementById('searchBox');
+        
         let fullColumns = columns.map(col => {
             if (isMobile && col.field === "id") return { ...col, visible: false };
             return { ...col, editor: editable ? col.editor || "input" : false };
@@ -429,6 +459,7 @@
         document.getElementById('printBtn')?.addEventListener("click", () => { window.table.print(false, true); });
         bindSearch();
     };    
+    
     window.bindSearch = function () {
         const searchbox = document.getElementById("searchBox");
         searchbox.addEventListener("input", function () {
@@ -439,23 +470,26 @@
             }); 
         }); 
     };
+
     window.showTransactionContainer = function (rowData) { 
-        showEle(501,502,503,504,505,506,5010,5011);
         document.getElementById('tblCont').style.setProperty('display', 'none', 'important');
         document.getElementById("501").value = rowData.date || "";
         document.getElementById("502").value = rowData.fparty || "";
         document.getElementById("503").value = rowData.tparty || "";
         document.getElementById("504").value = rowData.amount || "";
         document.getElementById("505").value = rowData.nar || "";
-    };   
+        showEle(501,502,503,504,505,506,5010,5011);
+    };  
+
     window.insertTran = async function (showDelete = true, showUpdate = true, editable = false) {
         const data = await fetchAllOnce();
         const rows = [];
+        
         data.forEach(item => {
             if (!item.date || !item.fparty) return;
             rows.push({
                 id: item.id,
-                date: item.date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
+                date: item.date,
                 ttype: item.ttype, 
                 fparty: item.fparty || "",
                 tparty: item.tparty || "", 
@@ -463,12 +497,13 @@
                 amount: item.amount || "", 
                 oread: item.oread || "",
                 nread: item.nread || "", 
-                unitdiff: item.unitdiff || "", 
+                unitdiff: item.unitdiff || "",
+                disDate: item.date.split('-').reverse().join('-').replace(/(\d{2})-(\d{4})$/, '$1-$2'),
             }); 
         });
 
         const columns = [
-            {title: "Date", field: "date"}, 
+            {title: "Date", field: "disDate"}, 
             {title: "Type", field: "ttype"}, 
             {title: "From", field: "fparty"}, 
             {title: "To", field: "tparty"},  
@@ -478,6 +513,7 @@
             {title: "Udiff", field: "unitdiff", hozAlign: "right"},
             {title: "Narr", field: "nar"}, 
         ];
+        
         createEditableTable(rows, columns, showDelete, showUpdate, editable);
         showCont("tblCont"); 
     };
@@ -487,13 +523,26 @@
         const name = document.getElementById("bhaduvatname").value.trim();
         const nread = document.getElementById("meterreading").value.trim();
         const mbamt = document.getElementById("mbamt").value.trim();
-        if (!group || !name || !nread || !mbamt) { return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required."); }
-        const newDocData = { group: Number(group), nread: Number(nread), tparty: name, mbamt: Number(mbamt), date: new Date().toISOString().split('T')[0], };
+        
+        if (!group || !name || !nread || !mbamt) { 
+            return alert("Group, Name, Meter Reading\nMonthly Bhada Amount Required."); 
+        }
+        
+        const newDocData = { 
+            group: Number(group), 
+            nread: Number(nread), 
+            tparty: name, 
+            mbamt: Number(mbamt), 
+            date: new Date().toISOString().split('T')[0], 
+        };
+        
         const docRef = await addDoc(tranCol, newDocData);
         const savedData = { id: docRef.id, ...newDocData };
+        
         cachedData.push(savedData); 
         clear();
     };
+
     window.saveParty = async function (partyType) {
         const nameInputId = partyType.toLowerCase() + "partyname";
         const amtInputId = partyType.toLowerCase() + "amt";
@@ -501,13 +550,25 @@
         const name = document.getElementById(nameInputId).value.trim();
         const amt = document.getElementById(amtInputId).value.trim();
 
-        if (!name || !amt) { return alert(`Name, ${partyType === "mv" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); }
-        const newDocData = { group: partyType + "Party", tparty: name, [amtField]: Number(amt), date: new Date().toISOString().split('T')[0], };
+        if (!name || !amt) { 
+            return alert(`Name, ${partyType === "mv" ? "Monthly" : "Quarterly"} Vyaj Amount Required.`); 
+        }
+    
+        const newDocData = { 
+            group: partyType + "Party", 
+            tparty: name, 
+            [amtField]: Number(amt), 
+            date: new Date().toISOString().split('T')[0], 
+        };
+        
         const docRef = await addDoc(tranCol, newDocData);
         const savedData = { id: docRef.id, ...newDocData };
+    
         cachedData.push(savedData);
+    
         clear();
     };
+
     window.saveHavala = async function (type) {
         const fieldMap = { mbamt: "mbamt", mvamt: "mvamt", qvamt: "qvamt" };
         const ttypeMap = { mbamt: "Bhadu", mvamt: "Vyaj", qvamt: "Vyaj" };
@@ -521,25 +582,46 @@
                 (typeof data[amtField] !== 'string' || data[amtField] !== '') &&
                 data.tparty !== undefined
             );
+            
             const batch = writeBatch(db);
+            
             for (const item of itemsToProcess) {
-                const newDoc = { ttype: ttypeValue, tparty: item.tparty, fparty: "Gpzip", amount: Number(item[amtField]), date: new Date().toISOString().split('T')[0], };
+                const newDoc = { 
+                    ttype: ttypeValue, 
+                    tparty: item.tparty, 
+                    fparty: "Gpzip", 
+                    amount: Number(item[amtField]), 
+                    date: new Date().toISOString().split('T')[0], 
+                };
+                
                 const newDocRef = doc(tranCol);
                 batch.set(newDocRef, newDoc);
                 newItems.push(newDoc);
             }
+
             await batch.commit();
             cachedData.push(...newItems);
         }
     };
     
     window.getInputByIdx = function (cls, idx) { return document.querySelector(`.${cls}[data-index="${idx}"]`); }
+    
     window.fetchCustomers = async function (groupId) {
         const transactionsData = await fetchAllOnce(); 
         const namesSet = new Set();
-        transactionsData.forEach(data => { if (data.group === groupId) { if (data.tparty) { namesSet.add(data.tparty.trim()); } } });
+        
+        transactionsData.forEach(data => { 
+            if (data.group === groupId) { 
+                if (data.tparty) { 
+                    namesSet.add(data.tparty.trim()); 
+                } 
+            } 
+        });
+        
         const names = Array.from(namesSet);
+        
         if (names.length === 0) return [];
+        
         const customers = [];
 
         for (const name of names) {
@@ -551,14 +633,24 @@
                     if (docDate > latestDate) { latestDate = docDate; latestDoc = data; }
                 }
             });
+            
             const oldReading = latestDoc && latestDoc.nread ? latestDoc.nread : 0;
-            customers.push({ name, oldReading, newReading: '', amount: '', });
+            
+            customers.push({ 
+                name, 
+                oldReading, 
+                newReading: '', 
+                amount: '', 
+            });
         }
+        
         return customers;
     };
+
     window.renderTable = async function () {
         const tbody = document.getElementById("metersTableBody");
         tbody.innerHTML = "";
+       
         const mainMeterName = `Main ${groupId}`;
         const sortedIndices = meters
             .map((_, idx) => idx)
@@ -566,21 +658,24 @@
                 const a = meters[ai], b = meters[bi];
                 const aPriority = (a.name === mainMeterName) ? 0 : 1;
                 const bPriority = (b.name === mainMeterName) ? 0 : 1;
+
                 if (aPriority !== bPriority) return aPriority - bPriority;
                 return a.name.localeCompare(b.name);
             });
+    
         sortedIndices.forEach((idx) => {
             const meter = meters[idx];
             tbody.insertAdjacentHTML("beforeend", `
                 <tr data-index="${idx}">
                     <td>${meter.name}</td><td>${meter.oldReading}</td>
-                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${idx}" class="card newReadingInput w-[90px] text-right" /></td>
+                    <td><input type="number" min="${meter.oldReading}" value="${meter.newReading !== undefined ? meter.newReading : ''}" data-index="${idx}" class="newReadingInput w-[90px] text-right text-black" /></td>
                     <td class="consumption">-</td><td class="adjustedUnits">-</td>
-                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${idx}" class="card amountInput w-[70px] text-right" /></td>
+                    <td><input type="number" min="0" value="${meter.amount !== undefined ? meter.amount : ''}" data-index="${idx}" class="amountInput w-[70px] text-right text-black" /></td>
                 </tr>
             `);
         });
     };  
+
     window.calculate = function () {
         const mainMeterName = `Main ${groupId}`;
         const mainIndex = meters.findIndex(m => m.name === mainMeterName);
@@ -588,25 +683,35 @@
         const mainAmountInput     = getInputByIdx("amountInput", mainIndex);
 
         let mainNewReading = parseFloat(mainNewReadingInput.value);
+        
         if (isNaN(mainNewReading) || mainNewReading < meters[mainIndex].oldReading) { 
             return alert( `Main Meter new reading must be > old reading (${meters[mainIndex].oldReading})`); 
         }
+        
         meters[mainIndex].newReading = mainNewReading;
         meters[mainIndex].consumption = mainNewReading - meters[mainIndex].oldReading;
 
         let mainAmount = parseFloat(mainAmountInput.value);
-        if (isNaN(mainAmount) || mainAmount <= 0) { return alert("Please enter valid Main Meter Amount > 0"); }
+        
+        if (isNaN(mainAmount) || mainAmount <= 0) { 
+            return alert("Please enter valid Main Meter Amount > 0"); 
+        }
+        
         meters[mainIndex].amount = mainAmount;
 
         for (let i = 0; i < meters.length; i++) {
             if (i === mainIndex) continue;
+            
             const input = getInputByIdx("newReadingInput", i);
+        
             if (!input) return alert(`Row for "${meters[i].name}" not found.`);
 
             let newRead = parseFloat(input.value);
+        
             if (isNaN(newRead) || newRead <= meters[i].oldReading) { 
                 return alert( `New reading for customer "${meters[i].name}" must be > old reading (${meters[i].oldReading})`); 
             }
+        
             meters[i].newReading = newRead;
             meters[i].consumption = newRead - meters[i].oldReading;
         }
@@ -616,6 +721,7 @@
         }, 0);
 
         const diff = meters[mainIndex].consumption - totalCustomerConsumption;        
+        
         meters.forEach((meter, idx) => {
             if (idx === mainIndex) { meter.adjustedUnits = meter.consumption; } 
             else {
@@ -628,13 +734,18 @@
         meters.forEach((m, idx) => {
             const row = document.querySelector(`#metersTableBody tr[data-index="${idx}"]`);
             if (!row) return;
+        
             row.querySelector(".consumption").textContent = m.consumption.toFixed(0);
             row.querySelector(".adjustedUnits").textContent = m.adjustedUnits.toFixed(0);
+        
             const amtInput = row.querySelector(".amountInput");
+        
             if (amtInput) amtInput.value = m.amount.toFixed(0);
         });
+        
         document.getElementById("saveBtn").style.display = "inline-block";
     };    
+
     window.saveData = async function () {
         const batch = writeBatch(db);
         const newItems = [];
@@ -645,75 +756,134 @@
             const meter = meters[i];
             const unitDiff = meter.adjustedUnits - meter.consumption;
             const newDocRef = doc(tranCol);
-            const tranData = { ttype: "Ebill", tparty: meter.name, fparty: "Gpzip", oread: meter.oldReading, nread: meter.newReading, unitdiff: Math.round(unitDiff), date: new Date().toISOString().split('T')[0], };
+            
+            const tranData = { 
+                ttype: "Ebill", 
+                tparty: meter.name, 
+                fparty: "Gpzip", 
+                oread: meter.oldReading, 
+                nread: meter.newReading, 
+                unitdiff: Math.round(unitDiff), 
+                date: new Date().toISOString().split('T')[0], 
+            };
+            
             if (i !== mainIndex) { tranData.amount = Math.round(meter.amount); }
+            
             batch.set(newDocRef, tranData);
             newItems.push(tranData);
         }
         await batch.commit();
+        
         cachedData.push(...newItems);
         document.getElementById("mtblCont").style.setProperty('display', 'none', 'important');
+        
         alert('Data saved, success');
-    };    
+    };  
+
     window.showMtable = async function (grpId) { 
         groupId = grpId; 
         meters = await fetchCustomers(groupId); 
+        
         renderTable(); 
         showCont('mtblCont'); 
+        
         document.getElementById("saveBtn").style.display = "none";
     };
     
     window.saveTransaction = async function () {
-        const odate = document.getElementById("date");
-        const fparty = document.getElementById("from1").value.trim();
-        const tparty = document.getElementById("to1").value.trim();
-        const amount = parseFloat(document.getElementById("amt").value.trim()) || 0;
-        const nar = document.getElementById("nar").value.trim();
+        const date = document.getElementById("501").value;
+        const fparty = document.getElementById("502").value.trim();
+        const tparty = document.getElementById("503").value.trim();
+        const amount = parseFloat(document.getElementById("504").value.trim()) || 0;
+        const nar = document.getElementById("505").value.trim();
         
-        if (!odate || !fparty || !tparty || isNaN(amount) || amount <= 0) { return alert("Please fill all required fields properly\nAmount must be a number > 0"); }       
-        const date = odate._flatpickr.formatDate(odate._flatpickr.parseDate(odate.value.trim(), "d-m-Y"), "Y-m-d");
-        const tranData = {ttype: "Receipt", date, fparty, tparty, amount };
+        if (!date || !fparty || !tparty || isNaN(amount) || amount <= 0) { 
+            return alert("Please fill all required fields properly\nAmount must be a number > 0"); 
+        }       
+        
+        const tranData = {
+            date, 
+            fparty, 
+            tparty, 
+            amount,
+        };
         
         if (nar) tranData.nar = nar;
+        
         if (currentDocId) { 
             const docRef = doc(tranCol, currentDocId); 
             await updateDoc(docRef, tranData); 
             const index = cachedData.findIndex(item => item.id === docRef.id);
+            
             if (index !== -1) { cachedData[index] = { ...cachedData[index], ...tranData }; }
             insertTran();
         } 
         else { 
+            tranData.ttype = "Receipt"
             const newDocRef = await addDoc(tranCol, tranData); 
             cachedData.push({ id: newDocRef.id, ...tranData });
         }
-        clear(); currentDocId = null; 
+        
+        clear(); 
+        currentDocId = null; 
     };
     
     window.deleteParty = async function () {
         const name = document.getElementById("deleteparty").value.trim();
-        if (!name) { return alert("Please enter a name"); }
+        
+        if (!name) { 
+            return alert("Please enter a name"); 
+        }
+        
         if (confirm('Are you sure you want to Delete this party and all related transactions?\nHoshiyar 🙋🏻‍♂️🤓\nThis action cannot be undone. 😱')) {
             const batch = writeBatch(db);
             const docsToDelete = cachedData.filter( data => data.fparty === name || data.tparty === name );
-            for (const docData of docsToDelete) { batch.delete(doc(tranCol, docData.id)); }
+            
+            for (const docData of docsToDelete) { 
+                batch.delete(doc(tranCol, docData.id)); 
+            }
             await batch.commit();
+            
             cachedData = cachedData.filter( data => data.fparty !== name && data.tparty !== name );
         }
+        
         clear();
     };
 
     window.viewReceivables = async function (showTable = true) {
         const data = await fetchAllOnce();
+        
         balances = {};
+        
         let rows = [];
+        
         data.forEach(item => {
-            if (item.fparty) { const party = item.fparty.trim(); balances[party] = (balances[party] || 0) + parseFloat(item.amount || "0"); }
-            if (item.tparty) { const party = item.tparty.trim(); balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); }
+            if (item.fparty) { 
+                const party = item.fparty.trim(); 
+                balances[party] = (balances[party] || 0) + parseFloat(item.amount || "0"); 
+            }
+            
+            if (item.tparty) { 
+                const party = item.tparty.trim(); 
+                balances[party] = (balances[party] || 0) - parseFloat(item.amount || "0"); 
+            }
         });
 
         if (showTable) {
-            for (const party in balances) { if ((balances[party]) !== 0) { rows.push({ party: party, amount: (balances[party]).toFixed(0) }); } }
-            const columns = [ { title: "Party", field: "party", width: 240 }, { title: "Amount", field: "amount", width: 108, hozAlign: "right" } ];
+            for (const party in balances) { 
+                if ((balances[party]) !== 0) { 
+                    rows.push({ 
+                        party: party, 
+                        amount: (balances[party]).toFixed(0) 
+                    }); 
+                } 
+            }
+            
+            const columns = [ 
+                { title: "Party", field: "party", width: 240 }, 
+                { title: "Amount", field: "amount", width: 108, hozAlign: "right" } 
+            ];
+            
             createEditableTable(rows, columns, false, false, false);
             showCont("tblCont");
         }
@@ -722,30 +892,45 @@
     window.viewLedger = async function () {
         const data = await fetchAllOnce();
         const rows = [];
+        
         data.forEach(item => {
             const group = item.group ?? "";
             const name = item.tparty ?? "";
             if ((group !== "" && group !== null && group !== undefined) &&
                 (name !== "" && name !== null && name !== undefined)) {
-                rows.push({ group, name });
+                rows.push({ 
+                    group, 
+                    name 
+                });
             }
         });
-        const columns = [ { title: "Group", field: "group", width: 108 }, { title: "Name", field: "name", width: 240 }, ];
+        
+        const columns = [ 
+            { title: "Group", field: "group", width: 108 }, 
+            { title: "Name", field: "name", width: 240 }, 
+        ];
+        
         createEditableTable(rows, columns, false, false, false);
         showCont("tblCont");
     };
     
     window.showDashboard = async function () {
         showCont("dashCont");
+        
         const transactionsData = await fetchAllOnce();
         const monthlyData = {};
 
         transactionsData.forEach((data) => {
             let jsDate = new Date(data.date);
+            
             if (isNaN(jsDate)) return;
+            
             const month = jsDate.toLocaleString('default', { month: 'short' });
+            
             if (!monthlyData[month]) { monthlyData[month] = { bhadu: 0, vyaj: 0 }; }
+            
             const ttype = (data.ttype || "").trim().toLowerCase();
+            
             if (ttype === "bhadu") { monthlyData[month].bhadu += data.amount || 0; } 
             if (ttype === "vyaj") { monthlyData[month].vyaj += data.amount || 0; } 
         });
@@ -754,9 +939,9 @@
         const labels = Object.keys(monthlyData).sort((a, b) => monthOrder.indexOf(a) - monthOrder.indexOf(b));
         const sales = labels.map(m => monthlyData[m].bhadu);
         const purchase = labels.map(m => monthlyData[m].vyaj);
-        const textColor = getComputedStyle(document.body).getPropertyValue('--text-color').trim();
 
         if (window.dashboardChart instanceof Chart) { window.dashboardChart.destroy(); }
+        
         window.dashboardChart = new Chart(document.getElementById("dashboardChart"), {
             type: 'bar',
             data: { 
@@ -770,44 +955,69 @@
                 responsive: true, 
                 plugins: { 
                     legend: {
-                        labels: { color: textColor }
+                        labels: {}
                     },
                     datalabels: { 
                         anchor: 'end', 
                         align: 'start', 
                         formatter: value => value.toLocaleString(), 
-                        font: { weight: 'bold' },
-                        color: textColor              
+                        font: { weight: 'bold' },         
                     } 
                 }, 
                 scales: { 
-                    x: { ticks: { color: textColor } },  
-                    y: { beginAtZero: true, ticks: { color: textColor } } 
+                    x: { ticks: {} },  
+                    y: { beginAtZero: true, ticks: {} } 
                 } 
             },
         }); 
     };
+    
+    window.darkenColor = function (hex, percent) {
+        let r = parseInt(hex.substr(1,2),16);
+        let g = parseInt(hex.substr(3,2),16);
+        let b = parseInt(hex.substr(5,2),16);
 
-    window.switchTheme = function () {
-        showCont();
-        if (document.body.classList.contains('light-mode')) {
-            document.body.classList.add('dark-mode');
-            document.body.classList.remove('light-mode');
-        } else {
-            document.body.classList.add('light-mode');
-            document.body.classList.remove('dark-mode');
-        }
-    };
-    window.changeGradient = function (colors) {
-      const body = document.getElementById('body');
-      body.className = 'h-screen p-1 flex flex-col items-left transition-all duration-700';
-      body.classList.add('bg-gradient-to-r');
-      colors.split(' ').forEach(c => body.classList.add(c)); showCont();
+        r = Math.max(0, r - (r * percent / 100));
+        g = Math.max(0, g - (g * percent / 100));
+        b = Math.max(0, b - (b * percent / 100));
+
+        return `rgb(${r}, ${g}, ${b})`;
     }
-    window.logout = async function () { 
+
+    window.hoverColor = darkenColor("#166534", 50);
+
+    document.querySelectorAll("button").forEach(btn => {
+        const originalBg = window.getComputedStyle(btn).backgroundColor;
+        btn.onmouseenter = () => {btn.style.backgroundColor = window.hoverColor;};
+        btn.onmouseleave = () => {btn.style.backgroundColor = originalBg;};
+    });
+
+    window.changeGradient = function (colors) {
+        const body = document.getElementById('body');
+        body.className = 'h-screen p-1 flex flex-col transition-all duration-700 text-white';
+        body.classList.add('bg-gradient-to-r');
+        colors.split(' ').forEach(c => body.classList.add(c));
+        const baseColor = colors.split(' ')[0];
+
+        const twColors = {
+            "from-gray-900": "#0505b0",
+            "from-lime-800": "#166534",
+            "from-red-800": "#991b1b",
+            "from-pink-800": "#9d174d",
+            "from-blue-800": "#1e3a8a",
+            "from-purple-800": "#5b21b6",
+            
+        };
+
+        const hex = twColors[baseColor] || "#166534";
+        window.hoverColor = darkenColor(hex, 10);
         showCont();
+    };
+
+    window.logout = async function () {
         if (confirm("Are you sure you want to logout?")) { 
-            await signOut(auth); showCont("lgnCont"); 
+            await signOut(auth); 
+            showCont("lgnCont"); 
         } 
     };
 
@@ -818,11 +1028,14 @@
         const user = userCredential.user;
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists() && docSnap.data().approved === true) { showCont("topBar"); }
+        
+        if (docSnap.exists() && docSnap.data().approved === true) { 
+            showCont("topBar"); 
+        }
     };
-    
-    //window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
-    
+
+    window.addEventListener("beforeunload", function (e) { e.preventDefault(); e.returnValue = ""; });
+
 </script>
 </body>
 </html>
